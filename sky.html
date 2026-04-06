@@ -70,6 +70,29 @@
   .btn-gold { display: inline-block; padding: 0.9rem 2.4rem; border: 1px solid var(--gold); color: var(--gold-lt); font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background 0.3s, color 0.3s; }
   .btn-gold:hover { background: var(--gold); color: var(--ink); }
 
+
+  .sky-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+    gap: 4rem;
+  }
+  .sky-text { display: flex; flex-direction: column; justify-content: center; }
+  .sky-owl img {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+  @media (max-width: 760px) {
+    .sky-split { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 2rem; }
+    .sky-owl { order: -1; }
+  }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 760px) { .offering-card { padding: 2rem; } .offering-meta { flex-direction: column; gap: 0.5rem; } .section-prose { padding: 4rem 2rem; } }
 </style>
@@ -96,15 +119,16 @@
   <p class="branch-intro">Your birth chart is not a personality quiz. It is a precision map of the frequency you arrived carrying — your soul's evolutionary purpose, the wounds that became your gifts, the cycles that keep returning until you learn their language.</p>
 </section>
 
-<div class="section-prose">
-  <span class="eyebrow">The Sky Work</span>
-  <p class="prose-p">I read birth charts the way I read bodies: as texts, as transmissions, as maps of the frequency a soul arrived carrying. Astrology is not prediction. It is pattern recognition at the scale of a life — the ability to see what is moving, what is returning, and what is being asked of you in this precise season.</p>
-  <p class="prose-p">I am Gemini Sun, Sagittarius rising — built for the threshold, most alive at the edge of what's known. I don't sleep easily. The owl has always felt like kin: the one who sees clearly in darkness, who moves between worlds without losing her bearings. I read charts the way I read that quality in a person — as a map of what they were built to navigate.</p>
-  <p class="prose-p">All of it lives at the intersection of astrology, sound, and signal. Choose the container that fits where you are.</p>
-</div>
-
-<div style="max-width:500px; margin:0 auto 6rem; padding:0 3rem;">
-  <img src="/public/owl.jpg" alt="Owl in darkness — seeing clearly where others cannot" style="display:block; width:100%; height:auto; object-fit:cover;">
+<div class="sky-split">
+  <div class="sky-text">
+    <span class="eyebrow">The Sky Work</span>
+    <p class="prose-p">I read birth charts the way I read bodies: as texts, as transmissions, as maps of the frequency a soul arrived carrying. Astrology is not prediction. It is pattern recognition at the scale of a life — the ability to see what is moving, what is returning, and what is being asked of you in this precise season.</p>
+    <p class="prose-p">I am Gemini Sun, Sagittarius rising — built for the threshold, most alive at the edge of what's known. I don't sleep easily. The owl has always felt like kin: the one who sees clearly in darkness, who moves between worlds without losing her bearings. I read charts the way I read that quality in a person — as a map of what they were built to navigate.</p>
+    <p class="prose-p">All of it lives at the intersection of astrology, sound, and signal. Choose the container that fits where you are.</p>
+  </div>
+  <div class="sky-owl">
+    <img src="/owl.jpg" alt="Owl in darkness — seeing clearly where others cannot">
+  </div>
 </div>
 
 <section class="offerings-section">
