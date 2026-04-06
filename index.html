@@ -42,9 +42,9 @@
   /* SHARED */
   .split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 90vh; }
   .eyebrow {
-    font-family: var(--ff-b); font-size: 0.58rem; font-weight: 500;
+    font-family: var(--ff-b); font-size: 0.65rem; font-weight: 500;
     letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--gold); opacity: 0.7; display: block; margin-bottom: 1.6rem;
+    color: var(--gold); opacity: 0.9; display: block; margin-bottom: 1.6rem;
   }
 
   /* IMAGE FRAMES */
@@ -58,17 +58,17 @@
   .bio-img img { display: block; max-width: 100%; max-height: 85vh; width: auto; height: auto; object-fit: contain; }
 
   /* HERO */
-  .hero-roles { font-family: var(--ff-b); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.6; margin-bottom: 1.4rem; animation: fadeUp 1s 0.2s ease both; }
+  .hero-roles { font-family: var(--ff-b); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.85; margin-bottom: 1.4rem; animation: fadeUp 1s 0.2s ease both; }
   .hero-arrived { font-family: var(--ff-d); font-size: clamp(3.4rem, 5vw, 5.6rem); font-weight: 300; font-style: italic; color: var(--cream); line-height: 1.0; margin-bottom: 2rem; animation: fadeUp 1.2s 0.4s ease both; }
-  .hero-signal { font-family: var(--ff-d); font-size: clamp(1rem, 1.3vw, 1.12rem); font-style: italic; color: var(--cream); opacity: 0.55; line-height: 1.85; max-width: 420px; margin-bottom: 2rem; animation: fadeUp 1s 0.6s ease both; }
-  .hero-name { font-family: var(--ff-b); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.75; margin-bottom: 0.3rem; animation: fadeUp 1s 0.8s ease both; }
-  .hero-location { font-family: var(--ff-d); font-size: 0.95rem; font-style: italic; color: var(--cream); opacity: 0.3; margin-bottom: 2.8rem; animation: fadeUp 1s 0.9s ease both; }
+  .hero-signal { font-family: var(--ff-d); font-size: clamp(1.1rem, 1.4vw, 1.2rem); font-style: italic; color: var(--cream); opacity: 0.8; line-height: 1.85; max-width: 420px; margin-bottom: 2rem; animation: fadeUp 1s 0.6s ease both; }
+  .hero-name { font-family: var(--ff-b); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.9; margin-bottom: 0.3rem; animation: fadeUp 1s 0.8s ease both; }
+  .hero-location { font-family: var(--ff-d); font-size: 1.05rem; font-style: italic; color: var(--cream); opacity: 0.65; margin-bottom: 2.8rem; animation: fadeUp 1s 0.9s ease both; }
   .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; animation: fadeUp 1s 1s ease both; }
   .text-side { padding: 5rem 5rem 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
 
   /* INVITATION */
-  .invitation-text { padding: 5rem 5rem 5rem 4rem; background: var(--plum); display: flex; flex-direction: column; justify-content: center; height: 100%; }
-  .invitation-heading { font-family: var(--ff-d); font-size: clamp(2.4rem, 3.8vw, 3.8rem); font-style: italic; font-weight: 300; color: var(--cream); line-height: 1.5; opacity: 0.9; }
+  .invitation-text { padding: 5rem 3rem 5rem 4rem; background: var(--plum); display: flex; flex-direction: column; justify-content: center; height: 100%; }
+  .invitation-heading { font-family: var(--ff-d); font-size: clamp(3rem, 4.5vw, 5rem); font-style: italic; font-weight: 300; color: var(--cream); line-height: 1.25; opacity: 0.95; }
 
   /* BRANCHES */
   .branches { background: var(--ink); padding: 7rem 4rem; text-align: center; }
@@ -79,25 +79,25 @@
   .branch:hover { background: rgba(184,146,74,0.03); border-color: rgba(184,146,74,0.28); }
   .branch-name { font-family: var(--ff-d); font-size: clamp(2rem, 2.8vw, 2.8rem); font-style: italic; font-weight: 300; color: var(--gold-lt); opacity: 0.65; margin-bottom: 1rem; transition: opacity 0.4s; }
   .branch:hover .branch-name { opacity: 1; }
-  .branch-sub { font-family: var(--ff-b); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--cream); opacity: 0.22; margin-bottom: 1.4rem; }
-  .branch-desc { font-family: var(--ff-d); font-size: 0.98rem; font-style: italic; color: var(--cream); opacity: 0.45; line-height: 1.7; }
+  .branch-sub { font-family: var(--ff-b); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--cream); opacity: 0.55; margin-bottom: 1.4rem; }
+  .branch-desc { font-family: var(--ff-d); font-size: 1.05rem; font-style: italic; color: var(--cream); opacity: 0.75; line-height: 1.7; }
 
   /* BOOK */
   .book { background: #0e1008; padding: 7rem 3rem; text-align: center; }
   .book-title { font-family: var(--ff-d); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; color: var(--cream); line-height: 1.2; margin-bottom: 1.4rem; }
   .book-title em { font-style: italic; color: var(--gold-lt); }
-  .book-body { max-width: 520px; margin: 0 auto 2.8rem; font-family: var(--ff-d); font-size: 1.05rem; font-style: italic; color: var(--cream); opacity: 0.4; line-height: 1.8; }
+  .book-body { max-width: 520px; margin: 0 auto 2.8rem; font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--cream); opacity: 0.75; line-height: 1.8; }
 
   /* CLOSING */
   .closing { background: var(--ink); display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 70vh; }
   .closing-quote { padding: 6rem 4rem 6rem 8rem; }
-  .closing-quote blockquote { font-family: var(--ff-d); font-size: clamp(1.4rem, 2.2vw, 2rem); font-style: italic; font-weight: 300; color: var(--cream); line-height: 1.65; opacity: 0.8; }
+  .closing-quote blockquote { font-family: var(--ff-d); font-size: clamp(1.6rem, 2.4vw, 2.2rem); font-style: italic; font-weight: 300; color: var(--cream); line-height: 1.65; opacity: 0.9; }
 
   /* BIO */
   .bio { background: var(--ink); display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 80vh; }
   .bio-text { padding: 6rem 4rem 6rem 8rem; }
-  .bio-p { font-family: var(--ff-d); font-size: clamp(1rem, 1.3vw, 1.1rem); font-weight: 300; color: var(--cream); line-height: 1.9; opacity: 0.75; margin-bottom: 1.4rem; }
-  .bio-closing { font-family: var(--ff-d); font-size: clamp(1rem, 1.3vw, 1.1rem); font-weight: 300; color: var(--cream); line-height: 1.9; opacity: 0.3; }
+  .bio-p { font-family: var(--ff-d); font-size: clamp(1.05rem, 1.4vw, 1.15rem); font-weight: 300; color: var(--cream); line-height: 1.9; opacity: 0.85; margin-bottom: 1.4rem; }
+  .bio-closing { font-family: var(--ff-d); font-size: clamp(1.05rem, 1.4vw, 1.15rem); font-weight: 300; color: var(--cream); line-height: 1.9; opacity: 0.85; }
 
   /* BUTTONS */
   .btn-gold { display: inline-block; padding: 0.9rem 2.2rem; border: 1px solid var(--gold); color: var(--gold-lt); font-family: var(--ff-b); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; transition: background 0.3s, color 0.3s; }
