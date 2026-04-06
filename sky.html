@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sky — Christy Paxton Wade</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0c0a07; --ink-mid: #111009;
+    --gold: #b8924a; --gold-lt: #d4ae6e;
+    --cream: #f0e8d0; --plum: #251020;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+  .trunk-sig {
+    display: block; text-align: center; padding: 1rem 2rem 0.6rem;
+    background: var(--ink);
+    font-family: var(--ff-d); font-size: 1rem; font-style: italic;
+    color: var(--gold-lt); opacity: 0.7; text-decoration: none;
+    letter-spacing: 0.06em; transition: opacity 0.3s;
+  }
+  .trunk-sig:hover { opacity: 1; }
+
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    display: flex; justify-content: center; align-items: center;
+    padding: 1rem 3rem;
+    background: rgba(12,10,7,0.97);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(184,146,74,0.1);
+  }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: var(--ff-b); font-size: 0.62rem; font-weight: 500;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--cream); opacity: 0.6; text-decoration: none;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-lt); }
+  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.25); }
+
+  .branch-hero {
+    min-height: 70vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 7rem 3rem 5rem;
+    background: radial-gradient(ellipse at center, #0d1220 0%, #080d18 40%, var(--ink) 75%);
+  }
+  .branch-eyebrow {
+    font-family: var(--ff-b); font-size: 0.62rem; font-weight: 500;
+    letter-spacing: 0.32em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.85; display: block; margin-bottom: 1.4rem;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+  .branch-title {
+    font-family: var(--ff-d); font-size: clamp(4rem, 8vw, 8rem);
+    font-style: italic; font-weight: 300; color: var(--gold-lt);
+    line-height: 0.95; margin-bottom: 1.2rem;
+    animation: fadeUp 1.2s 0.4s ease both;
+  }
+  .branch-subtitle {
+    font-family: var(--ff-b); font-size: 0.62rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--cream); opacity: 0.35;
+    margin-bottom: 2.4rem; animation: fadeUp 1s 0.6s ease both;
+  }
+  .branch-intro {
+    font-family: var(--ff-d); font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+    font-style: italic; color: var(--cream); opacity: 0.75;
+    line-height: 1.75; max-width: 580px; margin: 0 auto;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+
+  .eyebrow {
+    font-family: var(--ff-b); font-size: 0.62rem; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.85; display: block; margin-bottom: 1.4rem;
+  }
+  .section-prose { padding: 6rem 4rem; max-width: 760px; margin: 0 auto; }
+  .prose-p {
+    font-family: var(--ff-d); font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    font-weight: 300; color: var(--cream); line-height: 1.9;
+    opacity: 0.82; margin-bottom: 1.4rem;
+  }
+
+  .offerings-section { background: var(--ink); padding: 6rem 3rem; }
+  .offerings-header { text-align: center; margin-bottom: 4rem; }
+  .offerings-title {
+    font-family: var(--ff-d); font-size: clamp(2rem, 3vw, 2.8rem);
+    font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 1rem;
+  }
+  .offerings-sub {
+    font-family: var(--ff-d); font-size: 1.05rem; font-style: italic;
+    color: var(--cream); opacity: 0.5; max-width: 480px; margin: 0 auto;
+  }
+  .offering-card {
+    max-width: 860px; margin: 0 auto 1.5rem;
+    border: 1px solid rgba(184,146,74,0.12);
+    padding: 3rem 3.5rem;
+    background: rgba(184,146,74,0.02);
+    transition: border-color 0.3s;
+  }
+  .offering-card:hover { border-color: rgba(184,146,74,0.25); }
+  .offering-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; }
+  .offering-tag { font-family: var(--ff-b); font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.75; }
+  .offering-price { font-family: var(--ff-d); font-size: 1rem; font-style: italic; color: var(--gold-lt); opacity: 0.8; }
+  .offering-name { font-family: var(--ff-d); font-size: clamp(1.8rem, 2.5vw, 2.4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
+  .offering-format { font-family: var(--ff-b); font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.4; margin-bottom: 1.6rem; }
+  .offering-body { font-family: var(--ff-d); font-size: 1.05rem; font-weight: 300; color: var(--cream); line-height: 1.85; opacity: 0.78; margin-bottom: 1.2rem; }
+  .offering-note { font-family: var(--ff-d); font-size: 1rem; font-style: italic; color: var(--gold-lt); opacity: 0.7; margin-bottom: 1.8rem; }
+  .offering-link { font-family: var(--ff-b); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.8; text-decoration: none; transition: opacity 0.3s; }
+  .offering-link:hover { opacity: 1; }
+  .offering-link::after { content: ' →'; }
+
+  footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .footer-name { font-family: var(--ff-d); font-size: 1.2rem; font-style: italic; color: var(--cream); opacity: 0.45; display: block; margin-bottom: 1rem; text-decoration: none; transition: opacity 0.3s; }
+  .footer-name:hover { opacity: 0.8; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .footer-links a { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.22; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a:hover { opacity: 0.7; color: var(--gold-lt); }
+  .footer-copy { font-size: 0.55rem; color: var(--cream); opacity: 0.12; }
+
+  .btn-gold { display: inline-block; padding: 0.9rem 2.4rem; border: 1px solid var(--gold); color: var(--gold-lt); font-family: var(--ff-b); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .btn-gold:hover { background: var(--gold); color: var(--ink); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 760px) { .offering-card { padding: 2rem; } .offering-meta { flex-direction: column; gap: 0.5rem; } .section-prose { padding: 4rem 2rem; } }
+</style>
+</head>
+<body>
+
+<a href="/" class="trunk-sig">Christy Paxton Wade</a>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky" class="active">Sky</a></li>
+    <li><a href="/life">Life</a></li>
+    <li><a href="/mirror">Mirror</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="/mirror#apply">Apply</a></li>
+    <li><a href="https://christypaxtonwade.substack.com" target="_blank">Substack</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="branch-hero">
+  <span class="branch-eyebrow">Sky &nbsp;·&nbsp; The Canopy</span>
+  <h1 class="branch-title">Sky</h1>
+  <p class="branch-subtitle">Astrology &nbsp;·&nbsp; The Cosmic Map &nbsp;·&nbsp; Emergence</p>
+  <p class="branch-intro">Your birth chart is not a personality quiz. It is a precision map of the frequency you arrived carrying — your soul's evolutionary purpose, the wounds that became your gifts, the cycles that keep returning until you learn their language.</p>
+</section>
+
+<!-- PROSE -->
+<div class="section-prose">
+  <span class="eyebrow">The Sky Work</span>
+  <p class="prose-p">I read birth charts the way I read bodies: as texts, as transmissions, as maps of the frequency a soul arrived carrying. Astrology is not prediction. It is pattern recognition at the scale of a life — the ability to see what is moving, what is returning, and what is being asked of you in this precise season.</p>
+  <p class="prose-p">I am Gemini Sun, Sagittarius rising. I do not sleep easily. I have been reading charts for years — not as a fortune teller, but as a mirror. The chart shows you what you already sense about yourself but haven't yet been able to see clearly.</p>
+  <p class="prose-p">All of it lives at the intersection of astrology, sound, and signal. Choose the container that fits where you are.</p>
+</div>
+
+<!-- OFFERINGS -->
+<section class="offerings-section">
+  <div class="offerings-header">
+    <span class="eyebrow" style="text-align:center; display:block;">One transmission. Six depths of entry.</span>
+    <h2 class="offerings-title">All of it lives at the intersection<br>of astrology, sound, and signal.</h2>
+    <p class="offerings-sub">Choose the container that fits where you are.</p>
+  </div>
+
+  <!-- First Signal -->
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Entry Point &nbsp;·&nbsp; Free</span>
+      <span class="offering-price">Complimentary</span>
+    </div>
+    <h3 class="offering-name">First Signal</h3>
+    <p class="offering-format">A Discovery Conversation &nbsp;·&nbsp; 30 Minutes</p>
+    <p class="offering-body">This is not a sales call. It's the moment before the threshold — where we both listen to whether the frequency matches. I'll tell you what I sense in the field of your question. You'll tell me what brought you here. And together we'll know whether this is the right container for what you're carrying.</p>
+    <p class="offering-body">I work at the intersection of astrology, sound, signal, and the kind of mirror work that shows you what you already know but haven't yet been able to see clearly. If something in you recognized those words — this call is for you.</p>
+    <p class="offering-note">Book only if you're ready to be seen.</p>
+    <a href="#" class="offering-link">Book your First Signal</a>
+  </div>
+
+  <!-- First Listen -->
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Single Session &nbsp;·&nbsp; Astrology Update</span>
+      <span class="offering-price">$88</span>
+    </div>
+    <h3 class="offering-name">First Listen</h3>
+    <p class="offering-format">45 Minutes &nbsp;·&nbsp; A Single Astrology Update</p>
+    <p class="offering-body">A standalone session for anyone wanting to understand what the current transits mean for their specific chart — without committing to a longer engagement. Practical, precise, and personal. Existing clients and new clients welcome.</p>
+    <p class="offering-note">For those hearing the call for the first time, or checking in on a season of change.</p>
+    <a href="#" class="offering-link">Book & Pay</a>
+  </div>
+
+  <!-- Your Signal Decoded -->
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Foundation Session &nbsp;·&nbsp; Astrology for New Clients</span>
+      <span class="offering-price">$144</span>
+    </div>
+    <h3 class="offering-name">Your Signal, Decoded</h3>
+    <p class="offering-format">90 Minutes &nbsp;·&nbsp; Astrology for New Clients</p>
+    <p class="offering-body">Your birth chart is not a personality quiz. It's a precision map of the frequency you were born carrying — your soul's evolutionary purpose, the wounds that became your gifts, the cycles that keep returning until you learn their language.</p>
+    <p class="offering-body">In our first 90 minutes together I'll take you deep into your natal chart — not to tell you who you are, but to confirm what you already sense about yourself. You'll leave with your chart, a recording, and the beginning of a conversation that doesn't end when the session does.</p>
+    <p class="offering-note">For those hearing the call for the first time.</p>
+    <a href="#" class="offering-link">Book & Pay</a>
+  </div>
+
+  <!-- The Veil Further Back -->
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Going Deeper &nbsp;·&nbsp; Returning Clients</span>
+      <span class="offering-price">$111</span>
+    </div>
+    <h3 class="offering-name">The Veil, Further Back</h3>
+    <p class="offering-format">60 Minutes &nbsp;·&nbsp; Returning Clients Only</p>
+    <p class="offering-body">For those who have begun the astrological conversation and are ready to go further in. Current transits. Solar returns. Progressed charts. Chiron. The North Node pulling you toward what your soul came here to do. Each session peels back another layer — not because the chart changes, but because you do, and the map reveals new territory as you become ready to receive it.</p>
+    <p class="offering-note">Astrology practiced over time becomes a living dialogue with your own evolution. This is that practice.</p>
+    <a href="#" class="offering-link">Book & Pay</a>
+  </div>
+
+  <!-- Sovereign Signal -->
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">The Flagship &nbsp;·&nbsp; Deep Work</span>
+      <span class="offering-price">$244</span>
+    </div>
+    <h3 class="offering-name">Sovereign Signal</h3>
+    <p class="offering-format">2 Hours &nbsp;·&nbsp; A Transmission</p>
+    <p class="offering-body">This session is for the woman who knows something is shifting but can't yet name it. For the one who has been underground — gestating, dissolving, becoming — and senses that emergence is close.</p>
+    <p class="offering-body">We begin with sound. Not as ambient backdrop but as active medicine — frequencies chosen for your specific field, tuned to what your body is holding and what it's ready to release. Then we go into the map. Your birth chart. The current transits. What the cosmos is asking of you in this precise season.</p>
+    <p class="offering-body">What emerges from the combination is specific to you and cannot be replicated. Some people leave with a single sentence that reorganizes everything. All of them leave clearer than they arrived.</p>
+    <p class="offering-note">In person in Bentonville, AR or via Zoom with sound transmission adapted for distance.</p>
+    <a href="#" class="offering-link">Book & Pay</a>
+  </div>
+
+  <!-- Eclipse to Eclipse -->
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">The Cyclical Container &nbsp;·&nbsp; Ongoing</span>
+      <span class="offering-price">$333 &nbsp;·&nbsp; six months</span>
+    </div>
+    <h3 class="offering-name">Eclipse to Eclipse</h3>
+    <p class="offering-format">Six Months of Living Astrology &nbsp;·&nbsp; 45 Min Monthly</p>
+    <p class="offering-body">Eclipses are portals. The six months between one eclipse season and the next is one of the most potent containers for intentional transformation available in the natural calendar.</p>
+    <p class="offering-body">This offering is a commitment — to yourself, to your cycles, to the practice of learning to move with the cosmos rather than against it. Once a month we meet. We track what's moving in the sky and what's moving in you. We watch the patterns. We name what's emerging. We prepare for what's coming.</p>
+    <p class="offering-body">Over six months, astrology stops being something you consult and becomes something you live. Includes six sessions. Two months free compared to single session rate. Begin at any eclipse.</p>
+    <p class="offering-note">This container begins with a conversation, not a calendar slot. Write to me and we'll find the right eclipse to begin.</p>
+    <a href="/mirror#apply" class="offering-link">Write to me</a>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <div class="footer-links">
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="/mirror#apply">Apply</a>
+    <a href="https://christypaxtonwade.substack.com" target="_blank">Substack</a>
+  </div>
+  <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
+</footer>
+
+</body>
+</html>

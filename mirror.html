@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mirror — Christy Paxton Wade</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0c0a07; --ink-mid: #111009;
+    --gold: #b8924a; --gold-lt: #d4ae6e;
+    --cream: #f0e8d0; --plum: #251020;
+    --parchment: #ede8d5;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1rem; font-style: italic; color: var(--gold-lt); opacity: 0.7; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
+  .trunk-sig:hover { opacity: 1; }
+
+  nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.1); }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
+  .nav-links a { font-family: var(--ff-b); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--cream); opacity: 0.6; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-lt); }
+  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.25); }
+
+  /* HERO - deep plum glow for Mirror */
+  .branch-hero { min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 7rem 3rem 5rem; background: radial-gradient(ellipse at center, #2a0f1e 0%, #180810 40%, var(--ink) 75%); }
+  .branch-eyebrow { font-family: var(--ff-b); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); opacity: 0.85; display: block; margin-bottom: 1.4rem; animation: fadeUp 1s 0.2s ease both; }
+  .branch-title { font-family: var(--ff-d); font-size: clamp(4rem, 8vw, 8rem); font-style: italic; font-weight: 300; color: var(--gold-lt); line-height: 0.95; margin-bottom: 1.2rem; animation: fadeUp 1.2s 0.4s ease both; }
+  .branch-subtitle { font-family: var(--ff-b); font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream); opacity: 0.35; margin-bottom: 2.4rem; animation: fadeUp 1s 0.6s ease both; }
+  .branch-intro { font-family: var(--ff-d); font-size: clamp(1.1rem, 1.6vw, 1.3rem); font-style: italic; color: var(--cream); opacity: 0.75; line-height: 1.75; max-width: 580px; margin: 0 auto; animation: fadeUp 1s 0.8s ease both; }
+
+  .eyebrow { font-family: var(--ff-b); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); opacity: 0.85; display: block; margin-bottom: 1.4rem; }
+  .section-prose { padding: 6rem 4rem; max-width: 760px; margin: 0 auto; }
+  .prose-p { font-family: var(--ff-d); font-size: clamp(1.05rem, 1.4vw, 1.18rem); font-weight: 300; color: var(--cream); line-height: 1.9; opacity: 0.82; margin-bottom: 1.4rem; }
+
+  /* FIRST SIGNAL */
+  .first-signal { background: var(--ink-mid); padding: 6rem 3rem; }
+  .offering-card { max-width: 860px; margin: 0 auto 1.5rem; border: 1px solid rgba(184,146,74,0.12); padding: 3rem 3.5rem; background: rgba(184,146,74,0.02); transition: border-color 0.3s; }
+  .offering-card:hover { border-color: rgba(184,146,74,0.25); }
+  .offering-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; }
+  .offering-tag { font-family: var(--ff-b); font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.75; }
+  .offering-price { font-family: var(--ff-d); font-size: 1rem; font-style: italic; color: var(--gold-lt); opacity: 0.8; }
+  .offering-name { font-family: var(--ff-d); font-size: clamp(1.8rem, 2.5vw, 2.4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
+  .offering-format { font-family: var(--ff-b); font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.4; margin-bottom: 1.6rem; }
+  .offering-body { font-family: var(--ff-d); font-size: 1.05rem; font-weight: 300; color: var(--cream); line-height: 1.85; opacity: 0.78; margin-bottom: 1.2rem; }
+  .offering-note { font-family: var(--ff-d); font-size: 1rem; font-style: italic; color: var(--gold-lt); opacity: 0.7; margin-bottom: 1.8rem; }
+  .offering-link { font-family: var(--ff-b); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.8; text-decoration: none; transition: opacity 0.3s; }
+  .offering-link:hover { opacity: 1; }
+  .offering-link::after { content: ' →'; }
+
+  /* MIRROR WORK */
+  .mirror-work { background: var(--plum); padding: 7rem 3rem; }
+  .mirror-header { text-align: center; margin-bottom: 4rem; }
+  .mirror-title { font-family: var(--ff-d); font-size: clamp(2.4rem, 4vw, 4rem); font-style: italic; font-weight: 300; color: var(--gold-lt); line-height: 1.1; margin-bottom: 0.8rem; }
+  .mirror-format { font-family: var(--ff-b); font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); opacity: 0.45; margin-bottom: 2rem; }
+  .mirror-price { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--gold-lt); opacity: 0.85; margin-bottom: 0.5rem; }
+  .mirror-body { max-width: 700px; margin: 0 auto 1.4rem; font-family: var(--ff-d); font-size: 1.1rem; font-weight: 300; color: var(--cream); line-height: 1.9; opacity: 0.8; }
+  .mirror-note { max-width: 700px; margin: 0 auto 2.4rem; font-family: var(--ff-d); font-size: 1.05rem; font-style: italic; color: var(--gold-lt); opacity: 0.75; }
+  .mirror-divider { width: 40px; height: 1px; background: rgba(184,146,74,0.3); margin: 2.4rem auto; }
+
+  /* APPLICATION FORM */
+  .apply-section { background: var(--parchment); padding: 7rem 3rem; }
+  .apply-eyebrow { font-family: var(--ff-b); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: #8b6914; opacity: 0.85; display: block; margin-bottom: 1.4rem; text-align: center; }
+  .apply-title { font-family: var(--ff-d); font-size: clamp(2.2rem, 3.5vw, 3.4rem); font-style: italic; font-weight: 300; color: #1a1208; line-height: 1.2; margin-bottom: 1.4rem; text-align: center; }
+  .apply-body { max-width: 560px; margin: 0 auto 1rem; font-family: var(--ff-b); font-size: 0.95rem; font-weight: 300; color: #3a2e18; opacity: 0.8; line-height: 1.8; text-align: center; }
+  .apply-note { max-width: 560px; margin: 0 auto 3rem; font-family: var(--ff-d); font-size: 1.05rem; font-style: italic; color: #5a3e10; opacity: 0.8; line-height: 1.7; text-align: center; border-left: 2px solid rgba(139,105,20,0.3); padding-left: 1.5rem; }
+  .apply-form { max-width: 700px; margin: 0 auto; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label { font-family: var(--ff-b); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #3a2e18; opacity: 0.7; }
+  .form-sublabel { font-family: var(--ff-d); font-size: 0.9rem; font-style: italic; color: #5a3e10; opacity: 0.65; margin-bottom: 0.3rem; }
+  .form-qnum { font-family: var(--ff-d); font-size: 0.85rem; font-style: italic; color: #8b6914; opacity: 0.7; margin-bottom: 0.2rem; display: block; }
+  .form-input, .form-textarea {
+    background: rgba(139,105,20,0.06); border: 1px solid rgba(139,105,20,0.25);
+    padding: 0.85rem 1rem; font-family: var(--ff-d); font-size: 1rem;
+    color: #1a1208; outline: none; transition: border-color 0.3s;
+    width: 100%;
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: #8b6914; opacity: 0.4; font-style: italic; }
+  .form-input:focus, .form-textarea:focus { border-color: rgba(139,105,20,0.6); }
+  .form-textarea { resize: vertical; min-height: 120px; line-height: 1.7; }
+  .form-question { margin-bottom: 2.8rem; }
+  .btn-dark { display: block; width: 100%; padding: 1.1rem 2rem; background: #1a1208; border: none; color: var(--parchment); font-family: var(--ff-b); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; margin-top: 1rem; }
+  .btn-dark:hover { background: #2a1e0c; }
+  .form-closing { text-align: center; margin-top: 1.4rem; font-family: var(--ff-d); font-size: 0.95rem; font-style: italic; color: #5a3e10; opacity: 0.65; }
+
+  footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .footer-name { font-family: var(--ff-d); font-size: 1.2rem; font-style: italic; color: var(--cream); opacity: 0.45; display: block; margin-bottom: 1rem; text-decoration: none; transition: opacity 0.3s; }
+  .footer-name:hover { opacity: 0.8; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .footer-links a { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.22; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a:hover { opacity: 0.7; color: var(--gold-lt); }
+  .footer-copy { font-size: 0.55rem; color: var(--cream); opacity: 0.12; }
+
+  .btn-gold { display: inline-block; padding: 0.9rem 2.4rem; border: 1px solid var(--gold); color: var(--gold-lt); font-family: var(--ff-b); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .btn-gold:hover { background: var(--gold); color: var(--ink); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 760px) { .offering-card { padding: 2rem; } .offering-meta { flex-direction: column; gap: 0.5rem; } .section-prose { padding: 4rem 2rem; } .form-row { grid-template-columns: 1fr; } .apply-section { padding: 5rem 2rem; } }
+</style>
+</head>
+<body>
+
+<a href="/" class="trunk-sig">Christy Paxton Wade</a>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky">Sky</a></li>
+    <li><a href="/life">Life</a></li>
+    <li><a href="/mirror" class="active">Mirror</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="#apply">Apply</a></li>
+    <li><a href="https://christypaxtonwade.substack.com" target="_blank">Substack</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="branch-hero">
+  <span class="branch-eyebrow">Mirror &nbsp;·&nbsp; The Heartwood</span>
+  <h1 class="branch-title">Mirror</h1>
+  <p class="branch-subtitle">Mentorship &nbsp;·&nbsp; The Sustained Container &nbsp;·&nbsp; Three Months</p>
+  <p class="branch-intro">The mirror work is not coaching. It is not therapy. It is not a course. It is the sustained container for the kind of transformation that requires a clear mirror, consistent presence, and someone who can read what's underneath what you're saying.</p>
+</section>
+
+<!-- PROSE -->
+<div class="section-prose">
+  <span class="eyebrow">The Heartwood</span>
+  <p class="prose-p">Every branch of this work leads here eventually. The astrology, the lineage, the writing, the daily practice — all of it points toward the same thing: a woman who knows her own signal, and has the container to complete her transformation.</p>
+  <p class="prose-p">The Mirror branch is where the deepest work happens. Not because it is more important than the others, but because it is the most sustained. Three months. Twice a month. Voice support between sessions. The particular alchemy of being witnessed consistently over time.</p>
+  <p class="prose-p">I bring everything I am — violinist, writer, astrologer, woman who has made the descent and returned — to hold the space for your emergence.</p>
+</div>
+
+<!-- FIRST SIGNAL -->
+<section class="first-signal">
+  <div style="text-align:center; margin-bottom:3rem;">
+    <span class="eyebrow">Begin Here</span>
+    <p style="font-family:var(--ff-d); font-size:1.1rem; font-style:italic; color:var(--cream); opacity:0.6; max-width:480px; margin:0 auto;">Every container begins with a conversation. This is that conversation.</p>
+  </div>
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Entry Point &nbsp;·&nbsp; Free</span>
+      <span class="offering-price">Complimentary</span>
+    </div>
+    <h3 class="offering-name">First Signal</h3>
+    <p class="offering-format">A Discovery Conversation &nbsp;·&nbsp; 30 Minutes</p>
+    <p class="offering-body">This is not a sales call. It's the moment before the threshold — where we both listen to whether the frequency matches. I'll tell you what I sense in the field of your question. You'll tell me what brought you here. And together we'll know whether this is the right container for what you're carrying.</p>
+    <p class="offering-note">Book only if you're ready to be seen.</p>
+    <a href="#" class="offering-link">Book your First Signal</a>
+  </div>
+</section>
+
+<!-- THE MIRROR WORK -->
+<section class="mirror-work">
+  <div class="mirror-header">
+    <span class="eyebrow" style="text-align:center; display:block;">The Mentorship &nbsp;·&nbsp; For Those Ready</span>
+    <h2 class="mirror-title">The Mirror Work</h2>
+    <p class="mirror-format">Three-Month Mentorship &nbsp;·&nbsp; Bi-Weekly + Voice Support</p>
+    <p class="mirror-price">$888 &nbsp;·&nbsp; three months</p>
+  </div>
+  <p class="mirror-body">This is not coaching. It's not therapy. It's not a course. It's a sustained container for the kind of transformation that requires a clear mirror, consistent presence, and someone who can read what's underneath what you're saying.</p>
+  <p class="mirror-body">Over three months we meet twice a month for 75 minutes each session. Between sessions you have access to voice message support for the moments when something breaks open and you need to be witnessed before you can process it alone.</p>
+  <p class="mirror-body">We work with your astrology as the map. With your body as the text. With the patterns in your relationships, your work, your creative life, and your lineage as the material. I bring everything I am — violinist, writer, astrologer, woman who has made the descent and returned — to hold the space for your emergence.</p>
+  <div class="mirror-divider"></div>
+  <p class="mirror-note" style="text-align:center; max-width:600px; margin:0 auto 2.4rem;">This mentorship is for the woman in transition who is ready to stop managing her transformation and start completing it. Application required. Limited availability.</p>
+  <div style="text-align:center;">
+    <a href="#apply" class="btn-gold">Apply Below</a>
+  </div>
+</section>
+
+<!-- APPLICATION -->
+<section class="apply-section" id="apply">
+  <span class="apply-eyebrow">The Mirror Work &nbsp;·&nbsp; Mentorship Application</span>
+  <h2 class="apply-title">These questions<br>begin the work.</h2>
+  <p class="apply-body">The application is not a form. It's a threshold. Answer as fully and honestly as you can — not to impress, but to arrive. I read every application personally and respond within one week.</p>
+  <blockquote class="apply-note">I accept a small number of mentorship clients at any time. If this is the right container for you, trust what brought you here. Answering these questions is the first act of sovereignty.</blockquote>
+
+  <form class="apply-form" action="https://formspree.io/f/your-form-id" method="POST">
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Your name</label>
+        <input class="form-input" type="text" name="name" placeholder="Your full name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your email</label>
+        <input class="form-input" type="email" name="email" placeholder="Where I can reach you" required>
+      </div>
+    </div>
+
+    <div class="form-question">
+      <span class="form-qnum">01</span>
+      <label class="form-label">What brought you here?</label>
+      <p class="form-sublabel">Not the surface answer — the real one. What is the signal underneath the words that found their way to this page?</p>
+      <textarea class="form-textarea" name="q1" placeholder="Take your time with this one..." style="min-height:140px;"></textarea>
+    </div>
+
+    <div class="form-question">
+      <span class="form-qnum">02</span>
+      <label class="form-label">Where are you in the descent?</label>
+      <p class="form-sublabel">Are you still being sent underground, or did you choose it? Are you in the dissolution, the labor, or standing at the threshold of emergence?</p>
+      <textarea class="form-textarea" name="q2" placeholder="Describe what's moving in you right now..."></textarea>
+    </div>
+
+    <div class="form-question">
+      <span class="form-qnum">03</span>
+      <label class="form-label">What has been compressed?</label>
+      <p class="form-sublabel">What part of your signal have you learned to make smaller, quieter, more receivable — and for how long?</p>
+      <textarea class="form-textarea" name="q3" placeholder="What were you told was too much?"></textarea>
+    </div>
+
+    <div class="form-question">
+      <span class="form-qnum">04</span>
+      <label class="form-label">What are you ready to stop managing?</label>
+      <p class="form-sublabel">You don't have to know what comes after. You just have to be honest about what you're done carrying.</p>
+      <textarea class="form-textarea" name="q4" placeholder="Speak plainly here..."></textarea>
+    </div>
+
+    <div class="form-question">
+      <span class="form-qnum">05</span>
+      <label class="form-label">What do you need the container to hold?</label>
+      <p class="form-sublabel">What has no other space been able to receive?</p>
+      <textarea class="form-textarea" name="q5" placeholder="What needs a witness?"></textarea>
+    </div>
+
+    <button type="submit" class="btn-dark">Send My Application</button>
+    <p class="form-closing">I read every application and respond personally within one week.</p>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <div class="footer-links">
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="#apply">Apply</a>
+    <a href="https://christypaxtonwade.substack.com" target="_blank">Substack</a>
+  </div>
+  <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
+</footer>
+
+</body>
+</html>
