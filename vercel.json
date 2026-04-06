@@ -5,6 +5,11 @@
   ],
   "routes": [
     { "src": "/", "dest": "/index.html" },
+    { "src": "/earth", "dest": "/earth.html" }
+    { "src": "/sky", "dest": "/sky.html" },
+    { "src": "/life", "dest": "/life.html" },
+    { "src": "/mirror", "dest": "/mirror.html" },
+    { "src": "/offerings", "dest": "/index.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
