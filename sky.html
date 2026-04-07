@@ -116,6 +116,23 @@
     .sky-split { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 2rem; }
     .sky-owl { order: -1; }
   }
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+  .footer-social a {
+    color: var(--cream);
+    opacity: 0.45;
+    text-decoration: none;
+    transition: opacity 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+  }
+  .footer-social a:hover { opacity: 0.9; color: var(--gold-lt); }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 760px) { .offering-card { padding: 2rem; } .offering-meta { flex-direction: column; gap: 0.5rem; } .section-prose { padding: 4rem 2rem; } }
 </style>
@@ -193,8 +210,8 @@
     </div>
     <h3 class="offering-name">Your Signal, Decoded</h3>
     <p class="offering-format">90 Minutes &nbsp;·&nbsp; Astrology for New Clients</p>
-    <p class="offering-body">Your birth chart is not a personality quiz. It's a precision map of the frequency you were born carrying — your soul's evolutionary purpose, the wounds that became your gifts, the cycles that keep returning until you learn their language.</p>
-    <p class="offering-body">In our first 90 minutes together I'll take you deep into your natal chart — not to tell you who you are, but to confirm what you already sense about yourself. You'll leave with your chart, a recording, and the beginning of a conversation that doesn't end when the session does.</p>
+    <p class="offering-body">In our first 90 minutes together I'll take you deep into your natal chart — not to tell you who you are, but to confirm what you already sense about yourself. We go into the placements that shape how you move through the world, the transits that are active right now, and what the map is asking of you in this season.</p>
+    <p class="offering-body">You'll leave with your chart, a recording, and the beginning of a conversation that doesn't end when the session does.</p>
     <p class="offering-note">For those hearing the call for the first time.</p>
     <a href="https://calendly.com/christypaxtonwade/themap" target="_blank" class="offering-link">Book & Pay</a>
   </div>
@@ -242,6 +259,10 @@
 
 <footer>
   <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/christy.wade" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="https://www.instagram.com/christypaxtonwade" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+  </div>
   <div class="footer-links">
     <a href="/earth">Earth</a>
     <a href="/sky">Sky</a>
