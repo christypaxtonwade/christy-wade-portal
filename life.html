@@ -80,6 +80,57 @@
   .footer-links a:hover { opacity: 0.9; color: var(--gold-lt); }
   .footer-copy { font-family: var(--ff-b); font-size: 0.85rem; color: var(--cream); opacity: 0.45; }
 
+  /* LIFE IMAGES */
+  .life-img-full {
+    width: 100%;
+    max-height: 600px;
+    overflow: hidden;
+  }
+  .life-img-full img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .practices-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    gap: 0;
+  }
+  .practices-split-img {
+    overflow: hidden;
+    max-height: 700px;
+  }
+  .practices-split-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .substack-img {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+  .substack-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .community-img {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    overflow: hidden;
+  }
+  .community-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  @media (max-width: 760px) {
+    .practices-split { grid-template-columns: 1fr; }
+  }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 760px) { .practices-grid { grid-template-columns: 1fr; } .section-prose { padding: 4rem 2rem; } .community-options { padding: 0; } }
 </style>
@@ -114,39 +165,54 @@
 </div>
 
 <section class="practices-section">
-  <div class="practices-intro">
-    <span class="eyebrow" style="text-align:center; display:block;">Practices for the Living</span>
-    <p class="practices-intro-text">Not a curriculum. An orientation. Touch what calls to you.</p>
-  </div>
-  <div class="practices-grid">
-    <div class="practice-cell">
-      <p class="practice-name">Breath & Awareness</p>
-      <p class="practice-desc">The breath is the most available signal you have. Simple practices for returning to your body, releasing stress response, and arriving in the present moment.</p>
+  <div class="practices-split">
+    <div>
+      <div class="practices-intro" style="text-align:left; padding: 3rem 3rem 2rem;">
+        <span class="eyebrow">Practices for the Living</span>
+        <p class="practices-intro-text">Not a curriculum. An orientation. Touch what calls to you.</p>
+      </div>
+      <div class="practices-grid" style="grid-template-columns: 1fr 1fr; margin:0; padding: 0 2rem 3rem;">
+        <div class="practice-cell">
+          <p class="practice-name">Breath & Awareness</p>
+          <p class="practice-desc">The breath is the most available signal you have. Simple practices for returning to your body, releasing stress response, and arriving in the present moment.</p>
+        </div>
+        <div class="practice-cell">
+          <p class="practice-name">Cycles & Rest</p>
+          <p class="practice-desc">Energy moves in cycles. So does the moon, the season, the body. Learning to honor rest as part of the rhythm rather than failure to keep up.</p>
+        </div>
+        <div class="practice-cell">
+          <p class="practice-name">Creativity</p>
+          <p class="practice-desc">Creativity is not a talent. It is a frequency. Small daily practices for staying connected to the part of you that makes things — including meaning.</p>
+        </div>
+        <div class="practice-cell">
+          <p class="practice-name">Connection</p>
+          <p class="practice-desc">Sovereign connection — not performance, not people-pleasing, not compression. What it means to be genuinely present with another person.</p>
+        </div>
+        <div class="practice-cell">
+          <p class="practice-name">Resilience</p>
+          <p class="practice-desc">Not toughness. Rootedness. The difference between enduring what comes and being anchored enough to move with it without losing yourself.</p>
+        </div>
+        <div class="practice-cell">
+          <p class="practice-name">Self-Care</p>
+          <p class="practice-desc">Not a spa day. The daily acts of tending to yourself that signal to your nervous system: I am worth receiving what I give to others.</p>
+        </div>
+      </div>
     </div>
-    <div class="practice-cell">
-      <p class="practice-name">Cycles & Rest</p>
-      <p class="practice-desc">Energy moves in cycles. So does the moon, the season, the body. Learning to honor rest as part of the rhythm rather than failure to keep up.</p>
-    </div>
-    <div class="practice-cell">
-      <p class="practice-name">Creativity</p>
-      <p class="practice-desc">Creativity is not a talent. It is a frequency. Small daily practices for staying connected to the part of you that makes things — including meaning.</p>
-    </div>
-    <div class="practice-cell">
-      <p class="practice-name">Connection</p>
-      <p class="practice-desc">Sovereign connection — not performance, not people-pleasing, not compression. What it means to be genuinely present with another person.</p>
-    </div>
-    <div class="practice-cell">
-      <p class="practice-name">Resilience</p>
-      <p class="practice-desc">Not toughness. Rootedness. The difference between enduring what comes and being anchored enough to move with it without losing yourself.</p>
-    </div>
-    <div class="practice-cell">
-      <p class="practice-name">Self-Care</p>
-      <p class="practice-desc">Not a spa day. The daily acts of tending to yourself that signal to your nervous system: I am worth receiving what I give to others.</p>
+    <div style="display:flex; flex-direction:column; gap:0;">
+      <div class="practices-split-img" style="flex:1;">
+        <img src="/butterfly-garden.jpg" alt="Zebra swallowtail butterfly on butterfly weed in Christy's garden">
+      </div>
+      <div class="practices-split-img" style="flex:1;">
+        <img src="/granddaughter-butterfly.jpg" alt="Christy's granddaughter holding a butterfly">
+      </div>
     </div>
   </div>
 </section>
 
 <section class="substack-section">
+  <div class="substack-img">
+    <img src="/asters.jpg" alt="Asters blooming in morning mist — Christy's garden">
+  </div>
   <span class="substack-eyebrow">The Alchemy of Midlife</span>
   <h2 class="substack-title">The writing is the proof<br>of the signal.</h2>
   <p class="substack-body">No filters, true stories with a heartbeat. Posts written from the underworld of descent — where truth only changes with perspective, and the words walk beside you. Our stories broadcast the signal we're holding in real time, and this voice comes through loud and clear. Astrology, ancestry, grief, gardens, and god. This is the origin of the signal, the birthplace of everything, and it calls you to return.</p>
@@ -157,6 +223,10 @@
   <span class="eyebrow" style="text-align:center; display:block;">The Community Container</span>
   <h2 class="community-title">The transmission becomes shared<br>when it finds others who recognize it.</h2>
   <p class="community-body">Something is being built here — a circle of women who are doing the living practice, reading the signal, returning to themselves. A place where the ongoing transmission becomes communal rather than solo.</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:700px; margin:0 auto 3rem;">
+    <img src="/rhubarb.jpg" alt="Janet's rhubarb — grandmother's garden" style="width:100%; height:280px; object-fit:cover; display:block;">
+    <img src="/bridge.jpg" alt="Walking toward the light — bridge through the forest" style="width:100%; height:280px; object-fit:cover; display:block;">
+  </div>
   <div class="community-options">
     <div class="community-option">
       <p class="option-name">The Living Circle</p>
