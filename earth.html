@@ -142,6 +142,39 @@
     }
   }
 
+  /* CHRISTINA SPLIT */
+  .christina-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 100%;
+    gap: 0;
+  }
+  .christina-text {
+    padding: 5rem 4rem 5rem 6rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .christina-img {
+    overflow: hidden;
+    max-height: 620px;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    padding: 3rem;
+  }
+  .christina-img img {
+    display: block;
+    max-width: 100%;
+    max-height: 560px;
+    width: auto;
+    height: auto;
+    filter: sepia(15%) brightness(0.92);
+  }
+  @media (max-width: 760px) {
+    .christina-split { grid-template-columns: 1fr; }
+    .christina-text { padding: 4rem 2rem; }
+    .christina-img { max-height: 400px; padding: 2rem; }
+  }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 760px) { .offering-card { padding: 2rem; } .offering-meta { flex-direction: column; gap: 0.5rem; } .section-prose { padding: 4rem 2rem; } }
 </style>
@@ -187,7 +220,7 @@
   <p class="book-body">A 4,000-word transmission about feminine transformation through deliberate underground work — the Inanna myth, the birth metaphor, and ancestral lineage as the map. Published by Kiva Publishing, curated by Shannon Van Den Berg.</p>
   <div class="book-divider"></div>
   <p class="book-quote">"It is revolutionary when a woman stops fighting for channels that were never built to receive her, and descends with deliberation into the only terrain where her true frequency can be heard."</p>
-  <a href="#" class="btn-gold">Learn About the Book</a>
+  <span class="btn-gold" style="opacity:0.4; cursor:default;">Coming May 2026</span>
 </section>
 
 <section class="offerings-section">
@@ -214,7 +247,7 @@
     <p class="offering-body">We work with what you know: names, stories, the things that were never spoken. We work with your astrology as the map. We work with the patterns that keep returning in your own life as the signal seeking completion.</p>
     <p class="offering-body">You will leave with a clearer understanding of what your lineage prepared you to carry — and what it prepared you to complete.</p>
     <p class="offering-note">For those who sense there is a larger story moving through them than the one they've been told.</p>
-    <a href="/mirror#apply" class="offering-link">Write to me to begin</a>
+    <a href="mailto:christypaxton@gmail.com" class="offering-link">Write to hold your place in the circle</a>
   </div>
 
   <div class="offering-card coming-soon">
@@ -227,7 +260,7 @@
     <p class="offering-body">A small group gathered in physical space for the deliberate underground work. Music, astrology, ancestral mapping, and the particular alchemy that happens when women descend together — each in her own way, each holding the frequency for the others.</p>
     <p class="offering-body">Location, dates, and full container details forthcoming. This offering is being built from the inside out — when the space is ready, the call will go out to those already in the field.</p>
     <p class="offering-note">If you feel called to this before it is announced, write to me.</p>
-    <a href="/mirror#apply" class="offering-link">Write to me</a>
+    <a href="mailto:christypaxton@gmail.com" class="offering-link">Write to hold your place in the circle</a>
   </div>
     </div><!-- offerings-cards -->
   </div><!-- offerings-with-quote -->
