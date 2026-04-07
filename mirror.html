@@ -463,6 +463,36 @@
     }
   }
 
+  /* HEARTWOOD SPLIT */
+  .heartwood-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    min-height: 80vh;
+  }
+  .heartwood-img {
+    overflow: hidden;
+  }
+  .heartwood-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 500px;
+  }
+  .heartwood-text {
+    padding: 6rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--ink);
+  }
+  @media (max-width: 760px) {
+    .heartwood-split { grid-template-columns: 1fr; min-height: auto; }
+    .heartwood-img img { min-height: 300px; }
+    .heartwood-text { padding: 4rem 2rem; }
+  }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -503,11 +533,16 @@
 </section>
 
 <!-- PROSE -->
-<div class="section-prose">
-  <span class="eyebrow">The Heartwood</span>
-  <p class="prose-p">Every branch of this work leads here eventually. The astrology, the lineage, the writing, the daily practice — all of it points toward the same thing: a woman who knows her own signal, and has the container to complete her transformation.</p>
-  <p class="prose-p">The Mirror branch is where the deepest work happens. Not because it is more important than the others, but because it is the most sustained. Three months. Twice a month. Voice support between sessions. The particular alchemy of being witnessed consistently over time.</p>
-  <p class="prose-p">I bring everything I am — violinist, writer, astrologer, woman who has made the descent and returned — to hold the space for your emergence.</p>
+<div class="heartwood-split">
+  <div class="heartwood-img">
+    <img src="/forest-mirror.jpg" alt="An ornate gold mirror in a dark forest, crown resting at its base">
+  </div>
+  <div class="heartwood-text">
+    <span class="eyebrow">The Heartwood</span>
+    <p class="prose-p">Every branch of this work leads here eventually. The astrology, the lineage, the writing, the daily practice — all of it points toward the same thing: a woman who knows her own signal, and has the container to complete her transformation.</p>
+    <p class="prose-p">The Mirror branch is where the deepest work happens. Not because it is more important than the others, but because it is the most sustained. Three months. Twice a month. Voice support between sessions. The particular alchemy of being witnessed consistently over time.</p>
+    <p class="prose-p">I bring everything I am — violinist, writer, astrologer, woman who has made the descent and returned — to hold the space for your emergence.</p>
+  </div>
 </div>
 
 <!-- FIRST SIGNAL -->
