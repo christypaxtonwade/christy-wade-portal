@@ -414,6 +414,55 @@
   }
   .btn-gold:hover { background: var(--gold); color: var(--ink); }
 
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--ink);
+    padding: 6rem 3rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .testimonial {
+    border-left: 2px solid rgba(184,146,74,0.3);
+    padding: 0 0 0 2.5rem;
+    margin-bottom: 4rem;
+  }
+  .testimonial:last-child { margin-bottom: 0; }
+  .testimonial-text {
+    font-family: var(--ff-d);
+    font-size: var(--text-body);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.9;
+    opacity: 0.92;
+    margin-bottom: 0;
+  }
+  .testimonial-text p { margin-bottom: 1.2rem; }
+  .testimonial-text p:last-child { margin-bottom: 0; }
+
+  /* GRASS PHOTO */
+  .mirror-portrait {
+    max-width: 340px;
+    margin: 0 auto 0 0;
+    float: right;
+    padding: 0 0 2rem 3rem;
+    shape-outside: circle(50%);
+  }
+  .mirror-portrait img {
+    display: block;
+    width: 100%;
+    border-radius: 50%;
+    height: auto;
+  }
+  @media (max-width: 760px) {
+    .mirror-portrait {
+      float: none;
+      margin: 0 auto 2rem;
+      max-width: 220px;
+      padding: 0;
+    }
+  }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -497,6 +546,27 @@
     <a href="#apply" class="btn-gold">Apply Below</a>
   </div>
 </section>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials">
+  <div class="mirror-portrait">
+    <img src="/christy-grass.jpg" alt="Christy Paxton Wade">
+  </div>
+
+  <div class="testimonial">
+    <div class="testimonial-text">
+      <p>She is fluent in astrology, human design, the chakra system, ancestral lineage work, sound healing, energy work, NLP, EFT, and organizational psychology — but she wears none of these as a primary identity. They are tools. The mirror is the gift.</p>
+    </div>
+  </div>
+
+  <div class="testimonial">
+    <div class="testimonial-text">
+      <p>She thinks in spirals, not lines. She will bring you something from one direction and it will turn out to be connected to something three conversations ago. Follow the connections — they're always intentional even when they appear coincidental.</p>
+      <p>She processes through language. The act of articulating something to a clear mirror is itself how she comes to know it. Don't rush to solutions. Let the reflection do its work first.</p>
+      <p>She is an owl, she sees through shadows, awake on the night watch. She has been underground and has come back with something true. Her writing is the proof.</p>
+    </div>
+  </div>
+</div>
 
 <!-- APPLICATION -->
 <section class="apply-section" id="apply">
