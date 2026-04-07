@@ -131,6 +131,43 @@
     .practices-split { grid-template-columns: 1fr; }
   }
 
+  /* PRACTICES HEADING */
+  .practices-main-heading {
+    font-family: var(--ff-d);
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    opacity: 0.95;
+    line-height: 1.1;
+  }
+
+  /* THREE COLUMN PRACTICES */
+  .practices-three-col {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    align-items: stretch;
+    max-width: 100%;
+    gap: 0;
+    padding-bottom: 4rem;
+  }
+  .practices-side-img {
+    overflow: hidden;
+  }
+  .practices-side-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    min-height: 500px;
+  }
+  @media (max-width: 900px) {
+    .practices-three-col {
+      grid-template-columns: 1fr;
+    }
+    .practices-side-img img { min-height: 260px; }
+  }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 760px) { .practices-grid { grid-template-columns: 1fr; } .section-prose { padding: 4rem 2rem; } .community-options { padding: 0; } }
 </style>
@@ -165,46 +202,45 @@
 </div>
 
 <section class="practices-section">
-  <div class="practices-split">
-    <div>
-      <div class="practices-intro" style="text-align:left; padding: 3rem 3rem 2rem;">
-        <span class="eyebrow">Practices for the Living</span>
-        <p class="practices-intro-text">Not a curriculum. An orientation. Touch what calls to you.</p>
+  <!-- Header spans full width -->
+  <div style="text-align:center; padding: 5rem 3rem 3rem;">
+    <h2 class="practices-main-heading">Practices for the Living</h2>
+    <p class="practices-intro-text" style="margin-top:1rem;">Not a curriculum. An orientation. Touch what calls to you.</p>
+  </div>
+
+  <!-- Three column layout: image | grid | image -->
+  <div class="practices-three-col">
+    <div class="practices-side-img">
+      <img src="/butterfly-garden.jpg" alt="Zebra swallowtail butterfly on butterfly weed in Christy's garden">
+    </div>
+    <div class="practices-grid">
+      <div class="practice-cell">
+        <p class="practice-name">Breath & Awareness</p>
+        <p class="practice-desc">The breath is the most available signal you have. Simple practices for returning to your body, releasing stress response, and arriving in the present moment.</p>
       </div>
-      <div class="practices-grid" style="grid-template-columns: 1fr 1fr; margin:0; padding: 0 2rem 3rem;">
-        <div class="practice-cell">
-          <p class="practice-name">Breath & Awareness</p>
-          <p class="practice-desc">The breath is the most available signal you have. Simple practices for returning to your body, releasing stress response, and arriving in the present moment.</p>
-        </div>
-        <div class="practice-cell">
-          <p class="practice-name">Cycles & Rest</p>
-          <p class="practice-desc">Energy moves in cycles. So does the moon, the season, the body. Learning to honor rest as part of the rhythm rather than failure to keep up.</p>
-        </div>
-        <div class="practice-cell">
-          <p class="practice-name">Creativity</p>
-          <p class="practice-desc">Creativity is not a talent. It is a frequency. Small daily practices for staying connected to the part of you that makes things — including meaning.</p>
-        </div>
-        <div class="practice-cell">
-          <p class="practice-name">Connection</p>
-          <p class="practice-desc">Sovereign connection — not performance, not people-pleasing, not compression. What it means to be genuinely present with another person.</p>
-        </div>
-        <div class="practice-cell">
-          <p class="practice-name">Resilience</p>
-          <p class="practice-desc">Not toughness. Rootedness. The difference between enduring what comes and being anchored enough to move with it without losing yourself.</p>
-        </div>
-        <div class="practice-cell">
-          <p class="practice-name">Self-Care</p>
-          <p class="practice-desc">Not a spa day. The daily acts of tending to yourself that signal to your nervous system: I am worth receiving what I give to others.</p>
-        </div>
+      <div class="practice-cell">
+        <p class="practice-name">Cycles & Rest</p>
+        <p class="practice-desc">Energy moves in cycles. So does the moon, the season, the body. Learning to honor rest as part of the rhythm rather than failure to keep up.</p>
+      </div>
+      <div class="practice-cell">
+        <p class="practice-name">Creativity</p>
+        <p class="practice-desc">Creativity is not a talent. It is a frequency. Small daily practices for staying connected to the part of you that makes things — including meaning.</p>
+      </div>
+      <div class="practice-cell">
+        <p class="practice-name">Connection</p>
+        <p class="practice-desc">Sovereign connection — not performance, not people-pleasing, not compression. What it means to be genuinely present with another person.</p>
+      </div>
+      <div class="practice-cell">
+        <p class="practice-name">Resilience</p>
+        <p class="practice-desc">Not toughness. Rootedness. The difference between enduring what comes and being anchored enough to move with it without losing yourself.</p>
+      </div>
+      <div class="practice-cell">
+        <p class="practice-name">Self-Care</p>
+        <p class="practice-desc">Not a spa day. The daily acts of tending to yourself that signal to your nervous system: I am worth receiving what I give to others.</p>
       </div>
     </div>
-    <div style="display:flex; flex-direction:column; gap:0;">
-      <div class="practices-split-img" style="flex:1;">
-        <img src="/butterfly-garden.jpg" alt="Zebra swallowtail butterfly on butterfly weed in Christy's garden">
-      </div>
-      <div class="practices-split-img" style="flex:1;">
-        <img src="/granddaughter-butterfly.jpg" alt="Christy's granddaughter holding a butterfly">
-      </div>
+    <div class="practices-side-img">
+      <img src="/granddaughter-butterfly.jpg" alt="Christy's granddaughter holding a butterfly">
     </div>
   </div>
 </section>
