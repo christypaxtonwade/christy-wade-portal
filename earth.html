@@ -83,22 +83,60 @@
   .earth-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 6rem 3rem;
-    gap: 4rem;
+    align-items: stretch;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    min-height: 70vh;
   }
-  .earth-text { display: flex; flex-direction: column; justify-content: center; }
+  .earth-text {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 5rem;
+  }
+  .earth-img {
+    overflow: hidden;
+  }
   .earth-img img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    min-height: 500px;
   }
   @media (max-width: 760px) {
-    .earth-split { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 2rem; }
+    .earth-split { grid-template-columns: 1fr; min-height: auto; }
+    .earth-text { padding: 4rem 2rem; }
+    .earth-img img { min-height: 300px; }
   }
+  /* OFFERINGS WITH QUOTE */
+  .offerings-with-quote {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 4rem;
+    padding: 0 3rem;
+  }
+  .offerings-quote-img {
+    position: sticky;
+    top: 6rem;
+  }
+  .offerings-quote-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .offerings-cards { flex: 1; }
+  @media (max-width: 900px) {
+    .offerings-with-quote {
+      grid-template-columns: 1fr;
+      padding: 0 2rem;
+    }
+    .offerings-quote-img { position: static; }
+  }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 760px) { .offering-card { padding: 2rem; } .offering-meta { flex-direction: column; gap: 0.5rem; } .section-prose { padding: 4rem 2rem; } }
 </style>
@@ -154,6 +192,12 @@
     <p class="offerings-sub">These containers are for the woman ready to read her own lineage code — and begin completing what couldn't be finished before her.</p>
   </div>
 
+  <div class="offerings-with-quote">
+    <div class="offerings-quote-img">
+      <img src="/estes-butterfly.jpg" alt="Clarissa Pinkola Estés quote with butterfly">
+    </div>
+    <div class="offerings-cards">
+
   <div class="offering-card">
     <div class="offering-meta">
       <span class="offering-tag">One-on-One &nbsp;·&nbsp; Deep Work</span>
@@ -180,6 +224,8 @@
     <p class="offering-note">If you feel called to this before it is announced, write to me.</p>
     <a href="/mirror#apply" class="offering-link">Write to me</a>
   </div>
+    </div><!-- offerings-cards -->
+  </div><!-- offerings-with-quote -->
 </section>
 
 <footer>
