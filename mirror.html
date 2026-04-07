@@ -468,28 +468,28 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
-    min-height: 80vh;
   }
   .heartwood-img {
     overflow: hidden;
+    max-height: 680px;
   }
   .heartwood-img img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    min-height: 500px;
+    object-position: center center;
   }
   .heartwood-text {
-    padding: 6rem 5rem;
+    padding: 5rem 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background: var(--ink);
   }
   @media (max-width: 760px) {
-    .heartwood-split { grid-template-columns: 1fr; min-height: auto; }
-    .heartwood-img img { min-height: 300px; }
+    .heartwood-split { grid-template-columns: 1fr; }
+    .heartwood-img { max-height: 340px; }
     .heartwood-text { padding: 4rem 2rem; }
   }
 
