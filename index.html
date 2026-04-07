@@ -334,7 +334,9 @@
     font-family: var(--ff-d); font-size: 1.4rem; font-style: italic;
     color: var(--cream); opacity: 0.65;
     display: block; margin-bottom: 1rem;
+    text-decoration: none; transition: opacity 0.3s;
   }
+  .footer-name:hover { opacity: 0.9; color: var(--gold-lt); }
   .footer-roles {
     font-family: var(--ff-b);
     font-size: var(--text-label);
@@ -384,6 +386,23 @@
     transition: background 0.3s, color 0.3s;
   }
   .btn-ink:hover { background: #5a3800; color: var(--parchment); }
+
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+  .footer-social a {
+    color: var(--cream);
+    opacity: 0.45;
+    text-decoration: none;
+    transition: opacity 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+  }
+  .footer-social a:hover { opacity: 0.9; color: var(--gold-lt); }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
@@ -525,8 +544,12 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-name">Christy Paxton Wade</span>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
   <span class="footer-roles">Violinist &nbsp;·&nbsp; Writer &nbsp;·&nbsp; Astrologer &nbsp;·&nbsp; Mirror</span>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/christy.wade" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="https://www.instagram.com/christypaxtonwade" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+  </div>
   <div class="footer-links">
     <a href="/earth">Earth</a>
     <a href="/sky">Sky</a>
