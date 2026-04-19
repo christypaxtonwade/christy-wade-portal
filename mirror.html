@@ -21,13 +21,13 @@
     /* TYPE SCALE — nothing below these values for readable content */
     --text-body: 1.15rem;       /* 18.4px — main body text */
     --text-body-sm: 1.05rem;    /* 16.8px — supporting body */
-    --text-label: 0.88rem;       /* nav, eyebrows, labels */
-    --text-caption: 0.85rem;    /* 13.6px — captions, notes */
+    --text-label: 0.94rem;       /* nav, eyebrows, labels */
+    --text-caption: 0.94rem;    /* 13.6px — captions, notes */
 
     /* OPACITY FLOOR */
     --op-body: 0.92;            /* body text on dark */
-    --op-support: 0.85;         /* supporting text on dark */
-    --op-muted: 0.75;           /* intentionally secondary */
+    --op-support: 0.88;         /* supporting text on dark */
+    --op-muted: 0.88;           /* intentionally secondary */
     --op-body-light: 0.90;      /* body text on light/parchment */
   }
 
@@ -48,7 +48,7 @@
     padding: 1rem 2rem 0.6rem;
     background: var(--ink);
     font-family: var(--ff-d); font-size: 1.1rem; font-style: italic;
-    color: var(--gold-lt); opacity: 0.85; text-decoration: none;
+    color: var(--gold-lt); opacity: 0.88; text-decoration: none;
     letter-spacing: 0.06em; transition: opacity 0.3s;
   }
   .trunk-sig:hover { opacity: 1; }
@@ -70,7 +70,7 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--cream);
-    opacity: 0.7;
+    opacity: 0.88;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
   }
@@ -109,10 +109,10 @@
   }
   .branch-subtitle {
     font-family: var(--ff-b);
-    font-size: 0.9rem;
+    font-size: 0.94rem;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.75;
+    color: var(--cream); opacity: 0.88;
     margin-bottom: 2.4rem;
     animation: fadeUp 1s 0.6s ease both;
   }
@@ -147,7 +147,7 @@
     font-family: var(--ff-d);
     font-size: var(--text-body-sm);
     font-style: italic;
-    color: var(--cream); opacity: 0.85;
+    color: var(--cream); opacity: 0.88;
     max-width: 480px; margin: 0 auto;
   }
 
@@ -188,7 +188,7 @@
     font-size: 0.95rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.82;
+    color: var(--cream); opacity: 0.88;
     margin-bottom: 1.6rem;
   }
   .offering-body {
@@ -234,7 +234,7 @@
     font-size: 0.95rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.85;
+    color: var(--cream); opacity: 0.88;
     margin-bottom: 1.4rem;
   }
   .mirror-price {
@@ -313,7 +313,7 @@
   .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
   .form-label {
     font-family: var(--ff-b);
-    font-size: 0.9rem;
+    font-size: 0.94rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: #1a1208; opacity: 0.95;
@@ -345,7 +345,7 @@
     width: 100%;
   }
   .form-input::placeholder, .form-textarea::placeholder {
-    color: #7a5000; opacity: 0.55; font-style: italic;
+    color: #7a5000; opacity: 0.88; font-style: italic;
   }
   .form-input:focus, .form-textarea:focus {
     border-color: rgba(90,56,0,0.6);
@@ -369,8 +369,43 @@
     font-family: var(--ff-d);
     font-size: var(--text-body-sm);
     font-style: italic;
-    color: #3a2000; opacity: 0.85;
+    color: #3a2000; opacity: 0.88;
   }
+
+  /* Honeypot: invisible to humans */
+  .apply-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px; height: 1px;
+    overflow: hidden; opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Status message on the parchment palette */
+  .apply-status {
+    display: none;
+    margin-top: 1.6rem;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid rgba(90,56,0,0.35);
+    background: rgba(139,105,20,0.08);
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: var(--text-body-sm);
+    color: #1a1208;
+    line-height: 1.75;
+    text-align: left;
+  }
+  .apply-status.visible { display: block; }
+  .apply-status.error {
+    border-color: #7a3216;
+    background: rgba(122,50,22,0.1);
+    color: #3a1a08;
+  }
+  .apply-status.success {
+    border-color: #7a5000;
+    background: rgba(139,105,20,0.14);
+  }
+  .btn-dark:disabled { opacity: 0.6; cursor: wait; }
 
   /* FOOTER */
   footer {
@@ -380,7 +415,7 @@
   }
   .footer-name {
     font-family: var(--ff-d); font-size: 1.3rem; font-style: italic;
-    color: var(--cream); opacity: 0.65;
+    color: var(--cream); opacity: 0.88;
     display: block; margin-bottom: 1.2rem;
     text-decoration: none; transition: opacity 0.3s;
   }
@@ -391,15 +426,15 @@
   }
   .footer-links a {
     font-family: var(--ff-b);
-    font-size: 0.85rem;
+    font-size: 0.94rem;
     letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--cream); opacity: 0.65;
+    color: var(--cream); opacity: 0.88;
     text-decoration: none; transition: opacity 0.3s;
   }
   .footer-links a:hover { opacity: 0.9; color: var(--gold-lt); }
   .footer-copy {
-    font-family: var(--ff-b); font-size: 0.85rem;
-    color: var(--cream); opacity: 0.55;
+    font-family: var(--ff-b); font-size: 0.94rem;
+    color: var(--cream); opacity: 0.88;
   }
 
   /* BUTTONS */
@@ -502,7 +537,7 @@
   }
   .footer-social a {
     color: var(--cream);
-    opacity: 0.45;
+    opacity: 0.88;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
     display: flex;
@@ -628,7 +663,13 @@
   <p class="apply-body">The application is not a form. It's a threshold. Answer as fully and honestly as you can — not to impress, but to arrive. I read every application personally and respond within one week.</p>
   <blockquote class="apply-note">I accept a small number of mentorship clients at any time. If this is the right container for you, trust what brought you here. Answering these questions is the first act of sovereignty.</blockquote>
 
-  <form class="apply-form" action="https://formspree.io/f/xlgozrnj" method="POST">
+  <form class="apply-form" id="mirrorApplyForm" novalidate>
+    <!-- Honeypot: humans won't see this; bots will fill it -->
+    <div class="apply-honeypot" aria-hidden="true">
+      <label for="apply_website">Website</label>
+      <input type="text" id="apply_website" name="apply_website" tabindex="-1" autocomplete="off">
+    </div>
+
     <div class="form-row">
       <div class="form-group">
         <label class="form-label">Your name</label>
@@ -644,38 +685,39 @@
       <span class="form-qnum">01</span>
       <label class="form-label">What brought you here?</label>
       <p class="form-sublabel">Not the surface answer — the real one. What is the signal underneath the words that found their way to this page?</p>
-      <textarea class="form-textarea" name="q1" placeholder="Take your time with this one..." style="min-height:150px;"></textarea>
+      <textarea class="form-textarea" name="mirror_app_arrival" placeholder="Take your time with this one..." style="min-height:150px;"></textarea>
     </div>
 
     <div class="form-question">
       <span class="form-qnum">02</span>
       <label class="form-label">Where are you in the descent?</label>
       <p class="form-sublabel">Are you still being sent underground, or did you choose it? Are you in the dissolution, the labor, or standing at the threshold of emergence?</p>
-      <textarea class="form-textarea" name="q2" placeholder="Describe what's moving in you right now..."></textarea>
+      <textarea class="form-textarea" name="mirror_app_descent_position" placeholder="Describe what's moving in you right now..."></textarea>
     </div>
 
     <div class="form-question">
       <span class="form-qnum">03</span>
       <label class="form-label">What has been compressed?</label>
       <p class="form-sublabel">What part of your signal have you learned to make smaller, quieter, more receivable — and for how long?</p>
-      <textarea class="form-textarea" name="q3" placeholder="What were you told was too much?"></textarea>
+      <textarea class="form-textarea" name="mirror_app_compression" placeholder="What were you told was too much?"></textarea>
     </div>
 
     <div class="form-question">
       <span class="form-qnum">04</span>
       <label class="form-label">What are you ready to stop managing?</label>
       <p class="form-sublabel">You don't have to know what comes after. You just have to be honest about what you're done carrying.</p>
-      <textarea class="form-textarea" name="q4" placeholder="Speak plainly here..."></textarea>
+      <textarea class="form-textarea" name="mirror_app_ready_to_stop" placeholder="Speak plainly here..."></textarea>
     </div>
 
     <div class="form-question">
       <span class="form-qnum">05</span>
       <label class="form-label">What do you need the container to hold?</label>
       <p class="form-sublabel">What has no other space been able to receive?</p>
-      <textarea class="form-textarea" name="q5" placeholder="What needs a witness?"></textarea>
+      <textarea class="form-textarea" name="mirror_app_container_need" placeholder="What needs a witness?"></textarea>
     </div>
 
-    <button type="submit" class="btn-dark">Send My Application</button>
+    <button type="submit" class="btn-dark" id="applyBtn">Send My Application</button>
+    <div class="apply-status" id="applyStatus" role="status" aria-live="polite"></div>
     <p class="form-closing">I read every application and respond personally within one week.</p>
   </form>
 </section>
@@ -697,6 +739,100 @@
   </div>
   <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
 </footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // Endpoint for the Mirror Work application. Swap in a custom domain here if the
+  // platform ever consolidates onto christypaxtonwade.com.
+  const APPLICATION_ENDPOINT =
+    'https://egldaiqrwuxqgavjwwim.supabase.co/functions/v1/submit_application';
+
+  const form = document.getElementById('mirrorApplyForm');
+  const btn = document.getElementById('applyBtn');
+  const statusEl = document.getElementById('applyStatus');
+
+  if (!form) return;
+
+  function setStatus(message, type) {
+    statusEl.textContent = message;
+    statusEl.className = 'apply-status visible ' + (type || '');
+  }
+
+  function collect() {
+    return {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      mirror_app_arrival: form.mirror_app_arrival.value.trim() || null,
+      mirror_app_descent_position: form.mirror_app_descent_position.value.trim() || null,
+      mirror_app_compression: form.mirror_app_compression.value.trim() || null,
+      mirror_app_ready_to_stop: form.mirror_app_ready_to_stop.value.trim() || null,
+      mirror_app_container_need: form.mirror_app_container_need.value.trim() || null,
+      honeypot: form.apply_website.value
+    };
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    statusEl.className = 'apply-status';
+    statusEl.textContent = '';
+
+    const payload = collect();
+
+    if (payload.honeypot) {
+      // Silent success for bots
+      setStatus('Your application has been received. I will respond personally within one week.', 'success');
+      form.reset();
+      return;
+    }
+
+    if (!payload.name || !payload.email) {
+      setStatus('Please add your name and email before submitting.', 'error');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+      setStatus('That email address does not look right.', 'error');
+      return;
+    }
+    const answered = [
+      payload.mirror_app_arrival,
+      payload.mirror_app_descent_position,
+      payload.mirror_app_compression,
+      payload.mirror_app_ready_to_stop,
+      payload.mirror_app_container_need
+    ].some(function(v) { return v && v.length > 0; });
+    if (!answered) {
+      setStatus('Please answer at least one of the questions before submitting.', 'error');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(APPLICATION_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) {
+        const errText = await res.text().catch(function() { return ''; });
+        throw new Error(errText || 'Request failed with status ' + res.status);
+      }
+      setStatus('Your application has arrived. I read every application personally and will respond within one week.', 'success');
+      form.reset();
+      statusEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      console.error(err);
+      setStatus('Something interrupted the sending. Please try again, or email christypaxton@gmail.com directly.', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send My Application';
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
