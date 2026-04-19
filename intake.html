@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Intake — Christy Paxton Wade</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0c0a07; --ink-mid: #111009; --ink-soft: #161309;
+    --gold: #b8924a; --gold-lt: #d4ae6e; --gold-dim: rgba(184,146,74,0.3);
+    --cream: #f0e8d0; --cream-dim: rgba(240,232,208,0.7);
+    --plum: #251020;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+    --text-body: 1.1rem;
+    --text-body-sm: 1rem;
+    --text-label: 0.94rem;
+    --op-body: 0.92;
+    --op-support: 0.88;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
+
+  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
+  .trunk-sig:hover { opacity: 1; }
+
+  nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.12); }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
+  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+  .nav-links a:hover { opacity: 1; color: var(--gold-lt); }
+  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.3); }
+
+  .eyebrow { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.95; display: block; margin-bottom: 1.4rem; }
+
+  /* HERO */
+  .intake-hero {
+    padding: 6rem 3rem 4rem;
+    text-align: center;
+    background: radial-gradient(ellipse at center, #1a1008 0%, #0f0b05 45%, var(--ink) 80%);
+  }
+  .intake-title {
+    font-family: var(--ff-d);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-lt);
+    line-height: 1;
+    margin-bottom: 1.4rem;
+  }
+  .intake-subtitle {
+    font-family: var(--ff-b);
+    font-size: 0.94rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.88;
+    margin-bottom: 2.6rem;
+  }
+  .intake-intro {
+    font-family: var(--ff-d);
+    font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+    font-style: italic;
+    color: var(--cream);
+    opacity: 0.92;
+    line-height: 1.8;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* FORM CONTAINER */
+  .intake-form {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4rem 3rem 6rem;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 4.5rem; }
+  .section-heading {
+    font-family: var(--ff-d);
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-lt);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.01em;
+  }
+  .section-note {
+    font-family: var(--ff-d);
+    font-size: var(--text-body-sm);
+    font-style: italic;
+    color: var(--cream);
+    opacity: 0.88;
+    line-height: 1.75;
+    margin-bottom: 2.4rem;
+    max-width: 620px;
+  }
+  .section-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin-bottom: 1.8rem;
+  }
+
+  /* FIELDS */
+  .field-row { margin-bottom: 1.6rem; }
+  .field-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+  .field-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.6rem; }
+
+  label {
+    display: block;
+    font-family: var(--ff-b);
+    font-size: 0.88rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.95;
+    margin-bottom: 0.55rem;
+  }
+  label .optional {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--cream);
+    opacity: 0.55;
+    margin-left: 0.4rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="time"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: var(--ink-soft);
+    border: 1px solid rgba(184,146,74,0.18);
+    color: var(--cream);
+    font-family: var(--ff-b);
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+    line-height: 1.7;
+    font-family: var(--ff-d);
+    font-size: 1.05rem;
+  }
+  textarea.tall { min-height: 140px; }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: #1a150a;
+  }
+  input::placeholder, textarea::placeholder {
+    color: var(--cream);
+    opacity: 0.4;
+    font-style: italic;
+  }
+
+  select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--gold-lt) 50%), linear-gradient(135deg, var(--gold-lt) 50%, transparent 50%);
+    background-position: calc(100% - 20px) 55%, calc(100% - 14px) 55%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.5rem;
+  }
+
+  .helper {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--cream);
+    opacity: 0.6;
+    margin-top: 0.4rem;
+    line-height: 1.55;
+  }
+
+  /* QUESTION (pattern) */
+  .question {
+    margin-bottom: 2.4rem;
+    padding-left: 1.4rem;
+    border-left: 1px solid var(--gold-dim);
+  }
+  .question-prompt {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--cream);
+    opacity: 0.95;
+    line-height: 1.7;
+    margin-bottom: 0.9rem;
+  }
+  .question-number {
+    font-family: var(--ff-b);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.88;
+    margin-right: 0.6rem;
+  }
+
+  /* ANCESTOR BLOCK */
+  .ancestor-block {
+    margin-bottom: 2rem;
+    padding: 2rem 2rem 1.4rem;
+    background: rgba(184,146,74,0.03);
+    border: 1px solid rgba(184,146,74,0.14);
+    position: relative;
+  }
+  .ancestor-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.4rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--gold-dim);
+  }
+  .ancestor-index {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--gold-lt);
+    opacity: 0.92;
+  }
+  .ancestor-remove {
+    background: none;
+    border: none;
+    font-family: var(--ff-b);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .ancestor-remove:hover { opacity: 1; color: var(--gold-lt); }
+  .ancestor-block.first-ancestor .ancestor-remove { display: none; }
+
+  .add-ancestor {
+    display: inline-block;
+    margin-top: 0.4rem;
+    padding: 0.9rem 2rem;
+    background: none;
+    border: 1px dashed var(--gold);
+    color: var(--gold-lt);
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, border-style 0.3s;
+  }
+  .add-ancestor:hover {
+    background: rgba(184,146,74,0.08);
+    border-style: solid;
+  }
+
+  /* SUBMIT */
+  .submit-section {
+    margin-top: 4rem;
+    text-align: center;
+  }
+  .submit-note {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--cream);
+    opacity: 0.75;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn-submit {
+    display: inline-block;
+    padding: 1.1rem 3rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold-lt);
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+  .btn-submit:hover:not(:disabled) { background: var(--gold); color: var(--ink); }
+  .btn-submit:disabled { opacity: 0.6; cursor: wait; }
+
+  /* STATUS MESSAGES */
+  .status-message {
+    margin-top: 2rem;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--gold-dim);
+    background: rgba(184,146,74,0.06);
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--cream);
+    line-height: 1.7;
+    text-align: left;
+    display: none;
+  }
+  .status-message.visible { display: block; }
+  .status-message.error {
+    border-color: #7a3216;
+    background: rgba(122,50,22,0.12);
+  }
+  .status-message.success {
+    border-color: var(--gold);
+    background: rgba(184,146,74,0.1);
+  }
+
+  /* HONEYPOT */
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* FOOTER */
+  footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a:hover { opacity: 0.9; color: var(--gold-lt); }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.94rem; color: var(--cream); opacity: 0.88; }
+
+  @media (max-width: 640px) {
+    .intake-form { padding: 3rem 1.5rem 5rem; }
+    .field-grid-2, .field-grid-3 { grid-template-columns: 1fr; }
+    .ancestor-block { padding: 1.6rem 1.3rem 1rem; }
+    .question { padding-left: 1rem; }
+    .intake-hero { padding: 4rem 1.5rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<a href="/" class="trunk-sig">Christy Paxton Wade</a>
+<nav>
+  <ul class="nav-links">
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky">Sky</a></li>
+    <li><a href="/life">Life</a></li>
+    <li><a href="/mirror">Mirror</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="/mirror#apply">Apply</a></li>
+    <li><a href="https://christywade.substack.com" target="_blank">Substack</a></li>
+  </ul>
+</nav>
+
+<section class="intake-hero">
+  <span class="eyebrow">Client Intake &nbsp;·&nbsp; The Beginning of the Work</span>
+  <h1 class="intake-title">Before We Meet</h1>
+  <p class="intake-subtitle">A Map-Side Preparation</p>
+  <p class="intake-intro">This is the first document of your work with me. It is where the map is drawn — from the terrain of your birth, the ancestors you already know, and the patterns you have already noticed. Take your time. There are no wrong answers. What you cannot yet name belongs here too.</p>
+</section>
+
+<form class="intake-form" id="intakeForm" novalidate>
+
+  <!-- Honeypot: humans won't see this; bots will fill it -->
+  <div class="honeypot" aria-hidden="true">
+    <label for="website">Website</label>
+    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+  </div>
+
+  <!-- ============================================
+       SECTION 1 — ESSENTIALS
+       ============================================ -->
+  <section class="section">
+    <h2 class="section-heading">Essentials</h2>
+    <div class="section-divider"></div>
+    <p class="section-note">The ground we're standing on. Birth data anchors the astrological reading; contact information makes it possible to reach you.</p>
+
+    <div class="field-row">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required autocomplete="name">
+    </div>
+
+    <div class="field-grid-2">
+      <div class="field-row">
+        <label for="birth_date">Date of Birth</label>
+        <input type="date" id="birth_date" name="birth_date" required>
+      </div>
+      <div class="field-row">
+        <label for="birth_time">Time of Birth <span class="optional">if known</span></label>
+        <input type="time" id="birth_time" name="birth_time">
+        <p class="helper">Leave blank if you don't know it. We'll take it up in conversation.</p>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <label for="birth_place">Place of Birth</label>
+      <input type="text" id="birth_place" name="birth_place" placeholder="City, region, country" required>
+    </div>
+
+    <div class="field-grid-2">
+      <div class="field-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="field-row">
+        <label for="phone">Phone <span class="optional">optional</span></label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel">
+      </div>
+    </div>
+
+    <div class="field-row">
+      <label for="current_address">Current Address</label>
+      <textarea id="current_address" name="current_address" rows="3" placeholder="Where you live now" required></textarea>
+    </div>
+
+    <div class="field-row">
+      <label for="entry_offering">Which Offering Brings You Here</label>
+      <select id="entry_offering" name="entry_offering" required>
+        <option value="">Select one</option>
+        <option value="First Signal">First Signal — Discovery Call</option>
+        <option value="First Listen">First Listen — 45-Minute Transit</option>
+        <option value="Your Signal Decoded">Your Signal Decoded — Natal Reading</option>
+        <option value="The Veil, Further Back">The Veil, Further Back — Returning Client</option>
+        <option value="Sovereign Signal">Sovereign Signal — Two-Hour Flagship</option>
+        <option value="Eclipse to Eclipse">Eclipse to Eclipse — Six-Month Container</option>
+        <option value="The Lineage Session">The Lineage Session — Ancestral Research</option>
+        <option value="Mirror Work">Mirror Work — Three-Month Mentorship</option>
+        <option value="Other">Other (describe in open remarks below)</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 2 — ANCESTRAL RESEARCH STARTER
+       ============================================ -->
+  <section class="section">
+    <h2 class="section-heading">Ancestors</h2>
+    <div class="section-divider"></div>
+    <p class="section-note">Name the deceased ancestors you want to begin with. Even partial information helps — names, approximate dates, places, occupations, anything you can connect to a genealogical record. You do not need to fill every field. Three blocks are visible below; add more if you need them. If you have no ancestral information to offer yet, that is also true, and you can skip this section.</p>
+
+    <div id="ancestorContainer">
+      <!-- Ancestor blocks rendered here by JS; first one created on load -->
+    </div>
+
+    <button type="button" class="add-ancestor" id="addAncestorBtn">+ Add Another Ancestor</button>
+  </section>
+
+  <!-- ============================================
+       SECTION 3 — LIVING FREQUENCY PATTERNS
+       ============================================ -->
+  <section class="section">
+    <h2 class="section-heading">Living Frequency Patterns</h2>
+    <div class="section-divider"></div>
+    <p class="section-note">Five questions about the patterns active in you right now. Write as much or as little as feels true. Be specific where you can — what repeats, where the body holds it, what cannot yet be named. Precision here is what allows the ancestral research to converge with what is alive in your present.</p>
+
+    <div class="question">
+      <p class="question-prompt"><span class="question-number">01</span>Describe a pattern you notice repeating — a situation, dynamic, or threshold that keeps surfacing in your life. When did you first become aware of it, and what, if anything, has shifted since?</p>
+      <textarea id="pattern_repeating" name="pattern_repeating" rows="5" class="tall"></textarea>
+    </div>
+
+    <div class="question">
+      <p class="question-prompt"><span class="question-number">02</span>Where does your body carry a sensation, symptom, or charge that you cannot fully account for through your own history? Describe the sensation and, if you can, when it arrived.</p>
+      <textarea id="pattern_somatic" name="pattern_somatic" rows="5" class="tall"></textarea>
+    </div>
+
+    <div class="question">
+      <p class="question-prompt"><span class="question-number">03</span>What is one story, belief, or prohibition in your family that you have questioned? What changes for you when you try to step outside it, even briefly?</p>
+      <textarea id="pattern_inherited" name="pattern_inherited" rows="5" class="tall"></textarea>
+    </div>
+
+    <div class="question">
+      <p class="question-prompt"><span class="question-number">04</span>What are you currently entering or completing? Describe the shape of this threshold — not what it feels like, but where you recognize it sitting in your life right now.</p>
+      <textarea id="pattern_threshold" name="pattern_threshold" rows="5" class="tall"></textarea>
+    </div>
+
+    <div class="question">
+      <p class="question-prompt"><span class="question-number">05</span>What have you been trying to name — a pattern, knowing, inheritance, or signal — that no existing language quite meets?</p>
+      <textarea id="pattern_unreceived" name="pattern_unreceived" rows="5" class="tall"></textarea>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SECTION 4 — OPEN REMARKS
+       ============================================ -->
+  <section class="section">
+    <h2 class="section-heading">Open Remarks</h2>
+    <div class="section-divider"></div>
+    <p class="section-note">Anything the form did not hold. Questions, context, requests, what you want me to know before we meet.</p>
+
+    <div class="field-row">
+      <textarea id="open_remarks" name="open_remarks" rows="6" class="tall"></textarea>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SUBMIT
+       ============================================ -->
+  <div class="submit-section">
+    <p class="submit-note">When you submit, your intake reaches me directly. You will hear back within a few days — with scheduling, with any questions that surface, and with the next step.</p>
+    <button type="submit" class="btn-submit" id="submitBtn">Send Intake</button>
+    <div class="status-message" id="statusMessage" role="status" aria-live="polite"></div>
+  </div>
+
+</form>
+
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <div class="footer-links">
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="/mirror#apply">Apply</a>
+    <a href="https://christywade.substack.com" target="_blank">Substack</a>
+  </div>
+  <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // === CONFIG ===
+  // Set to the deployed edge function URL before going live.
+  // Local testing: can point at any echo endpoint or leave as placeholder.
+  const SUBMIT_ENDPOINT = 'https://egldaiqrwuxqgavjwwim.supabase.co/functions/v1/submit_intake';
+
+  const ancestorContainer = document.getElementById('ancestorContainer');
+  const addBtn = document.getElementById('addAncestorBtn');
+  const form = document.getElementById('intakeForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const statusEl = document.getElementById('statusMessage');
+
+  let ancestorIdx = 0;
+
+  function ancestorBlockHTML(idx) {
+    const romanNumerals = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'xi', 'xii', 'xiii', 'xiv', 'xv'];
+    const numeral = romanNumerals[idx] || (idx + 1).toString();
+    return `
+      <div class="ancestor-block${idx === 0 ? ' first-ancestor' : ''}" data-idx="${idx}">
+        <div class="ancestor-block-header">
+          <span class="ancestor-index">Ancestor ${numeral.toUpperCase()}</span>
+          <button type="button" class="ancestor-remove" data-remove="${idx}">Remove</button>
+        </div>
+
+        <div class="field-row">
+          <label>Full Name <span class="optional">including maiden name if known</span></label>
+          <input type="text" name="ancestors[${idx}][name]" placeholder="e.g., Christina Young Higginson">
+        </div>
+
+        <div class="field-grid-2">
+          <div class="field-row">
+            <label>Relationship to You</label>
+            <input type="text" name="ancestors[${idx}][relation_to_client]" placeholder="e.g., paternal great-grandmother">
+          </div>
+          <div class="field-row">
+            <label>Occupation <span class="optional">if known</span></label>
+            <input type="text" name="ancestors[${idx}][occupation]" placeholder="e.g., farmer, schoolmistress, interpreter">
+          </div>
+        </div>
+
+        <div class="field-grid-2">
+          <div class="field-row">
+            <label>Dates <span class="optional">approximate is fine</span></label>
+            <input type="text" name="ancestors[${idx}][dates]" placeholder="e.g., 1845–1923, or c. 1850–1920">
+          </div>
+          <div class="field-row">
+            <label>Birthplace</label>
+            <input type="text" name="ancestors[${idx}][birthplace]" placeholder="City, region, country">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <label>Places Lived <span class="optional">if different from birthplace</span></label>
+          <input type="text" name="ancestors[${idx}][places_lived]" placeholder="e.g., Liverpool → Boston → Idaho">
+        </div>
+
+        <div class="field-row">
+          <label>Known Information <span class="optional">anything that might anchor research</span></label>
+          <textarea name="ancestors[${idx}][intake_notes]" rows="3" placeholder="Ship manifest details, marriage records, emigration story, family lore, anything you remember being told — or anything you are trying to find out."></textarea>
+        </div>
+      </div>
+    `;
+  }
+
+  function addAncestor() {
+    const div = document.createElement('div');
+    div.innerHTML = ancestorBlockHTML(ancestorIdx);
+    const block = div.firstElementChild;
+    ancestorContainer.appendChild(block);
+    ancestorIdx++;
+  }
+
+  // Render three ancestor blocks on load
+  addAncestor();
+  addAncestor();
+  addAncestor();
+
+  addBtn.addEventListener('click', addAncestor);
+
+  // Event delegation for remove buttons
+  ancestorContainer.addEventListener('click', function(e) {
+    if (e.target.classList.contains('ancestor-remove')) {
+      const block = e.target.closest('.ancestor-block');
+      if (block && !block.classList.contains('first-ancestor')) {
+        block.remove();
+      }
+    }
+  });
+
+  function setStatus(message, type) {
+    statusEl.textContent = message;
+    statusEl.className = 'status-message visible ' + (type || '');
+  }
+
+  function collectPayload() {
+    const data = {
+      name: form.name.value.trim(),
+      birth_date: form.birth_date.value || null,
+      birth_time: form.birth_time.value || null,
+      birth_place: form.birth_place.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim() || null,
+      current_address: form.current_address.value.trim(),
+      entry_offering: form.entry_offering.value,
+      pattern_repeating: form.pattern_repeating.value.trim() || null,
+      pattern_somatic: form.pattern_somatic.value.trim() || null,
+      pattern_inherited: form.pattern_inherited.value.trim() || null,
+      pattern_threshold: form.pattern_threshold.value.trim() || null,
+      pattern_unreceived: form.pattern_unreceived.value.trim() || null,
+      open_remarks: form.open_remarks.value.trim() || null,
+      honeypot: form.website.value,
+      ancestors: []
+    };
+
+    // Collect ancestor rows
+    const blocks = ancestorContainer.querySelectorAll('.ancestor-block');
+    blocks.forEach(function(block) {
+      const idx = block.dataset.idx;
+      const nameField = block.querySelector('input[name="ancestors[' + idx + '][name]"]');
+      if (!nameField || !nameField.value.trim()) return; // skip empty blocks
+
+      data.ancestors.push({
+        name: nameField.value.trim(),
+        relation_to_client: block.querySelector('input[name="ancestors[' + idx + '][relation_to_client]"]').value.trim() || null,
+        occupation: block.querySelector('input[name="ancestors[' + idx + '][occupation]"]').value.trim() || null,
+        dates: block.querySelector('input[name="ancestors[' + idx + '][dates]"]').value.trim() || null,
+        birthplace: block.querySelector('input[name="ancestors[' + idx + '][birthplace]"]').value.trim() || null,
+        places_lived: block.querySelector('input[name="ancestors[' + idx + '][places_lived]"]').value.trim() || null,
+        intake_notes: block.querySelector('textarea[name="ancestors[' + idx + '][intake_notes]"]').value.trim() || null
+      });
+    });
+
+    return data;
+  }
+
+  function validate(data) {
+    const required = ['name', 'birth_date', 'birth_place', 'email', 'current_address', 'entry_offering'];
+    for (var i = 0; i < required.length; i++) {
+      if (!data[required[i]]) {
+        return 'Please complete the required fields in Essentials.';
+      }
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      return 'That email address does not look right.';
+    }
+    return null;
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    statusEl.className = 'status-message';
+    statusEl.textContent = '';
+
+    const payload = collectPayload();
+
+    // Honeypot trip — silently pretend success
+    if (payload.honeypot) {
+      setStatus('Thank you. Your intake has been received.', 'success');
+      form.reset();
+      return;
+    }
+
+    const error = validate(payload);
+    if (error) {
+      setStatus(error, 'error');
+      submitBtn.focus();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(SUBMIT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const errText = await res.text().catch(function() { return ''; });
+        throw new Error(errText || 'Request failed with status ' + res.status);
+      }
+
+      setStatus('Your intake has arrived. You will hear back from me within a few days.', 'success');
+      form.reset();
+      // Reset ancestor blocks to three fresh ones
+      ancestorContainer.innerHTML = '';
+      ancestorIdx = 0;
+      addAncestor(); addAncestor(); addAncestor();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      console.error(err);
+      setStatus('Something interrupted the sending. Please try again, or email christypaxton@gmail.com directly.', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Intake';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
