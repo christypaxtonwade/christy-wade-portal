@@ -19,7 +19,17 @@
     --text-label: 0.94rem;
   }
   html { scroll-behavior: smooth; }
-  body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
+  body {
+    background-color: var(--ink);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.72  0 0 0 0 0.57  0 0 0 0 0.29  0 0 0 0.18 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+    background-attachment: fixed;
+    color: var(--cream);
+    font-family: var(--ff-b);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    font-size: 16px;
+  }
 
   .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
   .trunk-sig:hover { opacity: 1; }
@@ -191,6 +201,53 @@
     opacity: 0.6;
   }
 
+  /* GHOST ROMAN NUMERAL — decorative background depth */
+  .field-roman-ghost {
+    position: absolute;
+    bottom: -1.6rem;
+    right: -0.3rem;
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 7rem;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.06;
+    pointer-events: none;
+    letter-spacing: -0.04em;
+    z-index: 0;
+    user-select: none;
+  }
+  .field > *:not(.field-roman-ghost) { position: relative; z-index: 1; }
+  .field:hover .field-roman-ghost,
+  .field.open .field-roman-ghost {
+    opacity: 0.1;
+    transition: opacity 0.4s;
+  }
+
+  /* HERO MOTIF — three nested descent-return arcs */
+  .map-hero { position: relative; overflow: hidden; }
+  .hero-motif {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .map-hero > *:not(.hero-motif) { position: relative; z-index: 1; }
+
+  /* ARC ORNAMENT — hollow diamond with extending lines */
+  .arc-ornament {
+    flex-shrink: 0;
+    width: 28px;
+    height: 10px;
+    opacity: 0.6;
+  }
+
   /* CLOSING SECTION */
   .map-closing {
     padding: 6rem 3rem;
@@ -261,6 +318,32 @@
 </nav>
 
 <section class="map-hero">
+  <svg class="hero-motif" viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+    <g stroke="#b8924a" fill="none" stroke-linecap="round">
+      <!-- Outer descent-return arc (deepest) -->
+      <path d="M 100 20 Q 500 500 900 20" stroke-width="1" opacity="0.5"/>
+      <!-- Middle arc -->
+      <path d="M 180 20 Q 500 360 820 20" stroke-width="0.8" opacity="0.38"/>
+      <!-- Inner arc -->
+      <path d="M 260 20 Q 500 220 740 20" stroke-width="0.6" opacity="0.28"/>
+    </g>
+    <g fill="#b8924a" opacity="0.55">
+      <!-- 13 Field markers distributed along the outer arc -->
+      <circle cx="157" cy="84" r="2.4"/>
+      <circle cx="214" cy="138" r="2.4"/>
+      <circle cx="271" cy="182" r="2.4"/>
+      <circle cx="329" cy="216" r="2.4"/>
+      <circle cx="386" cy="240" r="2.4"/>
+      <circle cx="443" cy="255" r="2.4"/>
+      <circle cx="500" cy="260" r="3.2"/>
+      <circle cx="557" cy="255" r="2.4"/>
+      <circle cx="614" cy="240" r="2.4"/>
+      <circle cx="671" cy="216" r="2.4"/>
+      <circle cx="729" cy="182" r="2.4"/>
+      <circle cx="786" cy="138" r="2.4"/>
+      <circle cx="843" cy="84" r="2.4"/>
+    </g>
+  </svg>
   <span class="eyebrow" style="margin-bottom:1.6rem;">The Navigation Map of Consciousness</span>
   <h1 class="map-title">The Map</h1>
   <p class="map-subtitle">Thirteen Fields &nbsp;·&nbsp; Three Arcs &nbsp;·&nbsp; Documented Terrain</p>
@@ -275,6 +358,12 @@
       <span class="arc-count">I — VII</span>
       <h2 class="arc-name">Descent</h2>
       <div class="arc-rule"></div>
+      <svg class="arc-ornament" viewBox="0 0 28 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="#b8924a" fill="none" stroke-width="0.9">
+          <path d="M 14 1.5 L 19 5 L 14 8.5 L 9 5 Z" fill="#b8924a" fill-opacity="0.25"/>
+          <line x1="20" y1="5" x2="28" y2="5"/>
+        </g>
+      </svg>
     </div>
     <div class="fields">
       <div class="field">
@@ -321,6 +410,12 @@
       <span class="arc-count">VIII — X</span>
       <h2 class="arc-name">Underworld</h2>
       <div class="arc-rule"></div>
+      <svg class="arc-ornament" viewBox="0 0 28 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="#b8924a" fill="none" stroke-width="0.9">
+          <path d="M 14 1.5 L 19 5 L 14 8.5 L 9 5 Z" fill="#b8924a" fill-opacity="0.25"/>
+          <line x1="20" y1="5" x2="28" y2="5"/>
+        </g>
+      </svg>
     </div>
     <div class="fields">
       <div class="field">
@@ -347,6 +442,12 @@
       <span class="arc-count">XI — XIII</span>
       <h2 class="arc-name">Return</h2>
       <div class="arc-rule"></div>
+      <svg class="arc-ornament" viewBox="0 0 28 10" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g stroke="#b8924a" fill="none" stroke-width="0.9">
+          <path d="M 14 1.5 L 19 5 L 14 8.5 L 9 5 Z" fill="#b8924a" fill-opacity="0.25"/>
+          <line x1="20" y1="5" x2="28" y2="5"/>
+        </g>
+      </svg>
     </div>
     <div class="fields">
       <div class="field">
@@ -390,6 +491,18 @@
 </footer>
 
 <script>
+  // Populate the ghost Roman numeral on each Field card (decorative background element).
+  document.querySelectorAll('.field').forEach(function(el) {
+    var roman = el.querySelector('.field-roman');
+    if (roman) {
+      var ghost = document.createElement('span');
+      ghost.className = 'field-roman-ghost';
+      ghost.textContent = roman.textContent;
+      ghost.setAttribute('aria-hidden', 'true');
+      el.appendChild(ghost);
+    }
+  });
+
   // Tap-to-toggle on touch devices (hover works on desktop via CSS).
   document.querySelectorAll('.field').forEach(function(el) {
     el.addEventListener('click', function() {
