@@ -15,19 +15,19 @@
     --ff-b: 'Jost', system-ui, sans-serif;
     --text-body: 1.15rem;
     --text-body-sm: 1.05rem;
-    --text-label: 0.88rem;
+    --text-label: 0.94rem;
     --op-body: 0.92;
-    --op-support: 0.85;
+    --op-support: 0.88;
   }
   html { scroll-behavior: smooth; }
   body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
 
-  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.85; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
+  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
   .trunk-sig:hover { opacity: 1; }
 
   nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.12); }
   .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
-  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.7; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
   .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-lt); }
   .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.3); }
 
@@ -35,7 +35,7 @@
 
   .branch-hero { min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 7rem 3rem 5rem; background: radial-gradient(ellipse at center, #1a1008 0%, #0f0b05 40%, var(--ink) 75%); }
   .branch-title { font-family: var(--ff-d); font-size: clamp(4rem, 8vw, 8rem); font-style: italic; font-weight: 300; color: var(--gold-lt); line-height: 0.95; margin-bottom: 1.2rem; animation: fadeUp 1.2s 0.4s ease both; }
-  .branch-subtitle { font-family: var(--ff-b); font-size: 0.9rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.75; margin-bottom: 2.4rem; animation: fadeUp 1s 0.6s ease both; }
+  .branch-subtitle { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.88; margin-bottom: 2.4rem; animation: fadeUp 1s 0.6s ease both; }
   .branch-intro { font-family: var(--ff-d); font-size: clamp(1.2rem, 1.8vw, 1.4rem); font-style: italic; color: var(--cream); opacity: 0.90; line-height: 1.75; max-width: 600px; margin: 0 auto; animation: fadeUp 1s 0.8s ease both; }
 
   .section-prose { padding: 6rem 4rem; max-width: 780px; margin: 0 auto; }
@@ -43,7 +43,7 @@
 
   .book-section { background: var(--plum); padding: 6rem 3rem; text-align: center; }
   .book-title { font-family: var(--ff-d); font-size: clamp(2.4rem, 4vw, 3.8rem); font-style: italic; font-weight: 300; color: var(--gold-lt); line-height: 1.15; margin-bottom: 0.8rem; }
-  .book-sub { font-family: var(--ff-d); font-size: clamp(1.4rem, 2.2vw, 2rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.85; margin-bottom: 1.8rem; }
+  .book-sub { font-family: var(--ff-d); font-size: clamp(1.4rem, 2.2vw, 2rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.88; margin-bottom: 1.8rem; }
   .book-body { max-width: 560px; margin: 0 auto 1.6rem; font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.88; line-height: 1.8; }
   .book-quote { max-width: 560px; margin: 0 auto 2.4rem; font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--gold-lt); opacity: 0.92; line-height: 1.8; }
   .book-divider { width: 40px; height: 1px; background: rgba(184,146,74,0.4); margin: 0 auto 2.4rem; }
@@ -51,7 +51,7 @@
   .offerings-section { background: var(--ink); padding: 6rem 3rem; }
   .offerings-header { text-align: center; margin-bottom: 4rem; }
   .offerings-title { font-family: var(--ff-d); font-size: clamp(2rem, 3vw, 2.8rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 1rem; }
-  .offerings-sub { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.85; max-width: 480px; margin: 0 auto; }
+  .offerings-sub { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.88; max-width: 480px; margin: 0 auto; }
 
   .offering-card { max-width: 860px; margin: 0 auto 1.5rem; border: 1px solid rgba(184,146,74,0.18); padding: 3rem 3.5rem; background: rgba(184,146,74,0.03); transition: border-color 0.3s; }
   .offering-card:hover { border-color: rgba(184,146,74,0.35); }
@@ -59,23 +59,24 @@
   .offering-tag { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.95; }
   .offering-price { font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.95; }
   .offering-name { font-family: var(--ff-d); font-size: clamp(1.8rem, 2.5vw, 2.4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
-  .offering-format { font-family: var(--ff-b); font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.82; margin-bottom: 1.6rem; }
+  .offering-format { font-family: var(--ff-b); font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.88; margin-bottom: 1.6rem; }
   .offering-body { font-family: var(--ff-d); font-size: var(--text-body); font-weight: 300; color: var(--cream); line-height: 1.85; opacity: var(--op-body); margin-bottom: 1.2rem; }
   .offering-note { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--gold-lt); opacity: 0.92; margin-bottom: 1.8rem; }
+  .offering-intake { font-family: var(--ff-d); font-style: italic; font-size: 0.94rem; color: var(--cream); opacity: 0.88; margin-bottom: 1.8rem; padding-top: 0.9rem; border-top: 1px dashed rgba(184,146,74,0.2); }
   .offering-link { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.95; text-decoration: none; transition: opacity 0.3s; }
   .offering-link:hover { opacity: 1; }
   .offering-link::after { content: ' →'; }
 
-  .offering-card.coming-soon { opacity: 0.75; }
-  .coming-badge { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); opacity: 0.55; border: 1px solid rgba(240,232,208,0.25); padding: 0.3rem 0.8rem; }
+  .offering-card.coming-soon { opacity: 0.88; }
+  .coming-badge { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); opacity: 0.88; border: 1px solid rgba(240,232,208,0.25); padding: 0.3rem 0.8rem; }
 
   footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
-  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.65; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
   .footer-name:hover { opacity: 0.9; }
   .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
-  .footer-links a { font-family: var(--ff-b); font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.65; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s; }
   .footer-links a:hover { opacity: 0.9; color: var(--gold-lt); }
-  .footer-copy { font-family: var(--ff-b); font-size: 0.85rem; color: var(--cream); opacity: 0.45; }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.94rem; color: var(--cream); opacity: 0.88; }
 
   .btn-gold { display: inline-block; padding: 0.9rem 2.4rem; border: 1px solid var(--gold); color: var(--gold-lt); font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background 0.3s, color 0.3s; }
   .btn-gold:hover { background: var(--gold); color: var(--ink); }
@@ -184,7 +185,7 @@
   }
   .footer-social a {
     color: var(--cream);
-    opacity: 0.45;
+    opacity: 0.88;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
     display: flex;
@@ -249,7 +250,7 @@
   <p class="book-body">A 4,000-word transmission about feminine transformation through deliberate underground work — the Inanna myth, the birth metaphor, and ancestral lineage as the map. Published by Kiva Publishing, curated by Shannon Van Den Berg.</p>
   <div class="book-divider"></div>
   <p class="book-quote">"It is revolutionary when a woman stops fighting for channels that were never built to receive her, and descends with deliberation into the only terrain where her true frequency can be heard."</p>
-  <span class="btn-gold" style="opacity:0.4; cursor:default;">Coming May 2026</span>
+  <span class="btn-gold" style="opacity:0.88; cursor:default;">Coming May 2026</span>
 </section>
 
 <section class="offerings-section">
@@ -276,6 +277,7 @@
     <p class="offering-body">We work with what you know: names, stories, the things that were never spoken. We work with your astrology — your South Node as the ancestral frequency carrier, the transits that are excavating what was buried. We work with the patterns that keep returning in your own life as the signal seeking completion.</p>
     <p class="offering-body">You will leave with a clearer understanding of what your lineage prepared you to carry — and what it prepared you to complete.</p>
     <p class="offering-note">For those who sense there is a larger story moving through them than the one they've been told.</p>
+    <p class="offering-intake">A brief intake arrives by email after booking — birth data, ancestors, and the patterns you've been noticing.</p>
     <a href="mailto:christypaxton@gmail.com" class="offering-link">Write to hold your place in the circle</a>
   </div>
 
