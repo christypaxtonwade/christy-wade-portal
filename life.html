@@ -16,19 +16,19 @@
     --ff-b: 'Jost', system-ui, sans-serif;
     --text-body: 1.15rem;
     --text-body-sm: 1.05rem;
-    --text-label: 0.88rem;
+    --text-label: 0.94rem;
     --op-body: 0.92;
-    --op-support: 0.85;
+    --op-support: 0.88;
   }
   html { scroll-behavior: smooth; }
   body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
 
-  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.85; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
+  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
   .trunk-sig:hover { opacity: 1; }
 
   nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.12); }
   .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
-  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.7; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
   .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-lt); }
   .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.3); }
 
@@ -36,7 +36,7 @@
 
   .branch-hero { min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 7rem 3rem 5rem; background: radial-gradient(ellipse at center, #1a1608 0%, #100e05 40%, var(--ink) 75%); }
   .branch-title { font-family: var(--ff-d); font-size: clamp(4rem, 8vw, 8rem); font-style: italic; font-weight: 300; color: var(--gold-lt); line-height: 0.95; margin-bottom: 1.2rem; animation: fadeUp 1.2s 0.4s ease both; }
-  .branch-subtitle { font-family: var(--ff-b); font-size: 0.9rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.75; margin-bottom: 2.4rem; animation: fadeUp 1s 0.6s ease both; }
+  .branch-subtitle { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.88; margin-bottom: 2.4rem; animation: fadeUp 1s 0.6s ease both; }
   .branch-intro { font-family: var(--ff-d); font-size: clamp(1.2rem, 1.8vw, 1.4rem); font-style: italic; color: var(--cream); opacity: 0.90; line-height: 1.75; max-width: 600px; margin: 0 auto; animation: fadeUp 1s 0.8s ease both; }
 
   .section-prose { padding: 6rem 4rem; max-width: 780px; margin: 0 auto; }
@@ -67,18 +67,18 @@
   .community-option { border: 1px solid rgba(184,146,74,0.18); padding: 2.5rem; text-align: left; }
   .option-name { font-family: var(--ff-d); font-size: 1.8rem; font-style: italic; font-weight: 300; color: var(--gold-lt); opacity: 0.95; margin-bottom: 0.6rem; }
   .option-desc { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.88; line-height: 1.7; }
-  .option-note { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.85; margin-top: 1rem; display: block; }
+  .option-note { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.88; margin-top: 1rem; display: block; }
 
   .btn-gold { display: inline-block; padding: 0.9rem 2.4rem; border: 1px solid var(--gold); color: var(--gold-lt); font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background 0.3s, color 0.3s; }
   .btn-gold:hover { background: var(--gold); color: var(--ink); }
 
   footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
-  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.65; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
   .footer-name:hover { opacity: 0.9; }
   .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
-  .footer-links a { font-family: var(--ff-b); font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.65; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s; }
   .footer-links a:hover { opacity: 0.9; color: var(--gold-lt); }
-  .footer-copy { font-family: var(--ff-b); font-size: 0.85rem; color: var(--cream); opacity: 0.45; }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.94rem; color: var(--cream); opacity: 0.88; }
 
   /* LIFE IMAGES */
   .life-img-full {
@@ -177,7 +177,7 @@
   }
   .footer-social a {
     color: var(--cream);
-    opacity: 0.45;
+    opacity: 0.88;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
     display: flex;
@@ -284,11 +284,8 @@
     <div class="community-option">
       <p class="option-name">The Living Circle</p>
       <p class="option-desc">A seasonal gathering — online, intimate, structured around a theme from the descent. Astrology, ancestry, practice, presence. A small group that meets inside the transmission rather than just around it. For those who have read the chapter, follow the Substack, or have worked with Christy — and want to continue the practice in the company of others moving through their own descent and return.</p>
-      <span class="option-note">Coming 2026 &nbsp;·&nbsp; Write to me to be held in the field</span>
+      <span class="option-note">Coming 2026 &nbsp;·&nbsp; Write to christypaxton@gmail.com to be held in the field</span>
     </div>
-  </div>
-  <div style="margin-top: 3rem;">
-    <a href="/mirror#apply" class="btn-gold">Write to me</a>
   </div>
 </section>
 
