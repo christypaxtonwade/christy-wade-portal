@@ -552,6 +552,16 @@
   const submitBtn = document.getElementById('submitBtn');
   const statusEl = document.getElementById('statusMessage');
 
+  // Pre-select offering from URL parameter (e.g. /intake?offering=The%20Lineage%20Session)
+  // so a client arriving from a specific offering card lands with the right offering chosen.
+  const urlOffering = new URLSearchParams(window.location.search).get('offering');
+  if (urlOffering && form.entry_offering) {
+    const match = Array.from(form.entry_offering.options).find(function(opt) {
+      return opt.value === urlOffering;
+    });
+    if (match) form.entry_offering.value = urlOffering;
+  }
+
   let ancestorIdx = 0;
 
   function ancestorBlockHTML(idx) {
