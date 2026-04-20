@@ -15,19 +15,19 @@
     --ff-b: 'Jost', system-ui, sans-serif;
     --text-body: 1.15rem;
     --text-body-sm: 1.05rem;
-    --text-label: 0.88rem;
+    --text-label: 0.94rem;
     --op-body: 0.92;
-    --op-support: 0.85;
+    --op-support: 0.88;
   }
   html { scroll-behavior: smooth; }
   body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
 
-  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.85; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
+  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
   .trunk-sig:hover { opacity: 1; }
 
   nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.12); }
   .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
-  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.7; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
   .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-lt); }
   .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.3); }
 
@@ -58,7 +58,7 @@
   }
   .branch-hero > * { position: relative; z-index: 1; }
   .branch-title { font-family: var(--ff-d); font-size: clamp(4rem, 8vw, 8rem); font-style: italic; font-weight: 300; color: var(--gold-lt); line-height: 0.95; margin-bottom: 1.2rem; animation: fadeUp 1.2s 0.4s ease both; }
-  .branch-subtitle { font-family: var(--ff-b); font-size: 0.9rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.75; margin-bottom: 2.4rem; animation: fadeUp 1s 0.6s ease both; }
+  .branch-subtitle { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.88; margin-bottom: 2.4rem; animation: fadeUp 1s 0.6s ease both; }
   .branch-intro { font-family: var(--ff-d); font-size: clamp(1.2rem, 1.8vw, 1.4rem); font-style: italic; color: var(--cream); opacity: 0.90; line-height: 1.75; max-width: 600px; margin: 0 auto; animation: fadeUp 1s 0.8s ease both; }
 
   .section-prose { padding: 6rem 4rem; max-width: 780px; margin: 0 auto; }
@@ -67,7 +67,7 @@
   .offerings-section { background: var(--ink); padding: 6rem 3rem; }
   .offerings-header { text-align: center; margin-bottom: 4rem; }
   .offerings-title { font-family: var(--ff-d); font-size: clamp(2rem, 3vw, 2.8rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 1rem; }
-  .offerings-sub { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.85; max-width: 480px; margin: 0 auto; }
+  .offerings-sub { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.88; max-width: 480px; margin: 0 auto; }
 
   .offering-card { max-width: 860px; margin: 0 auto 1.5rem; border: 1px solid rgba(184,146,74,0.18); padding: 3rem 3.5rem; background: rgba(184,146,74,0.03); transition: border-color 0.3s; }
   .offering-card:hover { border-color: rgba(184,146,74,0.35); }
@@ -75,20 +75,21 @@
   .offering-tag { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.95; }
   .offering-price { font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.95; }
   .offering-name { font-family: var(--ff-d); font-size: clamp(1.8rem, 2.5vw, 2.4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
-  .offering-format { font-family: var(--ff-b); font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.82; margin-bottom: 1.6rem; }
+  .offering-format { font-family: var(--ff-b); font-size: 0.95rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.88; margin-bottom: 1.6rem; }
   .offering-body { font-family: var(--ff-d); font-size: var(--text-body); font-weight: 300; color: var(--cream); line-height: 1.85; opacity: var(--op-body); margin-bottom: 1.2rem; }
   .offering-note { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--gold-lt); opacity: 0.92; margin-bottom: 1.8rem; }
+  .offering-intake { font-family: var(--ff-d); font-style: italic; font-size: 0.94rem; color: var(--cream); opacity: 0.88; margin-bottom: 1.8rem; padding-top: 0.9rem; border-top: 1px dashed rgba(184,146,74,0.2); }
   .offering-link { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.95; text-decoration: none; transition: opacity 0.3s; }
   .offering-link:hover { opacity: 1; }
   .offering-link::after { content: ' →'; }
 
   footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
-  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.65; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
   .footer-name:hover { opacity: 0.9; }
   .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
-  .footer-links a { font-family: var(--ff-b); font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.65; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s; }
   .footer-links a:hover { opacity: 0.9; color: var(--gold-lt); }
-  .footer-copy { font-family: var(--ff-b); font-size: 0.85rem; color: var(--cream); opacity: 0.45; }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.94rem; color: var(--cream); opacity: 0.88; }
 
   .btn-gold { display: inline-block; padding: 0.9rem 2.4rem; border: 1px solid var(--gold); color: var(--gold-lt); font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background 0.3s, color 0.3s; }
   .btn-gold:hover { background: var(--gold); color: var(--ink); }
@@ -125,7 +126,7 @@
   }
   .footer-social a {
     color: var(--cream);
-    opacity: 0.45;
+    opacity: 0.88;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
     display: flex;
@@ -199,6 +200,7 @@
     <p class="offering-format">45 Minutes &nbsp;·&nbsp; A Single Astrology Update</p>
     <p class="offering-body">A standalone session for anyone wanting to understand what the current transits mean for their specific chart — without committing to a longer engagement. Practical, precise, and personal. Existing clients and new clients welcome.</p>
     <p class="offering-note">For those hearing the call for the first time, or checking in on a season of change.</p>
+    <p class="offering-intake">A brief intake arrives by email after booking — birth data, ancestors, and the patterns you've been noticing.</p>
     <a href="https://calendly.com/christypaxtonwade/firstlisten" target="_blank" class="offering-link">Book & Pay</a>
   </div>
 
@@ -213,6 +215,7 @@
     <p class="offering-body">In our first 90 minutes together I'll take you deep into your natal chart and name which Fields are active for you in this season. We go into the placements that shape how you move through the world, the transits that are live, and what the terrain ahead actually contains — documented, named, navigable.</p>
     <p class="offering-body">You'll leave with your chart, a recording, and the beginning of a conversation that doesn't end when the session does.</p>
     <p class="offering-note">For those hearing the call for the first time.</p>
+    <p class="offering-intake">A brief intake arrives by email after booking — birth data, ancestors, and the patterns you've been noticing.</p>
     <a href="https://calendly.com/christypaxtonwade/themap" target="_blank" class="offering-link">Book & Pay</a>
   </div>
 
@@ -225,6 +228,7 @@
     <p class="offering-format">60 Minutes &nbsp;·&nbsp; Returning Clients Only</p>
     <p class="offering-body">For those who have begun the astrological conversation and are ready to go further in. Current transits. Solar returns. Progressed charts. Chiron. The North Node pulling you toward what your soul came here to do. Each session peels back another layer — not because the chart changes, but because you do, and the map reveals new territory as you become ready to receive it.</p>
     <p class="offering-note">Astrology practiced over time becomes a living dialogue with your own evolution. This is that practice.</p>
+    <p class="offering-intake">A brief intake arrives by email after booking — birth data, ancestors, and the patterns you've been noticing.</p>
     <a href="https://calendly.com/christypaxtonwade/theveil" target="_blank" class="offering-link">Book & Pay</a>
   </div>
 
@@ -239,6 +243,7 @@
     <p class="offering-body">We begin with sound. Not as ambient backdrop but as active medicine — frequencies chosen for your specific Field, tuned to what your body is holding and what it's ready to release. Then we go into the map. Your birth chart. The current transits. The Fields they are activating and the subterrains that name what is moving underneath.</p>
     <p class="offering-body">What emerges from the combination is specific to you and cannot be replicated. Some people leave with a single sentence that reorganizes everything. All of them leave clearer than they arrived.</p>
     <p class="offering-note">In person in Bentonville, AR or via Zoom with sound transmission adapted for distance.</p>
+    <p class="offering-intake">A brief intake arrives by email after booking — birth data, ancestors, and the patterns you've been noticing.</p>
     <a href="https://calendly.com/christypaxtonwade/theflagship" target="_blank" class="offering-link">Book & Pay</a>
   </div>
 
@@ -253,6 +258,7 @@
     <p class="offering-body">This offering is a commitment — to yourself, to your cycles, to the practice of learning to move with the cosmos rather than against it. Once a month we meet. We track what's moving in the sky and what's moving in you. We name which Fields are active, which thresholds are approaching, and what the terrain ahead holds.</p>
     <p class="offering-body">Over six months, astrology stops being something you consult and becomes something you live — a continuous reading of the Map as it unfolds in real time. Includes six sessions. Two months free compared to single session rate. Begin at any eclipse.</p>
     <p class="offering-note">This container begins with a conversation, not a calendar slot. Write to me and we'll find the right eclipse to begin.</p>
+    <p class="offering-intake">A brief intake arrives by email once we begin — birth data, ancestors, and the patterns you've been noticing.</p>
     <a href="/mirror#apply" class="offering-link">Write to me</a>
   </div>
 </section>
