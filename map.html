@@ -274,12 +274,42 @@
     opacity: 0.6;
   }
 
+  /* ARC TRANSITION — horizontal image between arc sections */
+  .arc-transition {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 2.5rem auto 3.5rem;
+    opacity: 0.92;
+    border: 1px solid rgba(184,146,74,0.18);
+    transition: opacity 0.4s;
+  }
+  .arc-transition:hover { opacity: 1; }
+
   /* CLOSING SECTION */
   .map-closing {
     padding: 6rem 3rem;
-    background: var(--plum);
+    background-color: var(--plum);
+    background-image: url('/archway.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
+  .map-closing::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg,
+      rgba(37,16,32,0.5) 0%,
+      rgba(37,16,32,0.65) 50%,
+      rgba(37,16,32,0.75) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .map-closing > * { position: relative; z-index: 2; }
   .closing-title {
     font-family: var(--ff-d);
     font-size: clamp(1.8rem, 3vw, 2.6rem);
@@ -404,6 +434,8 @@
     </div>
   </section>
 
+  <img class="arc-transition" src="/into-underworld.jpg" alt="" loading="lazy">
+
   <!-- UNDERWORLD -->
   <section class="arc underworld">
     <div class="arc-header">
@@ -435,6 +467,8 @@
       </div>
     </div>
   </section>
+
+  <img class="arc-transition" src="/into-return.jpg" alt="" loading="lazy">
 
   <!-- RETURN -->
   <section class="arc return">
