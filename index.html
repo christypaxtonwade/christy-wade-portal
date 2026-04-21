@@ -22,11 +22,11 @@
     /* TYPE SCALE — same as branch pages */
     --text-body: 1.15rem;
     --text-body-sm: 1.05rem;
-    --text-label: 0.88rem;
+    --text-label: 0.94rem;
 
     /* OPACITY FLOOR */
     --op-body: 0.92;
-    --op-support: 0.85;
+    --op-support: 0.88;
   }
 
   html { scroll-behavior: smooth; }
@@ -56,7 +56,7 @@
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.7;
+    color: var(--cream); opacity: 0.88;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
   }
@@ -88,7 +88,7 @@
     font-family: var(--ff-d);
     font-size: 1.1rem;
     font-style: italic;
-    color: var(--gold-lt); opacity: 0.85;
+    color: var(--gold-lt); opacity: 0.88;
     letter-spacing: 0.06em;
     margin-bottom: 1.8rem;
     animation: fadeUp 1s 0.3s ease both;
@@ -118,7 +118,7 @@
     font-weight: 500;
     letter-spacing: 0.26em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.65;
+    color: var(--cream); opacity: 0.88;
     margin-bottom: 2rem;
     animation: fadeUp 1s 0.7s ease both;
   }
@@ -145,7 +145,7 @@
     font-size: var(--text-label);
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.45;
+    color: var(--cream); opacity: 0.88;
   }
   .hero-descend-line {
     width: 1px; height: 40px;
@@ -185,7 +185,7 @@
     font-family: var(--ff-d);
     font-size: var(--text-body-sm);
     font-style: italic;
-    color: var(--cream); opacity: 0.75;
+    color: var(--cream); opacity: 0.88;
     max-width: 480px; margin: 0 auto 4rem;
   }
   .branches-grid {
@@ -204,7 +204,7 @@
     font-family: var(--ff-d);
     font-size: clamp(2rem, 2.6vw, 2.8rem);
     font-style: italic; font-weight: 300;
-    color: var(--gold-lt); opacity: 0.8;
+    color: var(--gold-lt); opacity: 0.88;
     margin-bottom: 0.8rem; transition: opacity 0.4s;
   }
   .branch:hover .branch-name { opacity: 1; }
@@ -213,14 +213,14 @@
     font-size: var(--text-label);
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.65;
+    color: var(--cream); opacity: 0.88;
     margin-bottom: 1.2rem;
   }
   .branch-desc {
     font-family: var(--ff-d);
     font-size: var(--text-body-sm);
     font-style: italic;
-    color: var(--cream); opacity: 0.82;
+    color: var(--cream); opacity: 0.88;
     line-height: 1.7;
   }
 
@@ -245,7 +245,7 @@
     font-family: var(--ff-d);
     font-size: var(--text-body-sm);
     font-style: italic;
-    color: var(--cream); opacity: 0.85;
+    color: var(--cream); opacity: 0.88;
     line-height: 1.8;
   }
   .book-quote {
@@ -332,7 +332,7 @@
   }
   .footer-name {
     font-family: var(--ff-d); font-size: 1.4rem; font-style: italic;
-    color: var(--cream); opacity: 0.65;
+    color: var(--cream); opacity: 0.88;
     display: block; margin-bottom: 1rem;
     text-decoration: none; transition: opacity 0.3s;
   }
@@ -341,24 +341,34 @@
     font-family: var(--ff-b);
     font-size: var(--text-label);
     letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--cream); opacity: 0.45;
+    color: var(--cream); opacity: 0.88;
     display: block; margin-bottom: 1.8rem;
   }
   .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
   .footer-links a {
     font-family: var(--ff-b);
-    font-size: 0.85rem;
+    font-size: 0.94rem;
     letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--cream); opacity: 0.55;
+    color: var(--cream); opacity: 0.88;
     text-decoration: none; transition: opacity 0.3s, color 0.3s;
   }
   .footer-links a:hover { opacity: 0.9; color: var(--gold-lt); }
   .footer-copy {
-    font-family: var(--ff-b); font-size: 0.85rem;
-    color: var(--cream); opacity: 0.35;
+    font-family: var(--ff-b); font-size: 0.94rem;
+    color: var(--cream); opacity: 0.88;
   }
 
   /* ── BUTTONS ── */
+  .inline-link {
+    color: var(--gold-lt);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184, 146, 74, 0.35);
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .inline-link:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
   .btn-gold {
     display: inline-block; padding: 0.9rem 2.4rem;
     border: 1px solid var(--gold); color: var(--gold-lt);
@@ -370,7 +380,7 @@
   .btn-gold:hover { background: var(--gold); color: var(--ink); }
   .btn-ghost {
     display: inline-block; padding: 0.9rem 2.4rem;
-    border: 1px solid rgba(240,232,208,0.3); color: rgba(240,232,208,0.65);
+    border: 1px solid rgba(240,232,208,0.3); color: rgba(240,232,208,0.88);
     font-family: var(--ff-b); font-size: var(--text-label);
     font-weight: 500; letter-spacing: 0.2em;
     text-transform: uppercase; text-decoration: none;
@@ -396,7 +406,7 @@
   }
   .footer-social a {
     color: var(--cream);
-    opacity: 0.45;
+    opacity: 0.88;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
     display: flex;
@@ -473,7 +483,7 @@
 <section class="branches" id="branches">
   <span class="eyebrow" style="text-align:center;">Choose Your Direction</span>
   <h2 class="branches-title">The tree has many branches.<br>All of them lead back to the root.</h2>
-  <p class="branches-sub">Behind every branch is the Navigation Map of Consciousness — thirteen Fields of human experience, documented across three arcs. Enter from wherever you are.</p>
+  <p class="branches-sub">Behind every branch is the <a href="/map" class="inline-link">Navigation Map of Consciousness</a> — thirteen Fields of human experience, documented across three arcs. Enter from wherever you are.</p>
   <div class="branches-grid">
     <a href="/earth" class="branch">
       <div class="branch-name">Earth</div>
@@ -506,7 +516,7 @@
   <p class="book-body">A 4,000-word transmission about feminine transformation through deliberate underground work, using the Inanna myth, the birth metaphor, and ancestral lineage as the map. Published by Kiva Publishing, curated by Shannon Van Den Berg.</p>
   <div class="book-divider"></div>
   <p class="book-quote">"It is revolutionary when a woman stops fighting for channels that were never built to receive her, and descends with deliberation into the only terrain where her true frequency can be heard."</p>
-  <span class="btn-gold" style="opacity:0.4; cursor:default;">Coming May 2026</span>
+  <span class="btn-gold" style="opacity:0.88; cursor:default;">Coming May 2026</span>
 </section>
 
 <!-- 5. CLOSING QUOTE -->
@@ -525,6 +535,14 @@
   <h2 class="substack-title">The writing is the proof<br>of the signal.</h2>
   <p class="substack-body">Posts written from the underworld of descent — astrology, ancestry, and the Navigation Map that names the terrain underneath both. The writing moves through the Fields in real time: what's active, what's surfacing, what the lineage is trying to complete through the living descendant. This voice comes through loud and clear.</p>
   <a href="https://christywade.substack.com" target="_blank" class="btn-ink">Read the Substack →</a>
+</section>
+
+<!-- 6b. ARCHITECTURE DOWNLOAD -->
+<section class="substack-section" style="background: var(--ink); border-top: 1px solid rgba(184, 146, 74, 0.12);">
+  <span class="substack-eyebrow" style="color: var(--gold);">The Architecture · free companion</span>
+  <h2 class="substack-title" style="color: var(--cream);">For the reader in a threshold<br>that is asking, finally, to be mapped.</h2>
+  <p class="substack-body" style="color: var(--cream); opacity: 0.88;">If the map you have been using has stopped being the map, a designed companion arrives. Thirteen Fields. Sixty-nine Subterrains. The Shadow opened at full depth. Free, in your inbox.</p>
+  <a href="/map#subscribe" class="btn-gold">Receive the Architecture</a>
 </section>
 
 <!-- 7. BIO -->
