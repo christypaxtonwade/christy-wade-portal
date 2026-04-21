@@ -221,6 +221,27 @@
     opacity: 0.6;
   }
 
+  /* FIELD SIGIL — gold glyph above each Roman numeral */
+  .field-sigil {
+    display: block;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 0.8rem;
+    opacity: 0.88;
+    mix-blend-mode: screen;
+    transition: opacity 0.4s, transform 0.4s;
+    user-select: none;
+    pointer-events: none;
+  }
+  .field:hover .field-sigil,
+  .field.open .field-sigil {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  @media (max-width: 640px) {
+    .field-sigil { width: 60px; height: 60px; }
+  }
+
   /* GHOST ROMAN NUMERAL — decorative background depth */
   .field-roman-ghost {
     position: absolute;
@@ -470,6 +491,21 @@
 </footer>
 
 <script>
+  // Insert the sigil image at the top of each Field card.
+  // Filenames follow the convention /sigil-{roman}.jpg (lowercase), e.g. /sigil-i.jpg, /sigil-viii.jpg.
+  document.querySelectorAll('.field').forEach(function(el) {
+    var roman = el.querySelector('.field-roman');
+    if (roman) {
+      var sigil = document.createElement('img');
+      sigil.className = 'field-sigil';
+      sigil.src = '/sigil-' + roman.textContent.toLowerCase() + '.jpg';
+      sigil.alt = '';
+      sigil.setAttribute('aria-hidden', 'true');
+      sigil.setAttribute('loading', 'lazy');
+      el.insertBefore(sigil, roman);
+    }
+  });
+
   // Populate the ghost Roman numeral on each Field card (decorative background element).
   document.querySelectorAll('.field').forEach(function(el) {
     var roman = el.querySelector('.field-roman');
