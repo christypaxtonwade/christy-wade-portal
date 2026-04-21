@@ -46,8 +46,28 @@
   .map-hero {
     padding: 7rem 3rem 5rem;
     text-align: center;
-    background: radial-gradient(ellipse at center top, #1a1008 0%, #0f0b05 45%, var(--ink) 80%);
+    background-color: var(--ink);
+    background-image: url('/map-hero.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
   }
+  /* Dark gradient overlay for title legibility against the image */
+  .map-hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg,
+      rgba(12,10,7,0.38) 0%,
+      rgba(12,10,7,0.5) 40%,
+      rgba(12,10,7,0.55) 70%,
+      rgba(12,10,7,0.6) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .map-hero > * { position: relative; z-index: 2; }
   .map-title {
     font-family: var(--ff-d);
     font-size: clamp(3.5rem, 8vw, 7rem);
@@ -225,21 +245,6 @@
     transition: opacity 0.4s;
   }
 
-  /* HERO MOTIF — three nested descent-return arcs */
-  .map-hero { position: relative; overflow: hidden; }
-  .hero-motif {
-    position: absolute;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 1100px;
-    height: auto;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .map-hero > *:not(.hero-motif) { position: relative; z-index: 1; }
-
   /* ARC ORNAMENT — hollow diamond with extending lines */
   .arc-ornament {
     flex-shrink: 0;
@@ -318,32 +323,6 @@
 </nav>
 
 <section class="map-hero">
-  <svg class="hero-motif" viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
-    <g stroke="#b8924a" fill="none" stroke-linecap="round">
-      <!-- Outer descent-return arc (deepest) -->
-      <path d="M 100 20 Q 500 500 900 20" stroke-width="1" opacity="0.5"/>
-      <!-- Middle arc -->
-      <path d="M 180 20 Q 500 360 820 20" stroke-width="0.8" opacity="0.38"/>
-      <!-- Inner arc -->
-      <path d="M 260 20 Q 500 220 740 20" stroke-width="0.6" opacity="0.28"/>
-    </g>
-    <g fill="#b8924a" opacity="0.55">
-      <!-- 13 Field markers distributed along the outer arc -->
-      <circle cx="157" cy="84" r="2.4"/>
-      <circle cx="214" cy="138" r="2.4"/>
-      <circle cx="271" cy="182" r="2.4"/>
-      <circle cx="329" cy="216" r="2.4"/>
-      <circle cx="386" cy="240" r="2.4"/>
-      <circle cx="443" cy="255" r="2.4"/>
-      <circle cx="500" cy="260" r="3.2"/>
-      <circle cx="557" cy="255" r="2.4"/>
-      <circle cx="614" cy="240" r="2.4"/>
-      <circle cx="671" cy="216" r="2.4"/>
-      <circle cx="729" cy="182" r="2.4"/>
-      <circle cx="786" cy="138" r="2.4"/>
-      <circle cx="843" cy="84" r="2.4"/>
-    </g>
-  </svg>
   <span class="eyebrow" style="margin-bottom:1.6rem;">The Navigation Map of Consciousness</span>
   <h1 class="map-title">The Map</h1>
   <p class="map-subtitle">Thirteen Fields &nbsp;·&nbsp; Three Arcs &nbsp;·&nbsp; Documented Terrain</p>
