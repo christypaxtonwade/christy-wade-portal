@@ -340,6 +340,110 @@
   }
   .btn-gold:hover { background: var(--gold); color: var(--ink); }
 
+  /* ====================================================
+     Kit form styling — matches the site's ink/gold/cream
+     palette so the embed reads as part of the page.
+     Scoped to Kit's form UID so it cannot collide with
+     anything else.
+     ==================================================== */
+  .kit-form-wrapper {
+    max-width: 520px;
+    margin: 1.2rem auto 0;
+  }
+  .formkit-form[data-uid="b926790b5d"] {
+    background: transparent;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .formkit-form[data-uid="b926790b5d"][min-width~="700"] [data-style="clean"],
+  .formkit-form[data-uid="b926790b5d"][min-width~="800"] [data-style="clean"] {
+    padding: 0;
+  }
+  .formkit-form[data-uid="b926790b5d"] .formkit-input {
+    background: rgba(240, 232, 208, 0.06);
+    border: 1px solid rgba(184, 146, 74, 0.45);
+    border-radius: 2px;
+    color: var(--cream);
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    padding: 0.95rem 1rem;
+  }
+  .formkit-form[data-uid="b926790b5d"] .formkit-input::placeholder {
+    color: var(--cream);
+    opacity: 0.55;
+    font-style: italic;
+  }
+  .formkit-form[data-uid="b926790b5d"] .formkit-input:focus {
+    border-color: var(--gold);
+    outline: none;
+  }
+  .formkit-form[data-uid="b926790b5d"] .formkit-submit {
+    background: transparent !important;
+    border: 1px solid var(--gold) !important;
+    border-radius: 2px !important;
+    color: var(--gold-lt) !important;
+    font-family: var(--ff-b) !important;
+    font-size: var(--text-label) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    transition: background 0.3s, color 0.3s !important;
+  }
+  .formkit-form[data-uid="b926790b5d"] .formkit-submit > span {
+    padding: 0.95rem 2rem !important;
+  }
+  .formkit-form[data-uid="b926790b5d"] .formkit-submit:hover {
+    background: var(--gold) !important;
+    color: var(--ink) !important;
+  }
+  .formkit-form[data-uid="b926790b5d"] .formkit-submit:hover > span {
+    background-color: transparent !important;
+  }
+  .formkit-form[data-uid="b926790b5d"] .formkit-alert {
+    background: rgba(240, 232, 208, 0.04);
+    border: 1px solid rgba(184, 146, 74, 0.35);
+    border-radius: 2px;
+    color: var(--cream);
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 1.05rem;
+    opacity: 0.92;
+  }
+  .formkit-form[data-uid="b926790b5d"] .formkit-alert-success {
+    background: rgba(184, 146, 74, 0.08);
+    border-color: var(--gold);
+    color: var(--gold-lt);
+  }
+
+  /* Thank-you block — shown when subscriber returns from Kit's confirmation click */
+  .thank-you-block {
+    display: none;
+    text-align: center;
+    padding: 3rem 2rem 4rem;
+    background: var(--ink-soft);
+    border-top: 1px solid rgba(184,146,74,0.1);
+  }
+  .thank-you-block:target { display: block; }
+  .thank-you-block .eyebrow { color: var(--gold-lt); margin-bottom: 1.2rem; }
+  .thank-you-block h2 {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+  .thank-you-block p {
+    font-family: var(--ff-d);
+    font-style: italic;
+    color: var(--cream);
+    opacity: 0.88;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
   /* FOOTER */
   footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
   .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
@@ -504,11 +608,34 @@
 
 </div>
 
-<section class="map-closing">
+<section class="map-closing" id="subscribe">
   <span class="eyebrow" style="text-align:center; display:block; margin-bottom:1.4rem;">The Architecture Download</span>
-  <h2 class="closing-title">The full architecture is documented.<br>The rest lives behind the door.</h2>
-  <p class="closing-body">Every Field in the Map opens into sixty-nine Subterrains and four registers — Mythic, Conceptual, Somatic, and The Unreceived. Two hundred and seventy-six passages naming the specific terrain. Subscribe to receive the Architecture — a designed PDF showing the full map, with one Field opened to its full depth as a sample.</p>
-  <a href="#" class="btn-gold">Subscribe &amp; Receive</a>
+  <h2 class="closing-title">For the reader in a threshold<br>that is asking, finally, to be mapped.</h2>
+  <p class="closing-body">Thirteen Fields. Sixty-nine Subterrains. Four registers — Mythic, Conceptual, Somatic, The Unreceived. Two hundred and seventy-six passages of documented terrain. The Architecture is a designed companion to the work, with The Shadow opened to full depth as a sample. If the map you have been using has stopped being the map, this will orient you. Free. It arrives in your inbox.</p>
+
+  <div class="kit-form-wrapper">
+    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+    <form action="https://app.kit.com/forms/9353857/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9353857" data-uid="b926790b5d" data-format="inline" data-version="5" min-width="400 500 600 700 800">
+      <div data-style="clean">
+        <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+        <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+          <div class="formkit-field">
+            <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Enter your email" required type="email">
+          </div>
+          <button data-element="submit" class="formkit-submit formkit-submit">
+            <div class="formkit-spinner"><div></div><div></div><div></div></div>
+            <span>Receive the Architecture</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="thank-you-block" id="thank-you">
+  <span class="eyebrow">Confirmation received</span>
+  <h2>The Architecture has landed in your inbox.</h2>
+  <p>Check your email for the download. Read slowly. The vocabulary is load-bearing.</p>
 </section>
 
 <footer>
