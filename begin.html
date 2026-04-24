@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Begin — Christy Paxton Wade</title>
+<meta name="description" content="The doors into the work of the Navigation Map of Consciousness. Free and paid thresholds, from orientation to sustained mentorship.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0c0a07;
+    --ink-mid: #111009;
+    --gold: #b8924a;
+    --gold-lt: #d4ae6e;
+    --cream: #f0e8d0;
+    --plum: #251020;
+    --parchment: #ede8d5;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+    --text-body: 1.15rem;
+    --text-body-sm: 1.05rem;
+    --text-label: 0.94rem;
+    --op-body: 0.92;
+    --op-support: 0.88;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--ff-b);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; justify-content: center; align-items: center;
+    padding: 1.1rem 3rem;
+    background: rgba(12,10,7,0.95);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(184,146,74,0.1);
+  }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream); opacity: 0.88;
+    text-decoration: none;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold-lt); }
+  .nav-links a.active { color: var(--gold-lt); opacity: 1; }
+  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.25); }
+
+  /* EYEBROW */
+  .eyebrow {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold); opacity: 0.95;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 55vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    padding: 10rem 3rem 6rem;
+    border-bottom: 1px solid rgba(184,146,74,0.1);
+  }
+  .hero-eyebrow { display: block; margin-bottom: 1.4rem; }
+  .hero-title { font-family: var(--ff-d); font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 1.2rem; line-height: 1.1; }
+  .hero-sub { font-family: var(--ff-d); font-size: clamp(1.2rem, 1.8vw, 1.5rem); font-style: italic; color: var(--gold-lt); max-width: 680px; line-height: 1.5; }
+
+  /* SECTION PROSE */
+  .section-prose { max-width: 720px; margin: 0 auto; padding: 5rem 3rem; text-align: center; }
+  .section-prose p { font-family: var(--ff-d); font-size: var(--text-body); line-height: 1.85; color: var(--cream); opacity: var(--op-body); margin-bottom: 1.2rem; }
+
+  /* SECTION HEADERS */
+  .section-header { text-align: center; margin-bottom: 3rem; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .section-title { font-family: var(--ff-d); font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.6rem; line-height: 1.25; }
+  .section-sub { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--gold-lt); opacity: 0.92; max-width: 560px; margin: 0 auto; }
+
+  /* FIRST DOORS — featured */
+  .first-doors-section { background: var(--ink); padding: 6rem 3rem; border-top: 1px solid rgba(184,146,74,0.1); }
+
+  .first-door-card { max-width: 860px; margin: 0 auto 1.8rem; border: 1px solid rgba(184,146,74,0.22); padding: 3rem 3.5rem; background: rgba(184,146,74,0.04); transition: border-color 0.3s; }
+  .first-door-card:hover { border-color: rgba(184,146,74,0.4); }
+
+  /* LADDER GROUPS */
+  .ladder-section { padding: 5rem 3rem; border-top: 1px solid rgba(184,146,74,0.07); }
+
+  .offering-card { max-width: 860px; margin: 0 auto 1.2rem; border: 1px solid rgba(184,146,74,0.18); padding: 2rem 2.8rem; background: rgba(184,146,74,0.03); transition: border-color 0.3s; }
+  .offering-card:hover { border-color: rgba(184,146,74,0.35); }
+  .offering-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.4rem; }
+  .offering-tag { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.95; }
+  .offering-price { font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.95; }
+  .offering-name { font-family: var(--ff-d); font-size: clamp(1.6rem, 2.2vw, 2rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.4rem; }
+  .offering-format { font-family: var(--ff-b); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); opacity: 0.82; margin-bottom: 1rem; }
+  .offering-body { font-family: var(--ff-d); font-size: var(--text-body); font-weight: 300; color: var(--cream); line-height: 1.75; opacity: var(--op-body); margin-bottom: 1rem; }
+  .offering-link { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); opacity: 0.95; text-decoration: none; transition: opacity 0.3s; }
+  .offering-link:hover { opacity: 1; }
+  .offering-link::after { content: ' \2192'; }
+
+  /* FEATURED (first-door) cards are larger */
+  .first-door-card .offering-name { font-size: clamp(1.8rem, 2.6vw, 2.4rem); }
+
+  /* COMING section — softer */
+  .coming-section { padding: 5rem 3rem; border-top: 1px solid rgba(184,146,74,0.07); }
+  .coming-card { max-width: 860px; margin: 0 auto 1.2rem; border: 1px dashed rgba(184,146,74,0.22); padding: 2rem 2.8rem; background: rgba(184,146,74,0.015); opacity: 0.92; }
+  .coming-card .offering-tag { opacity: 0.78; }
+
+  /* BRANCHES NAV */
+  .branches-section { padding: 5rem 3rem; background: var(--ink-mid); border-top: 1px solid rgba(184,146,74,0.07); text-align: center; }
+  .branches-title { font-family: var(--ff-d); font-size: clamp(1.6rem, 2.3vw, 2rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 1rem; }
+  .branches-sub { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.8; max-width: 560px; margin: 0 auto 2.8rem; }
+  .branches-grid { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; max-width: 860px; margin: 0 auto; }
+  .branch-link { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.95; text-decoration: none; border: 1px solid rgba(184,146,74,0.3); padding: 1rem 1.8rem; transition: all 0.3s; display: inline-block; }
+  .branch-link:hover { border-color: var(--gold); color: var(--gold-lt); }
+  .branch-link small { display: block; font-family: var(--ff-d); font-style: italic; font-weight: 400; font-size: 0.88rem; letter-spacing: 0.02em; text-transform: none; color: var(--cream); opacity: 0.72; margin-top: 0.3rem; }
+
+  /* CLOSING */
+  .closing-section { padding: 6rem 3rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.1); }
+  .closing-text { font-family: var(--ff-d); font-size: clamp(1.4rem, 2vw, 1.8rem); font-style: italic; color: var(--cream); opacity: 0.92; max-width: 620px; margin: 0 auto 2.4rem; line-height: 1.5; }
+  .btn-gold { display: inline-block; font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 1rem 2.2rem; text-decoration: none; transition: background 0.3s; }
+  .btn-gold:hover { background: var(--gold-lt); }
+
+  /* FOOTER */
+  footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
+  .footer-name:hover { opacity: 1; }
+  .footer-social { display: flex; gap: 1.4rem; justify-content: center; margin-bottom: 1.4rem; }
+  .footer-social a { color: var(--gold); opacity: 0.75; transition: opacity 0.3s; }
+  .footer-social a:hover { opacity: 1; }
+  .footer-links { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.88rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.85; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a:hover { opacity: 1; }
+  .footer-copy { font-family: var(--ff-d); font-style: italic; font-size: 0.92rem; color: var(--cream); opacity: 0.55; }
+
+  @media (max-width: 760px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-divider { display: none; }
+    .nav-links { gap: 1rem; font-size: 0.82rem; }
+    .hero { padding: 8rem 1.5rem 4rem; }
+    .first-doors-section, .ladder-section, .coming-section, .branches-section, .closing-section { padding: 4rem 1.5rem; }
+    .first-door-card, .offering-card, .coming-card { padding: 2rem; }
+    .offering-meta { flex-direction: column; gap: 0.5rem; }
+    .branches-grid { gap: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="/begin" class="active">Begin</a></li>
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky">Sky</a></li>
+    <li><a href="/life">Life</a></li>
+    <li><a href="/mirror">Mirror</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="/mirror#apply">Apply</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="eyebrow hero-eyebrow">Begin</span>
+  <h1 class="hero-title">Which Door Do You Choose?</h1>
+  <p class="hero-sub">The Navigation Map is built, the terrain will feel like Home. The door that calls to you is the one that is meant for you.</p>
+</section>
+
+<!-- ORIENTATION -->
+<section class="section-prose">
+  <p>The Navigation Map of Consciousness charts thirteen Fields of interior experience across three arcs &mdash; Descent, Underworld, Return. The offerings below are the current doors into that architecture. Every door leads to the same terrain. Start where the threshold meets you.</p>
+</section>
+
+<!-- THREE FIRST DOORS -->
+<section class="first-doors-section">
+  <div class="section-header">
+    <span class="eyebrow" style="display:block; margin-bottom: 1.2rem;">Three First Doors</span>
+    <h2 class="section-title">Where most readers begin.</h2>
+    <p class="section-sub">Two free. One priced. Each a real door into the work.</p>
+  </div>
+
+  <!-- First Signal -->
+  <div class="first-door-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Entry Point &nbsp;&middot;&nbsp; Free</span>
+      <span class="offering-price">30 Minutes</span>
+    </div>
+    <h3 class="offering-name">First Signal</h3>
+    <p class="offering-format">A Discovery Conversation</p>
+    <p class="offering-body">A conversation before the threshold. No intake, no preparation &mdash; a first listening, where we both sense whether the frequency matches.</p>
+    <a href="https://calendly.com/christypaxtonwade/firstsignal" target="_blank" class="offering-link">Book your First Signal</a>
+  </div>
+
+  <!-- The Architecture -->
+  <div class="first-door-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Free &nbsp;&middot;&nbsp; Delivered to Your Inbox</span>
+      <span class="offering-price">24-Page PDF</span>
+    </div>
+    <h3 class="offering-name">The Architecture</h3>
+    <p class="offering-format">A Companion to the Navigation Map</p>
+    <p class="offering-body">A 24-page companion to the Navigation Map. Field X at archive depth, the four registers, the three arcs. Free in your inbox when you subscribe.</p>
+    <a href="/map#subscribe" class="offering-link">Subscribe at /map</a>
+  </div>
+
+  <!-- The Lineage Session -->
+  <div class="first-door-card">
+    <div class="offering-meta">
+      <span class="offering-tag">One-on-One &nbsp;&middot;&nbsp; The Ancestral Flagship</span>
+      <span class="offering-price">$444</span>
+    </div>
+    <h3 class="offering-name">The Lineage Session</h3>
+    <p class="offering-format">90-Minute Session &nbsp;&middot;&nbsp; 12-Ancestor Weaving &nbsp;&middot;&nbsp; First Convergence</p>
+    <p class="offering-body">Your family has a frequency. In this session we read the code together, using the Navigation Map to name which Fields your lineage activates and where the unresolved patterns sit.</p>
+    <div style="border-top: 1px dashed rgba(184,146,74,0.22); padding-top: 1.2rem; margin-top: 1.2rem; margin-bottom: 1.2rem;">
+      <p style="font-family: var(--ff-d); font-style: italic; color: var(--gold-lt); margin-bottom: 0.6rem;">What you receive:</p>
+      <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--ff-d); font-size: var(--text-body); color: var(--cream); opacity: var(--op-body); line-height: 1.75;">
+        <li style="margin-bottom: 0.35rem; padding-left: 1.4rem; text-indent: -1.4rem;"><span style="color: var(--gold); margin-right: 0.6rem;">&middot;</span>A 90-minute live session of ancestral research</li>
+        <li style="margin-bottom: 0.35rem; padding-left: 1.4rem; text-indent: -1.4rem;"><span style="color: var(--gold); margin-right: 0.6rem;">&middot;</span>A curated 12-ancestor starter Weaving, each rendered across five layers, delivered within 2 weeks</li>
+        <li style="margin-bottom: 0.35rem; padding-left: 1.4rem; text-indent: -1.4rem;"><span style="color: var(--gold); margin-right: 0.6rem;">&middot;</span>Your first Convergence reading &mdash; an 8-section pattern analysis across your Weaving</li>
+        <li style="margin: 0; padding-left: 1.4rem; text-indent: -1.4rem;"><span style="color: var(--gold); margin-right: 0.6rem;">&middot;</span>Portal access to your Weaving and Convergence</li>
+      </ul>
+    </div>
+    <a href="/intake?offering=The%20Lineage%20Session" class="offering-link">Begin the research</a>
+  </div>
+</section>
+
+<!-- LADDER ORIENTATION PROSE -->
+<section class="section-prose" style="padding: 4rem 3rem 1rem;">
+  <p>Going down the rabbit hole does not depend on your worthiness. It does depend on the choice you make to cross a threshold. Some doors are free and arrive in your inbox. Some are single sessions. Some are months of sustained attention. Enter at the door that meets you where you are.</p>
+</section>
+
+<!-- LADDER — Orientation (always free) -->
+<section class="ladder-section" id="the-ladder">
+  <div class="section-header">
+    <span class="eyebrow">Orientation &nbsp;&middot;&nbsp; Always Free</span>
+    <h2 class="section-title">The doors that are always open.</h2>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Life &nbsp;&middot;&nbsp; Substack</span>
+      <span class="offering-price">Free</span>
+    </div>
+    <h3 class="offering-name">The Alchemy of Midlife</h3>
+    <p class="offering-format">Weekly Essays &nbsp;&middot;&nbsp; Notes</p>
+    <p class="offering-body">Weekly essays and Notes. My voice, unfiltered.</p>
+    <a href="https://christywade.substack.com" target="_blank" class="offering-link">Subscribe on Substack</a>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Site &nbsp;&middot;&nbsp; Visual Introduction</span>
+      <span class="offering-price">Free</span>
+    </div>
+    <h3 class="offering-name">The Navigation Map</h3>
+    <p class="offering-format">13 Fields &nbsp;&middot;&nbsp; 3 Arcs</p>
+    <p class="offering-body">See the architecture at a glance. You'll recognize yourself here.</p>
+    <a href="/map" class="offering-link">View the Map</a>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Email Opt-In &nbsp;&middot;&nbsp; 24-Page Companion</span>
+      <span class="offering-price">Free</span>
+    </div>
+    <h3 class="offering-name">The Architecture</h3>
+    <p class="offering-format">Field X at Archive Depth &nbsp;&middot;&nbsp; The Four Registers</p>
+    <p class="offering-body">24-page companion, Field X at archive depth.</p>
+    <a href="/map#subscribe" class="offering-link">Subscribe at /map</a>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Sky &nbsp;&middot;&nbsp; Discovery Call</span>
+      <span class="offering-price">Free</span>
+    </div>
+    <h3 class="offering-name">First Signal</h3>
+    <p class="offering-format">30 Minutes</p>
+    <p class="offering-body">A 30-minute discovery conversation.</p>
+    <a href="https://calendly.com/christypaxtonwade/firstsignal" target="_blank" class="offering-link">Book the call</a>
+  </div>
+</section>
+
+<!-- LADDER — 1:1 Astrology -->
+<section class="ladder-section">
+  <div class="section-header">
+    <span class="eyebrow">1:1 Astrology &nbsp;&middot;&nbsp; Sky</span>
+    <h2 class="section-title">Astrology mapped to the Fields.</h2>
+    <p class="section-sub">Three depths of entry. Chart reading as cartography.</p>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Single Session &nbsp;&middot;&nbsp; Astrology Update</span>
+      <span class="offering-price">$88</span>
+    </div>
+    <h3 class="offering-name">First Listen</h3>
+    <p class="offering-format">45 Min &nbsp;&middot;&nbsp; Expert Astrology &nbsp;&middot;&nbsp; Cosmic Surface Dive</p>
+    <p class="offering-body">A standalone session mapping current transits to your specific chart and the Fields those transits are activating.</p>
+    <a href="/sky" class="offering-link">Read more on Sky</a>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Foundational &nbsp;&middot;&nbsp; New Clients</span>
+      <span class="offering-price">$144</span>
+    </div>
+    <h3 class="offering-name">Your Signal Decoded</h3>
+    <p class="offering-format">90 Min &nbsp;&middot;&nbsp; Your Natal Chart as the Compass to the Map</p>
+    <p class="offering-body">Full natal chart read mapped to the thirteen Fields. The placements that shape how you move, the transits that are live, the terrain ahead.</p>
+    <a href="/sky" class="offering-link">Read more on Sky</a>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">The Flagship &nbsp;&middot;&nbsp; Deep Work</span>
+      <span class="offering-price">$244</span>
+    </div>
+    <h3 class="offering-name">Sovereign Signal</h3>
+    <p class="offering-format">2 Hr &nbsp;&middot;&nbsp; Your Natal Chart at Depth &nbsp;&middot;&nbsp; With Frequency Treatment</p>
+    <p class="offering-body">The flagship Sky session. A current arc read against the Navigation Map &mdash; Descent, Underworld, or Return &mdash; named where you are inside it. Sound and signal woven in.</p>
+    <a href="/sky" class="offering-link">Read more on Sky</a>
+  </div>
+</section>
+
+<!-- LADDER — 1:1 Ancestral -->
+<section class="ladder-section">
+  <div class="section-header">
+    <span class="eyebrow">1:1 Ancestral &nbsp;&middot;&nbsp; Earth</span>
+    <h2 class="section-title">Ancestral research at archive depth.</h2>
+    <p class="section-sub">Lineage Session as entry. Weaving and Convergence as deliverables.</p>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">The Ancestral Flagship</span>
+      <span class="offering-price">$444</span>
+    </div>
+    <h3 class="offering-name">The Lineage Session</h3>
+    <p class="offering-format">90-Minute Session + 12-Ancestor Weaving + First Convergence</p>
+    <p class="offering-body">Ancestral research session, a curated 12-ancestor starter Weaving across five layers, and your first 8-section Convergence reading. See the full Earth branch for what's included.</p>
+    <a href="/earth" class="offering-link">Read the full description</a>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Deepening &nbsp;&middot;&nbsp; Add-On After Lineage</span>
+      <span class="offering-price">$333</span>
+    </div>
+    <h3 class="offering-name">Weaving Extension</h3>
+    <p class="offering-format">8 Additional Ancestors Across Five Layers</p>
+    <p class="offering-body">Eight more ancestors added to your existing Weaving. For clients whose starter Weaving is complete and the pattern wants to grow.</p>
+    <a href="/intake?offering=Weaving%20Extension" class="offering-link">Begin the extension</a>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Returning Clients &nbsp;&middot;&nbsp; New Pattern Reading</span>
+      <span class="offering-price">$244</span>
+    </div>
+    <h3 class="offering-name">Convergence Update</h3>
+    <p class="offering-format">New Convergence + 60-Minute Reading Session</p>
+    <p class="offering-body">A new Convergence across your grown Weaving, plus a 60-minute session to read it together. For clients who sense the pattern has deepened.</p>
+    <a href="/intake?offering=Convergence%20Update" class="offering-link">Begin the update</a>
+  </div>
+</section>
+
+<!-- LADDER — Group Containers -->
+<section class="ladder-section">
+  <div class="section-header">
+    <span class="eyebrow">Group Containers</span>
+    <h2 class="section-title">When the work becomes kinship.</h2>
+    <p class="section-sub">Group-paced, voice-shared, document-backed.</p>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">New &nbsp;&middot;&nbsp; Enrollment Open &nbsp;&middot;&nbsp; Cohort #1</span>
+      <span class="offering-price">$777 &nbsp;&middot;&nbsp; Early-bird $666</span>
+    </div>
+    <h3 class="offering-name">The Descent Cohort</h3>
+    <p class="offering-format">6 Weeks &nbsp;&middot;&nbsp; 8 Participants &nbsp;&middot;&nbsp; Cohort #1 Begins 1 July 2026</p>
+    <p class="offering-body">Four 90-minute live calls structured around the four registers, two office hours, a personal Convergence-lite snapshot for each participant, and a private Substack-thread community. A guided descent through the Map and the four registers.</p>
+    <a href="/intake?offering=The%20Descent%20Cohort" class="offering-link">Enroll in the cohort</a>
+  </div>
+</section>
+
+<!-- LADDER — Digital Reference -->
+<section class="ladder-section">
+  <div class="section-header">
+    <span class="eyebrow">Digital Reference</span>
+    <h2 class="section-title">The Fieldguide as a standalone document.</h2>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Launching 15 July 2026</span>
+      <span class="offering-price">$88</span>
+    </div>
+    <h3 class="offering-name">The Fieldguide</h3>
+    <p class="offering-format">276 Passages &nbsp;&middot;&nbsp; All 13 Fields &nbsp;&middot;&nbsp; Astrological & Mythic Connections</p>
+    <p class="offering-body">The complete Fieldguide at client-facing depth. Every Field, every Subterrain, all four registers. The Navigation Map as a reference document you hold.</p>
+    <a href="/map#subscribe" class="offering-link">Subscribe to be notified at launch</a>
+  </div>
+</section>
+
+<!-- LADDER — Sustained Mentorship -->
+<section class="ladder-section">
+  <div class="section-header">
+    <span class="eyebrow">Sustained Mentorship</span>
+    <h2 class="section-title">The longest container.</h2>
+    <p class="section-sub">The Mirror Work holds all five tiers.</p>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">The Mentorship &nbsp;&middot;&nbsp; Application Required</span>
+      <span class="offering-price">$1,888</span>
+    </div>
+    <h3 class="offering-name">Mirror Work</h3>
+    <p class="offering-format">3 Months &nbsp;&middot;&nbsp; Bi-Weekly 75-Min + Voice Support &nbsp;&middot;&nbsp; Ancestral & Astrological Mapping at Depth</p>
+    <p class="offering-body">Three months of sustained attention. Full Navigation Map access. Architecture PDF. Fieldguide PDF. A built Weaving. The Convergence generated as capstone. For the woman ready to stop managing her transformation and start completing it.</p>
+    <a href="/mirror#apply" class="offering-link">Apply for Mirror Work</a>
+  </div>
+</section>
+
+<!-- COMING 2027 -->
+<section class="coming-section">
+  <div class="section-header" style="opacity: 0.78;">
+    <span class="eyebrow">Coming &nbsp;&middot;&nbsp; 2027</span>
+    <h2 class="section-title">Two containers being built from the inside out.</h2>
+    <p class="section-sub">Waitlists are open for both. Write to christypaxton@gmail.com to be held in the field.</p>
+  </div>
+
+  <div class="coming-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Earth &nbsp;&middot;&nbsp; Coming 2027</span>
+      <span class="offering-price">Multi-Day Retreat</span>
+    </div>
+    <h3 class="offering-name">The Descent Retreat</h3>
+    <p class="offering-format">Small Group &nbsp;&middot;&nbsp; In Person &nbsp;&middot;&nbsp; Held Space</p>
+    <p class="offering-body">A small group gathered in physical space for the deliberate underground work. Music, astrology, ancestral mapping, and the particular alchemy that happens when women descend together.</p>
+    <a href="mailto:christypaxton@gmail.com" class="offering-link">Be held in the field</a>
+  </div>
+
+  <div class="coming-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Life &nbsp;&middot;&nbsp; Coming 2027</span>
+      <span class="offering-price">Seasonal Gathering</span>
+    </div>
+    <h3 class="offering-name">The Living Circle</h3>
+    <p class="offering-format">Online &nbsp;&middot;&nbsp; Intimate &nbsp;&middot;&nbsp; Seasonal</p>
+    <p class="offering-body">A quarterly gathering structured around a theme from the descent. Astrology, ancestry, practice, presence. A small group that meets inside the transmission rather than around it.</p>
+    <a href="mailto:christypaxton@gmail.com" class="offering-link">Be held in the field</a>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section class="branches-section">
+  <h2 class="branches-title">Or walk a single branch.</h2>
+  <p class="branches-sub">If you want to go deeper into one terrain before choosing an offering, the doors are here.</p>
+  <div class="branches-grid">
+    <a href="/earth" class="branch-link">Earth<small>The Roots</small></a>
+    <a href="/sky" class="branch-link">Sky<small>The Canopy</small></a>
+    <a href="/life" class="branch-link">Life<small>The Living</small></a>
+    <a href="/mirror" class="branch-link">Mirror<small>The Heartwood</small></a>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing-section">
+  <p class="closing-text">Every door on this page leads to the same architecture. If you're not ready for any of the offerings, the writing is free &mdash; that's where most readers begin.</p>
+  <a href="https://christywade.substack.com" target="_blank" class="btn-gold">Subscribe to Substack</a>
+</section>
+
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/christypaxtonwade" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="https://www.instagram.com/christypaxtonwade" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+  </div>
+  <div class="footer-links">
+    <a href="/begin">Begin</a>
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="/mirror#apply">Apply</a>
+    <a href="https://christywade.substack.com" target="_blank">Substack</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Christy Paxton Wade &nbsp;&middot;&nbsp; Bentonville, Arkansas</p>
+</footer>
+</body>
+</html>
