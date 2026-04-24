@@ -5,6 +5,7 @@
   ],
   "routes": [
     { "src": "/", "dest": "/index.html" },
+    { "src": "/begin", "dest": "/begin.html" },
     { "src": "/earth", "dest": "/earth.html" },
     { "src": "/sky", "dest": "/sky.html" },
     { "src": "/life", "dest": "/life.html" },
