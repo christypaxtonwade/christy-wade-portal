@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signals from the Field — Christy Paxton Wade</title>
+<meta name="description" content="A structured reading of the Field, register, and frequencies you're walking right now. Free. Eight questions. Three to five minutes.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0c0a07;
+    --ink-mid: #111009;
+    --gold: #b8924a;
+    --gold-lt: #d4ae6e;
+    --gold-dim: rgba(184,146,74,0.3);
+    --cream: #f0e8d0;
+    --plum: #251020;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+    --text-body: 1.15rem;
+    --text-body-sm: 1.05rem;
+    --text-label: 0.94rem;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--ff-b);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    font-size: 16px;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; justify-content: center; align-items: center;
+    padding: 1.1rem 3rem;
+    background: rgba(12,10,7,0.95);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(184,146,74,0.1);
+  }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream); opacity: 0.88;
+    text-decoration: none;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold-lt); }
+  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.25); }
+
+  /* EYEBROW */
+  .eyebrow {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold); opacity: 0.95;
+    display: block;
+  }
+
+  /* QUIZ CONTAINER */
+  .quiz-shell {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 9rem 2rem 4rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  /* SCREENS — stacked, only one visible */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* INTRO SCREEN */
+  .intro-eyebrow { display: block; text-align: center; margin-bottom: 1.6rem; }
+  .intro-title {
+    font-family: var(--ff-d);
+    font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    text-align: center;
+    line-height: 1.15;
+    margin-bottom: 1.4rem;
+  }
+  .intro-sub {
+    font-family: var(--ff-d);
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+    font-style: italic;
+    color: var(--gold-lt);
+    text-align: center;
+    line-height: 1.6;
+    max-width: 580px;
+    margin: 0 auto 2.6rem;
+  }
+  .intro-body {
+    font-family: var(--ff-d);
+    font-size: var(--text-body);
+    color: var(--cream);
+    opacity: 0.92;
+    line-height: 1.85;
+    max-width: 580px;
+    margin: 0 auto 2.6rem;
+    text-align: left;
+  }
+  .intro-body p { margin-bottom: 1rem; }
+  .intro-meta {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.88;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .intro-cta-wrap { text-align: center; }
+
+  /* PROGRESS INDICATOR */
+  .progress {
+    text-align: center;
+    margin-bottom: 2.4rem;
+  }
+  .progress-text {
+    font-family: var(--ff-b);
+    font-size: 0.82rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.88;
+    margin-bottom: 0.8rem;
+  }
+  .progress-bar {
+    max-width: 280px;
+    height: 1px;
+    margin: 0 auto;
+    background: rgba(184,146,74,0.18);
+    position: relative;
+  }
+  .progress-bar-fill {
+    position: absolute;
+    top: 0; left: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.5s ease;
+  }
+
+  /* QUESTION SCREENS */
+  .question-prompt {
+    font-family: var(--ff-d);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .question-instruction {
+    font-family: var(--ff-b);
+    font-size: 0.86rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.88;
+    text-align: center;
+    margin-bottom: 2.6rem;
+  }
+  .options {
+    list-style: none;
+    margin: 0 auto 2.6rem;
+    max-width: 640px;
+  }
+  .option {
+    margin-bottom: 0.9rem;
+    border: 1px solid rgba(184,146,74,0.18);
+    background: rgba(184,146,74,0.03);
+    padding: 1.2rem 1.4rem;
+    cursor: pointer;
+    transition: border-color 0.3s, background 0.3s;
+    font-family: var(--ff-d);
+    font-size: var(--text-body-sm);
+    color: var(--cream);
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+  .option:hover { border-color: rgba(184,146,74,0.4); background: rgba(184,146,74,0.06); }
+  .option.selected { border-color: var(--gold); background: rgba(184,146,74,0.09); }
+  .option-marker {
+    flex: 0 0 auto;
+    width: 14px; height: 14px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 50%;
+    margin-top: 0.4rem;
+    transition: border-color 0.3s, background 0.3s;
+    position: relative;
+  }
+  .option.selected .option-marker {
+    border-color: var(--gold);
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(184,146,74,0.18);
+  }
+  .option-text { flex: 1; }
+  .multiselect .option-marker { border-radius: 2px; }
+
+  /* NAV BUTTONS */
+  .quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 640px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+  .btn-back, .btn-next, .btn-primary {
+    font-family: var(--ff-b);
+    font-size: 0.9rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold-lt);
+    padding: 0.95rem 2rem;
+    transition: background 0.3s, color 0.3s, opacity 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-back { border-color: rgba(184,146,74,0.3); color: var(--cream); opacity: 0.6; }
+  .btn-back:hover { opacity: 0.95; }
+  .btn-next:hover, .btn-primary:hover {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .btn-next:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: transparent;
+    color: var(--gold-lt);
+  }
+  .btn-next:disabled:hover { background: transparent; color: var(--gold-lt); }
+  .btn-primary { font-size: 1rem; padding: 1.1rem 2.6rem; }
+
+  /* RESULT SCREEN */
+  .result-eyebrow { display: block; text-align: center; margin-bottom: 1.4rem; }
+  .result-title {
+    font-family: var(--ff-d);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--cream);
+    text-align: center;
+    line-height: 1.15;
+    margin-bottom: 2.6rem;
+  }
+  .result-section { margin-bottom: 2.4rem; }
+  .result-section:last-of-type { margin-bottom: 3.4rem; }
+  .result-section-label {
+    font-family: var(--ff-b);
+    font-size: 0.82rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.92;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(184,146,74,0.2);
+    padding-bottom: 0.5rem;
+  }
+  .result-section-body {
+    font-family: var(--ff-d);
+    font-size: var(--text-body);
+    color: var(--cream);
+    line-height: 1.85;
+    opacity: 0.95;
+  }
+  .result-section-body p { margin-bottom: 0.9rem; }
+  .result-section-body p:last-child { margin-bottom: 0; }
+  .result-tags { list-style: none; }
+  .result-tags li {
+    font-family: var(--ff-d);
+    font-size: var(--text-body-sm);
+    color: var(--cream);
+    line-height: 1.65;
+    padding: 0.5rem 0;
+    border-bottom: 1px dotted rgba(184,146,74,0.18);
+  }
+  .result-tags li:last-child { border-bottom: none; }
+  .result-tag-name { color: var(--gold-lt); font-style: italic; font-weight: 400; }
+
+  /* EMAIL CAPTURE */
+  .email-capture {
+    margin-top: 3rem;
+    padding: 2.6rem 2rem;
+    border-top: 1px solid rgba(184,146,74,0.2);
+    text-align: center;
+  }
+  .email-prompt {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--gold-lt);
+    margin-bottom: 1.6rem;
+    line-height: 1.5;
+  }
+  .email-sub {
+    font-family: var(--ff-b);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    opacity: 0.78;
+    margin-bottom: 2rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* KIT FORM STYLING — matches the site's ink/gold/cream */
+  .kit-form-wrapper { display: flex; justify-content: center; }
+  .formkit-form[data-uid] {
+    background: transparent !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 480px !important;
+  }
+  .formkit-form[data-uid][min-width~="700"] [data-style="clean"],
+  .formkit-form[data-uid][min-width~="800"] [data-style="clean"] {
+    padding: 0 !important;
+  }
+  .formkit-form[data-uid] .formkit-input {
+    background: transparent !important;
+    border: 1px solid var(--gold-dim) !important;
+    color: var(--cream) !important;
+    font-family: var(--ff-b) !important;
+    font-size: 1rem !important;
+    padding: 0.95rem 1rem !important;
+    border-radius: 0 !important;
+  }
+  .formkit-form[data-uid] .formkit-input::placeholder {
+    color: var(--cream) !important;
+    opacity: 0.5 !important;
+  }
+  .formkit-form[data-uid] .formkit-input:focus {
+    border-color: var(--gold) !important;
+    outline: none !important;
+  }
+  .formkit-form[data-uid] .formkit-submit {
+    background: transparent !important;
+    border: 1px solid var(--gold) !important;
+    color: var(--gold-lt) !important;
+    font-family: var(--ff-b) !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    padding: 0.95rem 2rem !important;
+    border-radius: 0 !important;
+    transition: background 0.3s, color 0.3s !important;
+  }
+  .formkit-form[data-uid] .formkit-submit > span {
+    background: transparent !important;
+    color: var(--gold-lt) !important;
+  }
+  .formkit-form[data-uid] .formkit-submit:hover {
+    background: var(--gold) !important;
+    color: var(--ink) !important;
+  }
+  .formkit-form[data-uid] .formkit-submit:hover > span {
+    background: var(--gold) !important;
+    color: var(--ink) !important;
+  }
+  .formkit-form[data-uid] .formkit-alert {
+    color: var(--cream) !important;
+    background: transparent !important;
+    border: none !important;
+    font-family: var(--ff-b) !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(184,146,74,0.1);
+    padding: 3rem 3rem 2.4rem;
+    text-align: center;
+  }
+  footer .footer-name {
+    font-family: var(--ff-d);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gold-lt);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.06em;
+  }
+  .footer-links { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.88rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.85; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a:hover { opacity: 1; }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.84rem; letter-spacing: 0.06em; color: var(--cream); opacity: 0.55; }
+
+  /* MOBILE */
+  @media (max-width: 720px) {
+    nav { padding: 1rem 1.4rem; }
+    .nav-links { gap: 1rem; font-size: 0.82rem; }
+    .quiz-shell { padding: 7rem 1.4rem 3rem; }
+    .options { max-width: 100%; }
+    .quiz-nav { max-width: 100%; flex-direction: column-reverse; align-items: stretch; gap: 0.8rem; }
+    .quiz-nav .btn-back, .quiz-nav .btn-next { width: 100%; text-align: center; }
+    footer { padding: 2.4rem 1.4rem 1.8rem; }
+    .footer-links { gap: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="/begin">Begin</a></li>
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky">Sky</a></li>
+    <li><a href="/life">Life</a></li>
+    <li><a href="/mirror">Mirror</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="/mirror#apply">Apply</a></li>
+  </ul>
+</nav>
+
+<div class="quiz-shell">
+
+  <!-- ===================== INTRO SCREEN ===================== -->
+  <section id="screen-intro" class="screen active">
+    <span class="eyebrow intro-eyebrow">Signals from the Field</span>
+    <h1 class="intro-title">A reading of the terrain you're walking right now.</h1>
+    <p class="intro-sub">Eight questions. A structured reading at the end. Free.</p>
+
+    <div class="intro-body">
+      <!-- VOICE: this paragraph is scaffolding for Christy's hand. The rest of the page is in voice; this intro is doorway prose for her to take into her own voice. -->
+      <p>The Navigation Map of Consciousness charts thirteen Fields of human experience across three arcs — Descent, Underworld, Return. The work is to know which Field you are in, which arc you're walking, and which register is carrying you.</p>
+      <p>This quiz is a structured way to find out. It asks eight questions in everyday language and returns a precise reading in the Map's vocabulary — your arc, your Field, the register that's dominant, the frequencies surfacing, and the door into the work that meets you where you are.</p>
+      <p>It takes three to five minutes. There are no wrong answers. Pick what most resembles your experience right now. The result will be on screen the moment you finish, and a copy will arrive in your inbox if you want it there.</p>
+    </div>
+
+    <p class="intro-meta">Eight questions · 3–5 minutes · Real reading at the end</p>
+
+    <div class="intro-cta-wrap">
+      <a href="#" class="btn-primary" id="btn-begin">Begin the reading</a>
+    </div>
+  </section>
+
+  <!-- ===================== QUESTION SCREENS — built dynamically ===================== -->
+  <section id="screen-questions" class="screen">
+    <div class="progress">
+      <div class="progress-text" id="progress-text">Question 1 of 8</div>
+      <div class="progress-bar"><div class="progress-bar-fill" id="progress-bar-fill" style="width:12.5%"></div></div>
+    </div>
+
+    <h2 class="question-prompt" id="question-prompt"></h2>
+    <p class="question-instruction" id="question-instruction"></p>
+
+    <ul class="options" id="options-list"></ul>
+
+    <div class="quiz-nav">
+      <button class="btn-back" id="btn-back" type="button">Back</button>
+      <button class="btn-next" id="btn-next" type="button" disabled>Next</button>
+    </div>
+  </section>
+
+  <!-- ===================== RESULT SCREEN ===================== -->
+  <section id="screen-result" class="screen">
+    <span class="eyebrow result-eyebrow">Your Reading</span>
+    <h2 class="result-title">Signals from the Field</h2>
+
+    <div class="result-section">
+      <div class="result-section-label">The Arc You're Walking</div>
+      <div class="result-section-body" id="result-arc"></div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-label">The Field You're In</div>
+      <div class="result-section-body" id="result-field"></div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-label">The Register That's Carrying You</div>
+      <div class="result-section-body" id="result-register"></div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-label">Signals Surfacing</div>
+      <ul class="result-tags" id="result-tags"></ul>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-label">What the Navigation Map Suggests</div>
+      <div class="result-section-body" id="result-offering"></div>
+    </div>
+
+    <div class="email-capture">
+      <p class="email-prompt">Want this in your inbox?</p>
+      <p class="email-sub">A copy of your reading lands in your email, and you'll receive future readings as your Field shifts. No spam, ever — just the work.</p>
+
+      <!-- KIT FORM — placeholder action and uid; replace with the actual Kit form once Christy creates it. The form should be tagged `signals-quiz` in Kit so the automation fires the reading email. Hidden fields below carry the computed reading data so Kit can store it as custom subscriber fields. -->
+      <div class="kit-form-wrapper">
+        <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+        <form action="https://app.kit.com/forms/PLACEHOLDER_FORM_ID/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="PLACEHOLDER_FORM_ID" data-uid="PLACEHOLDER_UID" data-format="inline" data-version="5" min-width="400 500 600 700 800" id="kit-form">
+          <div data-style="clean">
+            <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+            <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+              <div class="formkit-field">
+                <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Enter your email" required type="email">
+              </div>
+              <!-- Hidden fields populated by JS at result render -->
+              <input type="hidden" name="fields[signals_arc]" id="kit-arc">
+              <input type="hidden" name="fields[signals_field]" id="kit-field">
+              <input type="hidden" name="fields[signals_register]" id="kit-register">
+              <input type="hidden" name="fields[signals_tags]" id="kit-tags">
+              <input type="hidden" name="fields[signals_offering]" id="kit-offering">
+              <button data-element="submit" class="formkit-submit formkit-submit">
+                <div class="formkit-spinner"><div></div><div></div><div></div></div>
+                <span>Receive my reading</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <div class="footer-links">
+    <a href="/begin">Begin</a>
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="/map">The Map</a>
+    <a href="https://christywade.substack.com" target="_blank">Substack</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Christy Paxton Wade &nbsp;&middot;&nbsp; Bentonville, Arkansas</p>
+</footer>
+
+<script>
+/* ============================================================
+   SIGNALS FROM THE FIELD — quiz logic
+   Phase 1 algorithm + Phase 2 templates, embedded.
+
+   Source of truth for content: signals-quiz-phase1-questions.md
+   and signals-quiz-phase2-templates.md in /support-materials/.
+   The Fieldguide passages remain the definitional source for any
+   tag's meaning (per PROJECT.md Do's).
+   ============================================================ */
+
+/* ---------- QUESTIONS — Phase 1 locked ---------- */
+
+const QUESTIONS = [
+  {
+    id: 'q1',
+    type: 'single',
+    prompt: "Where are you, right now, in your life?",
+    instruction: "Choose one",
+    options: [
+      { id: 'q1-a', label: "I feel like it's time for a change, and I may or may not know what is changing, or why. I experience feelings of doubt, boredom, or frustration.", arc: 'descent' },
+      { id: 'q1-b', label: "I feel like I don't recognize my life as it is right now. It feels like survival, going day to day. Relationships have changed, my work has changed, and I can't see how I'll come through this period in my life.", arc: 'underworld' },
+      { id: 'q1-c', label: "I feel like I have learned something through a major life shift, and I finally have words for what it was. I see others struggling, and I want to share my experience with them.", arc: 'return' }
+    ]
+  },
+  {
+    id: 'q2',
+    type: 'single',
+    prompt: "Which of these do you notice in your life right now?",
+    instruction: "Choose one",
+    options: [
+      { id: 'q2-a', label: "A creative project, a teaching, or a piece of work won't let me alone — something is asking to come through me.", fields: { 'XI': 3, 'VII': 2, 'II': 1 } },
+      { id: 'q2-b', label: "My body is talking to me — sensation, symptoms, energy, voice — in ways I can't ignore.", fields: { 'IV': 3, 'VI': 2 } },
+      { id: 'q2-c', label: "A close relationship is showing me something about myself I haven't been able to see on my own.", fields: { 'IX': 3, 'X': 1 } },
+      { id: 'q2-d', label: "Something my family or lineage carries is showing up in me — a pattern, a wound, an inherited trait.", fields: { 'X': 3, 'XI': 1 } },
+      { id: 'q2-e', label: "I'm at a fork or a threshold. I can feel it but I can't yet make the move.", fields: { 'III': 3, 'II': 2 } },
+      { id: 'q2-f', label: "How I think about everything is shifting. Frameworks I trusted aren't holding the way they used to.", fields: { 'I': 3, 'V': 2 } },
+      { id: 'q2-g', label: "I'm being pulled toward the natural world — animals, plants, places, weather — more than I've been before.", fields: { 'VIII': 3 } }
+    ]
+  },
+  {
+    id: 'q3',
+    type: 'single',
+    prompt: "Has anything specific brought you here? What's surfaced recently?",
+    instruction: "Choose one",
+    options: [
+      { id: 'q3-a', label: "A dream, a vision, a synchronicity — something I can't quite explain has been getting my attention.", fields: { 'II': 2, 'III': 1 }, subterrains: ['Crossings Within Sleep and Altered States', 'Signals from Beyond the Personal Field'] },
+      { id: 'q3-b', label: "A relationship has cracked open — a rupture, a revelation, a hard conversation.", fields: { 'IX': 2, 'III': 1 }, subterrains: ['The Other as Teacher', 'Ancestral and Relational Crossings'] },
+      { id: 'q3-c', label: "A loss, a grief, an ending — I'm still inside it.", fields: { 'X': 2, 'XIII': 1 }, subterrains: ['The Dismemberment', 'Dissolution and Integration'] },
+      { id: 'q3-d', label: "A creative project I can't stop thinking about — something I have to make.", fields: { 'VII': 2, 'V': 1 }, subterrains: ['The Forbidden Fire', 'The Sovereign Act of Making'] },
+      { id: 'q3-e', label: "A body symptom or shift that's getting louder. My body is asking for something.", fields: { 'IV': 2, 'VI': 1 }, subterrains: ['The Interior Body', "The Body's Own Threshold"] },
+      { id: 'q3-f', label: "A choice I've been refusing or avoiding. There's something I haven't let myself decide.", fields: { 'III': 2, 'XII': 1 }, subterrains: ['The Refusal of the Call'] },
+      { id: 'q3-g', label: "Family — my parents, my ancestors, my line — is showing up in a way I can't unsee.", fields: { 'X': 2, 'XI': 1 }, subterrains: ['The Ancestral Underground', 'The Inherited Knowing'] },
+      { id: 'q3-h', label: "Nothing specific I can point to. Something quieter is moving and I don't yet have the words.", fields: { 'II': 1 }, subterrains: ['The Unbelieved Signal', 'The Unnamed'], unreceivedFlag: true }
+    ]
+  },
+  {
+    id: 'q4',
+    type: 'single',
+    prompt: "Where in your daily life is this most visible?",
+    instruction: "Choose one",
+    options: [
+      { id: 'q4-a', label: "In what I make — my creative work is where this is showing up.", fields: { 'VII': 1 } },
+      { id: 'q4-b', label: "In my body — sensation, illness, energy, voice.", fields: { 'IV': 1, 'VI': 1 } },
+      { id: 'q4-c', label: "In my closest relationships — partner, family, friends.", fields: { 'IX': 1, 'X': 1 } },
+      { id: 'q4-d', label: "In my work or what I teach — what I'm being asked to share.", fields: { 'XI': 1, 'V': 1 } },
+      { id: 'q4-e', label: "In my dreams, my intuitions, things I can't easily explain.", fields: { 'II': 1, 'III': 1 } },
+      { id: 'q4-f', label: "In my relationship to the natural world — places, animals, plants, weather.", fields: { 'VIII': 1 } },
+      { id: 'q4-g', label: "In my public life or my politics — how I'm being asked to claim or stand for something.", fields: { 'XII': 1 } },
+      { id: 'q4-h', label: "In a deep aloneness I haven't been able to name.", fields: { 'X': 1, 'XIII': 1 }, unreceivedFlag: true }
+    ]
+  },
+  {
+    id: 'q5',
+    type: 'single',
+    prompt: "When this knowing arrives, how does it arrive?",
+    instruction: "Choose one",
+    options: [
+      { id: 'q5-a', label: "I feel it in my body before I have words for it.", register: 'somatic' },
+      { id: 'q5-b', label: "I see the pattern and understand the shape of it before it feels like reality.", register: 'conceptual' },
+      { id: 'q5-c', label: "Images, dreams, or stories keep coming to me about it.", register: 'mythic' },
+      { id: 'q5-d', label: "Something is moving and I don't have language for it yet.", register: 'unreceived' }
+    ]
+  },
+  {
+    id: 'q6',
+    type: 'multi',
+    max: 3,
+    prompt: "Which of these sound like things you've been thinking or feeling?",
+    instruction: "Choose up to 3",
+    options: [
+      { id: 'q6-1', label: "I've been carrying something that doesn't feel like mine — like I'm living out a story I didn't choose.", tags: ['The Borrowed Fate'] },
+      { id: 'q6-2', label: "There's a wound that keeps re-opening. It doesn't heal in the usual ways.", tags: ['The Wound That Will Not Close'] },
+      { id: 'q6-3', label: "I can feel a threshold I'm at, but I can't quite make the move.", tags: ['The Refusal of the Call'] },
+      { id: 'q6-4', label: "Something I know to be true keeps being met with skepticism — by others, or by parts of myself that haven't yet integrated it.", tags: ['The Unbelieved Signal', 'Anomalous Reception'] },
+      { id: 'q6-5', label: "A pattern in my family is showing up — through my body, my choices, my relationships.", tags: ['The Ancestral Underground'] },
+      { id: 'q6-6', label: "Something fundamental in me has ended — an identity, a relationship, a structure I lived inside — and what comes next hasn't yet taken shape.", tags: ['The Dismemberment'] },
+      { id: 'q6-7', label: "I'm starting to see how my own name has been shaping my life — what it called me into, what it carries from my line.", tags: ['The Encoded Name'] },
+      { id: 'q6-8', label: "A myth, a story, or a figure keeps showing up in my awareness.", tags: ['Narrative and Story', 'Transmission as Sacred Practice'] },
+      { id: 'q6-9', label: "Something is calling me that I don't yet feel I have permission to do.", tags: ['The Forbidden Fire'] },
+      { id: 'q6-10', label: "A specific landscape is calling me — a terrain my ancestors lived in, a place my body somehow recognizes.", tags: ['The Ancestral Landscape'] },
+      { id: 'q6-none', label: "None of these are relevant to my thoughts and feelings right now.", tags: [], earlyArc: true }
+    ]
+  },
+  {
+    id: 'q7',
+    type: 'multi',
+    max: 2,
+    optional: true,
+    prompt: "And which of these?",
+    instruction: "Choose up to 2 (optional)",
+    options: [
+      { id: 'q7-1', label: "I'm being asked to witness something without trying to fix it.", tags: ['The Witness', 'The Practice of Reflection'] },
+      { id: 'q7-2', label: "I'm growing into a self that holds my full range — light and shadow, history, what was disowned — without needing it confirmed from outside.", tags: ['Wholeness', 'The Claimed Self'] },
+      { id: 'q7-3', label: "I'm starting to recognize what I already know — and I realize I knew it already, deep down.", tags: ['Re-membering', 'The Spiral'] },
+      { id: 'q7-4', label: "The cycles of life are speaking to me — seasonal, lunar, longer rhythms.", tags: ['Seasonal Intelligence', 'The Sovereign Cycle'] },
+      { id: 'q7-5', label: "A teaching is finding shape through me.", tags: ['Transmission as Sacred Practice', 'The Offerings'] },
+      { id: 'q7-6', label: "I'm in a darkness that doesn't feel like sickness. It feels like medicine.", tags: ['Wild Darkness', 'The Alchemical Process'] },
+      { id: 'q7-7', label: "I've noticed capacities in me that arrived without my having learned them — something my line has been carrying that's now in my body.", tags: ['The Inherited Knowing'] },
+      { id: 'q7-none', label: "None of these are present for me.", tags: [] }
+    ]
+  },
+  {
+    id: 'q8',
+    type: 'single',
+    prompt: "What kind of door calls to you?",
+    instruction: "Choose one",
+    options: [
+      { id: 'q8-a', label: "I'm just arriving. I want to understand the structure first.", offering: 'architecture' },
+      { id: 'q8-b', label: "I want to look at my chart, my transits — astrology is the door for me.", offering: 'first_listen' },
+      { id: 'q8-c', label: "Ancestral work is where I want to begin — my family line, my lineage.", offering: 'lineage' },
+      { id: 'q8-d', label: "I'm ready for sustained one-to-one mentorship — a long container.", offering: 'mirror' },
+      { id: 'q8-e', label: "I want to do this work alongside others. A group container appeals.", offering: 'cohort' },
+      { id: 'q8-f', label: "I'm already inside this work. I want to mark a shift or take a fresh reading.", offering: 'convergence_update' }
+    ]
+  }
+];
+
+/* ---------- FIELD METADATA ---------- */
+
+const FIELDS = {
+  'I':    { number: 'I',    name: 'Structural Models',         arc: 'descent' },
+  'II':   { number: 'II',   name: 'Anomalous Reception',       arc: 'descent' },
+  'III':  { number: 'III',  name: 'Threshold Events',          arc: 'descent' },
+  'IV':   { number: 'IV',   name: 'Embodied Signal',           arc: 'descent' },
+  'V':    { number: 'V',    name: 'Resonance in Language',     arc: 'descent' },
+  'VI':   { number: 'VI',   name: 'Body as Active Practice',   arc: 'descent' },
+  'VII':  { number: 'VII',  name: 'The Creative Record',       arc: 'descent' },
+  'VIII': { number: 'VIII', name: 'Animal and Nature Medicine', arc: 'underworld' },
+  'IX':   { number: 'IX',   name: 'The Mirror',                arc: 'underworld' },
+  'X':    { number: 'X',    name: 'The Shadow',                arc: 'underworld' },
+  'XI':   { number: 'XI',   name: 'The Teaching',              arc: 'return' },
+  'XII':  { number: 'XII',  name: 'Sovereignty',               arc: 'return' },
+  'XIII': { number: 'XIII', name: 'The Return',                arc: 'return' }
+};
+
+/* Field-level frequency tag for each Field (matches `frequency_tags` exact name column) */
+const FIELD_TAG = {
+  'I': 'Structural Models',
+  'II': 'Anomalous Reception',
+  'III': 'Threshold Events',
+  'IV': 'Embodied Signal',
+  'V': 'Resonance in Language',
+  'VI': 'Body as Active Practice',
+  'VII': 'The Creative Record',
+  'VIII': 'Animal and Nature Medicine',
+  'IX': 'The Mirror',
+  'X': 'The Shadow',
+  'XI': 'The Teaching',
+  'XII': 'Sovereignty',
+  'XIII': 'The Return'
+};
+
+/* Default top-2 Subterrains per Field by sort_order — used when Q3 hint Subterrains don't belong to the primary Field */
+const DEFAULT_SUBTERRAINS = {
+  'I':    ['The Quantum Field', 'Geometries of Consciousness'],
+  'II':   ['Signals from Beyond the Personal Field', 'Messengers and Mediators'],
+  'III':  ['The Refusal of the Call', 'Crossings Within Sleep and Altered States'],
+  'IV':   ['The Interior Body', 'Vibrational Frequency'],
+  'V':    ['The Architecture of Meaning', 'Tone'],
+  'VI':   ['The Held Body', 'Breathwork and Stillness'],
+  'VII':  ['The Sovereign Act of Making', 'The Oral Archive'],
+  'VIII': ['The Bird Field', 'Totemic Presences'],
+  'IX':   ['The Other as Teacher', 'Beauty as Information'],
+  'X':    ['What Lies Beneath', 'The Ancestral Underground'],
+  'XI':   ['The Inherited Knowing', 'Transmission as Sacred Practice'],
+  'XII':  ['Re-membering', 'Wholeness'],
+  'XIII': ['The Spiral', 'Dissolution and Integration']
+};
+
+/* Map each Subterrain to its Field — used to check whether Q3 hints belong to primary Field */
+const SUBTERRAIN_TO_FIELD = {
+  'The Quantum Field': 'I', 'Geometries of Consciousness': 'I', 'Navigational Coordinates': 'I', 'The Operating System': 'I',
+  'Signals from Beyond the Personal Field': 'II', 'Messengers and Mediators': 'II', 'The Discernment Layer': 'II', 'The Unbelieved Signal': 'II',
+  'The Refusal of the Call': 'III', 'Crossings Within Sleep and Altered States': 'III', 'Portals in Time': 'III', 'Ancestral and Relational Crossings': 'III', 'The Ordeal': 'III',
+  'The Interior Body': 'IV', 'Vibrational Frequency': 'IV', 'The Voice': 'IV', 'The Sonic Body': 'IV',
+  'The Architecture of Meaning': 'V', 'Tone': 'V', 'The Three Registers': 'V', 'Vocabulary as Structure': 'V', 'The Encoded Name': 'V', 'Transmission Modes': 'V',
+  'The Held Body': 'VI', 'Breathwork and Stillness': 'VI', 'Movement and Expression': 'VI', 'Mirror and Healing Practices': 'VI', "The Body's Own Threshold": 'VI',
+  'The Sovereign Act of Making': 'VII', 'The Oral Archive': 'VII', 'Narrative and Story': 'VII', 'The Living Artifact': 'VII', 'The Forbidden Fire': 'VII',
+  'The Bird Field': 'VIII', 'Totemic Presences': 'VIII', 'Plant and Fungal Intelligence': 'VIII', 'The Elements as Medicine': 'VIII', 'Terrain and Water': 'VIII', 'The Ancestral Landscape': 'VIII', 'Seasonal Intelligence': 'VIII', 'Wild Darkness': 'VIII',
+  'The Other as Teacher': 'IX', 'Beauty as Information': 'IX', 'The Practice of Reflection': 'IX', 'The Scales': 'IX', 'Reciprocity and Enough': 'IX', 'The Clear Eye': 'IX',
+  'What Lies Beneath': 'X', 'The Ancestral Underground': 'X', 'The Unspeakable': 'X', 'The Unnamed': 'X', 'The Borrowed Fate': 'X', 'The Wound That Will Not Close': 'X', 'The Dismemberment': 'X', 'The Alchemical Process': 'X',
+  'The Inherited Knowing': 'XI', 'Transmission as Sacred Practice': 'XI', 'The Offerings': 'XI', 'The Expanding Flame': 'XI',
+  'Re-membering': 'XII', 'Wholeness': 'XII', 'The Claimed Self': 'XII', 'The Water Bearer': 'XII', 'The Sovereign Cycle': 'XII',
+  'The Spiral': 'XIII', 'Dissolution and Integration': 'XIII', 'The Witness': 'XIII', 'Compassion': 'XIII', 'Terra Incognita': 'XIII'
+};
+
+/* ---------- TEMPLATES — Phase 2 locked ---------- */
+
+const ARC_TEMPLATES = {
+  descent: "You're in a season of unraveling. What was stable is loosening, and you may or may not yet know what's changing or why. The Descent is the arc where the work is not to find what's underneath quickly — but to let the old form come apart without rushing the next one into being.",
+  underworld: "You're below the surface. The life you recognized has changed — relationships, work, the texture of ordinary days — and from inside, you can't yet see how you'll come through. The Underworld is the arc where what was buried becomes visible, slowly, in its own time. The work is to stay until it does.",
+  return: "You're coming up with words for what you've been through. The crossing gathered something — a knowing, a precision, a vocabulary you didn't have before — and now you're beginning to see others walking the terrain you just left. The Return is the arc where what you've come through becomes what you give."
+};
+
+const FIELD_TEMPLATES = {
+  'I':    "You're walking Field I — Structural Models. This is the architecture before form, the geometry your life is trying to remember. The work in this Field is to recognize the pattern you came in carrying — to see the structure that was there before any of the events of your life began moving through it.",
+  'II':   "You're walking Field II — Anomalous Reception. Something is arriving that you did not generate — a signal from beyond the personal field, a reception that doesn't originate in you. The work in this Field is to learn to discern what's real from what isn't, and to develop the capacity to receive without distortion.",
+  'III':  "You're walking Field III — Threshold Events. This is the field of crossings — not information received, but the self moved. Something has shifted you to another state, another dimension, another relationship with time. The work in this Field is to honor the crossing itself, not rush to interpret what's on the other side of it.",
+  'IV':   "You're walking Field IV — Embodied Signal. The body has begun to settle into earth, and the senses are awakening — learning to read what the physical world is actually transmitting. The work in this Field is to trust the body's reading before the mind has caught up, and to follow what arrives as sensation before it arrives as language.",
+  'V':    "You're walking Field V — Resonance in Language. The word is arriving as a tool — language not as description but as creation. What you call something is becoming part of what it is. The work in this Field is to use words with precision, to find the vocabulary that fits the actual shape of what's moving in you.",
+  'VI':   "You're walking Field VI — Body as Active Practice. The body's tidal, cyclic, rhythmic intelligence is asking for attention — what you need, what nurtures, what restores. The work in this Field is to give the body what it's actually asking for, and to let the cycles teach you a different way of moving through time.",
+  'VII':  "You're walking Field VII — The Creative Record. The act of making is sovereign expression — what you create becomes part of the record of what was real. The work in this Field is to let the work move through you without flattening it on the way out, and to honor what wants to be made.",
+  'VIII': "You're walking Field VIII — Animal and Nature Medicine. Precise healing intelligence is moving through your relationship with the more-than-human world — animals, plants, weather, places. The work in this Field is to listen to what's speaking from outside the human boundary, and to receive the medicine on its terms rather than yours.",
+  'IX':   "You're walking Field IX — The Mirror. The self that has been through the descent meets the other and finds itself reflected. The work in this Field is to let the relationship show you what you couldn't see alone — and to stay in it long enough for the reflection to arrive without flinching from what it shows.",
+  'X':    "You're walking Field X — The Shadow. This is the underworld proper — what lies beneath, what was buried, what is being asked to come up. The work in this Field is to stay with what's surfacing without rushing to integrate it, and to recognize that the Shadow is not the obstacle to Sovereignty but the field that makes it possible.",
+  'XI':   "You're walking Field XI — The Teaching. What you learned is becoming what you give — wisdom that knows how to aim itself, transmission that lands. The work in this Field is to teach what you've actually been through, in the form it actually wants to take, without softening it for an audience.",
+  'XII':  "You're walking Field XII — Sovereignty. The revolutionary self is forming — frequency claimed from within rather than imposed from without. The work in this Field is to stop asking permission for what you already are, and to act from the authority that doesn't require anyone else's confirmation.",
+  'XIII': "You're walking Field XIII — The Return. You've come full circle to where the journey began — but you're carrying everything the crossing gathered. The work in this Field is to bring back what you found, in a form others can use, and to let the dissolution be chosen rather than imposed on you."
+};
+
+const REGISTER_TEMPLATES = {
+  somatic: "Your body is the door right now. Sensation arrives before language — exhaustion, heaviness, breath, tension, the catch in the throat, the shift in energy that tells you something has moved. The work is to trust what the body is reading before the mind has caught up. Don't interpret too quickly. The signal is in the body's tempo.",
+  conceptual: "You're seeing structure, you understand before you live it. The shape of what's happening arrives before it lands as feeling — sometimes before it lands as reality. The work is to let the framework stay precise without forcing the body or the image to catch up to it. The pattern is the door; the experience is on its way.",
+  mythic: "A figure, a story, an image keeps returning. This is not metaphor. The mythic register is the field's way of speaking when the conscious mind can't hold the message. Some stories appeared in your childhood — the breadcrumb trail leads to the moments where the field spoke to you. The work is to stay close to the story that has chosen you — not to interpret or dismiss it too quickly, and not to look past it for something more literal.",
+  unreceived: "Something is moving that doesn't yet have a word. The Unreceived register means the signal is real but the essence doesn't fit in your current paradigm. The work is to stay open to the unnamed thing and resist the urge to force a label onto something still shifting. The naming will come when the thing has fully arrived in your awareness."
+};
+
+const UNRECEIVED_UNDERTONE = "There's also an Unreceived undertone here. Some of what's moving in you doesn't yet have a name or a place to land — not even within the register you're walking through.";
+const UNRECEIVED_DOMINANT = (regName) => `And underneath that, the Unreceived register is the room you're standing in. You're using ${regName} as the door, but the deeper signal is in what doesn't yet have language. Stay with that as the primary work.`;
+
+const TAG_LIBRARY = {
+  /* Field-level (13) */
+  'Structural Models': "The geometry your life is trying to remember; the pattern you came in carrying.",
+  'Anomalous Reception': "Signal arriving from outside the personal field; learning to receive without distortion.",
+  'Threshold Events': "A crossing that has moved you, not just informed you; the self relocated.",
+  'Embodied Signal': "The body's reading of the world before the mind has caught up; sensation as data.",
+  'Resonance in Language': "Words as creation, not description; finding the vocabulary that fits the actual shape.",
+  'Body as Active Practice': "The body's tidal intelligence; what you need, what nurtures, what restores cycle.",
+  'The Creative Record': "Making as sovereign expression; what you create becomes part of the record.",
+  'Animal and Nature Medicine': "Healing intelligence from beyond the human boundary; medicine on its own terms.",
+  'The Mirror': "The relationship that shows you what you couldn't see alone; reflection without flinching.",
+  'The Shadow': "What was buried surfacing; the field at depth that makes Sovereignty possible.",
+  'The Teaching': "What you learned becoming what you give; transmission that knows how to be a clear signal.",
+  'Sovereignty': "Frequency claimed from within rather than imposed from without; the revolutionary self.",
+  'The Return': "Full circle, carrying what the crossing gathered; dissolution by choice, not imposition.",
+  /* Q6 subterrain-level (14) */
+  'The Borrowed Fate': "Carrying a story that isn't yours; living out a script you didn't write, transgenerational transmission.",
+  'The Wound That Will Not Close': "A wound that doesn't heal; a chronic state; a pattern that keeps returning or is hiding its purpose.",
+  "The Body's Own Threshold": "The body's experience of physical limitations and mortality; the experience of meeting the edge and what you take from the crossing.",
+  'The Refusal of the Call': "A choice you've been refusing; the threshold you keep approaching but not crossing, and what it costs.",
+  'The Unbelieved Signal': "A truth you hold that is met with inner or outer skepticism, denial of inner vision or knowing.",
+  'The Inherited Knowing': "What you know without knowing how you know; embodied ancestral intelligence.",
+  'The Ancestral Underground': "What has been unresolved in the lineage bloodline; patterns that arrive in the body and life of the descendant.",
+  'The Dismemberment': "Pieces of you scattered; the old you no longer exists, but the next version of you is still unclear.",
+  'The Encoded Name': "The frequency your own name carries; the reality that was constructed the moment you were called by a name.",
+  'Vocabulary as Structure': "The act of naming building the thing it names; words are precision coordinates.",
+  'Narrative and Story': "A myth or figure that reoccurs, deepens in meaning, follows you in life; the story choosing the storyteller.",
+  'Transmission as Sacred Practice': "The teaching arriving with or without language; transmission between prepared student and teacher.",
+  'The Forbidden Fire': "Something you're being called to that you don't feel permission to do, creation that exceeds the container.",
+  'The Ancestral Landscape': "The land and terrain that surrounded and encoded the ancestral line, which you may be called to visit.",
+  /* Q7 subterrain-level (11) */
+  'The Witness': "The capacity to be fully present with what's happening; observation without disappearing.",
+  'The Practice of Reflection': "The intentional practice of meeting oneself; observation without judgment or analysis.",
+  'Wholeness': "The state of being that holds the entire self; full range of light and shadow integrated; completeness as a process.",
+  'The Claimed Self': "The self chosen rather than inherited; identity that doesn't require external validation or confirmation.",
+  'Re-membering': "The deliberate work of reassembling the self into coherent form after scattering; memory as restoration rather than destruction.",
+  'The Spiral': "The same territory met at a different altitude; old terrain in a new register; what requires a dimensional shift to perceive as growth.",
+  'Seasonal Intelligence': "To every thing there is a season; the non-human cycles as an ancient navigational system.",
+  'The Sovereign Cycle': "Full presence and necessary withdrawal as the natural rhythm of sovereign consciousness.",
+  'The Offerings': "Every offering is a door from a different dimension to the inner landscape; take what resonates.",
+  'Wild Darkness': "Certain things can only grow in darkness, in night; the landscape that cools and gives needed rest.",
+  'The Alchemical Process': "The transformation that requires the descent; the demand of an interior process of dissolution."
+};
+
+const OFFERING_TEMPLATES = {
+  architecture: "You're orienting. The Architecture PDF is the structural overview — thirteen Fields, three arcs, the geometry underneath the Map. Take it, sit with it. If a question forms, the First Signal call is the place to bring it. No payment, no commitment yet — just first contact with the work.",
+  first_listen: "The sky is your door. A First Listen ($88) decodes the most active transit you're inside — a 45-minute reading of what the cosmos is doing in your chart right now. The fastest way to hear the signal of the present moment with clarity.",
+  sovereign_signal: "The sky is your door, and the Underworld asks for the deeper reading. Sovereign Signal ($244) is a two-hour reading — your natal chart, the current transits, and the descent your chart describes. The depth meets the depth.",
+  lineage: "Ancestral work meets you here. The Lineage Session ($444) is a 90-minute live read of your line — twelve ancestors woven into a starter Weaving, with resonance tuned by your personal Gene Keys and Human Design structures, all creating your first Convergence reading, a personal report unlike anything you've seen. The door for what is surfacing through your family carrying.",
+  mirror: "You're ready for sustained mentorship. Mirror Work ($1,888 over three months) is bi-weekly 75-minute sessions plus voice support in between — a container that holds the whole arc, not just one threshold. Human Design, Gene Keys, Astrology, Full Ancestral Weaving and Convergence analysis report included. This work does not resemble any offering or coaching model you can find anywhere else. Application required.",
+  cohort: "The work calls for company. The Descent Cohort ($777) runs six weeks with seven others walking similar terrain — four live calls, a Convergence-lite snapshot of where you are now, and a Substack thread held only for cohort members. The first cohort begins 1 July.",
+  convergence_update: "You're already inside the work. A Convergence Update ($244) is a fresh 8-section reading of your Weaving as it stands now — a marker of where the arc has moved, what new frequencies have surfaced, where the next door is."
+};
+
+const OVERRIDE_PREFIXES = {
+  ancestral_upsell: "You said you're orienting, but the ancestral signal in your reading is louder than that. The Lineage Session may be a more meaningful first step than the orientation tier.",
+  astrology_redirect: "You named astrology as your door, but the field signal is pointing toward the ancestral. The sky may be the way you came in; the Lineage Session might be the deeper meeting.",
+  mirror_confirm: "You're ready for sustained one-to-one work, and your reading confirms the solo path — what's moving in you wants the long, held container.",
+  cohort_redirect: "You named sustained mentorship, but multiple frequency clusters are surfacing in your reading. Group medicine may meet what one-to-one can't yet — the Cohort is where the simultaneity gets held."
+};
+
+const CROSS_ARC_LINE = (arcQ1, arcField) => `You named the ${capitalize(arcQ1)}, but the Field that's actually carrying you sits in the ${capitalize(arcField)}. The threshold between arcs is where you are right now.`;
+
+function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+/* ---------- ALGORITHM (Phase 1, 5 steps) ---------- */
+
+function computeReading(answers) {
+  // STEP 1 — arc
+  const arc = QUESTIONS[0].options.find(o => o.id === answers.q1).arc;
+
+  // STEP 2 — Field via weighted vote across Q2 (3pt), Q3 (2pt), Q4 (1pt)
+  const fieldScores = {};
+  Object.keys(FIELDS).forEach(f => fieldScores[f] = 0);
+
+  const q2opt = QUESTIONS[1].options.find(o => o.id === answers.q2);
+  const q3opt = QUESTIONS[2].options.find(o => o.id === answers.q3);
+  const q4opt = QUESTIONS[3].options.find(o => o.id === answers.q4);
+
+  if (q2opt && q2opt.fields) Object.entries(q2opt.fields).forEach(([f, w]) => fieldScores[f] += w);
+  if (q3opt && q3opt.fields) Object.entries(q3opt.fields).forEach(([f, w]) => fieldScores[f] += w);
+  if (q4opt && q4opt.fields) Object.entries(q4opt.fields).forEach(([f, w]) => fieldScores[f] += w);
+
+  // Sort fields by score; tie-break by arc match with Q1
+  const fieldEntries = Object.entries(fieldScores).filter(([f, s]) => s > 0);
+  fieldEntries.sort((a, b) => {
+    if (b[1] !== a[1]) return b[1] - a[1];
+    // Tie-break: prefer Field whose arc matches Q1 arc
+    const aMatches = FIELDS[a[0]].arc === arc;
+    const bMatches = FIELDS[b[0]].arc === arc;
+    if (aMatches && !bMatches) return -1;
+    if (bMatches && !aMatches) return 1;
+    return 0;
+  });
+
+  const primaryField = fieldEntries[0] ? fieldEntries[0][0] : 'I'; // fallback
+  const top3Fields = fieldEntries.slice(0, 3).map(e => e[0]);
+
+  // STEP 3 — register + Unreceived modifier
+  const register = QUESTIONS[4].options.find(o => o.id === answers.q5).register;
+  const q3Unreceived = q3opt && q3opt.unreceivedFlag;
+  const q4Unreceived = q4opt && q4opt.unreceivedFlag;
+  let unreceivedModifier = 'none';
+  if (register !== 'unreceived') {
+    if (q3Unreceived && q4Unreceived) unreceivedModifier = 'dominant';
+    else if (q3Unreceived || q4Unreceived) unreceivedModifier = 'undertone';
+  }
+
+  // STEP 4 — frequency tags
+  const tags = [];
+  (answers.q6 || []).forEach(optId => {
+    const opt = QUESTIONS[5].options.find(o => o.id === optId);
+    if (opt && opt.tags) tags.push(...opt.tags);
+  });
+  (answers.q7 || []).forEach(optId => {
+    const opt = QUESTIONS[6].options.find(o => o.id === optId);
+    if (opt && opt.tags) tags.push(...opt.tags);
+  });
+  // Append Field-level tag for primary Field
+  if (FIELD_TAG[primaryField]) tags.push(FIELD_TAG[primaryField]);
+  // Dedupe, take top 5
+  const uniqueTags = [...new Set(tags)].slice(0, 5);
+
+  // STEP 5 — recommended offering with override rules
+  const q8opt = QUESTIONS[7].options.find(o => o.id === answers.q8);
+  let offering = q8opt.offering;
+  let overrideRule = 'none';
+
+  // Rule 1 — Ancestral upsell
+  if (offering === 'architecture') {
+    const hasShadow = top3Fields.includes('X');
+    const hasBorrowed = uniqueTags.includes('The Borrowed Fate');
+    const hasInherited = uniqueTags.includes('The Inherited Knowing');
+    if (hasShadow || hasBorrowed || hasInherited) {
+      offering = 'lineage';
+      overrideRule = 'ancestral_upsell';
+    }
+  }
+  // Rule 2 — Astrology-to-ancestral redirect
+  if (offering === 'first_listen' && arc === 'underworld' && top3Fields.includes('X')) {
+    offering = 'lineage';
+    overrideRule = 'astrology_redirect';
+  }
+  // Q8-b deeper variant — fires when Q1 = underworld and offering is still first_listen
+  if (offering === 'first_listen' && arc === 'underworld') {
+    offering = 'sovereign_signal';
+  }
+  // Rule 3a — Mirror Work confirmed
+  if (offering === 'mirror') {
+    const isQ2d = answers.q2 === 'q2-d';
+    const isQ4h = answers.q4 === 'q4-h';
+    if (isQ2d || isQ4h) {
+      overrideRule = 'mirror_confirm';
+    }
+    // Rule 3b — Cohort redirect (multiple frequency clusters → 3+ tags from different Fields)
+    const clusterFields = new Set();
+    uniqueTags.forEach(t => {
+      const sub = SUBTERRAIN_TO_FIELD[t];
+      if (sub) clusterFields.add(sub);
+    });
+    if (clusterFields.size >= 3) {
+      offering = 'cohort';
+      overrideRule = 'cohort_redirect';
+    }
+  }
+
+  // Compute Subterrain hints for the Field paragraph
+  let subterrainHints = [];
+  if (q3opt && q3opt.subterrains) {
+    // Use Q3 hints if they belong to the primary Field
+    const matching = q3opt.subterrains.filter(s => SUBTERRAIN_TO_FIELD[s] === primaryField);
+    if (matching.length > 0) subterrainHints = matching.slice(0, 2);
+  }
+  if (subterrainHints.length === 0) {
+    subterrainHints = DEFAULT_SUBTERRAINS[primaryField] || [];
+  }
+
+  // Cross-arc detection
+  const fieldArc = FIELDS[primaryField].arc;
+  const crossArc = fieldArc !== arc;
+
+  return {
+    arc,
+    primaryField,
+    fieldName: FIELDS[primaryField].name,
+    fieldNumber: FIELDS[primaryField].number,
+    fieldArc,
+    crossArc,
+    register,
+    unreceivedModifier,
+    tags: uniqueTags,
+    offering,
+    overrideRule,
+    subterrainHints
+  };
+}
+
+/* ---------- RESULT RENDERER ---------- */
+
+function renderReading(reading) {
+  // Arc
+  document.getElementById('result-arc').innerHTML = `<p>${ARC_TEMPLATES[reading.arc]}</p>`;
+
+  // Field — assemble Field paragraph + optional cross-arc + Subterrain line
+  let fieldHtml = `<p>${FIELD_TEMPLATES[reading.primaryField]}</p>`;
+  if (reading.crossArc) {
+    fieldHtml += `<p><em>${CROSS_ARC_LINE(reading.arc, reading.fieldArc)}</em></p>`;
+  }
+  if (reading.subterrainHints.length > 0) {
+    const subList = reading.subterrainHints.length === 2
+      ? `${reading.subterrainHints[0]} and ${reading.subterrainHints[1]}`
+      : reading.subterrainHints[0];
+    fieldHtml += `<p><em>The Subterrains likely active for you right now: ${subList}.</em></p>`;
+  }
+  document.getElementById('result-field').innerHTML = fieldHtml;
+
+  // Register — paragraph + optional modifier
+  let registerHtml = `<p>${REGISTER_TEMPLATES[reading.register]}</p>`;
+  if (reading.unreceivedModifier === 'undertone') {
+    registerHtml += `<p>${UNRECEIVED_UNDERTONE}</p>`;
+  } else if (reading.unreceivedModifier === 'dominant') {
+    const regName = capitalize(reading.register);
+    registerHtml += `<p>${UNRECEIVED_DOMINANT(regName)}</p>`;
+  }
+  document.getElementById('result-register').innerHTML = registerHtml;
+
+  // Tags
+  const tagsList = document.getElementById('result-tags');
+  tagsList.innerHTML = '';
+  reading.tags.forEach(tag => {
+    const desc = TAG_LIBRARY[tag] || '';
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="result-tag-name">${tag}</span> — ${desc}`;
+    tagsList.appendChild(li);
+  });
+
+  // Offering — optional override prefix + offering paragraph
+  let offeringHtml = '';
+  if (reading.overrideRule !== 'none') {
+    offeringHtml += `<p>${OVERRIDE_PREFIXES[reading.overrideRule]}</p>`;
+  }
+  offeringHtml += `<p>${OFFERING_TEMPLATES[reading.offering]}</p>`;
+  document.getElementById('result-offering').innerHTML = offeringHtml;
+
+  // Populate Kit hidden fields with reading data
+  document.getElementById('kit-arc').value = capitalize(reading.arc);
+  document.getElementById('kit-field').value = `${reading.fieldNumber} — ${reading.fieldName}`;
+  document.getElementById('kit-register').value = capitalize(reading.register);
+  document.getElementById('kit-tags').value = reading.tags.join(', ');
+  document.getElementById('kit-offering').value = reading.offering;
+}
+
+/* ---------- QUIZ FLOW ---------- */
+
+const state = {
+  questionIndex: 0,
+  answers: {}
+};
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderQuestion(idx) {
+  const q = QUESTIONS[idx];
+  document.getElementById('progress-text').textContent = `Question ${idx + 1} of ${QUESTIONS.length}`;
+  document.getElementById('progress-bar-fill').style.width = `${((idx + 1) / QUESTIONS.length) * 100}%`;
+  document.getElementById('question-prompt').textContent = q.prompt;
+  document.getElementById('question-instruction').textContent = q.instruction;
+
+  const optsEl = document.getElementById('options-list');
+  optsEl.innerHTML = '';
+  optsEl.className = q.type === 'multi' ? 'options multiselect' : 'options';
+
+  const currentAnswer = state.answers[q.id];
+
+  q.options.forEach(opt => {
+    const li = document.createElement('li');
+    li.className = 'option';
+    li.dataset.optionId = opt.id;
+    li.innerHTML = `<span class="option-marker"></span><span class="option-text">${opt.label}</span>`;
+
+    // Restore selection state
+    if (q.type === 'single' && currentAnswer === opt.id) li.classList.add('selected');
+    if (q.type === 'multi' && Array.isArray(currentAnswer) && currentAnswer.includes(opt.id)) li.classList.add('selected');
+
+    li.addEventListener('click', () => handleOptionClick(q, opt, li));
+    optsEl.appendChild(li);
+  });
+
+  updateNextButton(q);
+
+  // Back button visibility
+  document.getElementById('btn-back').style.visibility = idx === 0 ? 'hidden' : 'visible';
+}
+
+function handleOptionClick(q, opt, li) {
+  if (q.type === 'single') {
+    // Single-select: clear all, mark this one
+    document.querySelectorAll('#options-list .option').forEach(el => el.classList.remove('selected'));
+    li.classList.add('selected');
+    state.answers[q.id] = opt.id;
+  } else {
+    // Multi-select with max
+    const current = state.answers[q.id] || [];
+
+    // Special handling for "none" options — they clear all others and stand alone
+    if (opt.id.endsWith('-none')) {
+      document.querySelectorAll('#options-list .option').forEach(el => el.classList.remove('selected'));
+      li.classList.add('selected');
+      state.answers[q.id] = [opt.id];
+      updateNextButton(q);
+      return;
+    }
+    // Clicking a regular option clears any "none" selection
+    const noneId = q.id + '-none';
+    if (current.includes(noneId)) {
+      document.querySelectorAll('#options-list .option').forEach(el => {
+        if (el.dataset.optionId === noneId) el.classList.remove('selected');
+      });
+      const idx = current.indexOf(noneId);
+      current.splice(idx, 1);
+    }
+
+    // Toggle this option
+    if (current.includes(opt.id)) {
+      const i = current.indexOf(opt.id);
+      current.splice(i, 1);
+      li.classList.remove('selected');
+    } else {
+      if (current.length >= q.max) {
+        // Max selections reached — ignore
+        return;
+      }
+      current.push(opt.id);
+      li.classList.add('selected');
+    }
+    state.answers[q.id] = current;
+  }
+  updateNextButton(q);
+}
+
+function updateNextButton(q) {
+  const next = document.getElementById('btn-next');
+  const ans = state.answers[q.id];
+  let canProceed = false;
+  if (q.type === 'single') canProceed = !!ans;
+  else if (q.type === 'multi') {
+    if (q.optional) canProceed = true; // can skip
+    else canProceed = Array.isArray(ans) && ans.length >= 1;
+  }
+  next.disabled = !canProceed;
+
+  // Last question: button text changes
+  if (state.questionIndex === QUESTIONS.length - 1) {
+    next.textContent = 'Get my reading';
+  } else {
+    next.textContent = 'Next';
+  }
+}
+
+function goNext() {
+  if (state.questionIndex < QUESTIONS.length - 1) {
+    state.questionIndex++;
+    renderQuestion(state.questionIndex);
+  } else {
+    // Compute reading and show result
+    const reading = computeReading(state.answers);
+    renderReading(reading);
+    showScreen('screen-result');
+  }
+}
+
+function goBack() {
+  if (state.questionIndex > 0) {
+    state.questionIndex--;
+    renderQuestion(state.questionIndex);
+  } else {
+    // Back to intro
+    showScreen('screen-intro');
+  }
+}
+
+document.getElementById('btn-begin').addEventListener('click', (e) => {
+  e.preventDefault();
+  state.questionIndex = 0;
+  renderQuestion(0);
+  showScreen('screen-questions');
+});
+
+document.getElementById('btn-next').addEventListener('click', goNext);
+document.getElementById('btn-back').addEventListener('click', goBack);
+</script>
+
+</body>
+</html>
