@@ -86,6 +86,14 @@
   .screen.active { display: block; }
 
   /* INTRO SCREEN */
+  .intro-hero-image {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    margin: 0 auto 2.4rem;
+    border: 1px solid rgba(184, 146, 74, 0.22);
+  }
   .intro-eyebrow { display: block; text-align: center; margin-bottom: 1.6rem; }
   .intro-title {
     font-family: var(--ff-d);
@@ -443,18 +451,16 @@
 
   <!-- ===================== INTRO SCREEN ===================== -->
   <section id="screen-intro" class="screen active">
+    <!-- Hero image. Save the file as `signals-hero.jpg` in the same location as your other site images (e.g., where map-hero.jpg lives). The onerror handler hides the element if the file isn't there yet. -->
+    <img src="/signals-hero.jpg" alt="" class="intro-hero-image" loading="lazy" onerror="this.style.display='none'">
+
     <span class="eyebrow intro-eyebrow">Signals from the Field</span>
     <h1 class="intro-title">A reading of the terrain you're walking right now.</h1>
-    <p class="intro-sub">Eight questions. A structured reading at the end. Free.</p>
 
     <div class="intro-body">
-      <!-- VOICE: this paragraph is scaffolding for Christy's hand. The rest of the page is in voice; this intro is doorway prose for her to take into her own voice. -->
-      <p>The Navigation Map of Consciousness charts thirteen Fields of human experience across three arcs — Descent, Underworld, Return. The work is to know which Field you are in, which arc you're walking, and which register is carrying you.</p>
-      <p>This quiz is a structured way to find out. It asks eight questions in everyday language and returns a precise reading in the Map's vocabulary — your arc, your Field, the register that's dominant, the frequencies surfacing, and the door into the work that meets you where you are.</p>
-      <p>It takes three to five minutes. There are no wrong answers. Pick what most resembles your experience right now. The result will be on screen the moment you finish, and a copy will arrive in your inbox if you want it there.</p>
+      <p>Have you wondered how to navigate turbulence in your life? We all go through change. You may feel at times caught in a whirlwind, losing your sense of direction.</p>
+      <p>Drop your anchor right here: take this quiz — 8 questions designed to show you exactly where you are in your journey, and how you're navigating your way through it. Answer what feels most present for you and get your personal, accurate reading of your Map instantly, Free.</p>
     </div>
-
-    <p class="intro-meta">Eight questions · 3–5 minutes · Real reading at the end</p>
 
     <div class="intro-cta-wrap">
       <a href="#" class="btn-primary" id="btn-begin">Begin the reading</a>
@@ -511,12 +517,12 @@
 
     <div class="email-capture">
       <p class="email-prompt">Want this in your inbox?</p>
-      <p class="email-sub">A copy of your reading lands in your email, and you'll receive future readings as your Field shifts. No spam, ever — just the work.</p>
+      <p class="email-sub">A copy of your reading lands in your email, and you'll receive future readings as your Field shifts. A longer, AI-generated reading is in development for later this year — subscribers will be notified when it launches. No spam, ever — just the work.</p>
 
-      <!-- KIT FORM — placeholder action and uid; replace with the actual Kit form once Christy creates it. The form should be tagged `signals-quiz` in Kit so the automation fires the reading email. Hidden fields below carry the computed reading data so Kit can store it as custom subscriber fields. -->
+      <!-- KIT FORM — wired to Signals Quiz form (ID 9384196, UID 6cb21f5268) on christy-paxton-wade.kit.com. Hidden fields below carry the computed reading data into Kit's custom subscriber fields (signals_arc, signals_field, signals_register, signals_tags, signals_offering — all five exist at the account level). Tag attachment (`signals-quiz`) and the reading-delivery email are handled by a Kit Automation, not the form itself. -->
       <div class="kit-form-wrapper">
         <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-        <form action="https://app.kit.com/forms/PLACEHOLDER_FORM_ID/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="PLACEHOLDER_FORM_ID" data-uid="PLACEHOLDER_UID" data-format="inline" data-version="5" min-width="400 500 600 700 800" id="kit-form">
+        <form action="https://app.kit.com/forms/9384196/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9384196" data-uid="6cb21f5268" data-format="inline" data-version="5" min-width="400 500 600 700 800" id="kit-form">
           <div data-style="clean">
             <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
             <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
@@ -529,6 +535,7 @@
               <input type="hidden" name="fields[signals_register]" id="kit-register">
               <input type="hidden" name="fields[signals_tags]" id="kit-tags">
               <input type="hidden" name="fields[signals_offering]" id="kit-offering">
+              <input type="hidden" name="fields[signals_reading_full]" id="kit-reading-full">
               <button data-element="submit" class="formkit-submit formkit-submit">
                 <div class="formkit-spinner"><div></div><div></div><div></div></div>
                 <span>Receive my reading</span>
@@ -851,6 +858,17 @@ const OFFERING_TEMPLATES = {
   convergence_update: "You're already inside the work. A Convergence Update ($244) is a fresh 8-section reading of your Weaving as it stands now — a marker of where the arc has moved, what new frequencies have surfaced, where the next door is."
 };
 
+/* Human-readable offering labels for the email merge tag (kit-offering). The page UI uses the OFFERING_TEMPLATES paragraph; the email's `signals_offering` custom field gets the short label below so the merge tag reads cleanly. */
+const OFFERING_LABELS = {
+  architecture: "Architecture PDF + First Signal call (free)",
+  first_listen: "First Listen ($88)",
+  sovereign_signal: "Sovereign Signal ($244)",
+  lineage: "The Lineage Session ($444)",
+  mirror: "Mirror Work ($1,888 over three months)",
+  cohort: "The Descent Cohort ($777)",
+  convergence_update: "Convergence Update ($244)"
+};
+
 const OVERRIDE_PREFIXES = {
   ancestral_upsell: "You said you're orienting, but the ancestral signal in your reading is louder than that. The Lineage Session may be a more meaningful first step than the orientation tier.",
   astrology_redirect: "You named astrology as your door, but the field signal is pointing toward the ancestral. The sky may be the way you came in; the Lineage Session might be the deeper meeting.",
@@ -994,6 +1012,76 @@ function computeReading(answers) {
   };
 }
 
+/* ---------- FULL READING TEXT BUILDER ----------
+   Builds a plain-text version of the assembled reading for the email merge tag.
+   Mirrors what renderReading puts on screen, but as plain text with line breaks
+   so it can be passed through Kit's signals_reading_full custom field and
+   rendered in the incentive email. */
+function buildFullReadingText(reading) {
+  const lines = [];
+
+  // Arc
+  lines.push("THE ARC YOU'RE WALKING");
+  lines.push("");
+  lines.push(ARC_TEMPLATES[reading.arc]);
+  lines.push("");
+  lines.push("");
+
+  // Field
+  lines.push("THE FIELD YOU'RE IN");
+  lines.push("");
+  lines.push(FIELD_TEMPLATES[reading.primaryField]);
+  if (reading.crossArc) {
+    lines.push("");
+    lines.push(CROSS_ARC_LINE(reading.arc, reading.fieldArc));
+  }
+  if (reading.subterrainHints && reading.subterrainHints.length > 0) {
+    const subList = reading.subterrainHints.length === 2
+      ? `${reading.subterrainHints[0]} and ${reading.subterrainHints[1]}`
+      : reading.subterrainHints[0];
+    lines.push("");
+    lines.push(`The Subterrains likely active for you right now: ${subList}.`);
+  }
+  lines.push("");
+  lines.push("");
+
+  // Register
+  lines.push("THE REGISTER THAT'S CARRYING YOU");
+  lines.push("");
+  lines.push(REGISTER_TEMPLATES[reading.register]);
+  if (reading.unreceivedModifier === 'undertone') {
+    lines.push("");
+    lines.push(UNRECEIVED_UNDERTONE);
+  } else if (reading.unreceivedModifier === 'dominant') {
+    const regName = capitalize(reading.register);
+    lines.push("");
+    lines.push(UNRECEIVED_DOMINANT(regName));
+  }
+  lines.push("");
+  lines.push("");
+
+  // Tags
+  lines.push("SIGNALS SURFACING");
+  lines.push("");
+  reading.tags.forEach(tag => {
+    const desc = TAG_LIBRARY[tag] || '';
+    lines.push(`• ${tag} — ${desc}`);
+  });
+  lines.push("");
+  lines.push("");
+
+  // Offering
+  lines.push("WHAT THE NAVIGATION MAP SUGGESTS");
+  lines.push("");
+  if (reading.overrideRule !== 'none') {
+    lines.push(OVERRIDE_PREFIXES[reading.overrideRule]);
+    lines.push("");
+  }
+  lines.push(OFFERING_TEMPLATES[reading.offering]);
+
+  return lines.join('\n');
+}
+
 /* ---------- RESULT RENDERER ---------- */
 
 function renderReading(reading) {
@@ -1046,7 +1134,8 @@ function renderReading(reading) {
   document.getElementById('kit-field').value = `${reading.fieldNumber} — ${reading.fieldName}`;
   document.getElementById('kit-register').value = capitalize(reading.register);
   document.getElementById('kit-tags').value = reading.tags.join(', ');
-  document.getElementById('kit-offering').value = reading.offering;
+  document.getElementById('kit-offering').value = OFFERING_LABELS[reading.offering] || reading.offering;
+  document.getElementById('kit-reading-full').value = buildFullReadingText(reading);
 }
 
 /* ---------- QUIZ FLOW ---------- */
