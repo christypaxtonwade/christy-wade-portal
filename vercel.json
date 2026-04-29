@@ -11,6 +11,7 @@
     { "src": "/life", "dest": "/life.html" },
     { "src": "/mirror", "dest": "/mirror.html" },
     { "src": "/map", "dest": "/map.html" },
+    { "src": "/signals", "dest": "/signals.html" },
     { "src": "/intake", "dest": "/intake.html" },
     { "src": "/offerings", "dest": "/index.html" },
     { "src": "/(.*)", "dest": "/$1" }
