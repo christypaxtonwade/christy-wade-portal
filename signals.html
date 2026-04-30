@@ -284,7 +284,22 @@
     color: var(--gold-lt);
   }
   .btn-next:disabled:hover { background: transparent; color: var(--gold-lt); }
-  .btn-primary { font-size: 1rem; padding: 1.1rem 2.6rem; }
+  .btn-primary {
+    font-size: 1rem;
+    padding: 1.1rem 2.6rem;
+    background: var(--gold);
+    color: var(--ink);
+    animation: signals-cta-pulse 2.6s ease-in-out infinite;
+  }
+  .btn-primary:hover {
+    background: var(--gold-lt);
+    color: var(--ink);
+    animation: none;
+  }
+  @keyframes signals-cta-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(184,146,74,0.35); }
+    50%      { box-shadow: 0 0 0 12px rgba(184,146,74,0); }
+  }
 
   /* RESULT SCREEN */
   .result-eyebrow { display: block; text-align: center; margin-bottom: 1.4rem; }
@@ -477,6 +492,7 @@
     <img src="/signals-hero.jpg" alt="" class="intro-hero-image" loading="lazy" onerror="this.style.display='none'">
 
     <span class="eyebrow intro-eyebrow">Signals from the Field</span>
+    <p class="intro-meta">8 questions &middot; 3 minutes &middot; A reading at the end</p>
     <h1 class="intro-title">A reading of the terrain you're walking right now.</h1>
 
     <div class="intro-body">
@@ -557,7 +573,8 @@
               <input type="hidden" name="fields[signals_register]" id="kit-register">
               <input type="hidden" name="fields[signals_tags]" id="kit-tags">
               <input type="hidden" name="fields[signals_offering]" id="kit-offering">
-              <input type="hidden" name="fields[signals_reading_full]" id="kit-reading-full">
+              <!-- v2 (30 Apr): replaced signals_reading_full (text dump) with signals_reading_url (magic link). The reading lives at /signals/reading?t=[token] rendered from Supabase. Kit email sends the URL as a CTA button. signals_reading_full custom field can be removed in Kit once this is verified. -->
+              <input type="hidden" name="fields[signals_reading_url]" id="kit-reading-url">
               <button data-element="submit" class="formkit-submit formkit-submit">
                 <div class="formkit-spinner"><div></div><div></div><div></div></div>
                 <span>Receive my reading</span>
@@ -595,6 +612,82 @@
    The Fieldguide passages remain the definitional source for any
    tag's meaning (per PROJECT.md Do's).
    ============================================================ */
+
+/* ---------- PATH C (30 Apr v2): magic-link delivery via Supabase ----------
+   The reading is written to Supabase signals_readings on result render.
+   A 128-bit token gates access at /signals/reading?t=[token].
+   Kit's incentive email becomes a CTA button linking to that URL —
+   the rendering surface is this site, not Kit's email engine. */
+const SUPABASE_URL = 'https://egldaiqrwuxqgavjwwim.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnbGRhaXFyd3V4cWdhdmp3d2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MzkxMTMsImV4cCI6MjA5MTQxNTExM30.jVZvPEPP4f78OfbaWBAryGPd4N_b16FKY92NXi-CeeA';
+const READING_BASE_URL = 'https://christypaxtonwade.com/signals/reading';
+
+let currentReadingId = null;     // uuid of the inserted Supabase row
+let currentReadingToken = null;  // 32-char hex token
+
+function generateMagicLinkToken() {
+  const arr = new Uint8Array(16);
+  crypto.getRandomValues(arr);
+  return Array.from(arr, b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function persistReadingToSupabase(reading, readingHtml, readingText) {
+  const token = generateMagicLinkToken();
+  const row = {
+    magic_link_token: token,
+    arc: reading.arc,
+    primary_field: `${reading.fieldNumber} — ${reading.fieldName}`,
+    field_number: reading.fieldNumber,
+    field_name: reading.fieldName,
+    register: reading.register,
+    tags: reading.tags,
+    offering: reading.offering,
+    offering_label: OFFERING_LABELS[reading.offering] || reading.offering,
+    reading_html: readingHtml,
+    reading_text: readingText,
+    subterrain_hints: reading.subterrainHints || [],
+    unreceived_modifier: reading.unreceivedModifier || null,
+    override_rule: reading.overrideRule || 'none',
+    cross_arc: !!reading.crossArc,
+    field_arc: reading.fieldArc || null
+  };
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/signals_readings`, {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(row)
+  });
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`Supabase insert failed (${res.status}): ${errText}`);
+  }
+  const data = await res.json();
+  const inserted = Array.isArray(data) ? data[0] : data;
+  return { id: inserted.id, token };
+}
+
+async function captureEmailForReading(readingId, email) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/signals_readings?id=eq.${readingId}`, {
+    method: 'PATCH',
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({ email, email_captured_at: new Date().toISOString() })
+  });
+  if (!res.ok) {
+    // Non-fatal: log and let the Kit submit proceed anyway.
+    console.warn('Failed to capture email on Supabase row', readingId, await res.text());
+  }
+}
+/* ---------- END PATH C config ---------- */
+
 
 /* ---------- QUESTIONS — Phase 1 locked ---------- */
 
@@ -1106,9 +1199,10 @@ function buildFullReadingText(reading) {
 
 /* ---------- RESULT RENDERER ---------- */
 
-function renderReading(reading) {
+async function renderReading(reading) {
   // Arc
-  document.getElementById('result-arc').innerHTML = `<p>${ARC_TEMPLATES[reading.arc]}</p>`;
+  const arcHtml = `<p>${ARC_TEMPLATES[reading.arc]}</p>`;
+  document.getElementById('result-arc').innerHTML = arcHtml;
 
   // Field — assemble Field paragraph + optional cross-arc + Subterrain line
   let fieldHtml = `<p>${FIELD_TEMPLATES[reading.primaryField]}</p>`;
@@ -1136,12 +1230,15 @@ function renderReading(reading) {
   // Tags
   const tagsList = document.getElementById('result-tags');
   tagsList.innerHTML = '';
+  let tagsListHtml = '<ul class="result-tags">';
   reading.tags.forEach(tag => {
     const desc = TAG_LIBRARY[tag] || '';
     const li = document.createElement('li');
     li.innerHTML = `<span class="result-tag-name">${tag}</span> — ${desc}`;
     tagsList.appendChild(li);
+    tagsListHtml += `<li><span class="result-tag-name">${tag}</span> — ${desc}</li>`;
   });
+  tagsListHtml += '</ul>';
 
   // Offering — optional override prefix + offering paragraph
   let offeringHtml = '';
@@ -1151,13 +1248,43 @@ function renderReading(reading) {
   offeringHtml += `<p>${OFFERING_TEMPLATES[reading.offering]}</p>`;
   document.getElementById('result-offering').innerHTML = offeringHtml;
 
-  // Populate Kit hidden fields with reading data
+  // Build full reading text + HTML for persistence
+  const readingText = buildFullReadingText(reading);
+  const readingHtml = JSON.stringify({
+    arc: arcHtml,
+    field: fieldHtml,
+    register: registerHtml,
+    tags: tagsListHtml,
+    offering: offeringHtml
+  });
+
+  // Populate Kit hidden fields with reading metadata (always — even if Supabase fails)
   document.getElementById('kit-arc').value = capitalize(reading.arc);
   document.getElementById('kit-field').value = `${reading.fieldNumber} — ${reading.fieldName}`;
   document.getElementById('kit-register').value = capitalize(reading.register);
   document.getElementById('kit-tags').value = reading.tags.join(', ');
   document.getElementById('kit-offering').value = OFFERING_LABELS[reading.offering] || reading.offering;
-  document.getElementById('kit-reading-full').value = buildFullReadingText(reading);
+
+  // PATH C: persist reading to Supabase, set the magic-link URL on the form
+  const submitBtn = document.querySelector('#kit-form .formkit-submit');
+  if (submitBtn) submitBtn.disabled = true;
+  try {
+    const { id, token } = await persistReadingToSupabase(reading, readingHtml, readingText);
+    currentReadingId = id;
+    currentReadingToken = token;
+    document.getElementById('kit-reading-url').value = `${READING_BASE_URL}?t=${token}`;
+    if (submitBtn) submitBtn.disabled = false;
+  } catch (err) {
+    console.error('Path C: Supabase persist failed', err);
+    // Fallback: surface to user, allow Kit submit anyway with empty URL field.
+    // The reading is still on screen; only the email-delivery URL is missing.
+    const alertEl = document.querySelector('#kit-form .formkit-alert');
+    if (alertEl) {
+      alertEl.textContent = 'Your reading is on the screen. We had trouble saving the link copy — your email will still be added to the list, but if you want a re-readable URL, retake the quiz in a moment.';
+      alertEl.style.display = 'block';
+    }
+    if (submitBtn) submitBtn.disabled = false;
+  }
 }
 
 /* ---------- QUIZ FLOW ---------- */
@@ -1271,15 +1398,15 @@ function updateNextButton(q) {
   }
 }
 
-function goNext() {
+async function goNext() {
   if (state.questionIndex < QUESTIONS.length - 1) {
     state.questionIndex++;
     renderQuestion(state.questionIndex);
   } else {
-    // Compute reading and show result
+    // Compute reading and show result. renderReading is async (Path C: Supabase persist).
     const reading = computeReading(state.answers);
-    renderReading(reading);
     showScreen('screen-result');
+    await renderReading(reading);
   }
 }
 
@@ -1302,6 +1429,29 @@ document.getElementById('btn-begin').addEventListener('click', (e) => {
 
 document.getElementById('btn-next').addEventListener('click', goNext);
 document.getElementById('btn-back').addEventListener('click', goBack);
+
+/* PATH C: capture the reader's email back into the Supabase row so the
+   reading is linked to the same email Kit captures. Non-blocking — if the
+   PATCH fails, the Kit submit still proceeds (the reading remains accessible
+   via the magic link in the incentive email). */
+(function attachKitSubmitInterceptor() {
+  const form = document.getElementById('kit-form');
+  if (!form) return;
+  let alreadySubmitting = false;
+  form.addEventListener('submit', function(e) {
+    if (alreadySubmitting) return; // re-entrancy guard
+    if (!currentReadingId) return; // no Supabase row to update; let Kit handle
+    const emailInput = form.querySelector('input[name="email_address"]');
+    const email = emailInput && emailInput.value ? emailInput.value.trim() : null;
+    if (!email) return; // Kit will reject anyway
+    e.preventDefault();
+    alreadySubmitting = true;
+    captureEmailForReading(currentReadingId, email).finally(() => {
+      // Submit the form natively, bypassing this listener.
+      form.submit();
+    });
+  }, true /* capture phase, runs before Kit's own handlers */);
+})();
 </script>
 
 </body>
