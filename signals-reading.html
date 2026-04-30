@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Your Signals Reading — Christy Paxton Wade</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="Your Signals Reading">
+<meta property="og:description" content="A reading of the terrain you are walking right now. From the Navigation Map of Consciousness.">
+<meta property="og:image" content="https://christypaxtonwade.com/signals-hero.jpg">
+<meta property="og:type" content="article">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #0c0a07;
+  --ink-soft: #1a160f;
+  --gold: #b8924a;
+  --gold-lt: #d4b07a;
+  --gold-dim: rgba(184, 146, 74, 0.5);
+  --cream: #e8dcbb;
+  --cream-soft: #d8cba8;
+
+  --ff-d: 'Cormorant Garamond', Georgia, serif;
+  --ff-b: 'Jost', system-ui, sans-serif;
+
+  --text-body: 1.08rem;
+  --text-body-sm: 1rem;
+  --text-label: 0.86rem;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--ink); color: var(--cream); }
+body {
+  font-family: var(--ff-d);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  font-weight: 300;
+  min-height: 100vh;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: center; align-items: center;
+  padding: 1.1rem 3rem;
+  background: rgba(12,10,7,0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(184,146,74,0.1);
+}
+.nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: var(--ff-b);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream); opacity: 0.88;
+  text-decoration: none;
+  transition: opacity 0.3s, color 0.3s;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold-lt); }
+.nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.25); }
+
+/* SHELL */
+.reading-shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+}
+
+/* HEADER */
+.eyebrow {
+  font-family: var(--ff-b);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.95;
+  display: block;
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+.reading-title {
+  font-family: var(--ff-d);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  text-align: center;
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+}
+.reading-subtitle {
+  font-family: var(--ff-d);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--gold-lt);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* SECTIONS */
+.reading-section { margin-bottom: 2.4rem; }
+.reading-section:last-of-type { margin-bottom: 3.4rem; }
+.reading-section-label {
+  font-family: var(--ff-b);
+  font-size: 0.82rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.92;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(184,146,74,0.2);
+  padding-bottom: 0.5rem;
+}
+.reading-section-body {
+  font-family: var(--ff-d);
+  font-size: var(--text-body);
+  color: var(--cream);
+  line-height: 1.85;
+  opacity: 0.95;
+}
+.reading-section-body p { margin-bottom: 0.9rem; }
+.reading-section-body p:last-child { margin-bottom: 0; }
+.reading-section-body em { color: var(--gold-lt); font-style: italic; }
+.result-tags { list-style: none; }
+.result-tags li {
+  font-family: var(--ff-d);
+  font-size: var(--text-body-sm);
+  color: var(--cream);
+  line-height: 1.65;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted rgba(184,146,74,0.18);
+}
+.result-tags li:last-child { border-bottom: none; }
+.result-tag-name { color: var(--gold-lt); font-style: italic; font-weight: 400; }
+
+/* ACTIONS */
+.actions {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(184,146,74,0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  align-items: center;
+}
+.btn {
+  font-family: var(--ff-b);
+  font-size: 0.9rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold-lt);
+  padding: 0.95rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s, color 0.3s;
+}
+.btn:hover { background: var(--gold); color: var(--ink); }
+.btn-print { background: var(--gold); color: var(--ink); }
+.btn-print:hover { background: var(--gold-lt); color: var(--ink); }
+
+.actions-meta {
+  font-family: var(--ff-b);
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  opacity: 0.7;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+/* STATES */
+.state-loading, .state-error, .state-not-found {
+  text-align: center;
+  padding: 4rem 1rem;
+  font-family: var(--ff-d);
+  color: var(--gold-lt);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+.state-error a, .state-not-found a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(184,146,74,0.1);
+  padding: 3rem 3rem 2.4rem;
+  text-align: center;
+}
+footer .footer-name {
+  font-family: var(--ff-d);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--gold-lt);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.06em;
+}
+.footer-links { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+.footer-links a {
+  font-family: var(--ff-b); font-size: 0.88rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); opacity: 0.85;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.footer-links a:hover { opacity: 1; }
+.footer-copy { font-family: var(--ff-b); font-size: 0.84rem; letter-spacing: 0.06em; color: var(--cream); opacity: 0.55; }
+
+/* MOBILE */
+@media (max-width: 720px) {
+  nav { padding: 1rem 1.4rem; }
+  .nav-links { gap: 1rem; font-size: 0.82rem; }
+  .reading-shell { padding: 7rem 1.4rem 3rem; }
+  footer { padding: 2.4rem 1.4rem 1.8rem; }
+  .footer-links { gap: 0.9rem; }
+}
+
+/* ============ PRINT (Save as PDF) ============
+   Conforms to readability-standard.md and readability-parameters.md:
+   vellum #e8dcbb background, ink #14110a body, ink-gold #7a5618 accents,
+   weight 400+ on light surface, 11pt minimum, opacity 1 throughout.
+   Matches the Convergence print stylesheet pattern (28 April decision). */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.75in;
+  }
+  html, body {
+    background: #e8dcbb !important;
+    color: #14110a !important;
+  }
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 11pt !important;
+    line-height: 1.55 !important;
+    font-weight: 400 !important;
+  }
+  nav, footer, .actions, .state-loading, .state-error, .state-not-found.no-print {
+    display: none !important;
+  }
+  .reading-shell {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .eyebrow {
+    color: #7a5618 !important;
+    opacity: 1 !important;
+    margin-bottom: 0.4rem;
+    font-weight: 500 !important;
+  }
+  .reading-title {
+    color: #14110a !important;
+    font-style: italic;
+    font-weight: 400 !important;
+    font-size: 22pt !important;
+    margin-bottom: 0.3rem;
+  }
+  .reading-subtitle {
+    color: #7a5618 !important;
+    font-size: 11pt !important;
+    margin-bottom: 1.6rem;
+    opacity: 1 !important;
+  }
+  .reading-section { margin-bottom: 1.1rem; page-break-inside: avoid; }
+  .reading-section-label {
+    color: #7a5618 !important;
+    border-bottom: 1px solid #7a5618 !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+    font-size: 9pt !important;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.6rem;
+  }
+  .reading-section-body {
+    color: #14110a !important;
+    opacity: 1 !important;
+    font-size: 11pt !important;
+    line-height: 1.55 !important;
+    font-weight: 400 !important;
+  }
+  .reading-section-body em { color: #7a5618 !important; font-style: italic; }
+  .result-tags li {
+    color: #14110a !important;
+    border-bottom: 1px dotted #7a5618 !important;
+    padding: 0.3rem 0;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+  .result-tag-name { color: #7a5618 !important; font-style: italic; font-weight: 500 !important; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="/begin">Begin</a></li>
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky">Sky</a></li>
+    <li><a href="/life">Life</a></li>
+    <li><a href="/mirror">Mirror</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="/signals">Signals Quiz</a></li>
+  </ul>
+</nav>
+
+<div class="reading-shell">
+
+  <!-- LOADING STATE -->
+  <div id="state-loading" class="state-loading">
+    Loading your reading…
+  </div>
+
+  <!-- NOT FOUND STATE -->
+  <div id="state-not-found" class="state-not-found no-print" style="display:none;">
+    <p>This reading could not be found, or the link has expired.</p>
+    <p style="margin-top:1rem;"><a href="/signals">Take the quiz again</a> to generate a fresh reading.</p>
+  </div>
+
+  <!-- ERROR STATE -->
+  <div id="state-error" class="state-error no-print" style="display:none;">
+    <p>Something went wrong loading your reading. Please try again in a moment.</p>
+    <p style="margin-top:1rem;"><a href="/signals">Retake the quiz</a> if the problem persists.</p>
+  </div>
+
+  <!-- READING -->
+  <article id="reading-content" style="display:none;">
+    <span class="eyebrow">Your Reading</span>
+    <h1 class="reading-title">Signals from the Field</h1>
+    <p class="reading-subtitle" id="reading-subtitle"></p>
+
+    <div class="reading-section">
+      <div class="reading-section-label">The Arc You're Walking</div>
+      <div class="reading-section-body" id="r-arc"></div>
+    </div>
+
+    <div class="reading-section">
+      <div class="reading-section-label">The Field You're In</div>
+      <div class="reading-section-body" id="r-field"></div>
+    </div>
+
+    <div class="reading-section">
+      <div class="reading-section-label">The Register That's Carrying You</div>
+      <div class="reading-section-body" id="r-register"></div>
+    </div>
+
+    <div class="reading-section">
+      <div class="reading-section-label">Signals Surfacing</div>
+      <div id="r-tags"></div>
+    </div>
+
+    <div class="reading-section">
+      <div class="reading-section-label">What the Navigation Map Suggests</div>
+      <div class="reading-section-body" id="r-offering"></div>
+    </div>
+
+    <div class="actions no-print">
+      <button class="btn btn-print" id="btn-print" type="button">Save as PDF</button>
+      <a class="btn" href="/signals">Retake the quiz</a>
+      <p class="actions-meta">
+        Save the PDF if you want a copy for your records, or come back to this URL anytime — your reading lives here.
+        Want depth on the same answers? A longer, AI-generated reading is in development at $44; you'll be notified when it launches.
+      </p>
+    </div>
+  </article>
+
+</div>
+
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <div class="footer-links">
+    <a href="/begin">Begin</a>
+    <a href="/signals">Signals</a>
+    <a href="/map">The Map</a>
+  </div>
+  <p class="footer-copy">© 2026 Christy Paxton Wade. All rights reserved.</p>
+</footer>
+
+<script>
+const SUPABASE_URL = 'https://egldaiqrwuxqgavjwwim.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnbGRhaXFyd3V4cWdhdmp3d2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MzkxMTMsImV4cCI6MjA5MTQxNTExM30.jVZvPEPP4f78OfbaWBAryGPd4N_b16FKY92NXi-CeeA';
+
+function getTokenFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('t');
+}
+
+function showState(stateName) {
+  ['state-loading', 'state-not-found', 'state-error', 'reading-content'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = (id === stateName) ? '' : 'none';
+  });
+}
+
+async function fetchReading(token) {
+  const url = `${SUPABASE_URL}/rest/v1/signals_readings?magic_link_token=eq.${encodeURIComponent(token)}&select=*&limit=1`;
+  const res = await fetch(url, {
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      'Accept': 'application/json'
+    }
+  });
+  if (!res.ok) throw new Error(`Reading fetch failed (${res.status})`);
+  const rows = await res.json();
+  if (!rows || rows.length === 0) return null;
+  return rows[0];
+}
+
+async function markViewed(readingId) {
+  // Best-effort. Don't block render on this.
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/signals_readings?id=eq.${readingId}&viewed_at=is.null`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ viewed_at: new Date().toISOString() })
+    });
+  } catch (e) { /* non-fatal */ }
+}
+
+function renderReadingFromRow(row) {
+  // Subtitle: arc / field / register — quick at-a-glance summary line
+  const subtitle = `${capitalize(row.arc || '')} arc · ${row.primary_field || ''} · ${capitalize(row.register || '')} register`;
+  document.getElementById('reading-subtitle').textContent = subtitle;
+
+  // The reading_html column is a JSON-encoded structure of HTML fragments.
+  // We re-hydrate each section from there.
+  let parsed = null;
+  try {
+    parsed = row.reading_html ? JSON.parse(row.reading_html) : null;
+  } catch (_) { parsed = null; }
+
+  if (parsed && parsed.arc) {
+    document.getElementById('r-arc').innerHTML = parsed.arc;
+    document.getElementById('r-field').innerHTML = parsed.field;
+    document.getElementById('r-register').innerHTML = parsed.register;
+    document.getElementById('r-tags').innerHTML = parsed.tags;
+    document.getElementById('r-offering').innerHTML = parsed.offering;
+  } else if (row.reading_text) {
+    // Fallback: render the plain-text reading as <pre>-ish formatted blocks
+    const pre = document.createElement('pre');
+    pre.style.fontFamily = 'inherit';
+    pre.style.whiteSpace = 'pre-wrap';
+    pre.textContent = row.reading_text;
+    document.getElementById('r-arc').innerHTML = '';
+    document.getElementById('r-field').innerHTML = '';
+    document.getElementById('r-register').innerHTML = '';
+    document.getElementById('r-tags').innerHTML = '';
+    document.getElementById('r-offering').innerHTML = '';
+    document.getElementById('r-arc').appendChild(pre);
+  }
+}
+
+function capitalize(s) {
+  if (!s) return '';
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+(async function init() {
+  const token = getTokenFromUrl();
+  if (!token || token.length < 16) {
+    showState('state-not-found');
+    return;
+  }
+  try {
+    const row = await fetchReading(token);
+    if (!row) {
+      showState('state-not-found');
+      return;
+    }
+    renderReadingFromRow(row);
+    showState('reading-content');
+    // Fire-and-forget viewed_at update
+    markViewed(row.id);
+  } catch (err) {
+    console.error('Reading load error', err);
+    showState('state-error');
+  }
+})();
+
+document.getElementById('btn-print').addEventListener('click', function() {
+  window.print();
+});
+</script>
+
+</body>
+</html>
