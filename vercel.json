@@ -12,6 +12,7 @@
     { "src": "/mirror", "dest": "/mirror.html" },
     { "src": "/map", "dest": "/map.html" },
     { "src": "/signals", "dest": "/signals.html" },
+    { "src": "/signals/reading", "dest": "/signals-reading.html" }
     { "src": "/intake", "dest": "/intake.html" },
     { "src": "/codex", "dest": "/codex.html" },
     { "src": "/offerings", "dest": "/index.html" },
