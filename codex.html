@@ -1525,7 +1525,7 @@ function renderGuideTables() {
 async function init() {
   try {
     const [plants, purpose, systems, seasons, register] = await Promise.all([
-      codexFetch('plants?select=*&order=number.asc'),
+      codexFetch('plants?select=*&order=common_name.asc'),
       codexFetch('purpose_cross_reference?select=*&order=display_order.asc'),
       codexFetch('systems_cross_reference?select=*&order=display_order.asc'),
       codexFetch('season_assignments?select=*&order=display_order.asc'),
