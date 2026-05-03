@@ -1201,17 +1201,31 @@ html { scroll-behavior: smooth; }
   <p>Christy's Garden — a living codex. <a href="/">return to the site</a></p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// ---------- Supabase setup ----------
-const SUPABASE_URL    = 'https://egldaiqrwuxqgavjwwim.supabase.co';
-const PUBLISHABLE_KEY = 'sb_publishable__G9YOWc5-JdQrs-5_5_-oQ_lImg-3EX';
-const STORAGE_BASE    = SUPABASE_URL + '/storage/v1/object/public/codex-images/';
+// ---------- Supabase setup (raw REST — matches the pattern in fieldguide / ancestral-catalog) ----------
+const SUPABASE_URL = 'https://egldaiqrwuxqgavjwwim.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnbGRhaXFyd3V4cWdhdmp3d2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MzkxMTMsImV4cCI6MjA5MTQxNTExM30.jVZvPEPP4f78OfbaWBAryGPd4N_b16FKY92NXi-CeeA';
+// Images live as static files in this same repo at /codex-images/<filename>.
+// To switch to Supabase Storage later, change this back to:
+//   const STORAGE_BASE = SUPABASE_URL + '/storage/v1/object/public/codex-images/';
+// (The image_path column already holds the bare filename, so only this constant changes.)
+const STORAGE_BASE = 'codex-images/';
 
-const db = supabase.createClient(SUPABASE_URL, PUBLISHABLE_KEY, {
-  db: { schema: 'codex' },
-  auth: { persistSession: false },
-});
+// All codex tables/views live in the `codex` schema. Accept-Profile tells PostgREST to look there.
+async function codexFetch(path) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    headers: {
+      'apikey':         SUPABASE_KEY,
+      'Authorization':  `Bearer ${SUPABASE_KEY}`,
+      'Accept-Profile': 'codex',
+    },
+  });
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    throw new Error(`Supabase ${res.status}${body ? ': ' + body : ''}`);
+  }
+  return res.json();
+}
 
 // ---------- State ----------
 let PLANTS = [];
@@ -1510,25 +1524,19 @@ function renderGuideTables() {
 // ---------- Initial load ----------
 async function init() {
   try {
-    const [plantsRes, purposeRes, systemsRes, seasonsRes, registerRes] = await Promise.all([
-      db.from('plants').select('*').order('number'),
-      db.from('purpose_cross_reference').select('*').order('display_order'),
-      db.from('systems_cross_reference').select('*').order('display_order'),
-      db.from('season_assignments').select('*').order('display_order'),
-      db.from('register_cross_reference').select('*').order('display_order'),
+    const [plants, purpose, systems, seasons, register] = await Promise.all([
+      codexFetch('plants?select=*&order=number.asc'),
+      codexFetch('purpose_cross_reference?select=*&order=display_order.asc'),
+      codexFetch('systems_cross_reference?select=*&order=display_order.asc'),
+      codexFetch('season_assignments?select=*&order=display_order.asc'),
+      codexFetch('register_cross_reference?select=*&order=display_order.asc'),
     ]);
 
-    if (plantsRes.error)   throw plantsRes.error;
-    if (purposeRes.error)  throw purposeRes.error;
-    if (systemsRes.error)  throw systemsRes.error;
-    if (seasonsRes.error)  throw seasonsRes.error;
-    if (registerRes.error) throw registerRes.error;
-
-    PLANTS = plantsRes.data || [];
-    VIEWS.purpose  = purposeRes.data  || [];
-    VIEWS.systems  = systemsRes.data  || [];
-    VIEWS.seasons  = seasonsRes.data  || [];
-    VIEWS.register = registerRes.data || [];
+    PLANTS         = plants   || [];
+    VIEWS.purpose  = purpose  || [];
+    VIEWS.systems  = systems  || [];
+    VIEWS.seasons  = seasons  || [];
+    VIEWS.register = register || [];
 
     renderChips('purposes-chips', PURPOSE_ORDER, 'purposes');
     renderChips('systems-chips',  SYSTEM_ORDER,  'systems');
