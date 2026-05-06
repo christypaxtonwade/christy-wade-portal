@@ -630,6 +630,7 @@
       <div data-style="clean">
         <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
         <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+          <input type="hidden" name="fields[signup_source]" id="signup-source-field" value="">
           <div class="formkit-field">
             <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Enter your email" required type="email">
           </div>
@@ -701,6 +702,17 @@
       el.classList.toggle('open');
     });
   });
+
+  // Capture ?source=... URL parameter into the Kit form's signup_source hidden field.
+  // Used to attribute subscribers to specific funnels (e.g. ?source=revolutionary-icons from Linktree).
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var source = params.get('source');
+    if (source) {
+      var input = document.getElementById('signup-source-field');
+      if (input) input.value = source;
+    }
+  })();
 </script>
 
 </body>
