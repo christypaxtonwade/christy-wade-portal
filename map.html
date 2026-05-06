@@ -703,15 +703,35 @@
     });
   });
 
-  // Capture ?source=... URL parameter into the Kit form's signup_source hidden field.
+  // Capture ?source=... URL parameter and attach it to the Kit form's submission.
+  // Two paths in case Kit's form library wipes hidden inputs at render time:
+  //   (1) Append fields[signup_source] to the form's action URL as a query parameter.
+  //   (2) On submit, re-create the hidden input fresh so it can't be wiped.
   // Used to attribute subscribers to specific funnels (e.g. ?source=revolutionary-icons from Linktree).
   (function() {
     var params = new URLSearchParams(window.location.search);
     var source = params.get('source');
-    if (source) {
-      var input = document.getElementById('signup-source-field');
-      if (input) input.value = source;
-    }
+    if (!source) return;
+    var form = document.querySelector('form[data-sv-form="9353857"]');
+    if (!form) return;
+
+    // Path 1: action URL query parameter
+    try {
+      var actionUrl = new URL(form.action);
+      actionUrl.searchParams.set('fields[signup_source]', source);
+      form.action = actionUrl.toString();
+    } catch (e) {}
+
+    // Path 2: hidden input injected at submit time (capture phase, runs before Kit handlers)
+    form.addEventListener('submit', function() {
+      var existing = form.querySelector('input[name="fields[signup_source]"]');
+      if (existing) existing.remove();
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'fields[signup_source]';
+      input.value = source;
+      form.appendChild(input);
+    }, true);
   })();
 </script>
 
