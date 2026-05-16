@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inside the Work — Christy Paxton Wade</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!--
+  PAGE PURPOSE — public sample of the work.
+  Per website-walkthrough.md §12 + navigation-governance.md §7 item 5.
+  Hand-curated, anonymized excerpt of: three ancestors at full layer depth,
+  one rendered sigil, a three-section truncated convergence following one
+  frequency-tag pattern end-to-end. Static page — no Supabase queries — so
+  Christy controls exactly what's shown.
+
+  AUTHORSHIP — per decisions.md 2026-04-22 governance, the actual ancestor
+  text and convergence prose are CHRISTY'S writing. This file ships with
+  placeholder content (clearly marked) that she replaces with her authored
+  excerpts. Page structure, framing copy at section boundaries, and CTA copy
+  are scaffolding she can revise but don't need to be authored fresh.
+-->
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0c0a07; --ink-mid: #111009;
+    --gold: #b8924a; --gold-lt: #d4ae6e;
+    --cream: #f0e8d0; --plum: #251020;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+    --text-body: 1.15rem;
+    --text-body-sm: 1.05rem;
+    --text-label: 0.94rem;
+    --op-body: 0.92;
+    --op-support: 0.88;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
+
+  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; }
+  .trunk-sig:hover { opacity: 1; }
+
+  nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.12); }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
+  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-lt); }
+  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.3); }
+
+  .eyebrow { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.95; display: block; margin-bottom: 1.4rem; }
+
+  /* ── Hero ── */
+  .itw-hero {
+    min-height: 55vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 5rem 3rem 4rem;
+    background: linear-gradient(180deg, var(--plum) 0%, var(--ink) 100%);
+  }
+  .itw-hero-title {
+    font-family: var(--ff-d);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-style: italic; font-weight: 300;
+    color: var(--gold-lt); line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+  .itw-hero-sub {
+    font-family: var(--ff-b);
+    font-size: 0.94rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--cream); opacity: 0.88;
+    margin-bottom: 2.4rem;
+  }
+  .itw-hero-intro {
+    font-family: var(--ff-d);
+    font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+    font-style: italic;
+    color: var(--cream); opacity: 0.92;
+    line-height: 1.8;
+    max-width: 640px; margin: 0 auto;
+  }
+
+  /* ── Section dividers ── */
+  .itw-rule {
+    display: flex; align-items: center; justify-content: center;
+    max-width: 200px; margin: 0 auto;
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+  .itw-rule-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(184,146,74,0.5), transparent);
+  }
+  .itw-rule-mark { font-size: 1.1rem; color: var(--gold); opacity: 0.88; }
+
+  /* ── Section headers ── */
+  .itw-section { padding: 4rem 3rem; max-width: 920px; margin: 0 auto; }
+  .itw-section-eyebrow {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.95;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .itw-section-title {
+    font-family: var(--ff-d);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-style: italic; font-weight: 300;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .itw-section-framing {
+    font-family: var(--ff-d);
+    font-size: var(--text-body);
+    font-style: italic;
+    color: var(--cream); opacity: var(--op-body);
+    text-align: center;
+    max-width: 600px; margin: 0 auto 3.5rem;
+    line-height: 1.8;
+  }
+
+  /* ── Ancestor card (sample) ── */
+  .itw-ancestor {
+    border: 1px solid rgba(184,146,74,0.18);
+    background: rgba(184,146,74,0.03);
+    padding: 2.5rem 2.5rem 2rem;
+    margin-bottom: 2rem;
+  }
+  .itw-ancestor-name {
+    font-family: var(--ff-d);
+    font-size: 2rem;
+    font-style: italic; font-weight: 300;
+    color: var(--gold-lt);
+    margin-bottom: 0.4rem;
+  }
+  .itw-ancestor-dates {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--cream); opacity: 0.88;
+    margin-bottom: 1.8rem;
+  }
+  .itw-layer {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(184,146,74,0.18);
+  }
+  .itw-layer:first-of-type { border-top: none; padding-top: 0; }
+  .itw-layer-label {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.95;
+    margin-bottom: 0.6rem;
+  }
+  .itw-layer-body {
+    font-family: var(--ff-d);
+    font-size: var(--text-body);
+    font-weight: 300;
+    color: var(--cream); opacity: var(--op-body);
+    line-height: 1.95;
+  }
+
+  /* ── Sigil ── */
+  .itw-sigil-wrap {
+    text-align: center;
+    padding: 3rem 2rem;
+    border: 1px solid rgba(184,146,74,0.25);
+    background: rgba(184,146,74,0.04);
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+  .itw-sigil-art { max-width: 200px; margin: 0 auto 1.5rem; }
+  .itw-sigil-art svg { width: 100%; height: auto; }
+  .itw-sigil-name {
+    font-family: var(--ff-d);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--gold-lt);
+    margin-bottom: 1rem;
+  }
+  .itw-sigil-text {
+    font-family: var(--ff-d);
+    font-size: var(--text-body-sm);
+    font-style: italic;
+    color: var(--cream); opacity: var(--op-body);
+    line-height: 1.8;
+  }
+
+  /* ── Convergence excerpt ── */
+  .itw-conv-section {
+    margin-bottom: 2.5rem;
+    padding: 2rem 2.5rem;
+    border-left: 2px solid var(--gold);
+    background: rgba(184,146,74,0.03);
+  }
+  .itw-conv-label {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.95;
+    margin-bottom: 0.4rem;
+  }
+  .itw-conv-title {
+    font-family: var(--ff-d);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+  .itw-conv-text {
+    font-family: var(--ff-d);
+    font-size: var(--text-body);
+    font-weight: 300;
+    color: var(--cream); opacity: var(--op-body);
+    line-height: 1.9;
+  }
+
+  /* ── Placeholder marker ── */
+  .voice-placeholder {
+    display: block;
+    font-family: var(--ff-b);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 0.85rem;
+    padding: 0.4rem 0.65rem;
+    border: 1px dashed rgba(184,146,74,0.35);
+    border-radius: 3px;
+    background: rgba(184,146,74,0.04);
+  }
+
+  /* ── Closing CTA ── */
+  .itw-closing { background: var(--ink-mid); padding: 5rem 3rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .itw-closing-title {
+    font-family: var(--ff-d);
+    font-size: clamp(1.7rem, 2.5vw, 2.2rem);
+    font-style: italic; font-weight: 300;
+    color: var(--gold-lt);
+    margin-bottom: 1.2rem;
+  }
+  .itw-closing-text {
+    font-family: var(--ff-d);
+    font-size: var(--text-body);
+    font-style: italic;
+    color: var(--cream); opacity: var(--op-body);
+    max-width: 600px; margin: 0 auto 2.5rem;
+    line-height: 1.85;
+  }
+  .btn-gold {
+    display: inline-block;
+    padding: 0.95rem 2.4rem;
+    border: 1px solid var(--gold);
+    color: var(--gold-lt);
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .btn-gold:hover { background: var(--gold); color: var(--ink); }
+
+  /* ── Footer ── */
+  footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+  .footer-links a:hover { opacity: 1; color: var(--gold-lt); }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.94rem; color: var(--cream); opacity: 0.88; }
+
+  @media (max-width: 760px) {
+    .itw-section { padding: 3rem 1.5rem; }
+    .itw-ancestor { padding: 1.75rem 1.5rem; }
+    .itw-conv-section { padding: 1.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<a href="/" class="trunk-sig">Christy Paxton Wade</a>
+<nav>
+  <ul class="nav-links">
+    <li><a href="/begin">Begin</a></li>
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky">Sky</a></li>
+    <li><a href="/life">Life</a></li>
+    <li><a href="/mirror">Mirror</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="/mirror#apply">Apply</a></li>
+    <li><a href="https://christywade.substack.com" target="_blank">Substack</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="https://navigation-map-iota.vercel.app/portal.html" target="_blank">Portal ↗</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="itw-hero">
+  <span class="eyebrow">A Sample of the Work</span>
+  <h1 class="itw-hero-title">Inside the Work</h1>
+  <div class="itw-hero-sub">A Curated Excerpt · Three Ancestors · One Sigil · One Pattern</div>
+  <p class="itw-hero-intro">
+    What a Lineage Session produces is a precision document — written across registers, frequency-tagged to specific Fields of the Navigation Map. Below is a small, real excerpt from the practice. Three ancestors at full layer depth, one rendered sigil, and three sections of a Convergence following a single frequency-tag pattern from witness through synthesis.
+  </p>
+</section>
+
+<!-- ─── SECTION 1: THREE ANCESTORS ─── -->
+<section class="itw-section">
+  <div class="itw-section-eyebrow">Section One</div>
+  <h2 class="itw-section-title">Three Ancestors</h2>
+  <p class="itw-section-framing">
+    Each ancestor is rendered across five layers — Terroir (the ground they stood on), Unresolved (what they carried that couldn't yet be spoken), Thread (what they refined and passed forward), Lineage (where they sit in the longer arc), Sigil (the image that holds it). The excerpt below shows the first four; the sigil is its own section.
+  </p>
+
+  <!-- ─── ANCESTOR 1 — CHRISTINA YOUNG HIGGINSON (already published in Sovereign Descent essay) ─── -->
+  <article class="itw-ancestor">
+    <div class="itw-ancestor-name">Christina Young Higginson</div>
+    <div class="itw-ancestor-dates">1858 — 1930 &nbsp;·&nbsp; Edinburgh → Idaho</div>
+
+    <div class="itw-layer">
+      <div class="itw-layer-label">Terroir</div>
+      <div class="itw-layer-body">
+        <span class="voice-placeholder">Christy: paste the Terroir layer from Christina's record here (100–140 words).</span>
+        <em>Placeholder — replace with the Terroir layer as written in Sovereign Descent or as pulled from the Weaving record.</em>
+      </div>
+    </div>
+
+    <div class="itw-layer">
+      <div class="itw-layer-label">The Unresolved</div>
+      <div class="itw-layer-body">
+        <span class="voice-placeholder">Christy: paste the Unresolved layer here (100–130 words).</span>
+        <em>Placeholder.</em>
+      </div>
+    </div>
+
+    <div class="itw-layer">
+      <div class="itw-layer-label">The Living Thread</div>
+      <div class="itw-layer-body">
+        <span class="voice-placeholder">Christy: paste the Living Thread layer here (130–170 words).</span>
+        <em>Placeholder.</em>
+      </div>
+    </div>
+
+    <div class="itw-layer">
+      <div class="itw-layer-label">The Lineage</div>
+      <div class="itw-layer-body">
+        <span class="voice-placeholder">Christy: paste the Lineage layer here (100–130 words).</span>
+        <em>Placeholder.</em>
+      </div>
+    </div>
+  </article>
+
+  <!-- ─── ANCESTOR 2 — placeholder; Christy picks ─── -->
+  <article class="itw-ancestor">
+    <div class="itw-ancestor-name"><span class="voice-placeholder">Christy: choose ancestor 2 (Caroline Hopkins Clark recommended for the Liverpool ↔ Christina mirror pattern).</span>Ancestor Name</div>
+    <div class="itw-ancestor-dates">Dates · Place → Place</div>
+
+    <div class="itw-layer">
+      <div class="itw-layer-label">Terroir</div>
+      <div class="itw-layer-body"><em>Placeholder — paste Terroir layer.</em></div>
+    </div>
+    <div class="itw-layer">
+      <div class="itw-layer-label">The Unresolved</div>
+      <div class="itw-layer-body"><em>Placeholder — paste Unresolved layer.</em></div>
+    </div>
+    <div class="itw-layer">
+      <div class="itw-layer-label">The Living Thread</div>
+      <div class="itw-layer-body"><em>Placeholder — paste Living Thread layer.</em></div>
+    </div>
+    <div class="itw-layer">
+      <div class="itw-layer-label">The Lineage</div>
+      <div class="itw-layer-body"><em>Placeholder — paste Lineage layer.</em></div>
+    </div>
+  </article>
+
+  <!-- ─── ANCESTOR 3 — placeholder ─── -->
+  <article class="itw-ancestor">
+    <div class="itw-ancestor-name"><span class="voice-placeholder">Christy: choose ancestor 3 (consider one from a different arc — Alfred Douglas Young for the interpreter frequency, or a mythic figure for register variety).</span>Ancestor Name</div>
+    <div class="itw-ancestor-dates">Dates · Place</div>
+
+    <div class="itw-layer">
+      <div class="itw-layer-label">Terroir</div>
+      <div class="itw-layer-body"><em>Placeholder.</em></div>
+    </div>
+    <div class="itw-layer">
+      <div class="itw-layer-label">The Unresolved</div>
+      <div class="itw-layer-body"><em>Placeholder.</em></div>
+    </div>
+    <div class="itw-layer">
+      <div class="itw-layer-label">The Living Thread</div>
+      <div class="itw-layer-body"><em>Placeholder.</em></div>
+    </div>
+    <div class="itw-layer">
+      <div class="itw-layer-label">The Lineage</div>
+      <div class="itw-layer-body"><em>Placeholder.</em></div>
+    </div>
+  </article>
+</section>
+
+<div class="itw-rule">
+  <div class="itw-rule-line"></div>
+  <div class="itw-rule-mark">✦</div>
+  <div class="itw-rule-line"></div>
+</div>
+
+<!-- ─── SECTION 2: A SIGIL ─── -->
+<section class="itw-section">
+  <div class="itw-section-eyebrow">Section Two</div>
+  <h2 class="itw-section-title">A Sigil</h2>
+  <p class="itw-section-framing">
+    The sigil is the fifth layer. It compresses what the prose has named into a single image — something the body can recognize without language. Below is one example; every ancestor in the Weaving carries one.
+  </p>
+
+  <div class="itw-sigil-wrap">
+    <div class="itw-sigil-art">
+      <span class="voice-placeholder">Christy: paste the sigil SVG here. Pick a sigil that pairs naturally with one of the three ancestors above.</span>
+      <!-- Replace this comment block with the SVG markup from the chosen ancestor's sigil_svg field. -->
+    </div>
+    <div class="itw-sigil-name">
+      <span class="voice-placeholder">Christy: paste the sigil name here.</span>
+      Sigil Name
+    </div>
+    <div class="itw-sigil-text">
+      <em>Placeholder — paste the sigil description (the short prose paragraph that explains what the image holds).</em>
+    </div>
+  </div>
+</section>
+
+<div class="itw-rule">
+  <div class="itw-rule-line"></div>
+  <div class="itw-rule-mark">✦</div>
+  <div class="itw-rule-line"></div>
+</div>
+
+<!-- ─── SECTION 3: A FREQUENCY PATTERN (truncated convergence) ─── -->
+<section class="itw-section">
+  <div class="itw-section-eyebrow">Section Three</div>
+  <h2 class="itw-section-title">A Frequency Pattern</h2>
+  <p class="itw-section-framing">
+    A full Convergence is an eight-section analysis read across all the frequency tags carried by a Weaving. Below is one frequency followed end-to-end across three of those sections — what the pattern looks like, where it sits in the lineage, what it asks the living descendant to do.
+  </p>
+
+  <div class="itw-conv-section">
+    <div class="itw-conv-label">The Pattern · Named</div>
+    <div class="itw-conv-title"><span class="voice-placeholder">Christy: choose a frequency from your own Convergence (The Wound That Will Not Close pairs naturally with Christina + the Liverpool descent narrative).</span>The Wound That Will Not Close</div>
+    <div class="itw-conv-text">
+      <em>Placeholder — paste the first section: what this frequency IS in the lineage. The naming pass. Two to three short paragraphs in your voice.</em>
+    </div>
+  </div>
+
+  <div class="itw-conv-section">
+    <div class="itw-conv-label">Where It Sits · The Lineage Arc</div>
+    <div class="itw-conv-title">Across Time</div>
+    <div class="itw-conv-text">
+      <em>Placeholder — paste the second section: where the pattern recurs across the documented ancestors. The arc through the line. Two to three short paragraphs.</em>
+    </div>
+  </div>
+
+  <div class="itw-conv-section">
+    <div class="itw-conv-label">What It Asks · The Living Thread</div>
+    <div class="itw-conv-title">What's Available Now</div>
+    <div class="itw-conv-text">
+      <em>Placeholder — paste the third section: what has been transmitted, what is now usable, what the living descendant is positioned to do with it. The closing should be quiet and complete.</em>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CLOSING CTA ─── -->
+<section class="itw-closing">
+  <h3 class="itw-closing-title">A Convergence is eight sections like this</h3>
+  <p class="itw-closing-text">
+    Read across every frequency tag in the Weaving. Plus a snapshot of the lineage's structural shape, an unresolved-thread analysis, a closing synthesis, and a two-page summary PDF. The Lineage Session is the entry point — ninety minutes plus a twelve-ancestor starter Weaving plus the first Convergence.
+  </p>
+  <a class="btn-gold" href="/earth">The Lineage Session — $444</a>
+</section>
+
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/begin">Begin</a>
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="https://christywade.substack.com" target="_blank">Substack</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Christy Paxton Wade &nbsp;&middot;&nbsp; Bentonville, Arkansas</p>
+</footer>
+
+</body>
+</html>
