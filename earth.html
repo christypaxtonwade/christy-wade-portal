@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Earth — Christy Paxton Wade</title>
+<title>Sky — Christy Paxton Wade</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,20 +33,36 @@
 
   .eyebrow { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.95; display: block; margin-bottom: 1.4rem; }
 
-  .branch-hero { min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 7rem 3rem 5rem; background: radial-gradient(ellipse at center, #1a1008 0%, #0f0b05 40%, var(--ink) 75%); }
+  .branch-hero {
+    min-height: 70vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 7rem 3rem 5rem;
+    position: relative;
+    background-image: url('/night-sky.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  .branch-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 10, 18, 0.72) 0%,
+      rgba(8, 10, 18, 0.55) 40%,
+      rgba(8, 10, 18, 0.78) 100%
+    );
+    z-index: 0;
+  }
+  .branch-hero > * { position: relative; z-index: 1; }
   .branch-title { font-family: var(--ff-d); font-size: clamp(4rem, 8vw, 8rem); font-style: italic; font-weight: 300; color: var(--gold-lt); line-height: 0.95; margin-bottom: 1.2rem; animation: fadeUp 1.2s 0.4s ease both; }
   .branch-subtitle { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.88; margin-bottom: 2.4rem; animation: fadeUp 1s 0.6s ease both; }
   .branch-intro { font-family: var(--ff-d); font-size: clamp(1.2rem, 1.8vw, 1.4rem); font-style: italic; color: var(--cream); opacity: 0.90; line-height: 1.75; max-width: 600px; margin: 0 auto; animation: fadeUp 1s 0.8s ease both; }
 
   .section-prose { padding: 6rem 4rem; max-width: 780px; margin: 0 auto; }
   .prose-p { font-family: var(--ff-d); font-size: var(--text-body); font-weight: 300; color: var(--cream); line-height: 1.9; opacity: var(--op-body); margin-bottom: 1.5rem; }
-
-  .book-section { background: var(--plum); padding: 6rem 3rem; text-align: center; }
-  .book-title { font-family: var(--ff-d); font-size: clamp(2.4rem, 4vw, 3.8rem); font-style: italic; font-weight: 300; color: var(--gold-lt); line-height: 1.15; margin-bottom: 0.8rem; }
-  .book-sub { font-family: var(--ff-d); font-size: clamp(1.4rem, 2.2vw, 2rem); font-style: italic; font-weight: 300; color: var(--cream); opacity: 0.88; margin-bottom: 1.8rem; }
-  .book-body { max-width: 560px; margin: 0 auto 1.6rem; font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.88; line-height: 1.8; }
-  .book-quote { max-width: 560px; margin: 0 auto 2.4rem; font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--gold-lt); opacity: 0.92; line-height: 1.8; }
-  .book-divider { width: 40px; height: 1px; background: rgba(184,146,74,0.4); margin: 0 auto 2.4rem; }
 
   .offerings-section { background: var(--ink); padding: 6rem 3rem; }
   .offerings-header { text-align: center; margin-bottom: 4rem; }
@@ -67,9 +83,6 @@
   .offering-link:hover { opacity: 1; }
   .offering-link::after { content: ' →'; }
 
-  .offering-card.coming-soon { opacity: 0.88; }
-  .coming-badge { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); opacity: 0.88; border: 1px solid rgba(240,232,208,0.25); padding: 0.3rem 0.8rem; }
-
   footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
   .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
   .footer-name:hover { opacity: 0.9; }
@@ -83,101 +96,29 @@
   .inline-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
   .btn-gold:hover { background: var(--gold); color: var(--ink); }
 
-  .earth-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    gap: 0;
-  }
-  .earth-text {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 5rem 4rem;
-  }
-  .earth-img {
-    overflow: hidden;
-    max-height: 600px;
-  }
-  .earth-img img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-  }
-  @media (max-width: 760px) {
-    .earth-split { grid-template-columns: 1fr; }
-    .earth-text { padding: 4rem 2rem; }
-    .earth-img { max-height: 300px; }
-  }
-  /* OFFERINGS WITH QUOTE */
-  .offerings-with-quote {
-    display: grid;
-    grid-template-columns: 480px 1fr;
-    align-items: start;
-    max-width: 1300px;
-    margin: 0 auto;
-    gap: 4rem;
-    padding: 0 3rem;
-  }
-  .offerings-quote-img {
-    position: sticky;
-    top: 6rem;
-  }
-  .offerings-quote-img img {
-    display: block;
-    width: 100%;
-    height: auto;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-  }
-  .offerings-cards { flex: 1; }
-  @media (max-width: 900px) {
-    .offerings-with-quote {
-      grid-template-columns: 1fr;
-      padding: 0 2rem;
-    }
-    .offerings-quote-img {
-      position: static;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-  }
 
-  /* CHRISTINA SPLIT */
-  .christina-split {
+  .sky-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    max-width: 100%;
-    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+    gap: 4rem;
   }
-  .christina-text {
-    padding: 5rem 4rem 5rem 6rem;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .christina-img {
-    overflow: hidden;
-    max-height: 620px;
-    background: var(--ink);
-    display: flex; align-items: center; justify-content: center;
-    padding: 3rem;
-  }
-  .christina-img img {
+  .sky-text { display: flex; flex-direction: column; justify-content: center; }
+  .sky-owl img {
     display: block;
-    max-width: 100%;
-    max-height: 560px;
-    width: auto;
+    width: 100%;
+    max-width: 460px;
     height: auto;
-    filter: sepia(15%) brightness(0.92);
+    object-fit: cover;
+    margin: 0 auto;
   }
   @media (max-width: 760px) {
-    .christina-split { grid-template-columns: 1fr; }
-    .christina-text { padding: 4rem 2rem; }
-    .christina-img { max-height: 400px; padding: 2rem; }
+    .sky-split { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 2rem; }
+    .sky-owl { order: -1; }
   }
-
 
   .footer-social {
     display: flex;
@@ -205,8 +146,8 @@
 <nav>
   <ul class="nav-links">
     <li><a href="/begin">Begin</a></li>
-    <li><a href="/earth" class="active">Earth</a></li>
-    <li><a href="/sky">Sky</a></li>
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky" class="active">Sky</a></li>
     <li><a href="/life">Life</a></li>
     <li><a href="/mirror">Mirror</a></li>
     <li class="nav-divider"></li>
@@ -218,123 +159,86 @@
 </nav>
 
 <section class="branch-hero">
-  <span class="eyebrow">Earth &nbsp;·&nbsp; The Roots</span>
-  <h1 class="branch-title">Earth</h1>
-  <p class="branch-subtitle">Ancestral Lineage &nbsp;·&nbsp; The Underground &nbsp;·&nbsp; Descent</p>
-  <p class="branch-intro">This is the Descent arc of the <a href="/map" class="inline-link">Navigation Map</a> — Fields I through VII — where the signal was first compressed and where it can first be freed. The underground work. The lineage code. The women who came before you, carrying what couldn't yet be spoken.</p>
+  <span class="eyebrow">Sky &nbsp;·&nbsp; The Canopy</span>
+  <h1 class="branch-title">Sky</h1>
+  <p class="branch-subtitle">Astrology &nbsp;·&nbsp; The Cosmic Map &nbsp;·&nbsp; Emergence</p>
+  <p class="branch-intro">Your birth chart is not a personality quiz. It is a precision map of the frequency you arrived carrying — and your transits are moving through documented terrain. Thirteen Fields. Three arcs. Sixty-nine named subterrains. The interior has structure, and that structure can be read.</p>
 </section>
 
-<div class="earth-split">
-  <div class="earth-text">
-    <span class="eyebrow">The Root Work</span>
-    <p class="prose-p">Every woman's compression has a history. The signal didn't weaken on its own — it was shaped by the channels it moved through, generation by generation. Mothers who couldn't hold what their daughters carried. Grandmothers who compressed themselves to survive. Great-grandmothers whose sovereignty was legislated away.</p>
-    <p class="prose-p">The lineage work is not about blame. It is about reading the code. I map each ancestor across five layers and tag them to specific Fields and Subterrains in the Navigation Map — precision work that names what was passed to you, what you're being asked to complete, and what becomes possible when a line of women finally receives what they were always carrying.</p>
-    <p class="prose-p">My own great-great-grandmother Christina stowed away on a ship as an orphan and crossed America without a ticket. She was an expert in going underground to get where she was meant to be. That frequency lives in me. It may live in you too — in a different shape, under a different name.</p>
+<div class="sky-split">
+  <div class="sky-text">
+    <span class="eyebrow">The Sky Work</span>
+    <p class="prose-p">I read birth charts the way I read bodies: as texts, as transmissions, as precision documents of a life in motion. Astrology is not prediction. It is pattern recognition at the scale of a life — the ability to see what is moving, what is returning, and what is being asked of you in this precise season. Behind every reading is a structural framework I built called the <a href="/map" class="inline-link">Navigation Map of Consciousness</a> — thirteen Fields of human experience, each documented across named subterrains. Your transits are not abstract. They are moving through specific Fields. The Map names what those Fields contain.</p>
+    <p class="prose-p">I am Gemini Sun, Sagittarius rising — built for the threshold, most alive at the edge of what's known. I don't sleep easily. The owl has always felt like kin: the one who sees clearly in darkness, who moves between worlds without losing her bearings. I read charts the way I read that quality in a person — as a map of what they were built to navigate.</p>
   </div>
-  <div class="earth-img">
-    <img src="/tree-roots.jpg" alt="Ancient tree roots spreading across the earth at Glastonbury">
-  </div>
-</div>
-
-<!-- CHRISTINA -->
-<div class="christina-split" style="background:var(--ink-mid);">
-  <div class="christina-img">
-    <img src="/christina.jpg" alt="Christina — Christy's great-great-grandmother">
-  </div>
-  <div class="christina-text">
-    <span class="eyebrow">The Lineage</span>
-    <p class="prose-p">This is Christina. She arrived in a new country with nothing but her own coherence and the willingness to be her own midwife. She did not wait for permission. She did not wait for the right channel. She went underground, crossed the threshold, and built something from the other side.</p>
-    <p class="prose-p">Every woman who has compressed herself to survive carries someone like Christina in her bones. The work is not just yours — it is the completion of what they began.</p>
+  <div class="sky-owl">
+    <img src="/owl.jpg" alt="Owl in darkness — seeing clearly where others cannot">
   </div>
 </div>
-
-<section class="book-section">
-  <span class="eyebrow" style="text-align:center; display:block;">Keynote Chapter &nbsp;·&nbsp; May 2026</span>
-  <h2 class="book-title">Sovereign Descent</h2>
-  <p class="book-sub">in Revolutionary Icons</p>
-  <p class="book-body">A 4,000-word transmission about feminine transformation through deliberate underground work — the Inanna myth, the birth metaphor, and ancestral lineage as the map. Published by Kiva Publishing, curated by Shannon Van Den Berg.</p>
-  <div class="book-divider"></div>
-  <p class="book-quote">"It is revolutionary when a woman stops fighting for channels that were never built to receive her, and descends with deliberation into the only terrain where her true frequency can be heard."</p>
-  <span class="btn-gold" style="opacity:0.88; cursor:default;">Coming May 2026</span>
-</section>
 
 <section class="offerings-section">
   <div class="offerings-header">
-    <span class="eyebrow" style="text-align:center; display:block;">The Earth Offerings</span>
-    <h2 class="offerings-title">Work from the roots up.</h2>
-    <p class="offerings-sub">These containers are for the woman ready to read her own lineage code — and begin completing what couldn't be finished before her.</p>
-  </div>
-
-  <div class="offerings-with-quote">
-    <div class="offerings-quote-img">
-      <img src="/estes-butterfly.jpg" alt="Clarissa Pinkola Estés quote with butterfly">
-    </div>
-    <div class="offerings-cards">
-
-  <div class="offering-card">
-    <div class="offering-meta">
-      <span class="offering-tag">One-on-One &nbsp;·&nbsp; The Ancestral Flagship</span>
-      <span class="offering-price">$444</span>
-    </div>
-    <h3 class="offering-name">The Lineage Session</h3>
-    <p class="offering-format">90 Minutes &nbsp;·&nbsp; 12-Ancestor Starter Weaving &nbsp;·&nbsp; First Convergence</p>
-    <p class="offering-body">Your family has a frequency. It has been shaped by migration and loss, by silence and survival, by the compressions each generation passed to the next. In this session we read that code together — using the Navigation Map to name which Fields your lineage activates and where the unresolved patterns sit in the documented terrain.</p>
-    <p class="offering-body">We work with what you know: names, stories, the things that were never spoken. We work with your astrology — your South Node as the ancestral frequency carrier, the transits that are excavating what was buried. We work with the patterns that keep returning in your own life as the signal seeking completion.</p>
-    <p class="offering-body">You will leave with a clearer understanding of what your lineage prepared you to carry — and what it prepared you to complete.</p>
-    <div style="border-top: 1px dashed rgba(184,146,74,0.22); padding-top: 1.3rem; margin: 1.4rem 0 1.6rem;">
-      <p class="offering-body" style="font-style: italic; color: var(--gold-lt); margin-bottom: 0.7rem;">What you receive:</p>
-      <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--ff-d); font-size: var(--text-body); color: var(--cream); opacity: var(--op-body); line-height: 1.85;">
-        <li style="margin-bottom: 0.4rem; padding-left: 1.4rem; text-indent: -1.4rem;"><span style="color: var(--gold); margin-right: 0.6rem;">&middot;</span>A 90-minute live session of ancestral research</li>
-        <li style="margin-bottom: 0.4rem; padding-left: 1.4rem; text-indent: -1.4rem;"><span style="color: var(--gold); margin-right: 0.6rem;">&middot;</span>A curated 12-ancestor starter Weaving &mdash; each ancestor rendered across five layers (Terroir &middot; Unresolved &middot; Thread &middot; Lineage &middot; Sigil) &mdash; delivered within 2 weeks</li>
-        <li style="margin-bottom: 0.4rem; padding-left: 1.4rem; text-indent: -1.4rem;"><span style="color: var(--gold); margin-right: 0.6rem;">&middot;</span>Your first Convergence reading &mdash; an 8-section structured pattern analysis across your Weaving, delivered as PDF</li>
-        <li style="margin-bottom: 0.4rem; padding-left: 1.4rem; text-indent: -1.4rem;"><span style="color: var(--gold); margin-right: 0.6rem;">&middot;</span>Portal access to your Weaving and Convergence</li>
-        <li style="margin: 0; padding-left: 1.4rem; text-indent: -1.4rem; opacity: 0.82; font-style: italic;"><span style="color: var(--gold); margin-right: 0.6rem;">&middot;</span>Optional after your session: Weaving Extension ($333) for 8 additional ancestors</li>
-      </ul>
-    </div>
-    <p class="offering-note">For those who sense there is a larger story moving through them than the one they've been told.</p>
-    <p class="offering-intake">Begins with a short intake — birth data, ancestors, and the patterns you've been noticing. I'll respond personally to schedule our session.</p>
-    <a href="/intake?offering=The%20Lineage%20Session" class="offering-link">Begin the research</a>
+    <span class="eyebrow" style="text-align:center; display:block;">One transmission. Four depths of entry.</span>
+    <h2 class="offerings-title">Every session reads your chart<br>against the Map.</h2>
+    <p class="offerings-sub">Astrology, sound, signal — and the thirteen Fields that name the terrain your transits are crossing. Choose the container that fits where you are.</p>
   </div>
 
   <div class="offering-card">
     <div class="offering-meta">
-      <span class="offering-tag">Deepening &nbsp;·&nbsp; Add-On After Lineage</span>
-      <span class="offering-price">$333</span>
+      <span class="offering-tag">Entry Point &nbsp;·&nbsp; Free</span>
+      <span class="offering-price">Complimentary</span>
     </div>
-    <h3 class="offering-name">Weaving Extension</h3>
-    <p class="offering-format">8 Additional Ancestors &nbsp;·&nbsp; Delivered Within 2 Weeks</p>
-    <p class="offering-body">For clients whose starter Weaving is complete and who want to keep reading the code. Eight additional ancestors, chosen by kinship rather than genealogical completeness, rendered across the same five layers — Terroir, Unresolved, Thread, Lineage, Sigil. New frequency tags that often shift the pattern. The Weaving grows. The map becomes more personal.</p>
-    <p class="offering-note">Available to anyone who holds an existing starter Weaving — after your first Lineage Session or during Mirror Work.</p>
-    <p class="offering-intake">Booked through a short continuation conversation. I'll respond personally.</p>
-    <a href="/intake?offering=Weaving%20Extension" class="offering-link">Begin the extension</a>
+    <h3 class="offering-name">First Signal</h3>
+    <p class="offering-format">A Discovery Conversation &nbsp;·&nbsp; 30 Minutes</p>
+    <p class="offering-body">This is not a sales call. It's the moment before the threshold — where we both listen to whether the frequency matches. I'll tell you what I sense in the field of your question. You'll tell me what brought you here. And together we'll know whether this is the right container for what you're carrying.</p>
+    <p class="offering-body">I work at the intersection of astrology, sound, signal, and the kind of mirror work that shows you what you already know but haven't yet been able to see clearly. If something in you recognized those words — this call is for you.</p>
+    <p class="offering-note">Book only if you're ready to be seen.</p>
+    <a href="https://calendly.com/christypaxtonwade/firstsignal" target="_blank" class="offering-link">Book your First Signal</a>
   </div>
 
   <div class="offering-card">
     <div class="offering-meta">
-      <span class="offering-tag">Returning Clients &nbsp;·&nbsp; New Pattern Reading</span>
+      <span class="offering-tag">Single Session &nbsp;·&nbsp; Astrology Update</span>
+      <span class="offering-price">$88</span>
+    </div>
+    <h3 class="offering-name">First Listen</h3>
+    <p class="offering-format">45 Minutes &nbsp;·&nbsp; A Single Astrology Update</p>
+    <p class="offering-body">A standalone session for anyone wanting to understand what the current transits mean for their specific chart — without committing to a longer engagement. Practical, precise, and personal. Existing clients and new clients welcome.</p>
+    <p class="offering-note">For those hearing the call for the first time, or checking in on a season of change.</p>
+    <p class="offering-intake">A brief intake arrives by email after booking — birth data, ancestors, and the patterns you've been noticing.</p>
+    <a href="https://calendly.com/christypaxtonwade/firstlisten" target="_blank" class="offering-link">Book & Pay</a>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">Foundation Session &nbsp;·&nbsp; New Clients</span>
+      <span class="offering-price">$144</span>
+    </div>
+    <h3 class="offering-name">Your Signal, Decoded</h3>
+    <p class="offering-format">90 Minutes &nbsp;·&nbsp; Astrology for New Clients</p>
+    <p class="offering-body">Your birth chart is not a personality quiz. It is a precision map of the frequency you were born carrying — and the transits moving through your chart right now are activating specific Fields in the Navigation Map. Saturn is crossing a threshold. Pluto is excavating the shadow. The nodal axis is pulling you toward what your lineage prepared you to complete.</p>
+    <p class="offering-body">In our first 90 minutes together I'll take you deep into your natal chart and name which Fields are active for you in this season. We go into the placements that shape how you move through the world, the transits that are live, and what the terrain ahead actually contains — documented, named, navigable.</p>
+    <p class="offering-body">You'll leave with your chart, a recording, and the beginning of a conversation that doesn't end when the session does.</p>
+    <p class="offering-note">For those hearing the call for the first time.</p>
+    <p class="offering-intake">A brief intake arrives by email after booking — birth data, ancestors, and the patterns you've been noticing.</p>
+    <a href="https://calendly.com/christypaxtonwade/themap" target="_blank" class="offering-link">Book & Pay</a>
+  </div>
+
+  <div class="offering-card">
+    <div class="offering-meta">
+      <span class="offering-tag">The Flagship &nbsp;·&nbsp; Deep Work</span>
       <span class="offering-price">$244</span>
     </div>
-    <h3 class="offering-name">Convergence Update</h3>
-    <p class="offering-format">New Convergence + 60-Minute Reading Session</p>
-    <p class="offering-body">For returning clients whose Weaving has grown — through a Weaving Extension, Mirror Work, or the natural deepening of ancestral research over time. A new Convergence is generated across your updated ancestor archive, surfacing a pattern reading that may have been invisible with fewer ancestors. We meet for 60 minutes to read it together.</p>
-    <p class="offering-note">For clients who already hold a Weaving and sense the pattern has deepened.</p>
-    <p class="offering-intake">Begins with a short check-in. I'll respond personally to schedule.</p>
-    <a href="/intake?offering=Convergence%20Update" class="offering-link">Begin the update</a>
+    <h3 class="offering-name">Sovereign Signal</h3>
+    <p class="offering-format">2 Hours &nbsp;·&nbsp; A Transmission</p>
+    <p class="offering-body">This session is for the woman who knows something is shifting but can't yet name it. For the one who has been underground — gestating, dissolving, becoming — and senses that emergence is close. The Navigation Map names the arc you are in: Descent, Underworld, or Return. This session reads where you are inside it.</p>
+    <p class="offering-body">We begin with sound. Not as ambient backdrop but as active medicine — frequencies chosen for your specific Field, tuned to what your body is holding and what it's ready to release. Then we go into the map. Your birth chart. The current transits. The Fields they are activating and the subterrains that name what is moving underneath.</p>
+    <p class="offering-body">What emerges from the combination is specific to you and cannot be replicated. Some people leave with a single sentence that reorganizes everything. All of them leave clearer than they arrived.</p>
+    <p class="offering-note">In person in Bentonville, AR or via Zoom with sound transmission adapted for distance.</p>
+    <p class="offering-intake">A brief intake arrives by email after booking — birth data, ancestors, and the patterns you've been noticing.</p>
+    <a href="https://calendly.com/christypaxtonwade/theflagship" target="_blank" class="offering-link">Book & Pay</a>
   </div>
 
-  <div class="offering-card coming-soon">
-    <div class="offering-meta">
-      <span class="offering-tag">Immersive &nbsp;·&nbsp; In Person</span>
-      <span class="coming-badge">Coming 2027</span>
-    </div>
-    <h3 class="offering-name">The Descent Retreat</h3>
-    <p class="offering-format">Multi-Day &nbsp;·&nbsp; Small Group &nbsp;·&nbsp; Held Space</p>
-    <p class="offering-body">A small group gathered in physical space for the deliberate underground work. Music, astrology, ancestral mapping, and the particular alchemy that happens when women descend together — each in her own way, each holding the frequency for the others.</p>
-    <p class="offering-body">Location, dates, and full container details forthcoming. This offering is being built from the inside out — when the space is ready, the call will go out to those already in the field.</p>
-    <p class="offering-note">If you feel called to this before it is announced, write to <span style="font-style:normal;">christypaxton@gmail.com</span>.</p>
-  </div>
-    </div><!-- offerings-cards -->
-  </div><!-- offerings-with-quote -->
 </section>
 
 <footer>
