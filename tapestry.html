@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mythic Tapestry — Christy Paxton Wade</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0c0a07; --ink-mid: #111009;
+    --gold: #b8924a; --gold-lt: #d4ae6e;
+    --cream: #f0e8d0; --plum: #251020;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+    --text-body: 1.15rem;
+    --text-body-sm: 1.05rem;
+    --text-label: 0.94rem;
+    --op-body: 0.92;
+    --op-support: 0.88;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
+
+  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
+  .trunk-sig:hover { opacity: 1; }
+
+  nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.12); }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
+  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-lt); }
+  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.3); }
+
+  .eyebrow { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.95; display: block; margin-bottom: 1.4rem; }
+
+  /* ── Hero ── */
+  .tap-hero {
+    min-height: 60vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 6rem 3rem 4rem;
+    position: relative;
+    background: linear-gradient(180deg, var(--plum) 0%, var(--ink) 100%);
+  }
+  .tap-hero-title {
+    font-family: var(--ff-d);
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-style: italic; font-weight: 300;
+    color: var(--gold-lt); line-height: 1;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 1.2s 0.4s ease both;
+  }
+  .tap-hero-sub {
+    font-family: var(--ff-b);
+    font-size: 0.94rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--cream); opacity: 0.88;
+    margin-bottom: 2.4rem;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+  .tap-hero-intro {
+    font-family: var(--ff-d);
+    font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+    font-style: italic;
+    color: var(--cream); opacity: 0.92;
+    line-height: 1.8;
+    max-width: 640px; margin: 0 auto;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+
+  /* ── Section: framing prose ── */
+  .tap-prose { padding: 5rem 3rem; max-width: 760px; margin: 0 auto; }
+  .tap-prose p {
+    font-family: var(--ff-d);
+    font-size: var(--text-body);
+    font-weight: 300;
+    color: var(--cream); opacity: var(--op-body);
+    line-height: 1.95;
+    margin-bottom: 1.4rem;
+  }
+  .tap-prose .voice-flag {
+    display: block;
+    font-family: var(--ff-b);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+    border-left: 2px solid var(--gold);
+    padding-left: 0.6rem;
+  }
+
+  /* ── Section divider rule ── */
+  .tap-rule {
+    display: flex; align-items: center; justify-content: center;
+    max-width: 200px; margin: 0 auto 3rem;
+    gap: 1rem;
+  }
+  .tap-rule-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(184,146,74,0.5), transparent);
+  }
+  .tap-rule-mark {
+    font-size: 1.1rem;
+    color: var(--gold);
+    opacity: 0.88;
+  }
+
+  /* ── Archetype grid ── */
+  .tap-section { padding: 5rem 3rem 7rem; max-width: 1200px; margin: 0 auto; }
+  .tap-section-header { text-align: center; margin-bottom: 4rem; }
+  .tap-section-title {
+    font-family: var(--ff-d);
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-style: italic; font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 0.85rem;
+  }
+  .tap-section-sub {
+    font-family: var(--ff-d);
+    font-size: var(--text-body-sm);
+    font-style: italic;
+    color: var(--cream); opacity: 0.88;
+    max-width: 540px; margin: 0 auto;
+  }
+
+  .tap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .tap-card {
+    border: 1px solid rgba(184,146,74,0.18);
+    background: rgba(184,146,74,0.03);
+    padding: 2rem 2rem 1.5rem;
+    cursor: pointer;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .tap-card:hover { border-color: rgba(184,146,74,0.45); background: rgba(184,146,74,0.06); }
+  .tap-card.open { border-color: rgba(212,174,110,0.6); background: rgba(184,146,74,0.07); }
+
+  .tap-card-tradition {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.95;
+    margin-bottom: 0.65rem;
+  }
+  .tap-card-name {
+    font-family: var(--ff-d);
+    font-size: 1.7rem;
+    font-style: italic; font-weight: 300;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .tap-card-epithet {
+    font-family: var(--ff-d);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--gold-lt); opacity: 0.92;
+    margin-bottom: 1.1rem;
+    line-height: 1.5;
+  }
+  .tap-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+  .tap-card-tag {
+    font-family: var(--ff-b);
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 12px;
+    background: rgba(184,146,74,0.08);
+    border: 1px solid rgba(184,146,74,0.2);
+    color: var(--gold-lt); opacity: 0.92;
+    white-space: nowrap;
+  }
+  .tap-card-desc {
+    display: none;
+    margin-top: 1.3rem;
+    padding-top: 1.3rem;
+    border-top: 1px solid rgba(184,146,74,0.18);
+    font-family: var(--ff-d);
+    font-size: var(--text-body-sm);
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--cream); opacity: var(--op-body);
+  }
+  .tap-card.open .tap-card-desc { display: block; }
+  .tap-card-chevron {
+    float: right;
+    color: var(--gold); opacity: 0.6;
+    font-size: 14px;
+    transition: transform 0.2s;
+    margin-top: -1.7rem;
+  }
+  .tap-card.open .tap-card-chevron { transform: rotate(90deg); opacity: 1; }
+
+  .tap-empty {
+    text-align: center; padding: 4rem 2rem;
+    color: var(--cream); opacity: var(--op-support);
+    font-family: var(--ff-d); font-style: italic;
+    font-size: 1.1rem;
+  }
+  .tap-loading {
+    text-align: center; padding: 4rem 2rem;
+    color: var(--cream); opacity: var(--op-support);
+    font-family: var(--ff-d); font-style: italic;
+  }
+
+  /* ── Closing CTA ── */
+  .tap-closing { background: var(--ink-mid); padding: 5rem 3rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .tap-closing-title {
+    font-family: var(--ff-d);
+    font-size: clamp(1.7rem, 2.5vw, 2.2rem);
+    font-style: italic; font-weight: 300;
+    color: var(--gold-lt);
+    margin-bottom: 1.2rem;
+  }
+  .tap-closing-text {
+    font-family: var(--ff-d);
+    font-size: var(--text-body);
+    font-style: italic;
+    color: var(--cream); opacity: var(--op-body);
+    max-width: 600px; margin: 0 auto 2.5rem;
+    line-height: 1.85;
+  }
+  .btn-gold {
+    display: inline-block;
+    padding: 0.95rem 2.4rem;
+    border: 1px solid var(--gold);
+    color: var(--gold-lt);
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .btn-gold:hover { background: var(--gold); color: var(--ink); }
+
+  /* ── Footer ── */
+  footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
+  .footer-links a:hover { opacity: 1; color: var(--gold-lt); }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.94rem; color: var(--cream); opacity: 0.88; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 760px) {
+    .tap-section { padding: 3.5rem 1.5rem 5rem; }
+    .tap-prose { padding: 3.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<a href="/" class="trunk-sig">Christy Paxton Wade</a>
+<nav>
+  <ul class="nav-links">
+    <li><a href="/begin">Begin</a></li>
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky" class="active">Sky</a></li>
+    <li><a href="/life">Life</a></li>
+    <li><a href="/mirror">Mirror</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="/mirror#apply">Apply</a></li>
+    <li><a href="https://christywade.substack.com" target="_blank">Substack</a></li>
+    <li class="nav-divider"></li>
+    <li><a href="https://navigation-map-iota.vercel.app/portal.html" target="_blank">Portal ↗</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="tap-hero">
+  <span class="eyebrow">Sky · The Mythic Tapestry</span>
+  <h1 class="tap-hero-title">The Mythic Tapestry</h1>
+  <div class="tap-hero-sub">Archetypal Substrate · Chosen Resonance · The Canopy of Sky</div>
+  <p class="tap-hero-intro">
+    Beneath the chart — beneath the placements and the transits — sits a tapestry of figures who keep returning. Not because the chart contains them, but because the lineage of the work recognizes them. The Tapestry names them.
+  </p>
+</section>
+
+<!-- ─── FRAMING PROSE (Christy's voice — placeholder for revision) ─── -->
+<section class="tap-prose">
+  <span class="voice-flag">Voice review · placeholder copy below — Christy to revise</span>
+  <p>The chart names the structure: which Fields are active, which Subterrains have weight, where the lineage's compression is sitting in this body. The Tapestry names the figures who move through that structure — the archetypal operations that illuminate what the placements alone cannot.</p>
+  <p>These are not deities to be worshipped or invoked. They are <em>operations</em> — described patterns of how a frequency moves when a body carries it. Persephone moves in one way. Hecate moves in another. Inanna in a third. When a chart shows Field X active and a Lineage carries the Wound That Will Not Close, knowing which archetypal figure moves through that frequency is what makes the reading actionable.</p>
+  <p>The Tapestry is the substrate of Sky's offerings. Every Sovereign Signal reading walks through it; every Lineage Session writes against it; every Mirror engagement deepens within it. What follows is the public face — the catalog of archetypes documented so far. The work itself happens inside the offerings, where these figures get named by their specific resonance to your lineage.</p>
+</section>
+
+<div class="tap-rule">
+  <div class="tap-rule-line"></div>
+  <div class="tap-rule-mark">✦</div>
+  <div class="tap-rule-line"></div>
+</div>
+
+<!-- ─── ARCHETYPE GRID (live-fetched from Supabase) ─── -->
+<section class="tap-section">
+  <div class="tap-section-header">
+    <h2 class="tap-section-title">The Archetypes</h2>
+    <p class="tap-section-sub">Click any figure to read the description. Frequency tags name which Field-level or Subterrain-level operations the archetype carries.</p>
+  </div>
+  <div id="tap-grid" class="tap-grid">
+    <div class="tap-loading">Drawing from the Tapestry…</div>
+  </div>
+</section>
+
+<!-- ─── CLOSING ─── -->
+<section class="tap-closing">
+  <h3 class="tap-closing-title">The Tapestry comes alive in the offerings</h3>
+  <p class="tap-closing-text">
+    Reading these descriptions is orientation. The Tapestry becomes specific to you when it's named against your chart and your lineage — which is the work that happens in a Sovereign Signal session, a Lineage Session, or Mirror Work.
+  </p>
+  <a class="btn-gold" href="/sky">Explore Sky's Offerings →</a>
+</section>
+
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/begin">Begin</a>
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="https://christywade.substack.com" target="_blank">Substack</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Christy Paxton Wade &nbsp;&middot;&nbsp; Bentonville, Arkansas</p>
+</footer>
+
+<script>
+const SUPABASE_URL = 'https://egldaiqrwuxqgavjwwim.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnbGRhaXFyd3V4cWdhdmp3d2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MzkxMTMsImV4cCI6MjA5MTQxNTExM30.jVZvPEPP4f78OfbaWBAryGPd4N_b16FKY92NXi-CeeA';
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+async function sb(path) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+  });
+  if (!res.ok) throw new Error('Tapestry fetch failed: ' + res.status);
+  return res.json();
+}
+
+async function loadTapestry() {
+  const grid = document.getElementById('tap-grid');
+  try {
+    // Fetch all archetypes not in draft state.
+    const archetypes = await sb('tapestry_archetypes?select=*&draft=eq.false&order=name.asc');
+    if (!Array.isArray(archetypes) || !archetypes.length) {
+      grid.innerHTML = '<div class="tap-empty">The Tapestry is being woven.</div>';
+      return;
+    }
+    // Fetch all frequency tag links for these archetypes (joined to frequency_tags for names).
+    const ids = archetypes.map(a => a.id).join(',');
+    let tagsMap = {};
+    try {
+      const tagRows = await sb(`tapestry_archetype_frequencies?select=tapestry_archetype_id,frequency_tags(name)&tapestry_archetype_id=in.(${ids})`);
+      (Array.isArray(tagRows) ? tagRows : []).forEach(r => {
+        const n = r.frequency_tags?.name; if (!n) return;
+        if (!tagsMap[r.tapestry_archetype_id]) tagsMap[r.tapestry_archetype_id] = [];
+        tagsMap[r.tapestry_archetype_id].push(n);
+      });
+    } catch (e) {
+      // Frequency join optional — render cards without tags if it fails.
+      console.warn('Tapestry frequency join skipped:', e.message);
+    }
+
+    grid.innerHTML = archetypes.map(a => {
+      const tags = (tagsMap[a.id] || []).slice(0, 5)
+        .map(t => `<span class="tap-card-tag">${esc(t)}</span>`).join('');
+      return `
+        <div class="tap-card" onclick="this.classList.toggle('open')">
+          <span class="tap-card-chevron">▸</span>
+          ${a.tradition ? `<div class="tap-card-tradition">${esc(a.tradition)}</div>` : ''}
+          <div class="tap-card-name">${esc(a.name)}</div>
+          ${a.epithet ? `<div class="tap-card-epithet">${esc(a.epithet)}</div>` : ''}
+          ${tags ? `<div class="tap-card-tags">${tags}</div>` : ''}
+          ${a.description ? `<div class="tap-card-desc">${esc(a.description).replace(/\n/g, '<br>')}</div>` : ''}
+        </div>`;
+    }).join('');
+  } catch (err) {
+    grid.innerHTML = `<div class="tap-empty">The Tapestry is temporarily unavailable. ${esc(err.message)}</div>`;
+  }
+}
+
+loadTapestry();
+</script>
+</body>
+</html>
