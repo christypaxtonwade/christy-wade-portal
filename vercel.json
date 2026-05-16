@@ -16,6 +16,8 @@
     { "src": "/intake", "dest": "/intake.html" },
     { "src": "/codex", "dest": "/codex.html" },
     { "src": "/offerings", "dest": "/index.html" },
+    { "src": "/tapestry", "dest": "/tapestry.html" },
+{ "src": "/inside-the-work", "dest": "/inside-the-work.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
