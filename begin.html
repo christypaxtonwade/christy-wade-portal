@@ -6,6 +6,7 @@
 <title>Begin — Christy Paxton Wade</title>
 <meta name="description" content="The doors into the work of the Navigation Map of Consciousness. Free and paid thresholds, from orientation to sustained mentorship.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/framing.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -37,29 +38,7 @@
     font-size: 16px;
   }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    display: flex; justify-content: center; align-items: center;
-    padding: 1.1rem 3rem;
-    background: rgba(12,10,7,0.95);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(184,146,74,0.1);
-  }
-  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
-  .nav-links a {
-    font-family: var(--ff-b);
-    font-size: var(--text-label);
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--cream); opacity: 0.88;
-    text-decoration: none;
-    transition: opacity 0.3s, color 0.3s;
-  }
-  .nav-links a:hover { opacity: 1; color: var(--gold-lt); }
-  .nav-links a.active { color: var(--gold-lt); opacity: 1; }
-  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.25); }
+  /* NAV — styled in /framing.css */
 
   /* EYEBROW */
   .eyebrow {
@@ -158,11 +137,14 @@
     .offering-meta { flex-direction: column; gap: 0.5rem; }
     .branches-grid { gap: 0.8rem; }
   }
+
+  /* Framing additions (corner brackets, vitrines, dividers, footer roles) — see /framing.css */
 </style>
 </head>
 <body>
 
 <nav>
+  <a href="/" class="nav-brand">Christy Paxton Wade</a>
   <ul class="nav-links">
     <li><a href="/begin" class="active">Begin</a></li>
     <li><a href="/earth">Earth</a></li>
@@ -184,8 +166,14 @@
 
 <!-- DOORWAY IMAGE — between hero and orientation prose -->
 <div style="padding: 0 3rem 2rem; text-align: center;">
-  <img src="/begin-hero.jpg" alt="" style="display: block; width: 100%; max-width: 1200px; height: auto; margin: 0 auto; border: 1px solid rgba(184,146,74,0.22);" loading="lazy" onerror="this.style.display='none'">
+  <div class="hero-vitrine">
+    <img src="/begin-hero.jpg" alt="" loading="lazy" onerror="this.parentElement.parentElement.style.display='none'">
+    <div class="inner-rule"></div>
+  </div>
 </div>
+
+<!-- DIVIDER -->
+<div class="divider" aria-hidden="true"></div>
 
 <!-- ORIENTATION -->
 <section class="section-prose">
@@ -210,6 +198,7 @@
     <p class="section-sub">Two free. One priced. Each a real door into the work.</p>
   </div>
 
+  <div class="offering-grid">
   <!-- First Signal -->
   <div class="first-door-card">
     <div class="offering-meta">
@@ -254,7 +243,11 @@
     </div>
     <a href="/intake?offering=The%20Lineage%20Session" class="offering-link">Begin the research</a>
   </div>
+  </div>
 </section>
+
+<!-- DIVIDER -->
+<div class="divider" aria-hidden="true"></div>
 
 <!-- LADDER ORIENTATION PROSE -->
 <section class="section-prose" style="padding: 4rem 3rem 1rem;">
@@ -268,6 +261,7 @@
     <h2 class="section-title">The doors that are always open.</h2>
   </div>
 
+  <div class="offering-grid">
   <div class="offering-card">
     <div class="offering-meta">
       <span class="offering-tag">Life &nbsp;&middot;&nbsp; Substack</span>
@@ -311,6 +305,7 @@
     <p class="offering-body">A 30-minute discovery conversation.</p>
     <a href="https://calendly.com/christypaxtonwade/firstsignal" target="_blank" class="offering-link">Book the call</a>
   </div>
+  </div>
 </section>
 
 <!-- LADDER — 1:1 Astrology -->
@@ -321,6 +316,7 @@
     <p class="section-sub">Three depths of entry. Chart reading as cartography.</p>
   </div>
 
+  <div class="offering-grid">
   <div class="offering-card">
     <div class="offering-meta">
       <span class="offering-tag">Single Session &nbsp;&middot;&nbsp; Astrology Update</span>
@@ -353,6 +349,7 @@
     <p class="offering-body">The flagship Sky session. A current arc read against the Navigation Map &mdash; Descent, Underworld, or Return &mdash; named where you are inside it. Sound and signal woven in.</p>
     <a href="/sky" class="offering-link">Read more on Sky</a>
   </div>
+  </div>
 </section>
 
 <!-- LADDER — 1:1 Ancestral -->
@@ -363,6 +360,7 @@
     <p class="section-sub">Lineage Session as entry. Weaving and Convergence as deliverables.</p>
   </div>
 
+  <div class="offering-grid">
   <div class="offering-card">
     <div class="offering-meta">
       <span class="offering-tag">The Ancestral Flagship</span>
@@ -394,6 +392,7 @@
     <p class="offering-format">New Convergence + 60-Minute Reading Session</p>
     <p class="offering-body">A new Convergence across your grown Weaving, plus a 60-minute session to read it together. For clients who sense the pattern has deepened.</p>
     <a href="/intake?offering=Convergence%20Update" class="offering-link">Begin the update</a>
+  </div>
   </div>
 </section>
 
@@ -464,6 +463,7 @@
     <p class="section-sub">Waitlists are open for both. Write to christypaxton@gmail.com to be held in the field.</p>
   </div>
 
+  <div class="offering-grid">
   <div class="coming-card">
     <div class="offering-meta">
       <span class="offering-tag">Earth &nbsp;&middot;&nbsp; Coming 2027</span>
@@ -485,7 +485,11 @@
     <p class="offering-body">A quarterly gathering structured around a theme from the descent. Astrology, ancestry, practice, presence. A small group that meets inside the transmission rather than around it.</p>
     <a href="mailto:christypaxton@gmail.com" class="offering-link">Be held in the field</a>
   </div>
+  </div>
 </section>
+
+<!-- DIVIDER -->
+<div class="divider" aria-hidden="true"></div>
 
 <!-- BRANCHES -->
 <section class="branches-section">
@@ -507,6 +511,7 @@
 
 <footer>
   <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <span class="footer-roles">writer &nbsp;·&nbsp; oracle &nbsp;·&nbsp; mirror</span>
   <div class="footer-social">
     <a href="https://www.facebook.com/christypaxtonwade" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
     <a href="https://www.instagram.com/christypaxtonwade" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -519,6 +524,7 @@
     <a href="/mirror">Mirror</a>
     <a href="/mirror#apply">Apply</a>
     <a href="https://christywade.substack.com" target="_blank">Substack</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-lt); opacity: 0.85;">Portal ↗</a>
   </div>
   <p class="footer-copy">&copy; 2026 Christy Paxton Wade &nbsp;&middot;&nbsp; Bentonville, Arkansas</p>
 </footer>
