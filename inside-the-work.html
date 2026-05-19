@@ -134,26 +134,94 @@
     color: var(--cream); opacity: 0.88;
     margin-bottom: 1.8rem;
   }
-  .itw-layer {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(184,146,74,0.18);
+  /* ── Layers as 2-column card grid (matches Ancestral Weaving pattern) ── */
+  .itw-layers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.4rem;
   }
-  .itw-layer:first-of-type { border-top: none; padding-top: 0; }
+  @media (max-width: 720px) {
+    .itw-layers-grid { grid-template-columns: 1fr; }
+  }
+  .itw-layer {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,168,124,0.18);
+    border-left: 3px solid rgba(201,168,124,0.18);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem 1.4rem;
+    position: relative;
+  }
+  /* Register-coded accents — matches Ancestral Weaving */
+  .itw-layer.accent-somatic    { border-left-color: #c98870; }
+  .itw-layer.accent-unreceived { border-left-color: #b690d4; }
+  .itw-layer.accent-conceptual { border-left-color: #8aa0d6; }
+  .itw-layer.accent-mythic     { border-left-color: var(--gold-lt); }
   .itw-layer-label {
     font-family: var(--ff-b);
-    font-size: var(--text-label);
+    font-size: 0.84rem;
     font-weight: 500;
     letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold); opacity: 0.95;
-    margin-bottom: 0.6rem;
+    color: var(--gold-lt); opacity: 0.95;
+    margin-bottom: 0.7rem;
   }
   .itw-layer-body {
     font-family: var(--ff-d);
-    font-size: var(--text-body);
+    font-size: 1.02rem;
     font-weight: 300;
     color: var(--cream); opacity: var(--op-body);
-    line-height: 1.95;
+    line-height: 1.7;
+  }
+
+  /* ── Christina's portrait — at the top of her ancestor block ── */
+  .itw-ancestor-photo {
+    position: relative;
+    max-width: 320px;
+    margin: 0 auto 2rem;
+    background: var(--ink);
+    overflow: hidden;
+    border: 1px solid var(--gold-lt);
+    aspect-ratio: 4 / 5;
+  }
+  .itw-ancestor-photo img {
+    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: sepia(18%) brightness(0.94) saturate(0.95);
+  }
+  .itw-ancestor-photo::before,
+  .itw-ancestor-photo::after {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .itw-ancestor-photo::before {
+    top: -1px; left: -1px;
+    border-top: 1px solid var(--gold-glow, #e6c98a);
+    border-left: 1px solid var(--gold-glow, #e6c98a);
+  }
+  .itw-ancestor-photo::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 1px solid var(--gold-glow, #e6c98a);
+    border-right: 1px solid var(--gold-glow, #e6c98a);
+  }
+  .itw-ancestor-photo .inner-rule {
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(184,146,74,0.25);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .itw-ancestor-photo-caption {
+    font-family: var(--ff-d);
+    font-style: italic;
+    color: var(--gold-lt);
+    opacity: 0.78;
+    font-size: 0.92rem;
+    text-align: center;
+    margin-top: 0.6rem;
   }
 
   /* ── Sigil ── */
