@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sky — Christy Paxton Wade</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/framing.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -22,14 +23,7 @@
   html { scroll-behavior: smooth; }
   body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
 
-  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
-  .trunk-sig:hover { opacity: 1; }
-
-  nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.12); }
-  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
-  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
-  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-lt); }
-  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.3); }
+  /* NAV — styled in /framing.css */
 
   .eyebrow { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.95; display: block; margin-bottom: 1.4rem; }
 
@@ -142,8 +136,8 @@
 </head>
 <body>
 
-<a href="/" class="trunk-sig">Christy Paxton Wade</a>
 <nav>
+  <a href="/" class="nav-brand">Christy Paxton Wade</a>
   <ul class="nav-links">
     <li><a href="/begin">Begin</a></li>
     <li><a href="/earth">Earth</a></li>
@@ -175,6 +169,9 @@
     <img src="/owl.jpg" alt="Owl in darkness — seeing clearly where others cannot">
   </div>
 </div>
+
+<!-- DIVIDER -->
+<div class="divider" aria-hidden="true"></div>
 
 <!-- ─── Tapestry pointer ─── -->
 <section style="padding: 5rem 3rem; text-align: center; max-width: 720px; margin: 0 auto; border-top: 1px solid rgba(184,146,74,0.18); border-bottom: 1px solid rgba(184,146,74,0.18);">
