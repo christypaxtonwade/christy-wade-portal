@@ -249,12 +249,15 @@
     line-height: 1.6;
   }
 
-  /* ── BRANCH CARDS ── */
+  /* ── BRANCH CARDS ── 2×2 grid: locked, doesn't reflow on wide screens */
   .branches-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.4rem;
     margin-top: 1.5rem;
+  }
+  @media (max-width: 720px) {
+    .branches-grid { grid-template-columns: 1fr; gap: 2rem; }
   }
   .branch-card {
     background: var(--ink-mid);
@@ -781,7 +784,7 @@
   <div class="branches-grid">
     <div class="branch-card book-card">
       <div class="vitrine">
-        <img src="/public/branches/revolutionary-icons.jpg" alt="Revolutionary Icons book cover">
+        <img src="public/branches/revolutionary-icons.jpg" alt="Revolutionary Icons book cover">
       </div>
       <div class="branch-card-body">
         <h3>Revolutionary Icons</h3>
@@ -792,7 +795,7 @@
     </div>
     <div class="branch-card">
       <div class="vitrine">
-        <img src="/public/branches/navigation-map.jpg" alt="The Navigation Map">
+        <img src="public/branches/navigation-map.jpg" alt="The Navigation Map">
       </div>
       <div class="branch-card-body">
         <h3>The Navigation Map</h3>
@@ -802,7 +805,7 @@
     </div>
     <div class="branch-card">
       <div class="vitrine">
-        <img src="/public/branches/ancestral-work.jpg" alt="Ancestral Work">
+        <img src="public/branches/ancestral-work.jpg" alt="Ancestral Work">
       </div>
       <div class="branch-card-body">
         <h3>Ancestral Work</h3>
@@ -812,7 +815,7 @@
     </div>
     <div class="branch-card">
       <div class="vitrine">
-        <img src="/public/branches/signal-readings.jpg" alt="Signal Readings">
+        <img src="public/branches/signal-readings.jpg" alt="Signal Readings">
       </div>
       <div class="branch-card-body">
         <h3>Signal Readings</h3>
@@ -897,7 +900,7 @@
     <div class="feature-img-slot">
       <div class="outer-frame"></div>
       <div class="inner-frame"></div>
-      <img src="/public/branches/revolutionary-icons.jpg" alt="Revolutionary Icons book cover">
+      <img src="public/branches/revolutionary-icons.jpg" alt="Revolutionary Icons book cover">
     </div>
     <div class="feature-content">
       <span class="eyebrow">The Book</span>
