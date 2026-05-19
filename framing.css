@@ -1,0 +1,250 @@
+/* ─────────────────────────────────────────────────────────────
+   FRAMING SYSTEM — shared across all public website pages
+   Last update: 19 May 2026
+
+   This file holds the visual lift layer: nav, footer roles,
+   ornamental dividers, corner brackets, vitrine treatment for
+   images, and the offering-grid pattern for card sections.
+
+   Pages link to this file via:
+     <link rel="stylesheet" href="/framing.css">
+
+   Page-specific CSS (per-page <style> blocks) handles section
+   layout and unique components. Framing CSS uses the same
+   palette variables defined in each page's :root.
+   ───────────────────────────────────────────────────────────── */
+
+/* ── NAV — two rows, both centered, same font for all ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.7rem;
+  padding: 1rem 2rem;
+  background: rgba(12,10,7,0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(184,146,74,0.22);
+}
+.nav-brand {
+  font-family: var(--ff-b);
+  font-size: var(--text-label, 0.94rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+  opacity: 0.95;
+  white-space: nowrap;
+  transition: color 0.3s, opacity 0.3s;
+}
+.nav-brand:hover { color: var(--gold-lt); opacity: 1; }
+.nav-links {
+  display: flex; gap: 1.7rem;
+  list-style: none;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.nav-links a {
+  font-family: var(--ff-b);
+  font-size: var(--text-label, 0.94rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream); opacity: 0.88;
+  text-decoration: none;
+  transition: opacity 0.3s, color 0.3s;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold-lt); }
+.nav-links a.active { color: var(--gold-lt); opacity: 1; }
+.nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.45); }
+
+/* ── ORNAMENTAL DIVIDER ──
+   Used as: <div class="divider" aria-hidden="true"></div>
+   The full tesseract + compass star SVG is embedded as a
+   data URI here so the markup is one line. */
+.divider {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: 90px;
+  margin: 4.5rem auto;
+  padding: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 110'><defs><linearGradient id='rf' x1='0%25' y1='0%25' x2='100%25' y2='0%25'><stop offset='0%25' stop-color='%23b8924a' stop-opacity='0'/><stop offset='10%25' stop-color='%23d4ae6e' stop-opacity='0.7'/><stop offset='50%25' stop-color='%23d4ae6e' stop-opacity='0.95'/><stop offset='90%25' stop-color='%23d4ae6e' stop-opacity='0.7'/><stop offset='100%25' stop-color='%23b8924a' stop-opacity='0'/></linearGradient></defs><line x1='0' y1='55' x2='760' y2='55' stroke='url(%23rf)' stroke-width='1'/><g transform='translate(190 55)' stroke='%23d4ae6e' fill='none'><circle r='3.2' stroke-width='0.7'/><circle r='1' fill='%23d4ae6e' stroke='none'/></g><g transform='translate(280 55)' stroke='%23d4ae6e' fill='none'><line x1='0' y1='-6' x2='0' y2='6' stroke-width='0.8'/><line x1='-6' y1='0' x2='6' y2='0' stroke-width='0.8'/><line x1='-4' y1='-4' x2='4' y2='4' stroke-width='0.55' stroke-opacity='0.7'/><line x1='-4' y1='4' x2='4' y2='-4' stroke-width='0.55' stroke-opacity='0.7'/><circle r='0.8' fill='%23d4ae6e' stroke='none'/></g><g transform='translate(480 55)' stroke='%23d4ae6e' fill='none'><line x1='0' y1='-6' x2='0' y2='6' stroke-width='0.8'/><line x1='-6' y1='0' x2='6' y2='0' stroke-width='0.8'/><line x1='-4' y1='-4' x2='4' y2='4' stroke-width='0.55' stroke-opacity='0.7'/><line x1='-4' y1='4' x2='4' y2='-4' stroke-width='0.55' stroke-opacity='0.7'/><circle r='0.8' fill='%23d4ae6e' stroke='none'/></g><g transform='translate(570 55)' stroke='%23d4ae6e' fill='none'><circle r='3.2' stroke-width='0.7'/><circle r='1' fill='%23d4ae6e' stroke='none'/></g><g transform='translate(380 55)'><g stroke='%23d4ae6e' fill='none' stroke-opacity='0.55'><path d='M 0 -46 L 46 0 L 0 46 L -46 0 Z' stroke-width='0.7'/><path d='M -32 -32 L 32 -32 L 32 32 L -32 32 Z' stroke-width='0.55' stroke-opacity='0.7'/><line x1='-32' y1='-32' x2='0' y2='-46' stroke-width='0.5' stroke-opacity='0.5'/><line x1='32' y1='-32' x2='46' y2='0' stroke-width='0.5' stroke-opacity='0.5'/><line x1='32' y1='32' x2='0' y2='46' stroke-width='0.5' stroke-opacity='0.5'/><line x1='-32' y1='32' x2='-46' y2='0' stroke-width='0.5' stroke-opacity='0.5'/><circle cx='0' cy='-46' r='1.1' fill='%23d4ae6e' stroke='none' fill-opacity='0.8'/><circle cx='46' cy='0' r='1.1' fill='%23d4ae6e' stroke='none' fill-opacity='0.8'/><circle cx='0' cy='46' r='1.1' fill='%23d4ae6e' stroke='none' fill-opacity='0.8'/><circle cx='-46' cy='0' r='1.1' fill='%23d4ae6e' stroke='none' fill-opacity='0.8'/></g><g fill='%23d4ae6e' stroke='%23b8924a' stroke-width='0.5' stroke-opacity='0.9'><path d='M 0 -40 L 7 -11 L 0 0 L -7 -11 Z'/><path d='M 40 0 L 11 7 L 0 0 L 11 -7 Z'/><path d='M 0 40 L 7 11 L 0 0 L -7 11 Z'/><path d='M -40 0 L -11 7 L 0 0 L -11 -7 Z'/></g><g fill='%23d4ae6e' stroke='%23b8924a' stroke-width='0.4' stroke-opacity='0.85' fill-opacity='0.78'><path d='M 18 -18 L 7 -3 L 0 0 L 3 -7 Z'/><path d='M 18 18 L 3 7 L 0 0 L 7 3 Z'/><path d='M -18 18 L -7 3 L 0 0 L -3 7 Z'/><path d='M -18 -18 L -3 -7 L 0 0 L -7 -3 Z'/></g><circle r='8' fill='%230c0a07' stroke='%23d4ae6e' stroke-width='0.8'/><circle r='5' fill='none' stroke='%23d4ae6e' stroke-width='0.5' stroke-opacity='0.75'/><circle r='2.2' fill='%23d4ae6e' stroke='none'/></g></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+@media (max-width: 760px) {
+  .divider { max-width: 94%; margin: 3rem auto; height: 70px; }
+}
+
+/* ── CORNER BRACKETS on framed elements ──
+   Auto-applied to standard card classes (offering-card,
+   first-door-card, coming-card) used across pages.
+   For any other element, add class "framed-corners". */
+.framed-corners,
+.offering-card,
+.first-door-card,
+.coming-card {
+  position: relative;
+}
+.framed-corners::before, .framed-corners::after,
+.offering-card::before, .offering-card::after,
+.first-door-card::before, .first-door-card::after,
+.coming-card::before, .coming-card::after {
+  content: '';
+  position: absolute;
+  width: 14px; height: 14px;
+  pointer-events: none;
+  z-index: 3;
+}
+.framed-corners::before,
+.offering-card::before,
+.first-door-card::before,
+.coming-card::before {
+  top: -1px; left: -1px;
+  border-top: 1px solid var(--gold-lt);
+  border-left: 1px solid var(--gold-lt);
+}
+.framed-corners::after,
+.offering-card::after,
+.first-door-card::after,
+.coming-card::after {
+  bottom: -1px; right: -1px;
+  border-bottom: 1px solid var(--gold-lt);
+  border-right: 1px solid var(--gold-lt);
+}
+/* Featured (first-door) cards get slightly larger brackets */
+.first-door-card::before,
+.first-door-card::after { width: 16px; height: 16px; }
+
+/* ── OFFERING GRID — column to 2×2 conversion ──
+   Wrap a group of cards in <div class="offering-grid">
+   to convert from column stack to 2-up grid.
+   Mobile (<=760px) collapses to single column. */
+.offering-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.offering-grid > * { max-width: none !important; margin: 0 !important; }
+@media (max-width: 760px) {
+  .offering-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+}
+
+/* ── VITRINE — image slot inside a card or section ──
+   Wrap an image in <div class="vitrine"><img ... /></div>
+   to apply corner brackets + inner gold rule + hover lift. */
+.vitrine {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(184,146,74,0.16), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(74,30,53,0.3), transparent 60%),
+    var(--ink, #0c0a07);
+}
+.vitrine img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease, filter 0.4s ease;
+  filter: brightness(0.92) saturate(1.05);
+}
+.vitrine::after {
+  content: '';
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(212,174,110,0.35);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Card-level hover lift for cards with vitrines */
+.has-vitrine {
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.has-vitrine:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(184,146,74,0.12);
+}
+.has-vitrine:hover .vitrine img {
+  transform: scale(1.04);
+  filter: brightness(1) saturate(1.1);
+}
+
+/* Card vitrine sits at top of card, fills the card width */
+.offering-card .vitrine,
+.first-door-card .vitrine,
+.coming-card .vitrine {
+  height: 200px;
+  margin: -2rem -2.8rem 1.5rem;
+  border-bottom: 1px solid rgba(184,146,74,0.22);
+}
+.first-door-card .vitrine {
+  margin: -3rem -3.5rem 1.5rem;
+  height: 220px;
+}
+
+/* ── HERO VITRINE — full-width framed image after hero ── */
+.hero-vitrine {
+  max-width: 1200px; margin: 0 auto;
+  position: relative;
+}
+.hero-vitrine img {
+  display: block;
+  width: 100%; height: auto;
+  margin: 0;
+  border: 1px solid rgba(184,146,74,0.45);
+}
+.hero-vitrine::before,
+.hero-vitrine::after {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  pointer-events: none;
+  z-index: 2;
+}
+.hero-vitrine::before {
+  top: -1px; left: -1px;
+  border-top: 1px solid var(--gold-lt);
+  border-left: 1px solid var(--gold-lt);
+}
+.hero-vitrine::after {
+  bottom: -1px; right: -1px;
+  border-bottom: 1px solid var(--gold-lt);
+  border-right: 1px solid var(--gold-lt);
+}
+.hero-vitrine .inner-rule {
+  position: absolute; inset: 10px;
+  border: 1px solid rgba(184,146,74,0.25);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── FOOTER additions ── */
+.footer-roles {
+  display: block;
+  font-family: var(--ff-d);
+  font-style: italic;
+  color: var(--gold-lt);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+  margin-top: -0.4rem;
+  margin-bottom: 1.4rem;
+}
+
+/* ── EYEBROW with flanking gold rules ── */
+.eyebrow-framed {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+.eyebrow-framed::before,
+.eyebrow-framed::after {
+  content: '';
+  width: 30px; height: 1px;
+  background: rgba(212,174,110,0.7);
+}
