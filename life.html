@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Life — Christy Paxton Wade</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/framing.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -22,15 +23,7 @@
   }
   html { scroll-behavior: smooth; }
   body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
-
-  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
-  .trunk-sig:hover { opacity: 1; }
-
-  nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.12); }
-  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
-  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
-  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--gold-lt); }
-  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.3); }
+  /* NAV — styled in /framing.css */
 
   .eyebrow { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.95; display: block; margin-bottom: 1.4rem; }
 
@@ -193,8 +186,8 @@
 </head>
 <body>
 
-<a href="/" class="trunk-sig">Christy Paxton Wade</a>
 <nav>
+  <a href="/" class="nav-brand">Christy Paxton Wade</a>
   <ul class="nav-links">
     <li><a href="/begin">Begin</a></li>
     <li><a href="/earth">Earth</a></li>
@@ -267,6 +260,10 @@
   </div>
 </section>
 
+
+<!-- DIVIDER -->
+<div class="divider" aria-hidden="true"></div>
+
 <section class="substack-section">
   <div class="substack-img">
     <img src="/asters.jpg" alt="Asters blooming in morning mist — Christy's garden">
@@ -312,6 +309,10 @@
   </div>
 </section>
 
+
+<!-- DIVIDER -->
+<div class="divider" aria-hidden="true"></div>
+
 <section class="community-section">
   <span class="eyebrow" style="text-align:center; display:block;">The Community Container</span>
   <h2 class="community-title">The transmission becomes shared<br>when it finds others who recognize it.</h2>
@@ -331,6 +332,7 @@
 
 <footer>
   <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <span class="footer-roles">writer &nbsp;·&nbsp; oracle &nbsp;·&nbsp; mirror</span>
   <div class="footer-social">
     <a href="https://www.facebook.com/christypaxtonwade" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
     <a href="https://www.instagram.com/christypaxtonwade" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -343,6 +345,7 @@
     <a href="/mirror">Mirror</a>
     <a href="/mirror#apply">Apply</a>
     <a href="https://christywade.substack.com" target="_blank">Substack</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-lt); opacity: 0.85;">Portal ↗</a>
   </div>
   <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
 </footer>
