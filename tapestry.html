@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Mythic Tapestry — Christy Paxton Wade</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/framing.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -126,12 +127,48 @@
   .tap-card {
     border: 1px solid rgba(184,146,74,0.18);
     background: rgba(184,146,74,0.03);
-    padding: 2rem 2rem 1.5rem;
+    padding: 0 0 1.5rem;
     cursor: pointer;
-    transition: border-color 0.25s, background 0.25s;
+    transition: border-color 0.25s, background 0.25s, transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    position: relative;
   }
-  .tap-card:hover { border-color: rgba(184,146,74,0.45); background: rgba(184,146,74,0.06); }
+  .tap-card:hover {
+    border-color: rgba(184,146,74,0.45);
+    background: rgba(184,146,74,0.06);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(184,146,74,0.10);
+  }
   .tap-card.open { border-color: rgba(212,174,110,0.6); background: rgba(184,146,74,0.07); }
+  .tap-card-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(184,146,74,0.14), transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(74,30,53,0.3), transparent 60%),
+      var(--plum);
+    border-bottom: 1px solid rgba(184,146,74,0.22);
+    position: relative;
+  }
+  .tap-card-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease, filter 0.4s ease;
+    filter: brightness(0.92) saturate(1.05);
+  }
+  .tap-card:hover .tap-card-image img { transform: scale(1.04); filter: brightness(1) saturate(1.08); }
+  .tap-card-image::after {
+    content: '';
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(212,174,110,0.32);
+    pointer-events: none;
+  }
+  .tap-card-body {
+    padding: 1.6rem 1.8rem 0;
+  }
 
   .tap-card-tradition {
     font-family: var(--ff-b);
@@ -364,14 +401,23 @@ async function loadTapestry() {
     grid.innerHTML = archetypes.map(a => {
       const tags = (tagsMap[a.id] || []).slice(0, 5)
         .map(t => `<span class="tap-card-tag">${esc(t)}</span>`).join('');
+      // Body text — prefer catalog_preview (the curated public-facing prose),
+      // fall back to description if preview is empty, fall back to catalog_full if both are empty.
+      const body = a.catalog_preview || a.description || a.catalog_full || '';
+      const image = a.image_url
+        ? `<div class="tap-card-image"><img src="${esc(a.image_url)}" alt="${esc(a.image_alt || a.name)}" loading="lazy" onerror="this.parentElement.style.display='none'"></div>`
+        : '';
       return `
         <div class="tap-card" onclick="this.classList.toggle('open')">
-          <span class="tap-card-chevron">▸</span>
-          ${a.tradition ? `<div class="tap-card-tradition">${esc(a.tradition)}</div>` : ''}
-          <div class="tap-card-name">${esc(a.name)}</div>
-          ${a.epithet ? `<div class="tap-card-epithet">${esc(a.epithet)}</div>` : ''}
-          ${tags ? `<div class="tap-card-tags">${tags}</div>` : ''}
-          ${a.description ? `<div class="tap-card-desc">${esc(a.description).replace(/\n/g, '<br>')}</div>` : ''}
+          ${image}
+          <div class="tap-card-body">
+            <span class="tap-card-chevron">▸</span>
+            ${a.tradition ? `<div class="tap-card-tradition">${esc(a.tradition)}</div>` : ''}
+            <div class="tap-card-name">${esc(a.name)}</div>
+            ${a.epithet ? `<div class="tap-card-epithet">${esc(a.epithet)}</div>` : ''}
+            ${tags ? `<div class="tap-card-tags">${tags}</div>` : ''}
+            ${body ? `<div class="tap-card-desc">${esc(body).replace(/\n/g, '<br>')}</div>` : ''}
+          </div>
         </div>`;
     }).join('');
   } catch (err) {
