@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Christy Paxton Wade</title>
+<meta name="description" content="About Christy Paxton Wade — writer, oracle, mirror. The path from music and family to the Navigation Map of Consciousness.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #0c0a07;
+    --ink-mid:    #111009;
+    --gold:       #b8924a;
+    --gold-lt:    #d4ae6e;
+    --gold-glow:  #e6c98a;
+    --cream:      #f0e8d0;
+    --plum:       #251020;
+    --plum-deep:  #1a0a15;
+    --parchment:  #ede8d5;
+
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+
+    --frame-line: rgba(184, 146, 74, 0.45);
+    --frame-line-soft: rgba(184, 146, 74, 0.22);
+    --frame-line-bright: rgba(212, 174, 110, 0.7);
+
+    --text-label: 0.94rem;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--ff-b);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    font-size: 16px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; justify-content: center; align-items: center;
+    padding: 1.1rem 3rem;
+    background: rgba(12, 10, 7, 0.95);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--frame-line-soft);
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .nav-links a {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream); opacity: 0.88;
+    text-decoration: none;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold-lt); }
+  .nav-links a.active { color: var(--gold-lt); opacity: 1; }
+  .nav-divider { width: 1px; height: 14px; background: var(--frame-line); }
+
+  /* ── EYEBROW ── */
+  .eyebrow {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold); opacity: 0.95;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+  }
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--frame-line-bright);
+  }
+  .section-eyebrow-wrap {
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex; align-items: center; justify-content: center;
+    margin: 6rem auto;
+    max-width: 760px;
+    padding: 0 1.5rem;
+  }
+  .divider svg { width: 100%; height: auto; display: block; }
+
+  /* ── ABOUT HERO ── */
+  .about-hero {
+    min-height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 5rem;
+    align-items: center;
+    padding: 10rem 4rem 6rem;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .about-hero-img-wrap {
+    position: relative;
+  }
+  .about-hero-img {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(184, 146, 74, 0.14), transparent 60%),
+      var(--plum-deep);
+    overflow: hidden;
+  }
+  .about-hero-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .about-hero-img .outer-frame {
+    position: absolute; inset: 0;
+    border: 1px solid var(--gold-lt);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .about-hero-img .inner-frame {
+    position: absolute; inset: 10px;
+    border: 1px solid var(--frame-line);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .about-hero-img::before,
+  .about-hero-img::after {
+    content: '';
+    position: absolute;
+    width: 18px; height: 18px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .about-hero-img::before {
+    top: -1px; left: -1px;
+    border-top: 1px solid var(--gold-glow);
+    border-left: 1px solid var(--gold-glow);
+  }
+  .about-hero-img::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 1px solid var(--gold-glow);
+    border-right: 1px solid var(--gold-glow);
+  }
+  .about-hero-content h1 {
+    font-family: var(--ff-d);
+    font-weight: 300;
+    line-height: 1;
+    margin: 0 0 1.4rem;
+    color: var(--cream);
+    font-size: clamp(3rem, 6vw, 5rem);
+  }
+  .about-hero-content h1 em {
+    display: block;
+    font-style: italic;
+    color: var(--gold-lt);
+    font-size: 0.6em;
+    margin-top: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+  .about-hero-content .hero-roles {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--gold-lt); opacity: 0.92;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.6rem;
+  }
+  .about-hero-content .hero-location {
+    font-family: var(--ff-b);
+    font-size: 0.92rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream); opacity: 0.6;
+    margin-bottom: 2.2rem;
+  }
+  .about-hero-content .hero-lede {
+    font-family: var(--ff-d);
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+    line-height: 1.5;
+    color: var(--cream); opacity: 0.92;
+    margin-bottom: 0;
+  }
+
+  /* ── INVITATION ── */
+  .invitation {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .invitation-inner {
+    background: var(--plum-deep);
+    border: 1px solid var(--frame-line);
+    padding: 4rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .invitation-inner::before,
+  .invitation-inner::after {
+    content: '';
+    position: absolute;
+    width: 22px; height: 22px;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .invitation-inner::before {
+    top: -1px; left: -1px;
+    border-top: 1px solid var(--gold-lt);
+    border-left: 1px solid var(--gold-lt);
+  }
+  .invitation-inner::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 1px solid var(--gold-lt);
+    border-right: 1px solid var(--gold-lt);
+  }
+  .invitation-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 85% 15%, rgba(184, 146, 74, 0.14), transparent 55%);
+    pointer-events: none;
+  }
+  .invitation-img {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    background: var(--ink);
+    overflow: hidden;
+    z-index: 1;
+  }
+  .invitation-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .invitation-img .outer-frame {
+    position: absolute; inset: 0;
+    border: 1px solid var(--gold-lt);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .invitation-img .inner-frame {
+    position: absolute; inset: 8px;
+    border: 1px solid var(--frame-line);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .invitation-text {
+    position: relative; z-index: 2;
+  }
+  .invitation-text h2 {
+    font-family: var(--ff-d);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    line-height: 1.15;
+    color: var(--cream);
+    margin: 0;
+  }
+  .invitation-text h2 em { color: var(--gold-lt); font-style: italic; }
+
+  /* ── BIO ── */
+  .bio {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 5rem 4rem;
+    border: 1px solid var(--frame-line-soft);
+    position: relative;
+  }
+  .bio::before,
+  .bio::after {
+    content: '';
+    position: absolute;
+    width: 20px; height: 20px;
+    pointer-events: none;
+  }
+  .bio::before {
+    top: -1px; left: -1px;
+    border-top: 1px solid var(--frame-line-bright);
+    border-left: 1px solid var(--frame-line-bright);
+  }
+  .bio::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 1px solid var(--frame-line-bright);
+    border-right: 1px solid var(--frame-line-bright);
+  }
+  .bio h2 {
+    font-family: var(--ff-d);
+    font-weight: 400;
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    line-height: 1.2;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 2.8rem;
+  }
+  .bio h2 em { color: var(--gold-lt); font-style: italic; }
+  .bio p {
+    font-family: var(--ff-d);
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--cream); opacity: 0.92;
+    margin-bottom: 1.6rem;
+  }
+  .bio .body-with-dropcap::first-letter {
+    font-family: var(--ff-d);
+    font-weight: 500;
+    font-size: 4.4rem;
+    line-height: 0.85;
+    float: left;
+    margin: 0.18em 0.6rem 0 0;
+    color: var(--gold-lt);
+    padding: 0.05em 0.18em 0;
+    border: 1px solid var(--frame-line);
+  }
+  .bio .closing {
+    font-style: italic;
+    color: var(--gold-lt); opacity: 0.92;
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 2rem;
+  }
+
+  /* ── CALL QUOTE ── */
+  .call-quote {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .call-quote-inner {
+    border: 1px solid var(--frame-line);
+    padding: 5rem 4rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    background: var(--ink-mid);
+  }
+  .call-quote-inner::before,
+  .call-quote-inner::after {
+    content: '';
+    position: absolute;
+    width: 22px; height: 22px;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .call-quote-inner::before {
+    top: -1px; left: -1px;
+    border-top: 1px solid var(--gold-lt);
+    border-left: 1px solid var(--gold-lt);
+  }
+  .call-quote-inner::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 1px solid var(--gold-lt);
+    border-right: 1px solid var(--gold-lt);
+  }
+  .call-quote blockquote {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+    line-height: 1.45;
+    color: var(--cream);
+    border: none;
+  }
+  .call-quote blockquote::before {
+    content: '"';
+    color: var(--gold-lt);
+    font-size: 1.4em;
+    line-height: 0;
+    vertical-align: -0.4em;
+    margin-right: 0.1em;
+  }
+  .call-quote blockquote::after {
+    content: '"';
+    color: var(--gold-lt);
+    font-size: 1.4em;
+    line-height: 0;
+    vertical-align: -0.55em;
+    margin-left: 0.05em;
+  }
+  .call-quote-img {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    background: var(--plum-deep);
+    overflow: hidden;
+  }
+  .call-quote-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .call-quote-img .outer-frame {
+    position: absolute; inset: 0;
+    border: 1px solid var(--gold-lt);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ── CTA BRIDGE ── */
+  .cta-bridge {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 5rem 4rem;
+    text-align: center;
+    border: 1px solid var(--frame-line-soft);
+    position: relative;
+  }
+  .cta-bridge::before,
+  .cta-bridge::after {
+    content: '';
+    position: absolute;
+    width: 18px; height: 18px;
+    pointer-events: none;
+  }
+  .cta-bridge::before {
+    top: -1px; left: -1px;
+    border-top: 1px solid var(--frame-line-bright);
+    border-left: 1px solid var(--frame-line-bright);
+  }
+  .cta-bridge::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 1px solid var(--frame-line-bright);
+    border-right: 1px solid var(--frame-line-bright);
+  }
+  .cta-bridge h2 {
+    font-family: var(--ff-d);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    color: var(--cream);
+    margin-bottom: 1.4rem;
+    line-height: 1.3;
+  }
+  .cta-bridge h2 em { color: var(--gold-lt); font-style: italic; }
+  .cta-bridge p {
+    font-family: var(--ff-d);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--cream); opacity: 0.82;
+    margin-bottom: 0;
+  }
+  .cta-bridge-buttons {
+    display: flex; gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .button {
+    display: inline-block;
+    font-family: var(--ff-b);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    padding: 1rem 2.2rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    transition: all 0.4s ease;
+  }
+  .button:hover {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .button.ghost {
+    border-color: var(--frame-line);
+    color: var(--cream); opacity: 0.85;
+  }
+  .button.ghost:hover {
+    border-color: var(--gold-lt);
+    background: transparent;
+    color: var(--gold-lt);
+    opacity: 1;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 5rem 2rem 3rem;
+    text-align: center;
+    border-top: 1px solid var(--frame-line-soft);
+    margin-top: 8rem;
+  }
+  .footer-name {
+    font-family: var(--ff-d);
+    font-size: 1.8rem;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    display: inline-block;
+    margin-bottom: 0.4rem;
+  }
+  .footer-roles {
+    display: block;
+    font-family: var(--ff-d);
+    font-style: italic;
+    color: var(--gold-lt);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    opacity: 0.85;
+    margin-bottom: 1.8rem;
+  }
+  .footer-social {
+    display: flex; justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .footer-social a {
+    color: var(--gold-lt);
+    opacity: 0.75;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .footer-social a:hover {
+    opacity: 1; color: var(--gold-glow);
+  }
+  .footer-links {
+    display: flex; justify-content: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.8rem;
+  }
+  .footer-links a {
+    font-family: var(--ff-b);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream); opacity: 0.65;
+    text-decoration: none;
+    transition: opacity 0.3s, color 0.3s;
+  }
+  .footer-links a:hover { opacity: 1; color: var(--gold-lt); }
+  .footer-copy {
+    font-family: var(--ff-b);
+    font-size: 0.82rem;
+    color: var(--cream); opacity: 0.5;
+    letter-spacing: 0.08em;
+  }
+
+  /* SVG divider template applied via class for reuse */
+  .divider-svg { width: 100%; height: auto; display: block; }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .about-hero { grid-template-columns: 1fr; gap: 3rem; padding: 7rem 1.6rem 4rem; }
+    .invitation-inner { grid-template-columns: 1fr; padding: 2.5rem 1.8rem; gap: 2.4rem; }
+    .call-quote-inner { grid-template-columns: 1fr; padding: 3rem 2rem; gap: 2.4rem; }
+    .bio { padding: 3rem 1.6rem; }
+    .cta-bridge { padding: 3rem 1.6rem; }
+    .nav-links { gap: 1.1rem; }
+    nav { padding: 0.9rem 1.2rem; }
+    .divider { max-width: 94%; margin: 4rem auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul class="nav-links">
+    <li><a href="/begin">Begin</a></li>
+    <li><span class="nav-divider"></span></li>
+    <li><a href="/earth">Earth</a></li>
+    <li><a href="/sky">Sky</a></li>
+    <li><a href="/life">Life</a></li>
+    <li><a href="/mirror">Mirror</a></li>
+    <li><span class="nav-divider"></span></li>
+    <li><a href="/about" class="active">About</a></li>
+    <li><span class="nav-divider"></span></li>
+    <li><a href="https://portal.christypaxtonwade.com/portal.html" style="color: var(--gold-lt);">Portal ↗</a></li>
+  </ul>
+</nav>
+
+<!-- ── ABOUT HERO ── -->
+<section class="about-hero">
+  <div class="about-hero-img-wrap">
+    <div class="about-hero-img">
+      <img src="/public/scotland-cliffs.jpg" alt="Christy overlooking the Scottish cliffs and sea">
+      <div class="outer-frame"></div>
+      <div class="inner-frame"></div>
+    </div>
+  </div>
+  <div class="about-hero-content">
+    <span class="eyebrow">About</span>
+    <h1>Christy<em>Paxton Wade</em></h1>
+    <p class="hero-roles">writer &nbsp;·&nbsp; oracle &nbsp;·&nbsp; mirror</p>
+    <p class="hero-location">Bentonville, Arkansas &nbsp;·&nbsp; Available worldwide</p>
+    <p class="hero-lede">
+      Working at the crossroads of writing, lineage, and the kind of transformation that doesn't announce itself — it simply arrives, gate by gate, until something essential has been stripped and something truer remains.
+    </p>
+  </div>
+</section>
+
+<!-- ── DIVIDER ── -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 760 110" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ruleFadeA" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#b8924a" stop-opacity="0"/>
+        <stop offset="10%" stop-color="#d4ae6e" stop-opacity="0.7"/>
+        <stop offset="50%" stop-color="#d4ae6e" stop-opacity="0.95"/>
+        <stop offset="90%" stop-color="#d4ae6e" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#b8924a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <line x1="0" y1="55" x2="760" y2="55" stroke="url(#ruleFadeA)" stroke-width="1"/>
+    <g transform="translate(190 55)" stroke="#d4ae6e" fill="none">
+      <circle r="3.2" stroke-width="0.7"/>
+      <circle r="1" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(280 55)" stroke="#d4ae6e" fill="none">
+      <line x1="0" y1="-6" x2="0" y2="6" stroke-width="0.8"/>
+      <line x1="-6" y1="0" x2="6" y2="0" stroke-width="0.8"/>
+      <line x1="-4" y1="-4" x2="4" y2="4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <line x1="-4" y1="4" x2="4" y2="-4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <circle r="0.8" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(480 55)" stroke="#d4ae6e" fill="none">
+      <line x1="0" y1="-6" x2="0" y2="6" stroke-width="0.8"/>
+      <line x1="-6" y1="0" x2="6" y2="0" stroke-width="0.8"/>
+      <line x1="-4" y1="-4" x2="4" y2="4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <line x1="-4" y1="4" x2="4" y2="-4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <circle r="0.8" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(570 55)" stroke="#d4ae6e" fill="none">
+      <circle r="3.2" stroke-width="0.7"/>
+      <circle r="1" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(380 55)">
+      <g stroke="#d4ae6e" fill="none" stroke-opacity="0.55">
+        <path d="M 0 -46 L 46 0 L 0 46 L -46 0 Z" stroke-width="0.7"/>
+        <path d="M -32 -32 L 32 -32 L 32 32 L -32 32 Z" stroke-width="0.55" stroke-opacity="0.7"/>
+        <line x1="-32" y1="-32" x2="0" y2="-46" stroke-width="0.5" stroke-opacity="0.5"/>
+        <line x1="32" y1="-32" x2="46" y2="0" stroke-width="0.5" stroke-opacity="0.5"/>
+        <line x1="32" y1="32" x2="0" y2="46" stroke-width="0.5" stroke-opacity="0.5"/>
+        <line x1="-32" y1="32" x2="-46" y2="0" stroke-width="0.5" stroke-opacity="0.5"/>
+        <circle cx="0" cy="-46" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+        <circle cx="46" cy="0" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+        <circle cx="0" cy="46" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+        <circle cx="-46" cy="0" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+      </g>
+      <g fill="#d4ae6e" stroke="#b8924a" stroke-width="0.5" stroke-opacity="0.9">
+        <path d="M 0 -40 L 7 -11 L 0 0 L -7 -11 Z"/>
+        <path d="M 40 0 L 11 7 L 0 0 L 11 -7 Z"/>
+        <path d="M 0 40 L 7 11 L 0 0 L -7 11 Z"/>
+        <path d="M -40 0 L -11 7 L 0 0 L -11 -7 Z"/>
+      </g>
+      <g fill="#d4ae6e" stroke="#b8924a" stroke-width="0.4" stroke-opacity="0.85" fill-opacity="0.78">
+        <path d="M 18 -18 L 7 -3 L 0 0 L 3 -7 Z"/>
+        <path d="M 18 18 L 3 7 L 0 0 L 7 3 Z"/>
+        <path d="M -18 18 L -7 3 L 0 0 L -3 7 Z"/>
+        <path d="M -18 -18 L -3 -7 L 0 0 L -7 -3 Z"/>
+      </g>
+      <circle r="8" fill="#0c0a07" stroke="#d4ae6e" stroke-width="0.8"/>
+      <circle r="5" fill="none" stroke="#d4ae6e" stroke-width="0.5" stroke-opacity="0.75"/>
+      <circle r="2.2" fill="#d4ae6e" stroke="none"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ── INVITATION ── -->
+<div class="invitation">
+  <div class="invitation-inner">
+    <div class="invitation-glow"></div>
+    <div class="invitation-img">
+      <img src="/public/avebury-stones.jpg" alt="Christy listening at the standing stones at Avebury">
+      <div class="outer-frame"></div>
+      <div class="inner-frame"></div>
+    </div>
+    <div class="invitation-text">
+      <span class="eyebrow">The Invitation</span>
+      <h2>Lean in.<br><em>Your life has a message for you.</em></h2>
+    </div>
+  </div>
+</div>
+
+<!-- ── DIVIDER ── -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 760 110" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ruleFadeB" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#b8924a" stop-opacity="0"/>
+        <stop offset="10%" stop-color="#d4ae6e" stop-opacity="0.7"/>
+        <stop offset="50%" stop-color="#d4ae6e" stop-opacity="0.95"/>
+        <stop offset="90%" stop-color="#d4ae6e" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#b8924a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <line x1="0" y1="55" x2="760" y2="55" stroke="url(#ruleFadeB)" stroke-width="1"/>
+    <g transform="translate(190 55)" stroke="#d4ae6e" fill="none">
+      <circle r="3.2" stroke-width="0.7"/>
+      <circle r="1" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(280 55)" stroke="#d4ae6e" fill="none">
+      <line x1="0" y1="-6" x2="0" y2="6" stroke-width="0.8"/>
+      <line x1="-6" y1="0" x2="6" y2="0" stroke-width="0.8"/>
+      <line x1="-4" y1="-4" x2="4" y2="4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <line x1="-4" y1="4" x2="4" y2="-4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <circle r="0.8" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(480 55)" stroke="#d4ae6e" fill="none">
+      <line x1="0" y1="-6" x2="0" y2="6" stroke-width="0.8"/>
+      <line x1="-6" y1="0" x2="6" y2="0" stroke-width="0.8"/>
+      <line x1="-4" y1="-4" x2="4" y2="4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <line x1="-4" y1="4" x2="4" y2="-4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <circle r="0.8" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(570 55)" stroke="#d4ae6e" fill="none">
+      <circle r="3.2" stroke-width="0.7"/>
+      <circle r="1" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(380 55)">
+      <g stroke="#d4ae6e" fill="none" stroke-opacity="0.55">
+        <path d="M 0 -46 L 46 0 L 0 46 L -46 0 Z" stroke-width="0.7"/>
+        <path d="M -32 -32 L 32 -32 L 32 32 L -32 32 Z" stroke-width="0.55" stroke-opacity="0.7"/>
+        <line x1="-32" y1="-32" x2="0" y2="-46" stroke-width="0.5" stroke-opacity="0.5"/>
+        <line x1="32" y1="-32" x2="46" y2="0" stroke-width="0.5" stroke-opacity="0.5"/>
+        <line x1="32" y1="32" x2="0" y2="46" stroke-width="0.5" stroke-opacity="0.5"/>
+        <line x1="-32" y1="32" x2="-46" y2="0" stroke-width="0.5" stroke-opacity="0.5"/>
+        <circle cx="0" cy="-46" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+        <circle cx="46" cy="0" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+        <circle cx="0" cy="46" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+        <circle cx="-46" cy="0" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+      </g>
+      <g fill="#d4ae6e" stroke="#b8924a" stroke-width="0.5" stroke-opacity="0.9">
+        <path d="M 0 -40 L 7 -11 L 0 0 L -7 -11 Z"/>
+        <path d="M 40 0 L 11 7 L 0 0 L 11 -7 Z"/>
+        <path d="M 0 40 L 7 11 L 0 0 L -7 11 Z"/>
+        <path d="M -40 0 L -11 7 L 0 0 L -11 -7 Z"/>
+      </g>
+      <g fill="#d4ae6e" stroke="#b8924a" stroke-width="0.4" stroke-opacity="0.85" fill-opacity="0.78">
+        <path d="M 18 -18 L 7 -3 L 0 0 L 3 -7 Z"/>
+        <path d="M 18 18 L 3 7 L 0 0 L 7 3 Z"/>
+        <path d="M -18 18 L -7 3 L 0 0 L -3 7 Z"/>
+        <path d="M -18 -18 L -3 -7 L 0 0 L -7 -3 Z"/>
+      </g>
+      <circle r="8" fill="#0c0a07" stroke="#d4ae6e" stroke-width="0.8"/>
+      <circle r="5" fill="none" stroke="#d4ae6e" stroke-width="0.5" stroke-opacity="0.75"/>
+      <circle r="2.2" fill="#d4ae6e" stroke="none"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ── BIO (The Bridge) ── -->
+<section class="bio">
+  <div class="section-eyebrow-wrap">
+    <span class="eyebrow">The Bridge</span>
+  </div>
+  <h2>The path that <em>got me here.</em></h2>
+
+  <p class="body-with-dropcap">
+    Christy Paxton Wade is a violinist, writer, and mentor who has spent her life at the crossroads of music, family, and the kind of transformation that doesn't announce itself — it simply arrives, gate by gate, until something essential has been stripped and something truer remains.
+  </p>
+
+  <p>
+    She has taught young musicians, raised a family, and built a practice around the quiet turning points where people either compress themselves to fit inherited expectations or descend, deliberately, into their own sovereign frequency.
+  </p>
+
+  <p>
+    Her work lives at the intersection of astrology, ancestral cartography, and the ancient feminine wisdom that has always known: growth begins below the noise. She built the Navigation Map of Consciousness — thirteen Fields of human experience mapped across three arcs — as the structural spine for everything she teaches. She lives in Arkansas, where music, gardens, family, and lifelong learning continue to shape her voice and her work.
+  </p>
+
+  <p class="closing">
+    If something in you recognized those words, you're already in the right place.
+  </p>
+</section>
+
+<!-- ── DIVIDER ── -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 760 110" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ruleFadeC" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#b8924a" stop-opacity="0"/>
+        <stop offset="10%" stop-color="#d4ae6e" stop-opacity="0.7"/>
+        <stop offset="50%" stop-color="#d4ae6e" stop-opacity="0.95"/>
+        <stop offset="90%" stop-color="#d4ae6e" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#b8924a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <line x1="0" y1="55" x2="760" y2="55" stroke="url(#ruleFadeC)" stroke-width="1"/>
+    <g transform="translate(190 55)" stroke="#d4ae6e" fill="none">
+      <circle r="3.2" stroke-width="0.7"/>
+      <circle r="1" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(280 55)" stroke="#d4ae6e" fill="none">
+      <line x1="0" y1="-6" x2="0" y2="6" stroke-width="0.8"/>
+      <line x1="-6" y1="0" x2="6" y2="0" stroke-width="0.8"/>
+      <line x1="-4" y1="-4" x2="4" y2="4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <line x1="-4" y1="4" x2="4" y2="-4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <circle r="0.8" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(480 55)" stroke="#d4ae6e" fill="none">
+      <line x1="0" y1="-6" x2="0" y2="6" stroke-width="0.8"/>
+      <line x1="-6" y1="0" x2="6" y2="0" stroke-width="0.8"/>
+      <line x1="-4" y1="-4" x2="4" y2="4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <line x1="-4" y1="4" x2="4" y2="-4" stroke-width="0.55" stroke-opacity="0.7"/>
+      <circle r="0.8" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(570 55)" stroke="#d4ae6e" fill="none">
+      <circle r="3.2" stroke-width="0.7"/>
+      <circle r="1" fill="#d4ae6e" stroke="none"/>
+    </g>
+    <g transform="translate(380 55)">
+      <g stroke="#d4ae6e" fill="none" stroke-opacity="0.55">
+        <path d="M 0 -46 L 46 0 L 0 46 L -46 0 Z" stroke-width="0.7"/>
+        <path d="M -32 -32 L 32 -32 L 32 32 L -32 32 Z" stroke-width="0.55" stroke-opacity="0.7"/>
+        <line x1="-32" y1="-32" x2="0" y2="-46" stroke-width="0.5" stroke-opacity="0.5"/>
+        <line x1="32" y1="-32" x2="46" y2="0" stroke-width="0.5" stroke-opacity="0.5"/>
+        <line x1="32" y1="32" x2="0" y2="46" stroke-width="0.5" stroke-opacity="0.5"/>
+        <line x1="-32" y1="32" x2="-46" y2="0" stroke-width="0.5" stroke-opacity="0.5"/>
+        <circle cx="0" cy="-46" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+        <circle cx="46" cy="0" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+        <circle cx="0" cy="46" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+        <circle cx="-46" cy="0" r="1.1" fill="#d4ae6e" stroke="none" fill-opacity="0.8"/>
+      </g>
+      <g fill="#d4ae6e" stroke="#b8924a" stroke-width="0.5" stroke-opacity="0.9">
+        <path d="M 0 -40 L 7 -11 L 0 0 L -7 -11 Z"/>
+        <path d="M 40 0 L 11 7 L 0 0 L 11 -7 Z"/>
+        <path d="M 0 40 L 7 11 L 0 0 L -7 11 Z"/>
+        <path d="M -40 0 L -11 7 L 0 0 L -11 -7 Z"/>
+      </g>
+      <g fill="#d4ae6e" stroke="#b8924a" stroke-width="0.4" stroke-opacity="0.85" fill-opacity="0.78">
+        <path d="M 18 -18 L 7 -3 L 0 0 L 3 -7 Z"/>
+        <path d="M 18 18 L 3 7 L 0 0 L 7 3 Z"/>
+        <path d="M -18 18 L -7 3 L 0 0 L -3 7 Z"/>
+        <path d="M -18 -18 L -3 -7 L 0 0 L -7 -3 Z"/>
+      </g>
+      <circle r="8" fill="#0c0a07" stroke="#d4ae6e" stroke-width="0.8"/>
+      <circle r="5" fill="none" stroke="#d4ae6e" stroke-width="0.5" stroke-opacity="0.75"/>
+      <circle r="2.2" fill="#d4ae6e" stroke="none"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ── CALL QUOTE ── -->
+<div class="call-quote">
+  <div class="call-quote-inner">
+    <blockquote>
+      The call will come dressed in the face of whoever is waiting for your coherence. Answer it from below the noise.
+    </blockquote>
+    <div class="call-quote-img">
+      <img src="/public/glastonbury-yew.jpg" alt="Christy with the ancient yew tree at Glastonbury">
+      <div class="outer-frame"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA BRIDGE ── -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 760 110" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ruleFadeD" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#b8924a" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#d4ae6e" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#b8924a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <line x1="0" y1="55" x2="760" y2="55" stroke="url(#ruleFadeD)" stroke-width="1"/>
+    <g transform="translate(380 55)">
+      <g fill="#d4ae6e" stroke="#b8924a" stroke-width="0.5" stroke-opacity="0.9">
+        <path d="M 0 -40 L 7 -11 L 0 0 L -7 -11 Z"/>
+        <path d="M 40 0 L 11 7 L 0 0 L 11 -7 Z"/>
+        <path d="M 0 40 L 7 11 L 0 0 L -7 11 Z"/>
+        <path d="M -40 0 L -11 7 L 0 0 L -11 -7 Z"/>
+      </g>
+      <circle r="8" fill="#0c0a07" stroke="#d4ae6e" stroke-width="0.8"/>
+      <circle r="2.2" fill="#d4ae6e" stroke="none"/>
+    </g>
+  </svg>
+</div>
+
+<section class="cta-bridge">
+  <h2>Begin where you are, or<br><em>walk further in.</em></h2>
+  <p>
+    The work has many doorways. The map, the readings, the writing, the mentorship — each one assumes the others.
+  </p>
+  <div class="cta-bridge-buttons">
+    <a href="/" class="button">Begin Here</a>
+    <a href="https://christywade.substack.com" class="button ghost" target="_blank">Read the Substack</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <span class="footer-roles">writer &nbsp;·&nbsp; oracle &nbsp;·&nbsp; mirror</span>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/christypaxtonwade" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="https://www.instagram.com/christypaxtonwade" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+  </div>
+  <div class="footer-links">
+    <a href="/begin">Begin</a>
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="/about">About</a>
+    <a href="https://christywade.substack.com" target="_blank">Substack</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" style="color: var(--gold-lt); opacity: 0.85;">Portal ↗</a>
+  </div>
+  <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
+</footer>
+
+</body>
+</html>
