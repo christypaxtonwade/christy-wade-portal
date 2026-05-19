@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/framing.css">
 
 <style>
 :root {
@@ -42,29 +43,7 @@ body {
   font-weight: 300;
   min-height: 100vh;
 }
-
-/* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; justify-content: center; align-items: center;
-  padding: 1.1rem 3rem;
-  background: rgba(12,10,7,0.95);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(184,146,74,0.1);
-}
-.nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
-.nav-links a {
-  font-family: var(--ff-b);
-  font-size: var(--text-label);
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--cream); opacity: 0.88;
-  text-decoration: none;
-  transition: opacity 0.3s, color 0.3s;
-}
-.nav-links a:hover { opacity: 1; color: var(--gold-lt); }
-.nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.25); }
+/* NAV — styled in /framing.css */
 
 /* SHELL */
 .reading-shell {
@@ -311,6 +290,7 @@ footer .footer-name {
 <body>
 
 <nav>
+  <a href="/" class="nav-brand">Christy Paxton Wade</a>
   <ul class="nav-links">
     <li><a href="/begin">Begin</a></li>
     <li><a href="/earth">Earth</a></li>
@@ -387,10 +367,12 @@ footer .footer-name {
 
 <footer>
   <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <span class="footer-roles">writer &nbsp;·&nbsp; oracle &nbsp;·&nbsp; mirror</span>
   <div class="footer-links">
     <a href="/begin">Begin</a>
     <a href="/signals">Signals</a>
     <a href="/map">The Map</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-lt); opacity: 0.85;">Portal ↗</a>
   </div>
   <p class="footer-copy">© 2026 Christy Paxton Wade. All rights reserved.</p>
 </footer>
