@@ -42,29 +42,30 @@
     font-size: 16px;
   }
 
-  /* ── NAV ── */
+  /* ── NAV ── two rows, both centered, same font for all */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1rem 2.4rem;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 2rem;
     background: rgba(12, 10, 7, 0.95);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--frame-line-soft);
-    gap: 1.8rem;
   }
   .nav-brand {
-    font-family: var(--ff-d);
-    font-size: 1.15rem;
-    font-style: italic;
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
     color: var(--cream);
     text-decoration: none;
-    letter-spacing: 0.04em;
     opacity: 0.95;
     white-space: nowrap;
     transition: color 0.3s, opacity 0.3s;
   }
   .nav-brand:hover { color: var(--gold-lt); opacity: 1; }
-  .nav-links { display: flex; gap: 1.9rem; list-style: none; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+  .nav-links { display: flex; gap: 1.7rem; list-style: none; align-items: center; flex-wrap: wrap; justify-content: center; }
   .nav-links a {
     font-family: var(--ff-b);
     font-size: var(--text-label);
