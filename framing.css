@@ -109,7 +109,8 @@ nav {
 .nav-dropdown-trigger[aria-expanded="true"]::after { transform: rotate(-180deg); opacity: 1; }
 .nav-dropdown-trigger:hover { opacity: 1; color: var(--gold-lt); }
 .nav-dropdown-trigger[aria-expanded="true"] { color: var(--gold-lt); opacity: 1; }
-.nav-dropdown-panel {
+.nav-dropdown .nav-dropdown-panel {
+  display: none;
   position: absolute;
   top: calc(100% + 1rem);
   left: 50%;
@@ -122,13 +123,9 @@ nav {
   padding: 1.2rem 1.4rem;
   z-index: 250;
   box-shadow: 0 12px 36px rgba(0,0,0,0.6);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
-.nav-dropdown-panel.open {
-  opacity: 1;
-  visibility: visible;
+.nav-dropdown .nav-dropdown-panel.open {
+  display: block;
 }
 .nav-dropdown-panel::before,
 .nav-dropdown-panel::after {
