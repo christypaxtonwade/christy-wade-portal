@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Navigation Map — Christy Paxton Wade</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/framing.css">
+<script src="/framing.js" defer></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -30,15 +32,7 @@
     overflow-x: hidden;
     font-size: 16px;
   }
-
-  .trunk-sig { display: block; text-align: center; padding: 1rem 2rem 0.6rem; background: var(--ink); font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.88; text-decoration: none; letter-spacing: 0.06em; transition: opacity 0.3s; }
-  .trunk-sig:hover { opacity: 1; }
-
-  nav { position: sticky; top: 0; z-index: 200; display: flex; justify-content: center; align-items: center; padding: 1rem 3rem; background: rgba(12,10,7,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,146,74,0.12); }
-  .nav-links { display: flex; gap: 2.4rem; list-style: none; align-items: center; }
-  .nav-links a { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.88; text-decoration: none; transition: opacity 0.3s, color 0.3s; }
-  .nav-links a:hover { opacity: 1; color: var(--gold-lt); }
-  .nav-divider { width: 1px; height: 14px; background: rgba(184,146,74,0.3); }
+  /* NAV — styled in /framing.css */
 
   .eyebrow { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.95; display: block; }
 
@@ -464,20 +458,43 @@
 </head>
 <body>
 
-<a href="/" class="trunk-sig">Christy Paxton Wade</a>
 <nav>
-  <ul class="nav-links">
-    <li><a href="/begin">Begin</a></li>
-    <li><a href="/earth">Earth</a></li>
-    <li><a href="/sky">Sky</a></li>
-    <li><a href="/life">Life</a></li>
-    <li><a href="/mirror">Mirror</a></li>
-    <li class="nav-divider"></li>
-    <li><a href="/mirror#apply">Apply</a></li>
-    <li><a href="https://christywade.substack.com" target="_blank">Substack</a></li>
-    <li class="nav-divider"></li>
-    <li><a href="https://portal.christypaxtonwade.com/portal.html" target="_blank">Portal ↗</a></li>
-  </ul>
+  <a href="/" class="nav-brand">Christy Paxton Wade</a>
+  <div class="nav-row">
+    <div></div>
+    <ul class="nav-links">
+      <li><a href="/begin">Begin</a></li>
+      <li><a href="/earth">Earth</a></li>
+      <li><a href="/sky">Sky</a></li>
+      <li><a href="/life">Life</a></li>
+      <li><a href="/mirror">Mirror</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Library</button>
+        <div class="nav-dropdown-panel" role="menu">
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">The Map</div>
+            <a class="nav-dropdown-item" href="/map" role="menuitem">Map</a>
+            <a class="nav-dropdown-item" href="/tapestry" role="menuitem">Tapestry</a>
+            <a class="nav-dropdown-item" href="/inside-the-work" role="menuitem">Inside the Work</a>
+            <a class="nav-dropdown-item" href="/codex" role="menuitem">Plant Codex</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">Doors</div>
+            <a class="nav-dropdown-item" href="/signals" role="menuitem">Signals</a>
+            <a class="nav-dropdown-item" href="https://calendly.com/christypaxtonwade/firstsignal" target="_blank" rel="noopener" role="menuitem">Discovery</a>
+            <a class="nav-dropdown-item" href="/mirror#apply" role="menuitem">Apply</a>
+            <a class="nav-dropdown-item" href="/intake" role="menuitem">New Clients</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">Writing</div>
+            <a class="nav-dropdown-item" href="https://christywade.substack.com" target="_blank" rel="noopener" role="menuitem">Alchemy of Midlife ↗</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <a href="https://portal.christypaxtonwade.com/portal.html" class="nav-portal" target="_blank" rel="noopener">Portal ↗</a>
+  </div>
 </nav>
 
 <section class="map-hero">
@@ -654,6 +671,7 @@
 
 <footer>
   <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <span class="footer-roles">writer &nbsp;·&nbsp; oracle &nbsp;·&nbsp; mirror</span>
   <div class="footer-links">
     <a href="/begin">Begin</a>
     <a href="/earth">Earth</a>
@@ -662,6 +680,7 @@
     <a href="/mirror">Mirror</a>
     <a href="/mirror#apply">Apply</a>
     <a href="https://christywade.substack.com" target="_blank">Substack</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-lt); opacity: 0.85;">Portal ↗</a>
   </div>
   <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
 </footer>
