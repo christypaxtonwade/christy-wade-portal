@@ -6,6 +6,7 @@
 <title>Mirror — Christy Paxton Wade</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/framing.css">
+<script src="/framing.js" defer></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -542,18 +543,41 @@
 
 <nav>
   <a href="/" class="nav-brand">Christy Paxton Wade</a>
-  <ul class="nav-links">
-    <li><a href="/begin">Begin</a></li>
-    <li><a href="/earth">Earth</a></li>
-    <li><a href="/sky">Sky</a></li>
-    <li><a href="/life">Life</a></li>
-    <li><a href="/mirror" class="active">Mirror</a></li>
-    <li class="nav-divider"></li>
-    <li><a href="#apply">Apply</a></li>
-    <li><a href="https://christywade.substack.com" target="_blank">Substack</a></li>
-    <li class="nav-divider"></li>
-    <li><a href="https://portal.christypaxtonwade.com/portal.html" target="_blank">Portal ↗</a></li>
-  </ul>
+  <div class="nav-row">
+    <div></div>
+    <ul class="nav-links">
+      <li><a href="/begin">Begin</a></li>
+      <li><a href="/earth">Earth</a></li>
+      <li><a href="/sky">Sky</a></li>
+      <li><a href="/life">Life</a></li>
+      <li><a href="/mirror" class="active">Mirror</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Library</button>
+        <div class="nav-dropdown-panel" role="menu">
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">The Map</div>
+            <a class="nav-dropdown-item" href="/map" role="menuitem">The Navigation Map</a>
+            <a class="nav-dropdown-item" href="/tapestry" role="menuitem">The Mythic Tapestry</a>
+            <a class="nav-dropdown-item" href="/inside-the-work" role="menuitem">Inside the Work</a>
+            <a class="nav-dropdown-item" href="/codex" role="menuitem">The Plant Codex</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">Doors</div>
+            <a class="nav-dropdown-item" href="/signals" role="menuitem">Signals Quiz</a>
+            <a class="nav-dropdown-item" href="https://calendly.com/christypaxtonwade/firstsignal" target="_blank" rel="noopener" role="menuitem">First Signal (Discovery Call)</a>
+            <a class="nav-dropdown-item" href="/mirror#apply" role="menuitem">Apply for Mirror Work</a>
+            <a class="nav-dropdown-item" href="/intake" role="menuitem">Client Intake</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">Writing</div>
+            <a class="nav-dropdown-item" href="https://christywade.substack.com" target="_blank" rel="noopener" role="menuitem">The Alchemy of Midlife (Substack) ↗</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <a href="https://portal.christypaxtonwade.com/portal.html" class="nav-portal" target="_blank" rel="noopener">Portal ↗</a>
+  </div>
 </nav>
 
 <!-- HERO -->
