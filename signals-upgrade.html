@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signals Reading — Christy Paxton Wade</title>
+<style>
+  :root {
+    --bg: #14110a;
+    --vellum: #e8dcbb;
+    --ink: #14110a;
+    --gold: #7a5618;
+    --gold-bright: #c89a3c;
+    --muted: rgba(232,220,187,0.65);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--vellum); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; min-height: 100vh; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: 36px; font-weight: 500; letter-spacing: 0.02em; margin-bottom: 16px; color: var(--vellum); }
+  h2 { font-size: 24px; font-weight: 500; letter-spacing: 0.01em; margin: 48px 0 16px; color: var(--gold-bright); border-top: 1px solid rgba(232,220,187,0.15); padding-top: 32px; }
+  h3 { font-size: 19px; font-weight: 500; margin: 24px 0 8px; color: var(--vellum); }
+  p, label { font-size: 17px; line-height: 1.7; color: var(--vellum); }
+  .lede { font-size: 19px; color: rgba(232,220,187,0.88); margin-bottom: 24px; }
+  .field-group { margin-bottom: 24px; }
+  .field-group label { display: block; font-family: 'Jost', sans-serif; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  input[type="text"], input[type="email"], input[type="date"], input[type="time"], input[type="number"], select {
+    width: 100%; padding: 10px 12px; background: rgba(232,220,187,0.06); border: 1px solid rgba(232,220,187,0.25); color: var(--vellum); font-family: inherit; font-size: 17px; border-radius: 2px;
+  }
+  input:focus, select:focus { outline: 2px solid var(--gold-bright); outline-offset: 1px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+  .help { font-size: 14px; color: var(--muted); margin-top: 6px; font-style: italic; }
+  .lead-in { font-size: 18px; color: rgba(232,220,187,0.92); margin: 16px 0 12px; }
+  .statement { padding: 16px 0; border-bottom: 1px solid rgba(232,220,187,0.08); }
+  .statement-text { margin-bottom: 10px; color: var(--vellum); }
+  .scale { display: flex; gap: 6px; justify-content: space-between; max-width: 480px; }
+  .scale label { display: flex; flex-direction: column; align-items: center; cursor: pointer; padding: 6px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.06em; color: var(--muted); text-transform: none; }
+  .scale input[type="radio"] { width: 22px; height: 22px; margin-bottom: 4px; accent-color: var(--gold-bright); cursor: pointer; }
+  .scale input[type="radio"]:checked + span { color: var(--gold-bright); }
+  .single-select { display: flex; flex-direction: column; gap: 10px; margin: 12px 0 16px; }
+  .single-select label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; padding: 10px 12px; background: rgba(232,220,187,0.04); border: 1px solid rgba(232,220,187,0.15); border-radius: 2px; }
+  .single-select label:hover { background: rgba(232,220,187,0.08); }
+  .single-select input[type="radio"] { margin-top: 4px; accent-color: var(--gold-bright); }
+  .single-select span { font-size: 16px; color: var(--vellum); }
+  .submit-btn { display: inline-block; padding: 14px 32px; background: var(--gold); color: var(--vellum); border: none; font-family: 'Jost', sans-serif; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border-radius: 2px; margin-top: 32px; }
+  .submit-btn:hover { background: var(--gold-bright); color: var(--ink); }
+  .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .scale-key { font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.06em; color: var(--muted); margin-top: 8px; }
+  .progress { position: sticky; top: 0; background: var(--bg); padding: 12px 0; z-index: 10; border-bottom: 1px solid rgba(232,220,187,0.12); margin: -48px -24px 32px; padding-left: 24px; padding-right: 24px; }
+  .progress-bar { height: 3px; background: rgba(232,220,187,0.12); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold-bright); width: 0%; transition: width 0.3s ease; }
+  .progress-text { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin-top: 6px; }
+  #followUp, #registerOfContact, #finalStep { display: none; }
+  .price-line { font-family: 'Jost', sans-serif; font-size: 14px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin: 8px 0 16px; }
+  .error { color: #d9533c; font-size: 14px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="progress">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">Begin</div>
+  </div>
+
+  <h1>Signals Reading</h1>
+  <p class="lede">A personalized reading written from where you actually are right now, drawn from the relationship between your birth chart, your Gene Keys profile, and how you rate fifty-two statements about your life. Three sections. About six hundred to eight hundred words. Delivered to your inbox within a few minutes of completing the quiz.</p>
+  <p class="price-line">$44 · one-time</p>
+
+  <form id="quizForm">
+
+    <h2>Your birth data</h2>
+    <p class="lede">Date is required. Time and place sharpen the reading. If any of these are missing, the reading is honest about lower precision.</p>
+
+    <div class="row">
+      <div class="field-group">
+        <label for="birth_date">Birth date *</label>
+        <input type="date" id="birth_date" required>
+      </div>
+      <div class="field-group">
+        <label for="birth_time">Birth time</label>
+        <input type="time" id="birth_time" step="60">
+        <div class="help">Best from a birth certificate. 8:50 PM = 20:50.</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <label for="birth_place">Birth place</label>
+      <input type="text" id="birth_place" placeholder="e.g. Provo, Utah, USA">
+    </div>
+    <div class="row">
+      <div class="field-group">
+        <label for="latitude">Latitude</label>
+        <input type="number" id="latitude" step="0.0001" placeholder="40.2338">
+      </div>
+      <div class="field-group">
+        <label for="longitude">Longitude</label>
+        <input type="number" id="longitude" step="0.0001" placeholder="-111.6585">
+      </div>
+    </div>
+    <div class="field-group">
+      <label for="timezone">Timezone</label>
+      <select id="timezone">
+        <option value="">Select…</option>
+      </select>
+      <div class="help">IANA timezone. Use timeanddate.com to find lat/long/timezone if needed.</div>
+    </div>
+
+    <h2>Opening question</h2>
+    <p class="lede">How do you experience awareness of yourself in your life — in situations, relationships, challenges, change?</p>
+    <div class="single-select" id="q_r"></div>
+
+    <h2>Main round</h2>
+    <p class="lede">Thirteen sets of four statements. Rate each statement from 1 (not me) to 5 (strongly me). Use 3 for "somewhat" or "unsure." Don't overthink — first instinct is the data.</p>
+    <p class="scale-key">1 not me · 2 a little · 3 somewhat / unsure · 4 mostly me · 5 strongly me</p>
+    <div id="floorQuestions"></div>
+
+    <h2>Follow-up</h2>
+    <div id="followUp"></div>
+
+    <h2>Register of contact</h2>
+    <div id="registerOfContact"></div>
+
+    <div id="finalStep">
+      <h2>Where to send the reading</h2>
+      <div class="field-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" required placeholder="you@example.com">
+        <div class="help">We'll send you a permanent link to your reading after payment.</div>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">Continue to payment — $44</button>
+      <p class="error" id="errorMsg"></p>
+    </div>
+  </form>
+
+</div>
+
+<script>
+// =============================================================================
+// CONTENT — voice-locked from the scaffold files
+// =============================================================================
+
+const Q_R_CHOICES = [
+  { code: 'conceptual', text: "I think about what is happening in words, naming what I'm going through and explaining the patterns and structure of what I see." },
+  { code: 'somatic',    text: "I feel it in my body, before any words are available. It feels like my body knows what my mind hasn't reached yet." },
+  { code: 'mythic',     text: "I find myself relating to a song, movie, book, or story that feels like it's describing my own life or experience, especially when it comes to relationships or challenges." },
+  { code: 'unreceived', text: "I know there is something in me that others can see or name, but I can't quite feel it or land it as mine." },
+];
+
+// Floor: 13 Fields, each with a lead-in and 4 rated statements mapped to Subterrain codes.
+const FLOOR = [
+  { roman: 'I',    name: 'Structural Models',         leadIn: "When you make sense of what's happening in your life, how do you understand it?",
+    statements: [
+      { code: 'I.1', text: "I notice patterns that seem coincidental, but recognize they have deeper meaning and synchronicity." },
+      { code: 'I.2', text: "Something that feels disorganized in a situation organizes itself in my awareness, and I understand the shape of what's happening, even if I don't have words for it." },
+      { code: 'I.3', text: "I need to get a higher view of what's happening before I can make decisions and movements, and then I can see where I am and where I'm going." },
+      { code: 'I.4', text: "I understand my experiences in life often come from inherited beliefs, patterns, and dynamics that I didn't choose, but are still part of me." },
+    ]},
+  { roman: 'II',   name: 'Anomalous Reception',       leadIn: "How have you been receiving messages and signals that you may or may not fully understand?",
+    statements: [
+      { code: 'II.1', text: "I receive insights, downloads, and knowings that came from somewhere other than my own thoughts or previous knowledge." },
+      { code: 'II.2', text: "The message arrives through a person, an animal, or something that arrives in my world that feels purposeful." },
+      { code: 'II.3', text: "I use my own judgement and discernment to understand what is meaningful and what comes from projection, fear, or wishful thinking." },
+      { code: 'II.4', text: "I think I receive messages and signals, but I tend to second-guess whether they are real or just my own thoughts." },
+    ]},
+  { roman: 'III',  name: 'Threshold Events',          leadIn: "How is your life asking you to change or cross a threshold — to let go of something and move forward?",
+    statements: [
+      { code: 'III.1', text: "I know what the change is but I don't want to let go of what I know. Even though I can see something new coming through, I'm not ready for it." },
+      { code: 'III.2', text: "I have a sense of what I'm crossing, but it shows up in dreams and impressions rather than my waking life." },
+      { code: 'III.4', text: "I am aware that an ancestor carried what I'm feeling, and their story runs through me. What is shifting has to do with the message I receive from them." },
+      { code: 'III.5', text: "What's changing for me is slow and difficult. Grief, illness, or a painful circumstance is holding me without release." },
+    ]},
+  { roman: 'IV',   name: 'Embodied Signal',           leadIn: "How is your body currently telling you what it knows?",
+    statements: [
+      { code: 'IV.1', text: "I get information through the gut, chest, spine, throat. The body says yes or no before my mind has formed a sentence about it." },
+      { code: 'IV.2', text: "I read rooms, people, situations through the felt-sense of the field around them. I know what a room is before anyone has spoken." },
+      { code: 'IV.3', text: "What comes through my voice — speaking, singing, naming — is the carrier. The voice is doing the work." },
+      { code: 'IV.4', text: "Sound moves me and I move through sound. Music, vibration, sonic frequency is how I locate myself in my body." },
+    ]},
+  { roman: 'V',    name: 'Resonance in Language',     leadIn: "How do words, language, and naming help you understand yourself and frame your personal experience?",
+    statements: [
+      { code: 'V.1', text: "The way I hear and use words is how I communicate the meaning of the experience." },
+      { code: 'V.2', text: "More than the words themselves, the tone and register of what's being said carries the meaning." },
+      { code: 'V.4', text: "It's important that distinctions and specific words are used or omitted to prevent misunderstanding and misinterpretation." },
+      { code: 'V.5', text: "My own name or the name of another person (family, ancestor, etc.) is carrying a specific energy or structure that I can feel." },
+    ]},
+  { roman: 'VI',   name: 'Body as Active Practice',   leadIn: "How is your body connected to your personal experience in this season of your life?",
+    statements: [
+      { code: 'VI.1', text: "I connect to others through my body — touch, caregiving, sitting with someone when they need a witness." },
+      { code: 'VI.2', text: "My body asks for rest, stillness, and silence. I meditate or find time for breathing and reflection." },
+      { code: 'VI.3', text: "I have to move my body to process what moves through me. Being physically active is important to me." },
+      { code: 'VI.5', text: "My body is not only carrying change and experience, it is the experience. My body is at a threshold of healing, aging, or another change of life I feel physically." },
+    ]},
+  { roman: 'VII',  name: 'The Creative Record',       leadIn: "How do you express yourself creatively?",
+    statements: [
+      { code: 'VII.1', text: "What I create comes from within me, whether or not I've received training or recognition for it." },
+      { code: 'VII.3', text: "I am writing or storytelling, or I feel a story that wants to come through me." },
+      { code: 'VII.4', text: "What I'm creating or desire to create will outlast me, a physical work that can carry who I am forward after my life ends." },
+      { code: 'VII.5', text: "Something holds me back from creating what I want to create, whether I'm holding myself back, or I feel restricted by someone else's reaction to it." },
+    ]},
+  { roman: 'VIII', name: 'Animal and Nature Medicine', leadIn: "What teaches you in the natural world that is outside yourself?",
+    statements: [
+      { code: 'VIII.2', text: "A spirit animal shows up for me and points toward some part of myself that feels familiar." },
+      { code: 'VIII.3', text: "I connect to plants and trees and growing things as a source of intelligence, not only as decoration or hobby." },
+      { code: 'VIII.6', text: "The native lands of my ancestors call to me and I feel how the lands where they lived has shaped who I am." },
+      { code: 'VIII.8', text: "I feel something that wants to be uncontrolled, a rewilding force that unwinds structure in my life." },
+    ]},
+  { roman: 'IX',   name: 'The Mirror',                leadIn: "How do relationships with others show you more about yourself?",
+    statements: [
+      { code: 'IX.1', text: "A person in my life is the teacher as the relationship evolves. The actual relationship is teaching me something about myself, whether it's positive or negative." },
+      { code: 'IX.3', text: "I observe myself and reflect on my own journey, as if I am observing from the outside in or looking in the mirror." },
+      { code: 'IX.5', text: "I am learning about myself through the balance in my relationships, learning how giving and receiving energy are both essential parts of my healthy self." },
+      { code: 'IX.6', text: "People or situations with others in my life have developed clarity, or I'm aware that my perceptions of another may have been distorted." },
+    ]},
+  { roman: 'X',    name: 'The Shadow',                leadIn: "How do you perceive what is hidden or difficult to understand, or something that is difficult to admit or acknowledge?",
+    statements: [
+      { code: 'X.2', text: "Something has been present in my family lineage, but I wasn't aware of it until it began to surface as a pattern in my own life." },
+      { code: 'X.5', text: "I'm recognizing patterns and beliefs that came through other people, ancestral lineage, that were not my own identity, but one that I inherited." },
+      { code: 'X.6', text: "Parts of my life feel painful and keep coming up. Even though I thought I had moved on, I can't move past the memories or difficulty." },
+      { code: 'X.7', text: "I feel like something in my life is falling apart, and who I used to be doesn't fit who I'm in the process of becoming." },
+    ]},
+  { roman: 'XI',   name: 'The Teaching',              leadIn: "How do you experience the feeling that you have something to share with others?",
+    statements: [
+      { code: 'XI.1', text: "I have always known about something or had a skill that came to me easily, a gift that feels second-nature." },
+      { code: 'XI.2', text: "I feel the call to share my knowledge by writing or teaching. What I have learned is my mission that is important to give to humanity." },
+      { code: 'XI.3', text: "I have something valuable to offer, and I feel that others will want to receive it." },
+      { code: 'XI.4', text: "I see my gifts going further than I can share myself. As others receive, they will give to even more people." },
+    ]},
+  { roman: 'XII',  name: 'Sovereignty',               leadIn: "How do you experience the feeling of coming home to yourself, or of holding and integrating the parts of your life into who you are?",
+    statements: [
+      { code: 'XII.1', text: "Parts of me that were lost or broken are returning and feel new, and I recognize they were always part of who I am." },
+      { code: 'XII.2', text: "Events in my past used to bring feelings of fear or shame, but now those memories can be held as lessons or growth that were essential to my journey." },
+      { code: 'XII.3', text: "I recognize my right to decide who I am and how I live my life, without apology, and realize that is my responsibility and authority." },
+      { code: 'XII.5', text: "I'm in a place in life that requires commitment or sacrifice, and I stay because I can see that it is part of what my story requires." },
+    ]},
+  { roman: 'XIII', name: 'The Return',                leadIn: "When you feel you have completed a journey, how does that register in your experience?",
+    statements: [
+      { code: 'XIII.1', text: "I feel complete at the same time I feel a new beginning, but each time there is a new feeling or new growth that moves me forward." },
+      { code: 'XIII.2', text: "When I have completed a cycle, I feel that the person I am at the end is different from the person I was in the beginning, and the journey was not what I expected." },
+      { code: 'XIII.3', text: "What has changed the most for me at the end of the journey is the ability to observe my own life with a sense of steadiness." },
+      { code: 'XIII.5', text: "I'm at the end of something, but the beginning of the next stage is unknown to me, and I can't see or predict what the next part of the journey holds." },
+    ]},
+];
+
+// Follow-up: one section per Field that has held-back Subterrains.
+// Fields I, II, IV, XI have no follow-up statements (only register-of-contact fires).
+const FOLLOW_UP = {
+  'III':  { leadIn: "Some thresholds cross through time itself, not just through circumstance. Rate how true the following is for you right now.",
+            statements: [ { code: 'III.3', text: "I am experiencing something in my energy that belongs to a past or future part of my story, but feels connected to the present." } ] },
+  'V':    { leadIn: "Knowing that communication is more than words alone, how does understanding actually reach you, and how does it move from you to someone else? Rate how true each statement is for you right now.",
+            statements: [
+              { code: 'V.3', text: "I usually know the best way to understand something, whether it's through a story, explaining a concept, or experiencing it through the physical body." },
+              { code: 'V.6', text: "The way that learning or teaching transmits matters as much as what is communicated from one person to another." },
+            ] },
+  'VI':   { leadIn: "The body itself carries information and also functions as the vehicle for receiving healing. Rate how true the following is for you right now.",
+            statements: [ { code: 'VI.4', text: "I sense the inner cycles and rhythms in my body that indicate what I need. My inner sense of myself is reflected in my outer awareness." } ] },
+  'VII':  { leadIn: "Some of what you carry is meant to travel by voice, not by the page. Rate how true the following is for you right now.",
+            statements: [ { code: 'VII.2', text: "The stories that were told to me by my parents and grandparents are important to me, and it is important that I share my stories with those who come after me." } ] },
+  'VIII': { leadIn: "The natural world has many ways of connecting to our conscious journey. Rate how true each statement is for you right now.",
+            statements: [
+              { code: 'VIII.1', text: "Birds, whether real or symbolic in stories, are meaningful messengers to me." },
+              { code: 'VIII.4', text: "I feel connected to the elements — fire, earth, air, and water — and know how to receive or use them as I move through life." },
+              { code: 'VIII.5', text: "There is a certain type of place, a physical earthly location, that always calls to me and makes me feel like I belong there." },
+              { code: 'VIII.7', text: "I feel attuned to the cycles of the seasons, and each season holds a particular wisdom for me in my life." },
+            ] },
+  'IX':   { leadIn: "Beyond the people in your life, other things in your world reflect you back. Rate how true each statement is for you right now.",
+            statements: [
+              { code: 'IX.2', text: "I am drawn to places or objects because I feel they resonate with a frequency that matches my own vibration." },
+              { code: 'IX.4', text: "I perceive myself truthfully and fairly, with awareness of how my life is balanced between giving and receiving energy." },
+            ] },
+  'X':    { leadIn: "The shadow self includes many parts of self that cannot easily be seen. Rate how true each statement is for you right now.",
+            statements: [
+              { code: 'X.1', text: "I am aware that parts of myself have been unconscious, hidden, denied, or difficult to look at, and they are coming to the surface for some conscious work." },
+              { code: 'X.3', text: "There is a pattern connected to my family or lineage that I have not named, and I feel that it has never been named because the cost was too high." },
+              { code: 'X.4', text: "My everyday life runs on patterns that I don't usually pay attention to, and the way I am now is how I have always been." },
+              { code: 'X.8', text: "I feel something has changed and shifted in who I am, but what is changing is not completely clear. What lies ahead for me is unknown." },
+            ] },
+  'XII':  { leadIn: "What you have come through sometimes becomes what others need you to share. Rate how true the following is for you right now.",
+            statements: [ { code: 'XII.4', text: "I have gathered wisdom through my life that is ready to share with others, and I can see how others can benefit from my experience." } ] },
+  'XIII': { leadIn: "What you have come through changes what you have the capacity to hold. Rate how true the following is for you right now.",
+            statements: [ { code: 'XIII.4', text: "I feel empathy and compassion for others who are suffering because I have the perspective of living and coming through challenges in my own life." } ] },
+};
+
+const REGISTER_OF_CONTACT = [
+  { code: 'conceptual', text: "I understand it in my mind. I can name and describe it." },
+  { code: 'somatic',    text: "I feel it in my body as a sensation before I can say what it is." },
+  { code: 'mythic',     text: "It shows up as an image, a dream, or something that feels like a story." },
+  { code: 'unreceived', text: "It doesn't seem that I can fully receive this in my mind or my body, even though it is present." },
+];
+
+// =============================================================================
+// FORM RENDERING
+// =============================================================================
+
+function el(tag, attrs = {}, ...children) {
+  const e = document.createElement(tag);
+  Object.entries(attrs).forEach(([k, v]) => {
+    if (k === 'className') e.className = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2).toLowerCase(), v);
+    else e.setAttribute(k, v);
+  });
+  children.forEach(c => e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c));
+  return e;
+}
+
+function buildScale(name, code) {
+  const wrap = el('div', { className: 'scale' });
+  ['1','2','3','4','5'].forEach((v, i) => {
+    const labels = ['not me','a little','somewhat','mostly me','strongly me'];
+    const lab = el('label');
+    const inp = el('input', { type: 'radio', name, value: v, 'data-code': code });
+    inp.addEventListener('change', updateProgress);
+    lab.appendChild(inp);
+    lab.appendChild(el('span', {}, labels[i]));
+    wrap.appendChild(lab);
+  });
+  return wrap;
+}
+
+// Render Q R as single-select radio buttons.
+function renderQR() {
+  const c = document.getElementById('q_r');
+  Q_R_CHOICES.forEach(choice => {
+    const lab = el('label');
+    const inp = el('input', { type: 'radio', name: 'q_r', value: choice.code });
+    inp.addEventListener('change', updateProgress);
+    lab.appendChild(inp);
+    lab.appendChild(el('span', {}, choice.text));
+    c.appendChild(lab);
+  });
+}
+
+// Render the 13 floor questions.
+function renderFloor() {
+  const root = document.getElementById('floorQuestions');
+  FLOOR.forEach(field => {
+    root.appendChild(el('h3', {}, `${field.roman}. ${field.name}`));
+    root.appendChild(el('p', { className: 'lead-in' }, field.leadIn));
+    field.statements.forEach(s => {
+      const wrap = el('div', { className: 'statement' });
+      wrap.appendChild(el('p', { className: 'statement-text' }, s.text));
+      wrap.appendChild(buildScale(s.code.replace('.', '_'), s.code));
+      root.appendChild(wrap);
+    });
+  });
+}
+
+// Render follow-up section once dominant Field is known.
+function renderFollowUp(dominantField) {
+  const root = document.getElementById('followUp');
+  root.innerHTML = '';
+  const fu = FOLLOW_UP[dominantField];
+  if (fu) {
+    root.appendChild(el('p', { className: 'lead-in' }, fu.leadIn));
+    fu.statements.forEach(s => {
+      const wrap = el('div', { className: 'statement' });
+      wrap.appendChild(el('p', { className: 'statement-text' }, s.text));
+      wrap.appendChild(buildScale('fu_' + s.code.replace('.', '_'), s.code));
+      root.appendChild(wrap);
+    });
+  } else {
+    root.appendChild(el('p', { className: 'help' }, 'No deeper textures need surfacing for your dominant Field. Continue to the register question below.'));
+  }
+  document.getElementById('followUp').style.display = 'block';
+  document.querySelector('h2:nth-of-type(4)').style.display = 'block';
+}
+
+function renderRegisterOfContact() {
+  const root = document.getElementById('registerOfContact');
+  root.innerHTML = '';
+  root.appendChild(el('p', { className: 'lead-in' }, "Looking back at what you rated highest, how is it most present for you right now?"));
+  const sel = el('div', { className: 'single-select' });
+  REGISTER_OF_CONTACT.forEach(c => {
+    const lab = el('label');
+    const inp = el('input', { type: 'radio', name: 'roc', value: c.code });
+    inp.addEventListener('change', updateProgress);
+    lab.appendChild(inp);
+    lab.appendChild(el('span', {}, c.text));
+    sel.appendChild(lab);
+  });
+  root.appendChild(sel);
+  document.getElementById('registerOfContact').style.display = 'block';
+  document.getElementById('finalStep').style.display = 'block';
+}
+
+// =============================================================================
+// PROGRESS + DOMINANT FIELD CALC
+// =============================================================================
+
+function collectFloorRatings() {
+  const ratings = {};
+  document.querySelectorAll('#floorQuestions input[type="radio"]:checked').forEach(r => {
+    ratings[r.dataset.code] = parseInt(r.value, 10);
+  });
+  return ratings;
+}
+
+function computeDominantField(ratings) {
+  // Client-side: baseline-adjusted Field sums to estimate dominant Field for follow-up routing.
+  const vals = Object.values(ratings);
+  if (vals.length === 0) return null;
+  const baseline = vals.reduce((a, b) => a + b, 0) / vals.length;
+  const fieldSums = {};
+  for (const [code, rating] of Object.entries(ratings)) {
+    const field = code.split('.')[0];
+    fieldSums[field] = (fieldSums[field] || 0) + (rating - baseline);
+  }
+  let bestField = null, bestSum = -Infinity;
+  for (const [f, s] of Object.entries(fieldSums)) {
+    if (s > bestSum) { bestSum = s; bestField = f; }
+  }
+  return bestField;
+}
+
+let followUpShown = false;
+
+function updateProgress() {
+  const totalFloor = FLOOR.reduce((n, f) => n + f.statements.length, 0);
+  const ratings = collectFloorRatings();
+  const qR = document.querySelector('input[name="q_r"]:checked');
+  const ratedCount = Object.keys(ratings).length;
+
+  const total = totalFloor + 1; // floor + q_r
+  let done = ratedCount + (qR ? 1 : 0);
+
+  const pct = Math.min(100, (done / total) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `${Math.round(pct)}% complete`;
+
+  // Reveal follow-up after all floor + q_r answered
+  if (ratedCount === totalFloor && qR && !followUpShown) {
+    followUpShown = true;
+    const dom = computeDominantField(ratings);
+    renderFollowUp(dom);
+    renderRegisterOfContact();
+  }
+}
+
+// =============================================================================
+// TIMEZONES — common IANA list
+// =============================================================================
+
+const TIMEZONES = [
+  'UTC',
+  'America/New_York','America/Chicago','America/Denver','America/Phoenix','America/Los_Angeles','America/Anchorage','Pacific/Honolulu',
+  'America/Halifax','America/St_Johns','America/Toronto','America/Vancouver','America/Mexico_City',
+  'Europe/London','Europe/Dublin','Europe/Paris','Europe/Berlin','Europe/Madrid','Europe/Rome','Europe/Amsterdam','Europe/Stockholm','Europe/Moscow',
+  'Africa/Cairo','Africa/Johannesburg','Africa/Lagos','Asia/Jerusalem','Asia/Dubai','Asia/Karachi','Asia/Kolkata','Asia/Bangkok','Asia/Singapore','Asia/Shanghai','Asia/Tokyo','Asia/Seoul',
+  'Australia/Sydney','Australia/Melbourne','Australia/Perth','Pacific/Auckland',
+  'America/Sao_Paulo','America/Buenos_Aires','America/Lima','America/Santiago',
+];
+function fillTimezones() {
+  const sel = document.getElementById('timezone');
+  TIMEZONES.forEach(tz => {
+    const opt = el('option', { value: tz }, tz);
+    sel.appendChild(opt);
+  });
+  try { sel.value = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
+}
+
+// =============================================================================
+// SUBMIT
+// =============================================================================
+
+document.getElementById('quizForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const errMsg = document.getElementById('errorMsg');
+  btn.disabled = true;
+  btn.textContent = 'Preparing checkout…';
+  errMsg.textContent = '';
+
+  try {
+    const floor_ratings = collectFloorRatings();
+    const follow_up_ratings = {};
+    document.querySelectorAll('#followUp input[type="radio"]:checked').forEach(r => {
+      follow_up_ratings[r.dataset.code] = parseInt(r.value, 10);
+    });
+    const all_ratings = { ...floor_ratings, ...follow_up_ratings };
+
+    const payload = {
+      email: document.getElementById('email').value.trim(),
+      birth: {
+        birth_date: document.getElementById('birth_date').value,
+        birth_time: document.getElementById('birth_time').value || null,
+        birth_place: document.getElementById('birth_place').value.trim() || null,
+        latitude: parseFloat(document.getElementById('latitude').value) || null,
+        longitude: parseFloat(document.getElementById('longitude').value) || null,
+        timezone: document.getElementById('timezone').value || null,
+      },
+      q_r: document.querySelector('input[name="q_r"]:checked')?.value,
+      register_of_contact: document.querySelector('input[name="roc"]:checked')?.value,
+      ratings: all_ratings,
+    };
+
+    const res = await fetch('https://egldaiqrwuxqgavjwwim.supabase.co/functions/v1/create-signals-checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnbGRhaXFyd3V4cWdhdmp3d2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MzkxMTMsImV4cCI6MjA5MTQxNTExM30.jVZvPEPP4f78OfbaWBAryGPd4N_b16FKY92NXi-CeeA',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text || `Server returned ${res.status}`);
+    }
+
+    const data = await res.json();
+    if (data.checkout_url) {
+      window.location.href = data.checkout_url;
+    } else {
+      throw new Error('No checkout URL returned');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Continue to payment — $44';
+    errMsg.textContent = 'Sorry, something went wrong: ' + (err.message || err);
+  }
+});
+
+// =============================================================================
+// INITIALIZE
+// =============================================================================
+
+fillTimezones();
+renderQR();
+renderFloor();
+updateProgress();
+</script>
+</body>
+</html>

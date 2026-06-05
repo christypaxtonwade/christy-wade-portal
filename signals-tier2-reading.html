@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Signals Reading — Christy Paxton Wade</title>
+<style>
+  :root {
+    --bg: #e8dcbb;
+    --ink: #14110a;
+    --gold: #7a5618;
+    --muted: rgba(20,17,10,0.6);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; line-height: 1.8; min-height: 100vh; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 64px 32px 96px; }
+  .header { text-align: center; padding-bottom: 32px; border-bottom: 1px solid rgba(20,17,10,0.18); margin-bottom: 48px; }
+  h1 { font-size: 32px; font-weight: 500; letter-spacing: 0.02em; }
+  .subtitle { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+  h2 { font-size: 22px; font-weight: 500; letter-spacing: 0.01em; color: var(--gold); margin: 48px 0 16px; }
+  .section-text { font-size: 18px; line-height: 1.85; white-space: pre-wrap; }
+  .actions { margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(20,17,10,0.18); display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 12px 24px; background: var(--gold); color: var(--bg); border: none; font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; text-decoration: none; border-radius: 2px; }
+  .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+  .loading, .error { text-align: center; padding: 96px 0; color: var(--muted); font-style: italic; }
+  .meta { text-align: center; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 48px; }
+  @media print {
+    .actions, .meta { display: none; }
+    body { background: white; }
+    .wrap { padding: 32px; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>Your Signals Reading</h1>
+    <div class="subtitle">Christy Paxton Wade · Navigation Map</div>
+  </div>
+  <div id="content"><div class="loading">Loading your reading…</div></div>
+  <div class="meta">A permanent link to this reading was sent to your email. Save the link if you want to return.</div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://egldaiqrwuxqgavjwwim.supabase.co';
+const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnbGRhaXFyd3V4cWdhdmp3d2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MzkxMTMsImV4cCI6MjA5MTQxNTExM30.jVZvPEPP4f78OfbaWBAryGPd4N_b16FKY92NXi-CeeA';
+
+function getToken() {
+  const m = window.location.pathname.match(/\/signals\/reading\/([a-f0-9]{32})/);
+  if (m) return m[1];
+  const params = new URLSearchParams(window.location.search);
+  return params.get('token');
+}
+
+async function loadReading() {
+  const token = getToken();
+  const content = document.getElementById('content');
+  if (!token) { content.innerHTML = '<div class="error">No reading link found. <a href="/signals/recover">Recover your link</a>.</div>'; return; }
+
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/signals_tier2_readings?magic_link_token=eq.${encodeURIComponent(token)}&select=field_walking_text,register_frequencies_text,threshold_asking_text,created_at`,
+      { headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}` } }
+    );
+    const rows = await res.json();
+    if (!rows || rows.length === 0) {
+      content.innerHTML = '<div class="error">This link doesn\'t match any reading. It may have expired or the URL may be incorrect. <a href="/signals/recover">Recover your link</a>.</div>';
+      return;
+    }
+    const reading = rows[0];
+
+    // Stamp viewed_at (fire-and-forget)
+    fetch(`${SUPABASE_URL}/rest/v1/signals_tier2_readings?magic_link_token=eq.${encodeURIComponent(token)}`, {
+      method: 'PATCH',
+      headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ viewed_at: new Date().toISOString() })
+    }).catch(() => {});
+
+    content.innerHTML = `
+      <h2>The Field You're Walking</h2>
+      <div class="section-text">${escapeHtml(reading.field_walking_text || '')}</div>
+      <h2>The Register and the Frequencies Surfacing</h2>
+      <div class="section-text">${escapeHtml(reading.register_frequencies_text || '')}</div>
+      <h2>What the Threshold Is Asking</h2>
+      <div class="section-text">${escapeHtml(reading.threshold_asking_text || '')}</div>
+      <div class="actions">
+        <button class="btn" onclick="window.print()">Save as PDF</button>
+        <a class="btn btn-outline" href="/begin">Continue with Christy</a>
+      </div>
+    `;
+  } catch (err) {
+    content.innerHTML = `<div class="error">Couldn't load your reading: ${escapeHtml(err.message || String(err))}. <a href="/signals/recover">Recover your link</a>.</div>`;
+  }
+}
+
+function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+loadReading();
+</script>
+</body>
+</html>
