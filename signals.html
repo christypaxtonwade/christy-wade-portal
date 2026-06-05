@@ -327,6 +327,31 @@
   .result-tags li:last-child { border-bottom: none; }
   .result-tag-name { color: var(--gold-lt); font-style: italic; font-weight: 400; }
 
+  /* TIER 2 UPSELL */
+  .tier2-upsell {
+    margin-top: 2.4rem;
+    padding: 2rem;
+    border: 1px solid rgba(184,146,74,0.4);
+    background: rgba(122,86,24,0.06);
+  }
+  .tier2-upsell .result-section-label { color: var(--gold-lt); margin-bottom: 1rem; }
+  .tier2-upsell p { margin-bottom: 1rem; }
+  .tier2-cta {
+    display: inline-block;
+    margin-top: 0.6rem;
+    padding: 0.85rem 1.7rem;
+    background: var(--gold);
+    color: var(--cream);
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .tier2-cta:hover { background: var(--gold-lt); color: var(--ink); }
+
   /* EMAIL CAPTURE */
   .email-capture {
     margin-top: 3rem;
@@ -597,9 +622,17 @@
       <div class="result-section-body" id="result-offering"></div>
     </div>
 
+    <div class="result-section tier2-upsell">
+      <div class="result-section-label">Want the Reading Written For You</div>
+      <div class="result-section-body">
+        <p>The reading above is the surface map. The Signals Reading goes underneath — a personalized three-section reading written from where your birth chart, your Gene Keys profile, and your answers to fifty-two statements actually converge. About six hundred to eight hundred words. Delivered to your inbox within a few minutes.</p>
+        <a href="/signals/upgrade" class="tier2-cta">Open the Signals Reading — $44</a>
+      </div>
+    </div>
+
     <div class="email-capture">
       <p class="email-prompt">Want this in your inbox?</p>
-      <p class="email-sub">A copy of your reading lands in your email, and you'll receive future readings as your Field shifts. A longer, AI-generated reading is in development for later this year — subscribers will be notified when it launches. No spam, ever — just the work.</p>
+      <p class="email-sub">A copy of your reading lands in your email, and you'll receive future readings as your Field shifts. For a deeper, fully personalized reading written from your birth chart and your answers to fifty-two statements, the Signals Reading ($44) is now available — see the card above. No spam, ever — just the work.</p>
 
       <!-- KIT FORM — wired to Signals Quiz form (ID 9384196, UID 6cb21f5268) on christy-paxton-wade.kit.com. Hidden fields below carry the computed reading data into Kit's custom subscriber fields. v2 (30 Apr): form targets a hidden iframe so submit stays on the result screen with inline success state — no Kit-hosted confirmation page redirect. -->
       <iframe name="kit-submit-target" id="kit-submit-target" style="display:none;width:0;height:0;border:0;" aria-hidden="true"></iframe>
