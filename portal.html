@@ -2781,7 +2781,31 @@ async function cdRecomputeChart() {
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data.error || data.message || `HTTP ${res.status}`);
-    if (status) status.textContent = 'recomputed · ' + new Date().toLocaleTimeString();
+
+    // Chart (Sun..Pluto, Nodes, Angles, HD, GK) done. Now Chiron + the twelve
+    // minor bodies + Black Moon Lilith via compute-asteroids (JPL Horizons,
+    // sequential — takes ~10s). Asteroid failure is non-fatal: the core chart
+    // is already saved, and scoring tolerates missing minor bodies.
+    if (status) status.textContent = 'chart done · computing asteroids (~10s)…';
+    try {
+      const aRes = await fetch(`${SUPABASE_URL}/functions/v1/compute-asteroids`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ client_id: currentDetailClient })
+      });
+      const aData = await aRes.json().catch(() => ({}));
+      if (!aRes.ok) throw new Error(aData.error || aData.message || `HTTP ${aRes.status}`);
+      const note = (aData.failed && aData.failed.length)
+        ? ` · ${aData.failed.length} body${aData.failed.length === 1 ? '' : 's'} skipped`
+        : '';
+      if (status) status.textContent = `recomputed · ${aData.inserted ?? 0} minor bodies${note} · ${new Date().toLocaleTimeString()}`;
+    } catch (ae) {
+      if (status) status.textContent = 'chart recomputed · asteroids failed: ' + ae.message;
+    }
     loadClientDetail();
   } catch (e) {
     if (status) status.textContent = 'failed: ' + e.message;
