@@ -29,7 +29,9 @@
     body { background: white; }
     .wrap { padding: 32px; max-width: 100%; }
   }
+  .btn[disabled] { opacity: 0.55; pointer-events: none; }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -76,6 +78,16 @@ async function loadReading() {
       body: JSON.stringify({ viewed_at: new Date().toISOString() })
     }).catch(() => {});
 
+    const sections = [
+      { heading: "The Field You're Walking", body: reading.field_walking_text || '' },
+      { heading: 'The Register and the Frequencies Surfacing', body: reading.register_frequencies_text || '' },
+      { heading: 'What the Threshold Is Asking', body: reading.threshold_asking_text || '' },
+    ];
+    window.__readingData = {
+      sections,
+      dateStr: reading.created_at ? new Date(reading.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '',
+    };
+
     content.innerHTML = `
       <h2>The Field You're Walking</h2>
       <div class="section-text">${escapeHtml(reading.field_walking_text || '')}</div>
@@ -84,7 +96,7 @@ async function loadReading() {
       <h2>What the Threshold Is Asking</h2>
       <div class="section-text">${escapeHtml(reading.threshold_asking_text || '')}</div>
       <div class="actions">
-        <button class="btn" onclick="window.print()">Save as PDF</button>
+        <button class="btn" onclick="downloadReadingPdf(this)">Download PDF</button>
         <a class="btn btn-outline" href="/begin">Continue with Christy</a>
       </div>
     `;
@@ -94,6 +106,46 @@ async function loadReading() {
 }
 
 function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+// Shared one-click reading PDF builder. Lays out a clean, paginated, branded
+// document (paragraphs kept whole across page breaks) and downloads it.
+function buildReadingPdf(opts) {
+  if (typeof html2pdf === 'undefined') { alert('PDF tool is still loading — give it a moment and try again.'); return false; }
+  const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  const wrap = document.createElement('div');
+  wrap.style.cssText = "width:700px;padding:54px 60px;background:#fbf7ec;color:#14110a;font-family:Georgia,'Times New Roman',serif;";
+  const sectionsHtml = (opts.sections || []).map(s => {
+    const paras = String(s.body || '').split(/\n{2,}/).filter(p => p.trim())
+      .map(p => `<p style="margin:0 0 11px;font-size:13px;line-height:1.72;page-break-inside:avoid;">${esc(p.trim())}</p>`).join('');
+    return `<h2 style="font-size:15px;color:#7a5618;font-weight:bold;margin:24px 0 9px;page-break-after:avoid;">${esc(s.heading)}</h2>${paras}`;
+  }).join('');
+  wrap.innerHTML =
+    `<div style="text-align:center;border-bottom:1px solid #d8c79a;padding-bottom:20px;margin-bottom:8px;">
+       <div style="font-size:25px;font-weight:bold;letter-spacing:.02em;">${esc(opts.title || 'Signals Reading')}</div>
+       <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7a5618;margin-top:7px;">Christy Paxton Wade &middot; Navigation Map</div>
+       ${opts.name ? `<div style="font-size:13px;color:#5c5644;margin-top:11px;">${esc(opts.name)}</div>` : ''}
+       ${opts.dateStr ? `<div style="font-size:10px;letter-spacing:.05em;color:#9a9078;margin-top:3px;">${esc(opts.dateStr)}</div>` : ''}
+     </div>${sectionsHtml}`;
+  document.body.appendChild(wrap);
+  html2pdf().set({
+    margin: [12, 0, 16, 0],
+    filename: opts.filename || 'signals-reading.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, backgroundColor: '#fbf7ec', windowWidth: 820 },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'avoid-all'] },
+  }).from(wrap).save().then(() => wrap.remove()).catch(e => { wrap.remove(); alert('PDF failed: ' + (e && e.message || e)); });
+  return true;
+}
+
+function downloadReadingPdf(btn) {
+  const d = window.__readingData;
+  if (!d) return;
+  if (btn) { btn.disabled = true; btn.textContent = 'Preparing…'; }
+  buildReadingPdf({ title: 'Your Signals Reading', dateStr: d.dateStr, sections: d.sections, filename: 'signals-reading.pdf' });
+  if (btn) setTimeout(() => { btn.disabled = false; btn.textContent = 'Download PDF'; }, 2500);
+}
+
 loadReading();
 </script>
 </body>
