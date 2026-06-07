@@ -11,7 +11,7 @@
     --ink: #14110a;
     --gold: #7a5618;
     --gold-bright: #c89a3c;
-    --muted: rgba(232,220,187,0.65);
+    --muted: rgba(232,220,187,0.88);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: var(--bg); color: var(--vellum); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; min-height: 100vh; }
@@ -22,19 +22,19 @@
   p, label { font-size: 17px; line-height: 1.7; color: var(--vellum); }
   .lede { font-size: 19px; color: rgba(232,220,187,0.88); margin-bottom: 24px; }
   .field-group { margin-bottom: 24px; }
-  .field-group label { display: block; font-family: 'Jost', sans-serif; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .field-group label { display: block; font-family: 'Jost', sans-serif; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
   input[type="text"], input[type="email"], input[type="date"], input[type="time"], input[type="number"], select {
     width: 100%; padding: 10px 12px; background: rgba(232,220,187,0.06); border: 1px solid rgba(232,220,187,0.25); color: var(--vellum); font-family: inherit; font-size: 17px; border-radius: 2px;
   }
   input:focus, select:focus { outline: 2px solid var(--gold-bright); outline-offset: 1px; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
-  .help { font-size: 14px; color: var(--muted); margin-top: 6px; font-style: italic; }
+  .help { font-size: 15px; color: var(--muted); margin-top: 6px; font-style: italic; }
   .lead-in { font-size: 18px; color: rgba(232,220,187,0.92); margin: 16px 0 12px; }
   .statement { padding: 16px 0; border-bottom: 1px solid rgba(232,220,187,0.08); }
   .statement-text { margin-bottom: 10px; color: var(--vellum); }
-  .scale { display: flex; gap: 6px; justify-content: space-between; max-width: 480px; }
-  .scale label { display: flex; flex-direction: column; align-items: center; cursor: pointer; padding: 6px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.06em; color: var(--muted); text-transform: none; }
+  .scale { display: flex; flex-wrap: wrap; gap: 6px; justify-content: space-between; max-width: 480px; }
+  .scale label { display: flex; flex-direction: column; align-items: center; cursor: pointer; padding: 6px; font-family: 'Jost', sans-serif; font-size: 15px; letter-spacing: 0.06em; color: var(--muted); text-transform: none; }
   .scale input[type="radio"] { width: 22px; height: 22px; margin-bottom: 4px; accent-color: var(--gold-bright); cursor: pointer; }
   .scale input[type="radio"]:checked + span { color: var(--gold-bright); }
   .single-select { display: flex; flex-direction: column; gap: 10px; margin: 12px 0 16px; }
@@ -45,14 +45,29 @@
   .submit-btn { display: inline-block; padding: 14px 32px; background: var(--gold); color: var(--vellum); border: none; font-family: 'Jost', sans-serif; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border-radius: 2px; margin-top: 32px; }
   .submit-btn:hover { background: var(--gold-bright); color: var(--ink); }
   .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-  .scale-key { font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.06em; color: var(--muted); margin-top: 8px; }
+  .scale-key { font-family: 'Jost', sans-serif; font-size: 15px; letter-spacing: 0.06em; color: var(--muted); margin-top: 8px; }
   .progress { position: sticky; top: 0; background: var(--bg); padding: 12px 0; z-index: 10; border-bottom: 1px solid rgba(232,220,187,0.12); margin: -48px -24px 32px; padding-left: 24px; padding-right: 24px; }
   .progress-bar { height: 3px; background: rgba(232,220,187,0.12); border-radius: 2px; overflow: hidden; }
   .progress-fill { height: 100%; background: var(--gold-bright); width: 0%; transition: width 0.3s ease; }
-  .progress-text { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin-top: 6px; }
+  .progress-text { font-family: 'Jost', sans-serif; font-size: 15px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin-top: 6px; }
   #followUp, #registerOfContact, #finalStep { display: none; }
-  .price-line { font-family: 'Jost', sans-serif; font-size: 14px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin: 8px 0 16px; }
-  .error { color: #d9533c; font-size: 14px; margin-top: 8px; }
+  .price-line { font-family: 'Jost', sans-serif; font-size: 15px; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; margin: 8px 0 16px; }
+  .error { color: #d9533c; font-size: 15px; margin-top: 8px; }
+
+  .hero-sub { font-size: 21px; color: rgba(232,220,187,0.92); line-height: 1.5; margin-bottom: 28px; }
+  .sales p { font-size: 18px; line-height: 1.7; margin-bottom: 16px; }
+  .sales-h { font-size: 22px; font-weight: 500; color: var(--gold-bright); margin: 36px 0 12px; border-top: 1px solid rgba(232,220,187,0.15); padding-top: 28px; }
+  .what { list-style: none; margin: 8px 0 18px; padding: 0; }
+  .what li { font-size: 18px; line-height: 1.5; margin-bottom: 10px; padding-left: 16px; border-left: 2px solid rgba(232,220,187,0.22); }
+  .begin-cta { display: inline-block; margin-top: 8px; padding: 14px 32px; background: var(--gold); color: var(--vellum); font-family: 'Jost', sans-serif; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 2px; }
+  .begin-cta:hover { background: var(--gold-bright); color: var(--ink); }
+  .ac-wrap { position: relative; }
+  .ac-list { position: absolute; top: 100%; left: 0; right: 0; z-index: 30; background: #1d1810; border: 1px solid rgba(232,220,187,0.25); border-top: none; max-height: 280px; overflow-y: auto; display: none; }
+  .ac-list.show { display: block; }
+  .ac-item { padding: 10px 12px; cursor: pointer; border-bottom: 1px solid rgba(232,220,187,0.1); font-size: 16px; color: var(--vellum); }
+  .ac-item:hover, .ac-item.active { background: rgba(232,220,187,0.08); }
+  .ac-item .ac-coords { font-size: 15px; color: var(--muted); margin-top: 2px; }
+  .ac-loading { padding: 10px 12px; font-size: 15px; color: var(--muted); font-style: italic; }
 </style>
 </head>
 <body>
@@ -64,8 +79,28 @@
   </div>
 
   <h1>Signals Reading</h1>
-  <p class="lede">A personalized reading written from where you actually are right now, drawn from the relationship between your birth chart, your Gene Keys profile, and how you rate fifty-two statements about your life. Three sections. About six hundred to eight hundred words. Delivered to your inbox within a few minutes of completing the quiz.</p>
-  <p class="price-line">$44 · one-time</p>
+  <p class="hero-sub">A reading of where your signal actually is — right now. Not your sun sign. Not a personality type. The live pattern underneath.</p>
+
+  <div class="sales">
+    <p>Most readings tell you what you already are. This one reads the relationship between what your design carries and what is actually surfacing in you now — and names the place you are being asked to move.</p>
+
+    <p>It runs on three signals at once: your <b>birth chart</b> — what you were born carrying; your <b>Gene Keys profile</b> — the shadow-to-gift arc of your design; and your answers to <b>fifty-two statements</b> — what is alive in you today. Where the three converge is named with confidence. Where they pull apart is the edge you are standing on — the thing a single-signal reading cannot find.</p>
+
+    <h2 class="sales-h">What you receive</h2>
+    <p>Three sections, six hundred to eight hundred words, written to your specific pattern:</p>
+    <ul class="what">
+      <li><b>The Field You're Walking</b> — the terrain your life is moving through now.</li>
+      <li><b>The Register and the Frequencies Surfacing</b> — how you are meeting it, and what is rising.</li>
+      <li><b>What the Threshold Is Asking</b> — the move available at the edge.</li>
+    </ul>
+    <p>Delivered to your inbox within a few minutes, as a permanent link that is yours to keep.</p>
+
+    <h2 class="sales-h">How it works</h2>
+    <p>Enter your birth data, then answer the statements by instinct — about twelve to fifteen minutes. At the end, $44, one time. Your reading is generated and sent immediately. Lose the email, and you can recover your link anytime.</p>
+
+    <p class="price-line">$44 · one-time · delivered in minutes</p>
+    <a href="#quizForm" class="begin-cta">Begin the reading ↓</a>
+  </div>
 
   <form id="quizForm">
 
@@ -83,26 +118,19 @@
         <div class="help">Best from a birth certificate. 8:50 PM = 20:50.</div>
       </div>
     </div>
-    <div class="field-group">
+    <div class="field-group ac-wrap">
       <label for="birth_place">Birth place</label>
-      <input type="text" id="birth_place" placeholder="e.g. Provo, Utah, USA">
+      <input type="text" id="birth_place" placeholder="Start typing your birth city — e.g. Provo, Utah" autocomplete="off">
+      <div class="ac-list" id="ac-list"></div>
+      <div class="help" id="place-readout">Type your birth city and choose it from the list — your coordinates and timezone fill in automatically.</div>
     </div>
-    <div class="row">
-      <div class="field-group">
-        <label for="latitude">Latitude</label>
-        <input type="number" id="latitude" step="0.0001" placeholder="40.2338">
-      </div>
-      <div class="field-group">
-        <label for="longitude">Longitude</label>
-        <input type="number" id="longitude" step="0.0001" placeholder="-111.6585">
-      </div>
-    </div>
+    <!-- Coordinates are resolved automatically from the chosen city. -->
+    <input type="hidden" id="latitude">
+    <input type="hidden" id="longitude">
     <div class="field-group">
       <label for="timezone">Timezone</label>
-      <select id="timezone">
-        <option value="">Select…</option>
-      </select>
-      <div class="help">IANA timezone. Use timeanddate.com to find lat/long/timezone if needed.</div>
+      <select id="timezone"><option value="">Select…</option></select>
+      <div class="help">Filled automatically from your birth city. Adjust only if you know it differs (some regions span more than one).</div>
     </div>
 
     <h2>Opening question</h2>
@@ -527,6 +555,67 @@ fillTimezones();
 renderQR();
 renderFloor();
 updateProgress();
+</script>
+<script>
+// Birth-place geocoding for the quiz — customers type a city; lat/long/timezone
+// resolve automatically (mirrors the admin Chart page). Self-contained IIFE.
+(function () {
+  const TZ_LIST = ['America/New_York','America/Detroit','America/Indiana/Indianapolis','America/Chicago','America/Denver','America/Phoenix','America/Los_Angeles','America/Anchorage','Pacific/Honolulu','America/Puerto_Rico','America/Toronto','America/Winnipeg','America/Edmonton','America/Vancouver','America/Halifax','America/St_Johns','Europe/London','Europe/Dublin','Europe/Paris','Europe/Berlin','Europe/Madrid','Europe/Rome','Europe/Amsterdam','Europe/Stockholm','Europe/Helsinki','Europe/Athens','Europe/Moscow','America/Mexico_City','America/Bogota','America/Lima','America/Santiago','America/Buenos_Aires','America/Sao_Paulo','Asia/Tokyo','Asia/Seoul','Asia/Shanghai','Asia/Hong_Kong','Asia/Singapore','Asia/Bangkok','Asia/Kolkata','Asia/Dubai','Australia/Sydney','Australia/Melbourne','Pacific/Auckland','Africa/Cairo','Africa/Lagos','Africa/Johannesburg','Africa/Nairobi','UTC'];
+  const US_STATE_TZ = {
+    'connecticut':'America/New_York','delaware':'America/New_York','district of columbia':'America/New_York','florida':'America/New_York','georgia':'America/New_York','maine':'America/New_York','maryland':'America/New_York','massachusetts':'America/New_York','new hampshire':'America/New_York','new jersey':'America/New_York','new york':'America/New_York','north carolina':'America/New_York','ohio':'America/New_York','pennsylvania':'America/New_York','rhode island':'America/New_York','south carolina':'America/New_York','vermont':'America/New_York','virginia':'America/New_York','west virginia':'America/New_York','kentucky':'America/New_York',
+    'alabama':'America/Chicago','arkansas':'America/Chicago','illinois':'America/Chicago','iowa':'America/Chicago','kansas':'America/Chicago','louisiana':'America/Chicago','minnesota':'America/Chicago','mississippi':'America/Chicago','missouri':'America/Chicago','nebraska':'America/Chicago','north dakota':'America/Chicago','oklahoma':'America/Chicago','south dakota':'America/Chicago','tennessee':'America/Chicago','texas':'America/Chicago','wisconsin':'America/Chicago',
+    'colorado':'America/Denver','idaho':'America/Denver','montana':'America/Denver','new mexico':'America/Denver','utah':'America/Denver','wyoming':'America/Denver','arizona':'America/Phoenix',
+    'california':'America/Los_Angeles','nevada':'America/Los_Angeles','oregon':'America/Los_Angeles','washington':'America/Los_Angeles','alaska':'America/Anchorage','hawaii':'Pacific/Honolulu','indiana':'America/Indiana/Indianapolis','michigan':'America/Detroit'
+  };
+  const COUNTRY_TZ = {
+    'gb':'Europe/London','ie':'Europe/Dublin','fr':'Europe/Paris','de':'Europe/Berlin','es':'Europe/Madrid','it':'Europe/Rome','nl':'Europe/Amsterdam','se':'Europe/Stockholm','fi':'Europe/Helsinki','gr':'Europe/Athens','ru':'Europe/Moscow','ca':'America/Toronto','mx':'America/Mexico_City','br':'America/Sao_Paulo','ar':'America/Buenos_Aires','jp':'Asia/Tokyo','kr':'Asia/Seoul','cn':'Asia/Shanghai','hk':'Asia/Hong_Kong','sg':'Asia/Singapore','th':'Asia/Bangkok','in':'Asia/Kolkata','ae':'Asia/Dubai','au':'Australia/Sydney','nz':'Pacific/Auckland','eg':'Africa/Cairo','ng':'Africa/Lagos','za':'Africa/Johannesburg','ke':'Africa/Nairobi'
+  };
+  function suggestTimezone(addr) {
+    if (!addr) return null;
+    const cc = (addr.country_code || '').toLowerCase();
+    if (cc === 'us') { const st = (addr.state || '').toLowerCase(); return US_STATE_TZ[st] || 'America/New_York'; }
+    return COUNTRY_TZ[cc] || null;
+  }
+  function esc(s) { return String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+  const tzSel = document.getElementById('timezone');
+  if (tzSel) TZ_LIST.forEach(z => { const o = document.createElement('option'); o.value = z; o.textContent = z; tzSel.appendChild(o); });
+
+  const input = document.getElementById('birth_place');
+  const list = document.getElementById('ac-list');
+  const readout = document.getElementById('place-readout');
+  if (!input || !list) return;
+  let timer = null, abort = null, results = [];
+  function hide() { list.classList.remove('show'); list.innerHTML = ''; }
+  input.addEventListener('input', () => { const q = input.value.trim(); clearTimeout(timer); if (q.length < 3) { hide(); return; } timer = setTimeout(() => search(q), 350); });
+  document.addEventListener('click', e => { if (!input.contains(e.target) && !list.contains(e.target)) hide(); });
+  async function search(q) {
+    if (abort) abort.abort(); abort = new AbortController();
+    list.classList.add('show'); list.innerHTML = '<div class="ac-loading">Searching…</div>';
+    try {
+      const url = 'https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(q) + '&format=json&limit=6&addressdetails=1&accept-language=en';
+      const res = await fetch(url, { signal: abort.signal });
+      if (!res.ok) throw new Error('search ' + res.status);
+      const data = await res.json(); results = data;
+      if (!data.length) { list.innerHTML = '<div class="ac-loading">No matches — try a larger nearby city.</div>'; return; }
+      list.innerHTML = data.map((d, i) => '<div class="ac-item" data-i="' + i + '"><div>' + esc(d.display_name) + '</div><div class="ac-coords">' + Number(d.lat).toFixed(3) + '°, ' + Number(d.lon).toFixed(3) + '°</div></div>').join('');
+      list.querySelectorAll('.ac-item').forEach(el => el.addEventListener('click', () => pick(results[Number(el.dataset.i)])));
+    } catch (e) { if (e.name !== 'AbortError') list.innerHTML = '<div class="ac-loading">Search unavailable — type the city and we will do our best.</div>'; }
+  }
+  function pick(r) {
+    if (!r) return;
+    const a = r.address || {};
+    const city = a.city || a.town || a.village || a.municipality || a.hamlet || a.county;
+    const cleaned = [city, a.state || a.region, a.country].filter(Boolean).join(', ') || r.display_name;
+    input.value = cleaned;
+    document.getElementById('latitude').value = Number(r.lat).toFixed(6);
+    document.getElementById('longitude').value = Number(r.lon).toFixed(6);
+    const tz = suggestTimezone(a);
+    if (tz && tzSel && [...tzSel.options].some(o => o.value === tz)) tzSel.value = tz;
+    if (readout) readout.textContent = Number(r.lat).toFixed(3) + '°, ' + Number(r.lon).toFixed(3) + '° · ' + (tzSel && tzSel.value ? tzSel.value : 'choose your timezone below');
+    hide();
+  }
+})();
 </script>
 </body>
 </html>
