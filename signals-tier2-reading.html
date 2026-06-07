@@ -4,32 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your Signals Reading — Christy Paxton Wade</title>
+<meta name="robots" content="noindex">
 <style>
   :root {
     --bg: #e8dcbb;
     --ink: #14110a;
     --gold: #7a5618;
-    --muted: rgba(20,17,10,0.6);
+    --gold-lt: #9a7424;
+    --muted: rgba(20,17,10,0.62);
+    --line: rgba(20,17,10,0.16);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: var(--bg); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; line-height: 1.8; min-height: 100vh; }
   .wrap { max-width: 680px; margin: 0 auto; padding: 64px 32px 96px; }
-  .header { text-align: center; padding-bottom: 32px; border-bottom: 1px solid rgba(20,17,10,0.18); margin-bottom: 48px; }
-  h1 { font-size: 32px; font-weight: 500; letter-spacing: 0.02em; }
+  .header { text-align: center; padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 36px; }
+  h1 { font-size: 33px; font-weight: 500; letter-spacing: 0.02em; }
   .subtitle { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
-  h2 { font-size: 22px; font-weight: 500; letter-spacing: 0.01em; color: var(--gold); margin: 48px 0 16px; }
+
+  /* Details / confirm block */
+  .details { background: rgba(20,17,10,0.04); border: 1px solid var(--line); border-radius: 4px; padding: 18px 22px; margin-bottom: 40px; }
+  .details-row { display: flex; gap: 10px; font-size: 16px; line-height: 1.6; }
+  .details-row + .details-row { margin-top: 4px; }
+  .details-label { font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); min-width: 96px; padding-top: 4px; }
+  .details-val { flex: 1; }
+  .details-note { font-size: 14.5px; font-style: italic; color: var(--muted); margin-top: 12px; }
+
+  h2 { font-size: 23px; font-weight: 500; letter-spacing: 0.01em; color: var(--gold); margin: 46px 0 14px; }
   .section-text { font-size: 18px; line-height: 1.85; white-space: pre-wrap; }
-  .actions { margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(20,17,10,0.18); display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn { display: inline-block; padding: 12px 24px; background: var(--gold); color: var(--bg); border: none; font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; text-decoration: none; border-radius: 2px; }
+
+  /* Convergence chart */
+  .signal-map { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .sm-intro { font-size: 16.5px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+  .cv-field { margin-bottom: 18px; }
+  .cv-field-name { font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
+  .cv-gloss { font-size: 16px; color: var(--muted); line-height: 1.5; margin: 2px 0 7px; }
+  .cv-bar-row { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+  .cv-bar-key { width: 70px; font-family: 'Jost', sans-serif; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .cv-bar-track { flex: 1; height: 8px; background: rgba(20,17,10,0.1); border-radius: 3px; overflow: hidden; }
+  .cv-bar-fill { height: 100%; background: var(--gold); border-radius: 3px; }
+  .cv-bar-fill.chart { background: rgba(122,86,24,0.45); }
+  .freq-list { margin-top: 30px; }
+  .freq-h { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .freq { padding: 11px 0; border-bottom: 1px solid var(--line); }
+  .freq:last-child { border-bottom: none; }
+  .freq-name { font-weight: 500; }
+  .freq-field { font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-left: 6px; }
+  .freq-note { font-size: 16.5px; color: var(--ink); opacity: 0.88; line-height: 1.55; margin-top: 2px; }
+
+  /* Affirmation + journal */
+  .closing { margin-top: 52px; }
+  .affirm { text-align: center; font-size: 21px; line-height: 1.6; font-style: italic; color: var(--gold); padding: 28px 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .journal { margin-top: 36px; }
+  .journal-h, .cta-h { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .journal-q { font-size: 19px; line-height: 1.6; font-style: italic; }
+
+  /* CTA + actions */
+  .cta { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); text-align: center; }
+  .cta-line { font-size: 18px; line-height: 1.7; color: var(--ink); opacity: 0.92; max-width: 480px; margin: 0 auto 22px; }
+  .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 13px 26px; background: var(--gold); color: var(--bg); border: none; font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; text-decoration: none; border-radius: 2px; }
   .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
-  .loading, .error { text-align: center; padding: 96px 0; color: var(--muted); font-style: italic; }
-  .meta { text-align: center; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 48px; }
-  @media print {
-    .actions, .meta { display: none; }
-    body { background: white; }
-    .wrap { padding: 32px; max-width: 100%; }
-  }
   .btn[disabled] { opacity: 0.55; pointer-events: none; }
+  .meta { text-align: center; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 44px; }
+  .loading, .error { text-align: center; padding: 96px 0; color: var(--muted); font-style: italic; }
+
+  @media print { .actions, .meta { display: none; } body { background: white; } .wrap { padding: 32px; max-width: 100%; } }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
 </head>
@@ -46,12 +85,77 @@
 <script>
 const SUPABASE_URL = 'https://egldaiqrwuxqgavjwwim.supabase.co';
 const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVnbGRhaXFyd3V4cWdhdmp3d2ltIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4MzkxMTMsImV4cCI6MjA5MTQxNTExM30.jVZvPEPP4f78OfbaWBAryGPd4N_b16FKY92NXi-CeeA';
+const DISCOVERY_URL = 'https://calendly.com/christypaxtonwade/firstsignal';
+
+// Plain one-line glosses for the 13 Fields, for the at-a-glance Signal Map.
+const FIELD_GLOSS = {
+  'I': 'How you make sense of reality — the patterns and frameworks underneath what happens.',
+  'II': 'Receiving insight, signal, and meaning from beyond ordinary thinking.',
+  'III': 'Crossings and turning points — what you are being asked to release and move through.',
+  'IV': 'What your body knows first — sensation, voice, and felt-sense as information.',
+  'V': 'How words, tone, and naming carry meaning for you.',
+  'VI': 'The body as the place where change is felt, moved, and tended.',
+  'VII': 'What you make, write, or carry forward — creation as a record of self.',
+  'VIII': 'What the living world — animals, plants, land, elements — teaches you.',
+  'IX': 'How relationships and reflection show you back to yourself.',
+  'X': "What's hidden, inherited, or hard to face, surfacing to be worked.",
+  'XI': 'What you carry to give — the gift meant to be transmitted to others.',
+  'XII': 'Coming home to yourself — claiming and integrating who you are.',
+  'XIII': 'Completing a cycle, and the new beginning it opens.',
+};
 
 function getToken() {
   const m = window.location.pathname.match(/\/signals\/reading\/([a-f0-9]{32})/);
   if (m) return m[1];
-  const params = new URLSearchParams(window.location.search);
-  return params.get('token');
+  return new URLSearchParams(window.location.search).get('token');
+}
+function escapeHtml(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function fmtDate(d) { if (!d) return ''; const dt = new Date(d + 'T00:00:00'); return isNaN(dt) ? d : dt.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }); }
+function fmtTime(t) { if (!t) return ''; const m = String(t).match(/^(\d{1,2}):(\d{2})/); if (!m) return t; let h = +m[1]; const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return `${h}:${m[2]} ${ap}`; }
+
+// Build the top-5 field convergence model from the stored convergence package.
+function buildConvergence(reading) {
+  const pkg = (reading.tier2_answers && reading.tier2_answers.convergence_package) || null;
+  if (!pkg) return null;
+  const fsAll = (pkg.field_strengths || []).map(f => ({
+    roman: f.roman, name: f.name,
+    quiz: Math.max(0, Number(f.mean_adjusted_rating != null ? f.mean_adjusted_rating : (f.positive_rating_sum || 0))),
+    chart: Math.max(0, Number(f.chart_brightness || 0)),
+  }));
+  const top = fsAll.slice(0, 5);
+  const qmax = Math.max(...top.map(f => f.quiz), 0.0001);
+  const cmax = Math.max(...top.map(f => f.chart), 0.0001);
+  top.forEach(f => { f.quizPct = Math.round(f.quiz / qmax * 100); f.chartPct = Math.round(f.chart / cmax * 100); });
+  const noteByName = {};
+  (reading.signal_notes || []).forEach(n => { if (n && n.name) noteByName[n.name.trim().toLowerCase()] = n.note; });
+  const freqs = (pkg.top_convergent_subterrains || []).slice(0, 5).map(s => ({
+    name: s.subterrain_name, field: s.field_roman,
+    note: noteByName[(s.subterrain_name || '').trim().toLowerCase()] || '',
+  }));
+  return { fields: top, freqs };
+}
+
+function renderConvergenceHtml(cv) {
+  if (!cv || !cv.fields.length) return '';
+  const fields = cv.fields.map(f => `
+    <div class="cv-field">
+      <div class="cv-field-name">${escapeHtml(f.roman)} · ${escapeHtml(f.name)}</div>
+      <div class="cv-gloss">${escapeHtml(FIELD_GLOSS[f.roman] || '')}</div>
+      <div class="cv-bar-row"><span class="cv-bar-key">In answers</span><span class="cv-bar-track"><span class="cv-bar-fill" style="width:${f.quizPct}%"></span></span></div>
+      <div class="cv-bar-row"><span class="cv-bar-key">In chart</span><span class="cv-bar-track"><span class="cv-bar-fill chart" style="width:${f.chartPct}%"></span></span></div>
+    </div>`).join('');
+  const freqs = cv.freqs.length ? `
+    <div class="freq-list">
+      <div class="freq-h">The five strongest frequencies surfacing</div>
+      ${cv.freqs.map(s => `<div class="freq"><span class="freq-name">${escapeHtml(s.name)}</span><span class="freq-field">${escapeHtml(s.field)}</span>${s.note ? `<div class="freq-note">${escapeHtml(s.note)}</div>` : ''}</div>`).join('')}
+    </div>` : '';
+  return `
+    <div class="signal-map">
+      <h2>Your Signal Map</h2>
+      <div class="sm-intro">These are the five strongest currents in your reading. The first bar is how present each one was in <b>your answers</b>; the second is how strongly your <b>birth chart</b> carries it. Where both run high, it is a defining signal you can trust; where one leads alone, it is a living edge — something arriving, or something asking to be reclaimed.</div>
+      ${fields}
+      ${freqs}
+    </div>`;
 }
 
 async function loadReading() {
@@ -61,7 +165,7 @@ async function loadReading() {
 
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/signals_tier2_readings?magic_link_token=eq.${encodeURIComponent(token)}&select=client_name,field_walking_text,register_frequencies_text,threshold_asking_text,created_at`,
+      `${SUPABASE_URL}/rest/v1/signals_tier2_readings?magic_link_token=eq.${encodeURIComponent(token)}&select=client_name,email,birth_data,field_walking_text,register_frequencies_text,threshold_asking_text,affirmation,journal_prompt,signal_notes,tier2_answers,created_at`,
       { headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}` } }
     );
     const rows = await res.json();
@@ -71,37 +175,57 @@ async function loadReading() {
     }
     const reading = rows[0];
 
-    // Stamp viewed_at (fire-and-forget)
     fetch(`${SUPABASE_URL}/rest/v1/signals_tier2_readings?magic_link_token=eq.${encodeURIComponent(token)}`, {
       method: 'PATCH',
       headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify({ viewed_at: new Date().toISOString() })
     }).catch(() => {});
 
-    const sections = [
-      { heading: "The Field You're Walking", body: reading.field_walking_text || '' },
-      { heading: 'The Register and the Frequencies Surfacing', body: reading.register_frequencies_text || '' },
-      { heading: 'What the Threshold Is Asking', body: reading.threshold_asking_text || '' },
-    ];
+    const dateStr = reading.created_at ? new Date(reading.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+    const b = reading.birth_data || {};
+    const bornBits = [fmtDate(b.birth_date), fmtTime(b.birth_time), b.birth_place].filter(Boolean).join(' · ');
+    const cv = buildConvergence(reading);
+
     window.__readingData = {
-      sections,
-      name: reading.client_name || '',
-      dateStr: reading.created_at ? new Date(reading.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '',
+      name: reading.client_name || '', email: reading.email || '', dateStr, born: bornBits,
+      sections: [
+        { heading: "The Field You're Walking", body: reading.field_walking_text || '' },
+        { heading: 'The Register and the Frequencies Surfacing', body: reading.register_frequencies_text || '' },
+        { heading: 'What the Threshold Is Asking', body: reading.threshold_asking_text || '' },
+      ],
+      convergence: cv, affirmation: reading.affirmation || '', journal: reading.journal_prompt || '',
     };
 
-    const header = document.querySelector('.header .subtitle');
-    if (header && reading.client_name) header.textContent = 'Prepared for ' + reading.client_name + ' · Christy Paxton Wade';
+    const sub = document.querySelector('.header .subtitle');
+    if (sub && reading.client_name) sub.textContent = 'Prepared for ' + reading.client_name + ' · Christy Paxton Wade';
+
+    const detailRows = [
+      reading.client_name ? `<div class="details-row"><span class="details-label">Name</span><span class="details-val">${escapeHtml(reading.client_name)}</span></div>` : '',
+      reading.email ? `<div class="details-row"><span class="details-label">Email</span><span class="details-val">${escapeHtml(reading.email)}</span></div>` : '',
+      bornBits ? `<div class="details-row"><span class="details-label">Born</span><span class="details-val">${escapeHtml(bornBits)}</span></div>` : '',
+      dateStr ? `<div class="details-row"><span class="details-label">Reading</span><span class="details-val">${escapeHtml(dateStr)}</span></div>` : '',
+    ].filter(Boolean).join('');
 
     content.innerHTML = `
+      ${detailRows ? `<div class="details">${detailRows}<div class="details-note">Your reading is drawn from this birth data. If anything here is incorrect, reply to your reading email and I'll recompute it.</div></div>` : ''}
       <h2>The Field You're Walking</h2>
       <div class="section-text">${escapeHtml(reading.field_walking_text || '')}</div>
       <h2>The Register and the Frequencies Surfacing</h2>
       <div class="section-text">${escapeHtml(reading.register_frequencies_text || '')}</div>
       <h2>What the Threshold Is Asking</h2>
       <div class="section-text">${escapeHtml(reading.threshold_asking_text || '')}</div>
-      <div class="actions">
-        <button class="btn" onclick="downloadReadingPdf(this)">Download PDF</button>
-        <a class="btn btn-outline" href="/begin">Continue with Christy</a>
+      ${renderConvergenceHtml(cv)}
+      <div class="closing">
+        ${reading.affirmation ? `<div class="affirm">${escapeHtml(reading.affirmation)}</div>` : ''}
+        ${reading.journal_prompt ? `<div class="journal"><div class="journal-h">A question to sit with</div><div class="journal-q">${escapeHtml(reading.journal_prompt)}</div></div>` : ''}
+      </div>
+      <div class="cta">
+        <div class="cta-h">Where to go next</div>
+        <div class="cta-line">If this reading opened a thread you want to follow, the next step is a conversation — a short Discovery call to find the right doorway into the work.</div>
+        <div class="actions">
+          <a class="btn" href="${DISCOVERY_URL}" target="_blank" rel="noopener">Book a Discovery call</a>
+          <button class="btn btn-outline" onclick="downloadReadingPdf(this)">Download PDF</button>
+        </div>
       </div>
     `;
   } catch (err) {
@@ -109,53 +233,101 @@ async function loadReading() {
   }
 }
 
-function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-
-// One-click reading PDF, drawn with jsPDF text (no DOM screenshot — reliable,
-// selectable text, clean pagination). Shared shape: { title, name, dateStr, sections, filename }.
-function buildReadingPdf(opts) {
-  const JS = window.jspdf && window.jspdf.jsPDF;
-  if (!JS) { alert('PDF tool is still loading — give it a moment and try again.'); return false; }
-  const doc = new JS({ unit: 'pt', format: 'a4' });
-  const pageW = doc.internal.pageSize.getWidth();
-  const pageH = doc.internal.pageSize.getHeight();
-  const margin = 56;
-  const maxW = pageW - margin * 2;
-  let y = margin;
-  const gold = [122, 86, 24], ink = [20, 17, 10], muted = [120, 112, 72];
-  const ensure = sp => { if (y + sp > pageH - margin) { doc.addPage(); y = margin; } };
-
-  doc.setFont('times', 'bold'); doc.setFontSize(22); doc.setTextColor(ink[0], ink[1], ink[2]);
-  doc.text(opts.title || 'Signals Reading', pageW / 2, y, { align: 'center' }); y += 20;
-  doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(gold[0], gold[1], gold[2]);
-  doc.text('CHRISTY PAXTON WADE   ·   NAVIGATION MAP', pageW / 2, y, { align: 'center', charSpace: 1 }); y += 16;
-  if (opts.name) { doc.setFont('times', 'italic'); doc.setFontSize(11); doc.setTextColor(muted[0], muted[1], muted[2]); doc.text(opts.name, pageW / 2, y, { align: 'center' }); y += 13; }
-  if (opts.dateStr) { doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(muted[0], muted[1], muted[2]); doc.text(opts.dateStr, pageW / 2, y, { align: 'center' }); y += 10; }
-  y += 8; doc.setDrawColor(216, 199, 154); doc.line(margin, y, pageW - margin, y); y += 24;
-
-  (opts.sections || []).forEach(s => {
-    ensure(40);
-    doc.setFont('times', 'bold'); doc.setFontSize(13); doc.setTextColor(gold[0], gold[1], gold[2]);
-    doc.splitTextToSize(s.heading || '', maxW).forEach(line => { ensure(17); doc.text(line, margin, y); y += 16; });
-    y += 4;
-    doc.setFont('times', 'normal'); doc.setFontSize(11.5); doc.setTextColor(ink[0], ink[1], ink[2]);
-    String(s.body || '').split(/\n{2,}/).filter(p => p.trim()).forEach(p => {
-      doc.splitTextToSize(p.trim().replace(/\s+/g, ' '), maxW).forEach(line => { ensure(15); doc.text(line, margin, y); y += 15; });
-      y += 8;
-    });
-    y += 10;
-  });
-
-  doc.save(opts.filename || 'signals-reading.pdf');
-  return true;
-}
-
+// ── PDF (jsPDF text + drawn bars; selectable, reliable) ──
 function downloadReadingPdf(btn) {
   const d = window.__readingData;
   if (!d) return;
+  const JS = window.jspdf && window.jspdf.jsPDF;
+  if (!JS) { alert('PDF tool is still loading — try again in a moment.'); return; }
   if (btn) { btn.disabled = true; btn.textContent = 'Preparing…'; }
-  try { buildReadingPdf({ title: 'Your Signals Reading', name: d.name, dateStr: d.dateStr, sections: d.sections, filename: 'signals-reading.pdf' }); }
-  catch (e) { alert('PDF failed: ' + (e && e.message || e)); }
+  try {
+    const doc = new JS({ unit: 'pt', format: 'a4' });
+    const pageW = doc.internal.pageSize.getWidth(), pageH = doc.internal.pageSize.getHeight();
+    const margin = 56, maxW = pageW - margin * 2; let y = margin;
+    const gold = [122, 86, 24], ink = [20, 17, 10], muted = [120, 112, 72], track = [222, 210, 180];
+    const ensure = sp => { if (y + sp > pageH - margin) { doc.addPage(); y = margin; } };
+    const para = (t, size, color, gap) => {
+      const txt = String(t == null ? '' : t).replace(/\s+/g, ' ').trim(); if (!txt) return;
+      size = size || 11.5; color = color || ink; const lh = size * 1.34;
+      doc.setFont('times', 'normal'); doc.setFontSize(size); doc.setTextColor(color[0], color[1], color[2]);
+      doc.splitTextToSize(txt, maxW).forEach(l => { ensure(lh); doc.text(l, margin, y); y += lh; });
+      y += (gap == null ? 7 : gap);
+    };
+    const heading = t => { ensure(30); doc.setFont('times', 'bold'); doc.setFontSize(14); doc.setTextColor(gold[0], gold[1], gold[2]); doc.splitTextToSize(String(t || ''), maxW).forEach(l => { ensure(18); doc.text(l, margin, y); y += 17; }); y += 5; };
+    const label = t => { ensure(16); doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(muted[0], muted[1], muted[2]); doc.text(String(t || '').toUpperCase(), margin, y, { charSpace: 1 }); y += 12; };
+
+    // Header
+    doc.setFont('times', 'bold'); doc.setFontSize(22); doc.setTextColor(ink[0], ink[1], ink[2]);
+    doc.text('Your Signals Reading', pageW / 2, y, { align: 'center' }); y += 19;
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(gold[0], gold[1], gold[2]);
+    doc.text('CHRISTY PAXTON WADE   ·   NAVIGATION MAP', pageW / 2, y, { align: 'center', charSpace: 1 }); y += 16;
+    if (d.name) { doc.setFont('times', 'italic'); doc.setFontSize(11); doc.setTextColor(muted[0], muted[1], muted[2]); doc.text('Prepared for ' + d.name, pageW / 2, y, { align: 'center' }); y += 13; }
+    y += 6; doc.setDrawColor(track[0], track[1], track[2]); doc.line(margin, y, pageW - margin, y); y += 18;
+
+    // Details
+    const det = [['Email', d.email], ['Born', d.born], ['Reading', d.dateStr]].filter(r => r[1]);
+    det.forEach(([k, v]) => { ensure(14); doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(muted[0], muted[1], muted[2]); doc.text(k.toUpperCase(), margin, y, { charSpace: 1 }); doc.setFont('times', 'normal'); doc.setFontSize(10.5); doc.setTextColor(ink[0], ink[1], ink[2]); doc.text(String(v), margin + 70, y); y += 13; });
+    if (det.length) { y += 12; }
+
+    // Sections
+    (d.sections || []).forEach(s => {
+      heading(s.heading);
+      String(s.body || '').split(/\n{2,}/).filter(p => p.trim()).forEach(p => para(p, 11.5, ink, 8));
+      y += 8;
+    });
+
+    // Signal Map
+    const cv = d.convergence;
+    if (cv && cv.fields.length) {
+      ensure(40); heading('Your Signal Map');
+      para('The first bar is how present each current was in your answers; the second, how strongly your birth chart carries it. Both high = a defining signal; one leading = a living edge.', 9.5, muted, 10);
+      cv.fields.forEach(f => {
+        ensure(40);
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(ink[0], ink[1], ink[2]);
+        doc.text((f.roman + ' · ' + f.name).toUpperCase(), margin, y, { charSpace: 0.5 }); y += 12;
+        doc.setFont('times', 'normal'); doc.setFontSize(9.5); doc.setTextColor(muted[0], muted[1], muted[2]);
+        doc.splitTextToSize(FIELD_GLOSS[f.roman] || '', maxW).forEach(l => { ensure(12); doc.text(l, margin, y); y += 11; });
+        const drawBar = (key, pct, faded) => {
+          ensure(12); doc.setFont('helvetica', 'normal'); doc.setFontSize(7); doc.setTextColor(muted[0], muted[1], muted[2]);
+          doc.text(key.toUpperCase(), margin, y + 6, { charSpace: 0.5 });
+          const bx = margin + 56, bw = maxW - 56, bh = 6;
+          doc.setFillColor(232, 224, 202); doc.rect(bx, y, bw, bh, 'F');
+          doc.setFillColor(faded ? 188 : 122, faded ? 158 : 86, faded ? 96 : 24); doc.rect(bx, y, bw * (pct || 0) / 100, bh, 'F');
+          y += bh + 5;
+        };
+        drawBar('Answers', f.quizPct, false);
+        drawBar('Chart', f.chartPct, true);
+        y += 7;
+      });
+      if (cv.freqs && cv.freqs.length) {
+        y += 4; label('The five strongest frequencies surfacing');
+        cv.freqs.forEach(s => {
+          ensure(20);
+          doc.setFont('times', 'bold'); doc.setFontSize(10.5); doc.setTextColor(ink[0], ink[1], ink[2]);
+          doc.text(s.name + '  (' + s.field + ')', margin, y); y += 13;
+          if (s.note) para(s.note, 10, muted, 6);
+          else y += 2;
+        });
+      }
+      y += 8;
+    }
+
+    // Affirmation
+    if (d.affirmation) {
+      ensure(40); y += 6; doc.setDrawColor(track[0], track[1], track[2]); doc.line(margin, y, pageW - margin, y); y += 16;
+      doc.setFont('times', 'italic'); doc.setFontSize(13); doc.setTextColor(gold[0], gold[1], gold[2]);
+      doc.splitTextToSize(d.affirmation, maxW - 40).forEach(l => { ensure(18); doc.text(l, pageW / 2, y, { align: 'center' }); y += 18; });
+      y += 8; doc.setDrawColor(track[0], track[1], track[2]); doc.line(margin, y, pageW - margin, y); y += 18;
+    }
+    // Journal
+    if (d.journal) { label('A question to sit with'); doc.setFont('times', 'italic'); doc.setFontSize(12); doc.setTextColor(ink[0], ink[1], ink[2]); doc.splitTextToSize(d.journal, maxW).forEach(l => { ensure(16); doc.text(l, margin, y); y += 16; }); y += 12; }
+    // CTA
+    ensure(40); y += 4; label('Where to go next');
+    para('If this reading opened a thread you want to follow, the next step is a short Discovery call to find the right doorway into the work: ' + DISCOVERY_URL, 10.5, ink, 6);
+
+    const slug = (d.name || 'reading').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    doc.save('signals-reading-' + (slug || 'reading') + '.pdf');
+  } catch (e) { alert('PDF failed: ' + (e && e.message || e)); }
   if (btn) setTimeout(() => { btn.disabled = false; btn.textContent = 'Download PDF'; }, 1500);
 }
 
