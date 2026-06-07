@@ -694,6 +694,7 @@ document.getElementById('quizForm').addEventListener('submit', async (e) => {
       q_r: document.querySelector('input[name="q_r"]:checked')?.value,
       register_of_contact: document.querySelector('input[name="roc"]:checked')?.value,
       ratings: all_ratings,
+      floor_ratings: floor_ratings,
     };
 
     const res = await fetch('https://egldaiqrwuxqgavjwwim.supabase.co/functions/v1/create-signals-checkout', {
