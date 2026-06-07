@@ -61,7 +61,7 @@ async function loadReading() {
 
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/signals_tier2_readings?magic_link_token=eq.${encodeURIComponent(token)}&select=field_walking_text,register_frequencies_text,threshold_asking_text,created_at`,
+      `${SUPABASE_URL}/rest/v1/signals_tier2_readings?magic_link_token=eq.${encodeURIComponent(token)}&select=client_name,field_walking_text,register_frequencies_text,threshold_asking_text,created_at`,
       { headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}` } }
     );
     const rows = await res.json();
@@ -85,8 +85,12 @@ async function loadReading() {
     ];
     window.__readingData = {
       sections,
+      name: reading.client_name || '',
       dateStr: reading.created_at ? new Date(reading.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '',
     };
+
+    const header = document.querySelector('.header .subtitle');
+    if (header && reading.client_name) header.textContent = 'Prepared for ' + reading.client_name + ' · Christy Paxton Wade';
 
     content.innerHTML = `
       <h2>The Field You're Walking</h2>
@@ -150,7 +154,7 @@ function downloadReadingPdf(btn) {
   const d = window.__readingData;
   if (!d) return;
   if (btn) { btn.disabled = true; btn.textContent = 'Preparing…'; }
-  try { buildReadingPdf({ title: 'Your Signals Reading', dateStr: d.dateStr, sections: d.sections, filename: 'signals-reading.pdf' }); }
+  try { buildReadingPdf({ title: 'Your Signals Reading', name: d.name, dateStr: d.dateStr, sections: d.sections, filename: 'signals-reading.pdf' }); }
   catch (e) { alert('PDF failed: ' + (e && e.message || e)); }
   if (btn) setTimeout(() => { btn.disabled = false; btn.textContent = 'Download PDF'; }, 1500);
 }

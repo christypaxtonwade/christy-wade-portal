@@ -151,6 +151,11 @@
     <div id="finalStep">
       <h2>Where to send the reading</h2>
       <div class="field-group">
+        <label for="client_name">Your name *</label>
+        <input type="text" id="client_name" required placeholder="First and last name">
+        <div class="help">So your reading is addressed to you.</div>
+      </div>
+      <div class="field-group">
         <label for="email">Email *</label>
         <input type="email" id="email" required placeholder="you@example.com">
         <div class="help">We'll send you a permanent link to your reading after payment.</div>
@@ -505,7 +510,16 @@ document.getElementById('quizForm').addEventListener('submit', async (e) => {
     });
     const all_ratings = { ...floor_ratings, ...follow_up_ratings };
 
+    const clientName = document.getElementById('client_name').value.trim();
+    if (!clientName) {
+      btn.disabled = false;
+      btn.textContent = 'Continue to payment — $44';
+      errMsg.textContent = 'Please enter your name so your reading can be addressed to you.';
+      return;
+    }
+
     const payload = {
+      name: clientName,
       email: document.getElementById('email').value.trim(),
       birth: {
         birth_date: document.getElementById('birth_date').value,
