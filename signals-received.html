@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Received — The Signals Reading</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/framing.css">
+<script src="/framing.js" defer></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0c0a07; --ink-mid: #111009;
+    --gold: #b8924a; --gold-lt: #d4ae6e; --gold-dim: rgba(184,146,74,0.3);
+    --cream: #f0e8d0; --plum: #251020;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+    --text-body: 1.15rem; --text-label: 0.94rem;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; font-size: 16px; min-height: 100vh; overflow-x: hidden; }
+
+  .wrap { max-width: 620px; margin: 0 auto; padding: 9rem 2rem 5rem; text-align: center; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
+  .eyebrow { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); opacity: 0.95; margin-bottom: 1.6rem; }
+  h1 { font-family: var(--ff-d); font-size: clamp(2.4rem, 5vw, 3.4rem); font-style: italic; font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 1.6rem; }
+  .lede { font-family: var(--ff-d); font-size: clamp(1.18rem, 1.8vw, 1.4rem); color: var(--gold-lt); font-style: italic; line-height: 1.6; margin-bottom: 2rem; }
+  .body { font-family: var(--ff-d); font-size: var(--text-body); color: var(--cream); opacity: 0.92; line-height: 1.85; margin: 0 auto 1.2rem; max-width: 520px; }
+  .body b { color: var(--gold-lt); font-weight: 500; }
+  .divider { width: 60px; height: 1px; background: var(--gold-dim); margin: 2.4rem auto; }
+  .note { font-family: var(--ff-d); font-size: 1.05rem; color: var(--cream); opacity: 0.78; line-height: 1.7; margin: 0 auto 2rem; max-width: 520px; }
+  .note a { color: var(--gold-lt); text-decoration: underline; text-underline-offset: 3px; }
+  .actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 0.5rem; }
+  .btn { display: inline-block; font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.9rem 2rem; border-radius: 2px; text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .btn-solid { background: var(--gold); color: var(--ink); border: 1px solid var(--gold); }
+  .btn-solid:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
+  .btn-outline { background: transparent; color: var(--gold-lt); border: 1px solid var(--gold); }
+  .btn-outline:hover { background: var(--gold-lt); color: var(--ink); }
+
+  footer { background: var(--ink); border-top: 1px solid rgba(184,146,74,0.1); padding: 3rem 3rem 2.4rem; text-align: center; }
+  footer .footer-name { font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); text-decoration: none; display: block; margin-bottom: 1rem; letter-spacing: 0.06em; }
+  .footer-roles { display: block; font-family: var(--ff-b); font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 1.2rem; }
+  .footer-links { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.88rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.85; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a:hover { opacity: 1; }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.84rem; letter-spacing: 0.06em; color: var(--cream); opacity: 0.55; }
+
+  @media (max-width: 720px) {
+    nav { padding: 1rem 1.4rem; }
+    .nav-links { gap: 1rem; font-size: 0.82rem; }
+    .wrap { padding: 7rem 1.4rem 3rem; }
+    footer { padding: 2.4rem 1.4rem 1.8rem; }
+    .footer-links { gap: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-brand">Christy Paxton Wade</a>
+  <div class="nav-row">
+    <div></div>
+    <ul class="nav-links">
+      <li><a href="/begin">Begin</a></li>
+      <li><a href="/earth">Earth</a></li>
+      <li><a href="/sky">Sky</a></li>
+      <li><a href="/life">Life</a></li>
+      <li><a href="/mirror">Mirror</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Library</button>
+        <div class="nav-dropdown-panel" role="menu">
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">The Map</div>
+            <a class="nav-dropdown-item" href="/map" role="menuitem">Map</a>
+            <a class="nav-dropdown-item" href="/tapestry" role="menuitem">Tapestry</a>
+            <a class="nav-dropdown-item" href="/inside-the-work" role="menuitem">Inside the Work</a>
+            <a class="nav-dropdown-item" href="/codex" role="menuitem">Plant Codex</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">Doors</div>
+            <a class="nav-dropdown-item" href="/signals" role="menuitem">Signals</a>
+            <a class="nav-dropdown-item" href="https://calendly.com/christypaxtonwade/firstsignal" target="_blank" rel="noopener" role="menuitem">Discovery</a>
+            <a class="nav-dropdown-item" href="/mirror#apply" role="menuitem">Apply</a>
+            <a class="nav-dropdown-item" href="/intake" role="menuitem">New Clients</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">Writing</div>
+            <a class="nav-dropdown-item" href="https://christywade.substack.com" target="_blank" rel="noopener" role="menuitem">Alchemy of Midlife ↗</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <a href="https://portal.christypaxtonwade.com/portal.html" class="nav-portal" target="_blank" rel="noopener">Portal ↗</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <span class="eyebrow">The Signals Reading</span>
+  <h1>Payment received.</h1>
+  <p class="lede">Your reading is being written now.</p>
+  <p class="body">It is drawn from your birth chart, your Gene Keys, and your answers to the fifty-two statements, and it arrives in your inbox within a few minutes — as a <b>permanent link that is yours to keep</b>.</p>
+
+  <div class="divider"></div>
+
+  <p class="note">If it has not arrived within ten minutes, check your spam folder. You can also recover your link anytime using the email address you entered at checkout.</p>
+
+  <div class="actions">
+    <a class="btn btn-outline" href="/signals/recover">Recover my link</a>
+    <a class="btn btn-solid" href="/begin">Continue with Christy</a>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <span class="footer-roles">writer &nbsp;·&nbsp; oracle &nbsp;·&nbsp; mirror</span>
+  <div class="footer-links">
+    <a href="/begin">Begin</a>
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="/map">The Map</a>
+    <a href="https://christywade.substack.com" target="_blank">Substack</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-lt); opacity: 0.85;">Portal ↗</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Christy Paxton Wade &nbsp;&middot;&nbsp; Bentonville, Arkansas</p>
+</footer>
+</body>
+</html>

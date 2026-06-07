@@ -14,6 +14,7 @@
     { "src": "/map", "dest": "/map.html" },
     { "src": "/signals", "dest": "/signals.html" },
     { "src": "/signals/upgrade", "dest": "/signals-upgrade.html" },
+    { "src": "/signals/received", "dest": "/signals-received.html" },
     { "src": "/signals/recover", "dest": "/signals-recover.html" },
     { "src": "/signals/reading/[a-f0-9]+", "dest": "/signals-tier2-reading.html" },
     { "src": "/signals/reading", "dest": "/signals-reading.html" },
