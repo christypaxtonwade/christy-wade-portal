@@ -274,9 +274,14 @@
         <input type="date" id="birth_date" required>
       </div>
       <div class="field-group">
-        <label for="birth_time">Birth time</label>
-        <input type="time" id="birth_time" step="60">
-        <div class="help">Best from a birth certificate. 8:50 PM = 20:50.</div>
+        <label>Birth time</label>
+        <div style="display:flex;gap:0.5rem;align-items:center">
+          <select id="bt-h" style="max-width:7rem"><option value="">Hour</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>
+          <span style="opacity:0.6">:</span>
+          <input type="number" id="bt-m" min="0" max="59" placeholder="Min" style="max-width:6rem">
+          <select id="bt-ap" style="max-width:6rem"><option value="">—</option><option value="AM">AM</option><option value="PM">PM</option></select>
+        </div>
+        <div class="help">Best from a birth certificate. Leave blank only if truly unknown.</div>
       </div>
     </div>
     <div class="field-group ac-wrap">
@@ -696,7 +701,7 @@ document.getElementById('quizForm').addEventListener('submit', async (e) => {
       email: document.getElementById('email').value.trim(),
       birth: {
         birth_date: document.getElementById('birth_date').value,
-        birth_time: document.getElementById('birth_time').value || null,
+        birth_time: (function () { const h = document.getElementById('bt-h').value, m = document.getElementById('bt-m').value, ap = document.getElementById('bt-ap').value; if (!h || m === '' || !ap) return null; let h24 = parseInt(h, 10) % 12; if (ap === 'PM') h24 += 12; return String(h24).padStart(2, '0') + ':' + String(parseInt(m, 10)).padStart(2, '0') + ':00'; })(),
         birth_place: document.getElementById('birth_place').value.trim() || null,
         latitude: parseFloat(document.getElementById('latitude').value) || null,
         longitude: parseFloat(document.getElementById('longitude').value) || null,
