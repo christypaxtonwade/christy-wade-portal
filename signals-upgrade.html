@@ -254,6 +254,16 @@
       <input type="text" id="client_name" required placeholder="First and last name">
       <div class="help">So your reading is addressed to you.</div>
     </div>
+    <div class="field-group">
+      <label for="pronouns">Pronouns</label>
+      <select id="pronouns">
+        <option value="">Prefer not to say</option>
+        <option value="she/her">she/her</option>
+        <option value="he/him">he/him</option>
+        <option value="they/them">they/them</option>
+      </select>
+      <div class="help">Used only so anything written about you reads correctly.</div>
+    </div>
 
     <h2>Your birth data</h2>
     <p class="lede">Date is required. Time and place sharpen the reading. If any of these are missing, the reading is honest about lower precision.</p>
@@ -682,6 +692,7 @@ document.getElementById('quizForm').addEventListener('submit', async (e) => {
 
     const payload = {
       name: clientName,
+      pronouns: document.getElementById('pronouns').value || null,
       email: document.getElementById('email').value.trim(),
       birth: {
         birth_date: document.getElementById('birth_date').value,
