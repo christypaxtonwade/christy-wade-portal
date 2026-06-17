@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereign Descent — From the Chapter | Christy Paxton Wade</title>
+<meta name="description" content="You read Sovereign Descent in Revolutionary Icons. This is the terrain it named — and the door into walking it: the Signals Reading and Working With Your Reading.">
+
+<!-- Open Graph / social preview -->
+<meta property="og:title" content="Sovereign Descent — From the Chapter">
+<meta property="og:description" content="The descent you just read has a map. Begin with your Signals Reading.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://christypaxtonwade.com/sovereign-descent">
+<meta property="og:image" content="https://christypaxtonwade.com/public/branches/revolutionary-icons.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/framing.css">
+<script src="/framing.js" defer></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0c0a07;
+    --ink-mid: #111009;
+    --gold: #b8924a;
+    --gold-lt: #d4ae6e;
+    --cream: #f0e8d0;
+    --plum: #251020;
+    --parchment: #ede8d5;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+    --text-body: 1.15rem;
+    --text-body-sm: 1.05rem;
+    --text-label: 0.94rem;
+    --op-body: 0.92;
+    --op-support: 0.88;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--ff-b);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    font-size: 16px;
+  }
+
+  /* EYEBROW */
+  .eyebrow {
+    font-family: var(--ff-b);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold); opacity: 0.95;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 58vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    padding: 10rem 3rem 5rem;
+    border-bottom: 1px solid rgba(184,146,74,0.1);
+  }
+  .hero-eyebrow { display: block; margin-bottom: 1.4rem; }
+  .hero-title { font-family: var(--ff-d); font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 1.3rem; line-height: 1.1; max-width: 14ch; }
+  .hero-sub { font-family: var(--ff-d); font-size: clamp(1.2rem, 1.8vw, 1.5rem); font-style: italic; color: var(--gold-lt); max-width: 680px; line-height: 1.5; }
+
+  /* SECTION PROSE */
+  .section-prose { max-width: 720px; margin: 0 auto; padding: 5rem 3rem 3rem; text-align: center; }
+  .section-prose p { font-family: var(--ff-d); font-size: var(--text-body); line-height: 1.85; color: var(--cream); opacity: var(--op-body); margin-bottom: 1.2rem; }
+  .section-prose .lead-quote { font-style: italic; color: var(--gold-lt); font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1.55; margin: 0 auto 2rem; max-width: 640px; }
+
+  /* SECTION HEADERS */
+  .section-header { text-align: center; margin-bottom: 3rem; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .section-title { font-family: var(--ff-d); font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.6rem; line-height: 1.25; }
+  .section-sub { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--gold-lt); opacity: 0.92; max-width: 560px; margin: 0 auto; }
+
+  /* THE PATH — numbered steps */
+  .path-section { padding: 5rem 3rem; border-top: 1px solid rgba(184,146,74,0.1); }
+  .step-card { max-width: 860px; margin: 0 auto 1.6rem; border: 1px solid rgba(184,146,74,0.22); padding: 2.6rem 3rem; background: rgba(184,146,74,0.04); transition: border-color 0.3s; }
+  .step-card:hover { border-color: rgba(184,146,74,0.4); }
+  .step-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.4rem; }
+  .step-num { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.95; }
+  .step-price { font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.95; }
+  .step-name { font-family: var(--ff-d); font-size: clamp(1.7rem, 2.4vw, 2.2rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.4rem; }
+  .step-format { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); opacity: 0.88; margin-bottom: 1rem; }
+  .step-body { font-family: var(--ff-d); font-size: var(--text-body); font-weight: 300; color: var(--cream); line-height: 1.8; opacity: var(--op-body); margin-bottom: 1.2rem; }
+  .step-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+  .btn-gold { display: inline-block; font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 0.95rem 2.2rem; text-decoration: none; border: 1px solid var(--gold); border-radius: 2px; transition: background 0.3s, border-color 0.3s; }
+  .btn-gold:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
+  .btn-ghost { display: inline-block; font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-lt); background: transparent; padding: 0.85rem 1.9rem; text-decoration: none; border: 1px solid var(--gold); border-radius: 2px; transition: background 0.3s, color 0.3s; }
+  .btn-ghost:hover { background: var(--gold); color: var(--ink); }
+
+  /* SUMMIT BAND */
+  .summit-section { padding: 5rem 3rem; background: var(--ink-mid); border-top: 1px solid rgba(184,146,74,0.1); border-bottom: 1px solid rgba(184,146,74,0.1); text-align: center; }
+  .summit-inner { max-width: 720px; margin: 0 auto; border: 1px solid rgba(184,146,74,0.3); padding: 3rem 3rem; background: rgba(184,146,74,0.05); }
+  .summit-title { font-family: var(--ff-d); font-size: clamp(1.7rem, 2.6vw, 2.2rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 1rem; line-height: 1.2; }
+  .summit-body { font-family: var(--ff-d); font-size: var(--text-body); color: var(--cream); opacity: var(--op-body); line-height: 1.8; margin-bottom: 1.8rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .summit-dates { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-lt); opacity: 0.95; margin-bottom: 1.6rem; display: block; }
+
+  /* BOOK SECTION */
+  .book-section { padding: 5rem 3rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .book-cover-wrap { max-width: 300px; margin: 0 auto 2.2rem; }
+  .book-cover-wrap .vitrine { aspect-ratio: 3 / 4; }
+  .book-quote { font-family: var(--ff-d); font-style: italic; font-size: clamp(1.3rem, 2vw, 1.6rem); color: var(--gold-lt); max-width: 640px; margin: 0 auto 2rem; line-height: 1.55; }
+  .book-body { font-family: var(--ff-d); font-size: var(--text-body); color: var(--cream); opacity: var(--op-body); line-height: 1.85; max-width: 620px; margin: 0 auto 2rem; }
+
+  /* CLOSING */
+  .closing-section { padding: 6rem 3rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.1); }
+  .closing-text { font-family: var(--ff-d); font-size: clamp(1.4rem, 2vw, 1.8rem); font-style: italic; color: var(--cream); opacity: 0.92; max-width: 620px; margin: 0 auto 2.4rem; line-height: 1.5; }
+
+  /* FOOTER */
+  footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
+  .footer-name:hover { opacity: 1; }
+  .footer-social { display: flex; gap: 1.4rem; justify-content: center; margin-bottom: 1.4rem; }
+  .footer-social a { color: var(--gold); opacity: 0.88; transition: opacity 0.3s; }
+  .footer-social a:hover { opacity: 1; }
+  .footer-links { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.88; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a:hover { opacity: 1; }
+  .footer-copy { font-family: var(--ff-d); font-style: italic; font-size: 0.94rem; color: var(--cream); opacity: 0.88; }
+
+  @media (max-width: 760px) {
+    nav { padding: 1rem 1.5rem; }
+    .hero { padding: 8rem 1.5rem 4rem; }
+    .path-section, .summit-section, .book-section, .closing-section, .section-prose { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .step-card, .summit-inner { padding: 2rem; }
+    .step-meta { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">Christy Paxton Wade</a>
+  <div class="nav-row">
+    <div></div>
+    <ul class="nav-links">
+      <li><a href="/begin">Begin</a></li>
+      <li><a href="/earth">Earth</a></li>
+      <li><a href="/sky">Sky</a></li>
+      <li><a href="/life">Life</a></li>
+      <li><a href="/mirror">Mirror</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Library</button>
+        <div class="nav-dropdown-panel" role="menu">
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">The Map</div>
+            <a class="nav-dropdown-item" href="/map" role="menuitem">Map</a>
+            <a class="nav-dropdown-item" href="/tapestry" role="menuitem">Tapestry</a>
+            <a class="nav-dropdown-item" href="/inside-the-work" role="menuitem">Inside the Work</a>
+            <a class="nav-dropdown-item" href="/codex" role="menuitem">Plant Codex</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">Doors</div>
+            <a class="nav-dropdown-item" href="/signals" role="menuitem">Signals</a>
+            <a class="nav-dropdown-item" href="https://calendly.com/christypaxtonwade/firstsignal" target="_blank" rel="noopener" role="menuitem">Discovery</a>
+            <a class="nav-dropdown-item" href="/mirror#apply" role="menuitem">Apply</a>
+            <a class="nav-dropdown-item" href="/intake" role="menuitem">New Clients</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-group-label">Writing</div>
+            <a class="nav-dropdown-item" href="https://christywade.substack.com" target="_blank" rel="noopener" role="menuitem">Alchemy of Midlife ↗</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <a href="https://portal.christypaxtonwade.com/portal.html" class="nav-portal" target="_blank" rel="noopener">Portal ↗</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     VOICE: Christy to own the title + sub. Scaffold below.
+     ============================================================ -->
+<section class="hero">
+  <span class="eyebrow hero-eyebrow">Revolutionary Icons &nbsp;&middot;&nbsp; Sovereign Descent</span>
+  <h1 class="hero-title">You read the descent. Here is the terrain.</h1>
+  <p class="hero-sub">The chapter named the descent you are already somewhere inside. The map of that terrain is real, and the first door into it is your own reading.</p>
+</section>
+
+<!-- ============================================================
+     BRIDGE PROSE — from the chapter into the living work
+     VOICE: scaffold drawing on the chapter's own images
+     (the gate, Inanna, compression, channels, frequency).
+     Christy to walk this into her own words.
+     ============================================================ -->
+<section class="section-prose">
+  <p class="lead-quote">It is revolutionary when a woman stops fighting for channels that were never built to receive her, and descends with deliberation into the only terrain where her true frequency can be heard.</p>
+  <p>If you have just closed the chapter, you already know the descent is not metaphor. It is a passage with a shape — a gate, an underground, a return. The Navigation Map is the cartography of that passage: thirteen Fields, the registers a body moves through, the frequencies a lineage carries. Sovereign Descent is one transmission from inside it.</p>
+  <p>What follows is not more reading. It is the way to find where <em>you</em> are standing in the terrain the chapter named — and what the passage is asking of you now.</p>
+</section>
+
+<!-- ============================================================
+     THE PATH — three steps
+     ============================================================ -->
+<section class="path-section">
+  <div class="section-header">
+    <span class="eyebrow" style="display:block; margin-bottom: 1.2rem;">From the Page Into the Work</span>
+    <h2 class="section-title">Three steps from the chapter.</h2>
+    <p class="section-sub">Start with the reading. It becomes the map everything else is read against.</p>
+  </div>
+
+  <!-- STEP 1 — SIGNALS READING -->
+  <div class="step-card">
+    <div class="step-meta">
+      <span class="step-num">Step One &nbsp;&middot;&nbsp; Your Personalized Map</span>
+      <span class="step-price">$44</span>
+    </div>
+    <h3 class="step-name">The Signals Reading</h3>
+    <p class="step-format">52 Statements &nbsp;&middot;&nbsp; Your Birth Chart &nbsp;&middot;&nbsp; Delivered in Minutes</p>
+    <p class="step-body">A personalized, in-depth reading drawn from your birth chart, your Gene Keys, and your answers to fifty-two statements. Three written sections, a map of your strongest frequencies, and a closing practice — the Field you are walking, named in language you can feel. This is the descent made specific to you.</p>
+    <div class="step-cta-row">
+      <a href="/signals/upgrade" class="btn-gold">Get your Signals Reading — $44</a>
+      <a href="/signals" class="btn-ghost">Try the free version first</a>
+    </div>
+  </div>
+
+  <!-- STEP 2 — WORKING WITH YOUR READING (the recorded class / masterclass)
+       NOTE: This offering is in development. CTA + availability are PLACEHOLDERS.
+       Decide: free Summit lead-magnet vs. paid; where it's hosted; launch date. -->
+  <div class="step-card">
+    <div class="step-meta">
+      <span class="step-num">Step Two &nbsp;&middot;&nbsp; The Masterclass</span>
+      <span class="step-price">Free for Summit Registrants</span>
+    </div>
+    <h3 class="step-name">Working With Your Reading</h3>
+    <p class="step-format">Recorded Class &nbsp;&middot;&nbsp; Featured at the Book Summit</p>
+    <p class="step-body">A reading tells you where you are. This recorded class teaches you to walk it — how to read the Field you drew, hear the register you are in, and work the closing practice instead of filing it away. The bridge between reading the descent and living it. Free for everyone who registers for the Book Summit.</p>
+    <div class="step-cta-row">
+      <!-- PLACEHOLDER: replace #summit anchor with the Summit registration link when live -->
+      <a href="#summit" class="btn-gold">Free with Summit registration →</a>
+    </div>
+  </div>
+
+  <!-- STEP 3 — DEEPER DOORS -->
+  <div class="step-card">
+    <div class="step-meta">
+      <span class="step-num">Step Three &nbsp;&middot;&nbsp; When You Want to Go Under</span>
+      <span class="step-price">$444+</span>
+    </div>
+    <h3 class="step-name">The Deeper Doors</h3>
+    <p class="step-format">Lineage Session &nbsp;&middot;&nbsp; The Descent Cohort &nbsp;&middot;&nbsp; Mirror Work</p>
+    <p class="step-body">When the reading and the class make you want to descend with company or with depth — the ancestral Lineage Session, the six-week Descent Cohort, or the three-month Mirror Work. Every door leads to the same architecture.</p>
+    <div class="step-cta-row">
+      <a href="/begin" class="btn-ghost">See all the doors</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BOOK SUMMIT BAND
+     NOTE: dates + registration are PLACEHOLDERS — Christy to supply.
+     ============================================================ -->
+<section class="summit-section" id="summit">
+  <div class="summit-inner">
+    <span class="eyebrow" style="display:block; margin-bottom: 1.2rem;">The Book Summit</span>
+    <h2 class="summit-title">Where the chapter becomes a gathering.</h2>
+    <span class="summit-dates">June 22–26, 2026</span>
+    <p class="summit-body">Revolutionary Icons comes alive at the Book Summit. Working With Your Reading is part of the offerings — bring your Signals Reading and learn to walk the terrain it names, together.</p>
+    <!-- PLACEHOLDER: swap this mailto for the Summit registration link once it exists -->
+    <a href="mailto:christypaxton@gmail.com?subject=Book%20Summit%20Registration" class="btn-gold">Registration opening soon — hold my place</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     THE BOOK
+     NOTE: purchase link is a PLACEHOLDER — Christy to supply.
+     ============================================================ -->
+<section class="book-section">
+  <div class="book-cover-wrap">
+    <div class="vitrine">
+      <img src="/public/branches/revolutionary-icons.jpg" alt="Revolutionary Icons book cover" loading="lazy" onerror="this.closest('.book-cover-wrap').style.display='none'">
+    </div>
+  </div>
+  <span class="eyebrow" style="display:block; margin-bottom: 1.2rem;">The Book &nbsp;&middot;&nbsp; Out Now</span>
+  <h2 class="section-title" style="margin-bottom: 1.4rem;">Revolutionary Icons</h2>
+  <p class="book-body">A collection of power codes from leaders, visionaries, and disruptors. Christy's chapter, <em>Sovereign Descent</em>, is a 4,000-word transmission on feminine transformation through deliberate underground work — the Inanna myth, the birth metaphor, and ancestral lineage as the map. Published by Kiva Publishing.</p>
+  <a href="https://www.amazon.com/dp/B0H2PYMHZ7" class="btn-ghost" target="_blank" rel="noopener">Get the book on Amazon</a>
+</section>
+
+<!-- ============================================================
+     CLOSING
+     ============================================================ -->
+<section class="closing-section">
+  <p class="closing-text">The descent does not depend on your worthiness. It depends on the choice to cross a threshold. Begin with your reading.</p>
+  <a href="/signals/upgrade" class="btn-gold">Get your Signals Reading — $44</a>
+</section>
+
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <span class="footer-roles">writer &nbsp;·&nbsp; oracle &nbsp;·&nbsp; mirror</span>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/christypaxtonwade" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="https://www.instagram.com/christypaxtonwade" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+  </div>
+  <div class="footer-links">
+    <a href="/begin">Begin</a>
+    <a href="/earth">Earth</a>
+    <a href="/sky">Sky</a>
+    <a href="/life">Life</a>
+    <a href="/mirror">Mirror</a>
+    <a href="/signals">Signals</a>
+    <a href="https://christywade.substack.com" target="_blank">Substack</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-lt); opacity: 0.88;">Portal ↗</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 Christy Paxton Wade &nbsp;&middot;&nbsp; Bentonville, Arkansas</p>
+</footer>
+</body>
+</html>

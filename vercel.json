@@ -23,6 +23,7 @@
     { "src": "/offerings", "dest": "/index.html" },
     { "src": "/tapestry", "dest": "/tapestry.html" },
     { "src": "/inside-the-work", "dest": "/inside-the-work.html" },
+    { "src": "/sovereign-descent", "dest": "/sovereign-descent.html" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
