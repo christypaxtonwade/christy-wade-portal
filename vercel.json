@@ -24,6 +24,7 @@
     { "src": "/tapestry", "dest": "/tapestry.html" },
     { "src": "/inside-the-work", "dest": "/inside-the-work.html" },
     { "src": "/sovereign-descent", "dest": "/sovereign-descent.html" },
+    { "src": "/worksheet", "dest": "/working-with-your-reading-worksheet.pdf" },
     { "src": "/(.*)", "dest": "/$1" }
   ]
 }
