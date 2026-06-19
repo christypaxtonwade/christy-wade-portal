@@ -40,8 +40,8 @@
   .cv-gloss { font-size: 16px; color: var(--muted); line-height: 1.5; margin: 2px 0 7px; }
   .cv-bar-row { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
   .cv-bar-key { width: 70px; font-family: 'Jost', sans-serif; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-  .cv-bar-track { flex: 1; height: 8px; background: rgba(20,17,10,0.1); border-radius: 3px; overflow: hidden; }
-  .cv-bar-fill { height: 100%; background: var(--gold); border-radius: 3px; }
+  .cv-bar-track { display: block; flex: 1; height: 8px; background: rgba(20,17,10,0.1); border-radius: 3px; overflow: hidden; }
+  .cv-bar-fill { display: block; height: 100%; background: var(--gold); border-radius: 3px; }
   .cv-bar-fill.chart { background: rgba(122,86,24,0.45); }
   .freq-list { margin-top: 30px; }
   .freq-h { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
@@ -53,6 +53,7 @@
 
   /* Affirmation + journal */
   .closing { margin-top: 52px; }
+  .contempl-h { text-align: center; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
   .affirm { text-align: center; font-size: 21px; line-height: 1.6; font-style: italic; color: var(--gold); padding: 28px 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .journal { margin-top: 36px; }
   .journal-h, .cta-h { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
@@ -216,7 +217,7 @@ async function loadReading() {
       <div class="section-text">${escapeHtml(reading.threshold_asking_text || '')}</div>
       ${renderConvergenceHtml(cv)}
       <div class="closing">
-        ${reading.affirmation ? `<div class="affirm">${escapeHtml(reading.affirmation)}</div>` : ''}
+        ${reading.affirmation ? `<div class="contempl-h">Contemplation</div><div class="affirm">${escapeHtml(reading.affirmation)}</div>` : ''}
         ${reading.journal_prompt ? `<div class="journal"><div class="journal-h">A question to sit with</div><div class="journal-q">${escapeHtml(reading.journal_prompt)}</div></div>` : ''}
       </div>
       <div class="cta">
@@ -315,6 +316,7 @@ function downloadReadingPdf(btn) {
     // Affirmation
     if (d.affirmation) {
       ensure(40); y += 6; doc.setDrawColor(track[0], track[1], track[2]); doc.line(margin, y, pageW - margin, y); y += 16;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(muted[0], muted[1], muted[2]); doc.text('CONTEMPLATION', pageW / 2, y, { align: 'center', charSpace: 1 }); y += 14;
       doc.setFont('times', 'italic'); doc.setFontSize(13); doc.setTextColor(gold[0], gold[1], gold[2]);
       doc.splitTextToSize(d.affirmation, maxW - 40).forEach(l => { ensure(18); doc.text(l, pageW / 2, y, { align: 'center' }); y += 18; });
       y += 8; doc.setDrawColor(track[0], track[1], track[2]); doc.line(margin, y, pageW - margin, y); y += 18;
