@@ -53,11 +53,10 @@
 
   /* Affirmation + journal */
   .closing { margin-top: 52px; }
-  .contempl-h { text-align: center; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .close-block { margin-top: 40px; }
+  .close-h { text-align: center; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
   .affirm { text-align: center; font-size: 21px; line-height: 1.6; font-style: italic; color: var(--gold); padding: 28px 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .journal { margin-top: 36px; }
-  .journal-h, .cta-h { font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-  .journal-q { font-size: 19px; line-height: 1.6; font-style: italic; }
+  .journal-q { text-align: center; font-size: 19px; line-height: 1.6; font-style: italic; max-width: 540px; margin: 0 auto; }
 
   /* CTA + actions */
   .cta { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); text-align: center; }
@@ -217,12 +216,11 @@ async function loadReading() {
       <div class="section-text">${escapeHtml(reading.threshold_asking_text || '')}</div>
       ${renderConvergenceHtml(cv)}
       <div class="closing">
-        ${reading.affirmation ? `<div class="contempl-h">Contemplation</div><div class="affirm">${escapeHtml(reading.affirmation)}</div>` : ''}
-        ${reading.journal_prompt ? `<div class="journal"><div class="journal-h">A question to sit with</div><div class="journal-q">${escapeHtml(reading.journal_prompt)}</div></div>` : ''}
+        ${reading.affirmation ? `<div class="close-block"><div class="close-h">Contemplation</div><div class="affirm">${escapeHtml(reading.affirmation)}</div></div>` : ''}
+        ${reading.journal_prompt ? `<div class="close-block"><div class="close-h">Journal Prompt</div><div class="journal-q">${escapeHtml(reading.journal_prompt)}</div></div>` : ''}
       </div>
       <div class="cta">
-        <div class="cta-h">Where to go next</div>
-        <div class="cta-line">If this reading opened a thread you want to follow, the next step is a conversation — a short Discovery call to find the right doorway into the work.</div>
+        <p class="cta-line">When you're ready to take this further, a short Discovery call finds the right next doorway.</p>
         <div class="actions">
           <a class="btn" href="${DISCOVERY_URL}" target="_blank" rel="noopener">Book a Discovery call</a>
           <button class="btn btn-outline" onclick="downloadReadingPdf(this)">Download PDF</button>
@@ -322,7 +320,7 @@ function downloadReadingPdf(btn) {
       y += 8; doc.setDrawColor(track[0], track[1], track[2]); doc.line(margin, y, pageW - margin, y); y += 18;
     }
     // Journal
-    if (d.journal) { label('A question to sit with'); doc.setFont('times', 'italic'); doc.setFontSize(12); doc.setTextColor(ink[0], ink[1], ink[2]); doc.splitTextToSize(d.journal, maxW).forEach(l => { ensure(16); doc.text(l, margin, y); y += 16; }); y += 12; }
+    if (d.journal) { label('Journal Prompt'); doc.setFont('times', 'italic'); doc.setFontSize(12); doc.setTextColor(ink[0], ink[1], ink[2]); doc.splitTextToSize(d.journal, maxW).forEach(l => { ensure(16); doc.text(l, margin, y); y += 16; }); y += 12; }
     // CTA
     ensure(40); y += 4; label('Where to go next');
     para('If this reading opened a thread you want to follow, the next step is a short Discovery call to find the right doorway into the work: ' + DISCOVERY_URL, 10.5, ink, 6);
