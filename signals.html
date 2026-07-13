@@ -1344,6 +1344,21 @@ async function renderReading(reading) {
     offeringHtml += `<p>${OVERRIDE_PREFIXES[reading.overrideRule]}</p>`;
   }
   offeringHtml += `<p>${OFFERING_TEMPLATES[reading.offering]}</p>`;
+  // Tailored next-step button: turn the quiz's recommendation into a real door
+  // (previously the recommendation was named but never linked — a dead end).
+  const OFFERING_DOOR = {
+    architecture:       { url: '/map#subscribe', label: 'Download the free Architecture guide' },
+    first_listen:       { url: '/sky',           label: 'Explore First Listen' },
+    sovereign_signal:   { url: '/sky',           label: 'Explore the Sovereign Signal' },
+    lineage:            { url: '/earth',         label: 'Explore the Lineage Session' },
+    convergence_update: { url: '/earth',         label: 'Explore a Convergence Update' },
+    cohort:             { url: '/life',          label: 'Explore the Descent Cohort' },
+    mirror:             { url: '/mirror',        label: 'Explore Mirror Work' }
+  };
+  const door = OFFERING_DOOR[reading.offering];
+  if (door) {
+    offeringHtml += `<p style="margin-top:1.2rem"><a href="${door.url}" class="intro-upgrade-cta">${door.label} →</a></p>`;
+  }
   document.getElementById('result-offering').innerHTML = offeringHtml;
 
   // Build full reading text + HTML for persistence
