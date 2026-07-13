@@ -420,36 +420,25 @@ function showState(stateName) {
   });
 }
 
+// Reads go through the token-gated edge function (which also marks the reading
+// viewed) so the anon key no longer needs SELECT/UPDATE on signals_readings.
 async function fetchReading(token) {
-  const url = `${SUPABASE_URL}/rest/v1/signals_readings?magic_link_token=eq.${encodeURIComponent(token)}&select=*&limit=1`;
-  const res = await fetch(url, {
+  const res = await fetch(`${SUPABASE_URL}/functions/v1/signals-reading-access`, {
+    method: 'POST',
     headers: {
       'apikey': SUPABASE_ANON_KEY,
       'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-      'Accept': 'application/json'
-    }
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ action: 'get', tier: 1, token })
   });
   if (!res.ok) throw new Error(`Reading fetch failed (${res.status})`);
-  const rows = await res.json();
-  if (!rows || rows.length === 0) return null;
-  return rows[0];
+  const data = await res.json();
+  return data && data.reading ? data.reading : null;
 }
 
-async function markViewed(readingId) {
-  // Best-effort. Don't block render on this.
-  try {
-    await fetch(`${SUPABASE_URL}/rest/v1/signals_readings?id=eq.${readingId}&viewed_at=is.null`, {
-      method: 'PATCH',
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({ viewed_at: new Date().toISOString() })
-    });
-  } catch (e) { /* non-fatal */ }
-}
+// The edge function stamps viewed_at server-side; nothing to do client-side.
+async function markViewed(_readingId) { /* handled server-side by fetchReading */ }
 
 function renderReadingFromRow(row) {
   // Subtitle: arc / field / register — quick at-a-glance summary line

@@ -164,22 +164,19 @@ async function loadReading() {
   if (!token) { content.innerHTML = '<div class="error">No reading link found. <a href="/signals/recover">Recover your link</a>.</div>'; return; }
 
   try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/signals_tier2_readings?magic_link_token=eq.${encodeURIComponent(token)}&select=client_name,email,birth_data,field_walking_text,register_frequencies_text,threshold_asking_text,affirmation,journal_prompt,signal_notes,tier2_answers,created_at`,
-      { headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}` } }
-    );
-    const rows = await res.json();
-    if (!rows || rows.length === 0) {
+    // Token-gated edge function returns only the matching row (and marks it
+    // viewed server-side), so the anon key no longer needs SELECT/UPDATE here.
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/signals-reading-access`, {
+      method: 'POST',
+      headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'get', tier: 2, token })
+    });
+    const data = await res.json();
+    const reading = data && data.reading ? data.reading : null;
+    if (!reading) {
       content.innerHTML = '<div class="error">This link doesn\'t match any reading. It may have expired or the URL may be incorrect. <a href="/signals/recover">Recover your link</a>.</div>';
       return;
     }
-    const reading = rows[0];
-
-    fetch(`${SUPABASE_URL}/rest/v1/signals_tier2_readings?magic_link_token=eq.${encodeURIComponent(token)}`, {
-      method: 'PATCH',
-      headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
-      body: JSON.stringify({ viewed_at: new Date().toISOString() })
-    }).catch(() => {});
 
     const dateStr = reading.created_at ? new Date(reading.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '';
     const b = reading.birth_data || {};

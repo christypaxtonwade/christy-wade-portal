@@ -747,40 +747,42 @@ async function persistReadingToSupabase(reading, readingHtml, readingText) {
     cross_arc: !!reading.crossArc,
     field_arc: reading.fieldArc || null
   };
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/signals_readings`, {
+  // Insert via the token-gated edge function so the anon key no longer needs
+  // write access to signals_readings. The client-generated token is the key.
+  const res = await fetch(`${SUPABASE_URL}/functions/v1/signals-reading-access`, {
     method: 'POST',
     headers: {
       'apikey': SUPABASE_ANON_KEY,
       'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=representation'
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify(row)
+    body: JSON.stringify({ action: 'create', reading: row })
   });
   if (!res.ok) {
     const errText = await res.text();
-    throw new Error(`Supabase insert failed (${res.status}): ${errText}`);
+    throw new Error(`Reading save failed (${res.status}): ${errText}`);
   }
   const data = await res.json();
-  const inserted = Array.isArray(data) ? data[0] : data;
-  return { id: inserted.id, token };
+  return { id: data.id || null, token: data.token || token };
 }
 
-async function captureEmailForReading(readingId, email) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/signals_readings?id=eq.${readingId}`, {
-    method: 'PATCH',
-    headers: {
-      'apikey': SUPABASE_ANON_KEY,
-      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=minimal'
-    },
-    body: JSON.stringify({ email, email_captured_at: new Date().toISOString() })
-  });
-  if (!res.ok) {
-    // Non-fatal: log and let the Kit submit proceed anyway.
-    console.warn('Failed to capture email on Supabase row', readingId, await res.text());
-  }
+// Email capture goes through the edge function too (keyed by the reading's
+// token), so anon no longer needs UPDATE on signals_readings. The function's
+// update fires the link-to-client trigger that lands the lead in the portal.
+async function captureEmailForReading(token, email) {
+  if (!token) return;
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/signals-reading-access`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ action: 'capture_email', token, email })
+    });
+    if (!res.ok) console.warn('Failed to capture email for reading', await res.text());
+  } catch (e) { /* non-fatal — let the Kit submit proceed */ }
 }
 /* ---------- END PATH C config ---------- */
 
@@ -1560,9 +1562,9 @@ function showInlineKitSuccess() {
     const email = emailInput && emailInput.value ? emailInput.value.trim() : null;
     if (!email) return; // empty email — Kit will reject; let it
     alreadySubmitting = true;
-    // Fire-and-forget Supabase email PATCH; doesn't block form submit.
-    if (currentReadingId) {
-      captureEmailForReading(currentReadingId, email);
+    // Fire-and-forget email capture (keyed by the reading token); doesn't block submit.
+    if (currentReadingToken) {
+      captureEmailForReading(currentReadingToken, email);
     }
     // Form submits to the hidden iframe natively. Show inline success.
     // Slight delay so the form actually fires before we replace it.
