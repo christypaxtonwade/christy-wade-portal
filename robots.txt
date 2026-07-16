@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Private / one-to-one delivery pages — no need to index these
+Disallow: /signals/reading
+Disallow: /signals/received
+Disallow: /signals/recover
+
+Sitemap: https://christypaxtonwade.com/sitemap.xml
