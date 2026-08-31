@@ -76,6 +76,13 @@
 
   .divider-rule { width: 120px; height: 1px; margin: 0 auto; background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent); opacity: 0.6; }
 
+  /* The Map, seen */
+  .map-image-section { max-width: 980px; margin: 0 auto; padding: 2rem 3rem 5rem; text-align: center; }
+  .map-image-section img { display: block; width: 100%; height: auto; border: 1px solid rgba(184,146,74,0.25); transition: border-color 0.3s; }
+  .map-image-section a:hover img { border-color: rgba(184,146,74,0.5); }
+  .map-image-caption { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.9; margin-top: 1.2rem; }
+  @media (max-width: 760px) { .map-image-section { padding: 1rem 1.5rem 3.5rem; } }
+
   /* The six weeks */
   .weeks-section { padding: 6rem 3rem; max-width: 860px; margin: 0 auto; }
   .week-row { display: flex; gap: 2rem; align-items: baseline; padding: 1.8rem 0; border-bottom: 1px solid rgba(184,146,74,0.14); }
@@ -222,6 +229,14 @@
   <p class="prose-p">Three layers, woven across six weeks: <em>the season</em> (your Reading) &nbsp;·&nbsp; <em>the structure</em> (your Chart) &nbsp;·&nbsp; <em>the line</em> (your inheritance).</p>
 </section>
 
+<!-- ─── THE MAP, SEEN ─── -->
+<section class="map-image-section">
+  <a href="/map" aria-label="See the Architecture of the Navigation Map">
+    <img src="/branches/navigation-map.jpg" alt="The Navigation Map of Consciousness — thirteen Fields across three arcs">
+  </a>
+  <p class="map-image-caption">The Map — thirteen Fields, three arcs, sixty-nine Subterrains. <a href="/map" class="inline-link">See the Architecture</a></p>
+</section>
+
 <!-- ─── THE SIX WEEKS ─── -->
 <section class="weeks-section">
   <div class="section-center">
@@ -290,10 +305,10 @@
     <p class="enroll-price-label">Early enrollment — through September 22 or the first ten seats</p>
     <p class="enroll-detail">Founding price thereafter: <strong style="font-weight:500; color:var(--gold-lt);">$222</strong> — includes everything above.</p>
     <p class="enroll-fine">The recorded edition will exist later, at $333, without the live room. This cycle is the only one that gets taught live at this price.</p>
-    <!-- BUILD NOTE: replace href with the live Stripe payment link before upload.
-         Early window (through Sept 22 / first 10 seats): the $177 link.
-         After the early window closes: swap to the $222 link and update the price block above. -->
-    <a href="STRIPE_PAYMENT_LINK_177" class="btn-gold btn-solid">Enroll — $177</a>
+    <!-- BUILD NOTE: live $177 early-enrollment link below (swapped in 2026-08-31).
+         After the early window closes (Sept 22 / first 10 seats): swap to the $222 payment link
+         and update the price block above ($222 leads; early line removed). -->
+    <a href="https://buy.stripe.com/9B6eVc3ZO9nE4knaWT0gw00" class="btn-gold btn-solid">Enroll — $177</a>
     <p class="enroll-question">Questions first? <a href="mailto:christy@christypaxtonwade.com">christy@christypaxtonwade.com</a></p>
   </div>
 </section>
