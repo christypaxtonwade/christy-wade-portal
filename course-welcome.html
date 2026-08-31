@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome, Traveler · Traveling the Map</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/framing.css">
+<script src="/framing.js" defer></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #0c0a07; --ink-mid: #111009;
+    --gold: #b8924a; --gold-lt: #d4ae6e;
+    --cream: #f0e8d0; --plum: #251020;
+    --ff-d: 'Cormorant Garamond', Georgia, serif;
+    --ff-b: 'Jost', system-ui, sans-serif;
+    --text-body: 1.15rem;
+    --text-body-sm: 1.05rem;
+    --text-label: 0.94rem;
+    --op-body: 0.92;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--ink); color: var(--cream); font-family: var(--ff-b); font-weight: 300; line-height: 1.7; overflow-x: hidden; font-size: 16px; }
+
+  .eyebrow { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); opacity: 0.95; display: block; margin-bottom: 1.4rem; }
+
+  .welcome-hero {
+    min-height: 52vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 9rem 3rem 4rem;
+    position: relative;
+    background-image: url('/map-hero.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .welcome-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,8,12,0.62) 0%, rgba(8,8,12,0.46) 45%, rgba(8,8,12,0.9) 100%); }
+  .welcome-hero > * { position: relative; z-index: 1; }
+  .welcome-title { font-family: var(--ff-d); font-size: clamp(2.6rem, 5.5vw, 4.6rem); font-style: italic; font-weight: 300; color: var(--gold-lt); line-height: 1.05; margin-bottom: 1.4rem; animation: fadeUp 1.1s 0.3s ease both; }
+  .welcome-sub { font-family: var(--ff-d); font-size: clamp(1.15rem, 1.7vw, 1.35rem); font-style: italic; color: var(--cream); opacity: 0.94; max-width: 560px; margin: 0 auto; line-height: 1.8; animation: fadeUp 1s 0.6s ease both; }
+
+  .steps-section { max-width: 720px; margin: 0 auto; padding: 5rem 2.5rem 3rem; }
+  .step-card { border: 1px solid rgba(184,146,74,0.22); background: rgba(184,146,74,0.04); padding: 2.6rem 2.8rem; margin-bottom: 1.8rem; }
+  .step-label { font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); opacity: 0.95; display: block; margin-bottom: 0.9rem; }
+  .step-title { font-family: var(--ff-d); font-size: clamp(1.5rem, 2.4vw, 1.9rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.9rem; line-height: 1.2; }
+  .step-body { font-family: var(--ff-d); font-size: var(--text-body); color: var(--cream); opacity: var(--op-body); line-height: 1.85; margin-bottom: 1.3rem; }
+  .btn-gold { display: inline-block; padding: 0.9rem 2.4rem; border: 1px solid var(--gold); color: var(--gold-lt); font-family: var(--ff-b); font-size: var(--text-label); font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .btn-gold:hover { background: var(--gold); color: var(--ink); }
+  .quiet-note { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--cream); opacity: 0.9; }
+  .quiet-note a { color: var(--gold-lt); text-decoration: none; border-bottom: 1px solid rgba(184,146,74,0.35); }
+
+  .closing { max-width: 640px; margin: 0 auto; padding: 2rem 2.5rem 6rem; text-align: center; }
+  .closing p { font-family: var(--ff-d); font-size: var(--text-body); font-style: italic; color: var(--cream); opacity: 0.94; line-height: 1.9; }
+
+  footer { background: var(--ink-mid); padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 0.8rem; text-decoration: none; }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.94rem; color: var(--cream); opacity: 0.88; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 760px) { .steps-section { padding: 3.5rem 1.5rem 2rem; } .step-card { padding: 2rem 1.6rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">Christy Paxton Wade</a>
+  <div class="nav-row">
+    <div></div>
+    <ul class="nav-links">
+      <li><a href="/begin">Begin</a></li>
+      <li><a href="/earth">Earth</a></li>
+      <li><a href="/sky">Sky</a></li>
+      <li><a href="/life">Life</a></li>
+      <li><a href="/mirror">Mirror</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <a href="https://portal.christypaxtonwade.com/portal.html" class="nav-portal" target="_blank" rel="noopener">Portal ↗</a>
+  </div>
+</nav>
+
+<section class="welcome-hero">
+  <span class="eyebrow">Traveling the Map &nbsp;·&nbsp; Founding Cycle</span>
+  <h1 class="welcome-title">You're in, traveler.</h1>
+  <p class="welcome-sub">Your seat in the founding cycle is held. The course runs October 6 – November 10, Tuesdays, 7:00–8:30 pm Central — six live sessions, all recorded.</p>
+</section>
+
+<section class="steps-section">
+  <div class="step-card">
+    <span class="step-label">First &nbsp;·&nbsp; Within the Hour</span>
+    <h2 class="step-title">Watch your inbox.</h2>
+    <p class="step-body">Your welcome email is on its way to the address you used at checkout — it carries the code for your included Signals Reading and everything below in writing. If it hasn't arrived in an hour, check spam, then write to <a href="mailto:christy@christypaxtonwade.com" style="color:var(--gold-lt); text-decoration:none; border-bottom:1px solid rgba(184,146,74,0.35);">christy@christypaxtonwade.com</a>.</p>
+  </div>
+
+  <div class="step-card">
+    <span class="step-label">Second &nbsp;·&nbsp; Whenever You're Ready</span>
+    <h2 class="step-title">Arrive with coordinates.</h2>
+    <p class="step-body">Your Signals Reading is included with enrollment — it's how you arrive at the first session already holding your dominant Field, your Signal Map, and your contemplation. Take it with the code from your welcome email; the $44 becomes $0 at checkout, and your Reading arrives by email within minutes.</p>
+    <a href="/signals/upgrade" class="btn-gold">Take your included Reading</a>
+  </div>
+
+  <div class="step-card">
+    <span class="step-label">Third &nbsp;·&nbsp; Before October 6</span>
+    <h2 class="step-title">Hold the Tuesdays.</h2>
+    <p class="step-body">Six sessions: October 6, 13, 20, 27 · November 3, 10 — Tuesdays, 7:00–8:30 pm Central. Put them on your calendar now. Session links, the Field Journal, and your first worksheet arrive by email before the first session.</p>
+    <p class="quiet-note">Can't make one live? Every session is recorded and delivered within 24 hours.</p>
+  </div>
+</section>
+
+<section class="closing">
+  <p>That's everything. Nothing else is asked of you before we begin — the Reading is your arrival, and the room does the rest. If a question surfaces between now and October, reply to any email from me. It reaches me directly.</p>
+</section>
+
+<footer>
+  <a href="/" class="footer-name">Christy Paxton Wade</a>
+  <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
+</footer>
+</body>
+</html>

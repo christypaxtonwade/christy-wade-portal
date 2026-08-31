@@ -108,6 +108,10 @@
       "dest": "/course.html"
     },
     {
+      "src": "/course/welcome",
+      "dest": "/course-welcome.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
