@@ -1,33 +1,115 @@
 {
   "version": 2,
   "builds": [
-    { "src": "**/*", "use": "@vercel/static" }
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
+    }
   ],
   "routes": [
-    { "src": "/", "dest": "/index.html" },
-    { "src": "/begin", "dest": "/begin.html" },
-    { "src": "/earth", "dest": "/earth.html" },
-    { "src": "/sky", "dest": "/sky.html" },
-    { "src": "/life", "dest": "/life.html" },
-    { "src": "/mirror", "dest": "/mirror.html" },
-    { "src": "/about", "dest": "/about.html" },
-    { "src": "/map", "dest": "/map.html" },
-    { "src": "/signals", "dest": "/signals.html" },
-    { "src": "/signals/upgrade", "dest": "/signals-upgrade.html" },
-    { "src": "/signals/received", "dest": "/signals-received.html" },
-    { "src": "/signals/recover", "dest": "/signals-recover.html" },
-    { "src": "/signals/reading/[a-f0-9]+", "dest": "/signals-tier2-reading.html" },
-    { "src": "/signals/reading", "dest": "/signals-reading.html" },
-    { "src": "/intake", "dest": "/intake.html" },
-    { "src": "/codex", "dest": "/codex.html" },
-    { "src": "/offerings", "dest": "/index.html" },
-    { "src": "/tapestry", "dest": "/tapestry.html" },
-    { "src": "/inside-the-work", "dest": "/inside-the-work.html" },
-    { "src": "/sovereign-descent", "dest": "/sovereign-descent.html" },
-    { "src": "/worksheet", "dest": "/working-with-your-reading-worksheet.pdf" },
-    { "src": "/masterclass", "dest": "/masterclass.html" },
-    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
-    { "src": "/robots.txt", "dest": "/robots.txt" },
-    { "src": "/(.*)", "dest": "/$1" }
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/begin",
+      "dest": "/begin.html"
+    },
+    {
+      "src": "/earth",
+      "dest": "/earth.html"
+    },
+    {
+      "src": "/sky",
+      "dest": "/sky.html"
+    },
+    {
+      "src": "/life",
+      "dest": "/life.html"
+    },
+    {
+      "src": "/mirror",
+      "dest": "/mirror.html"
+    },
+    {
+      "src": "/about",
+      "dest": "/about.html"
+    },
+    {
+      "src": "/map",
+      "dest": "/map.html"
+    },
+    {
+      "src": "/signals",
+      "dest": "/signals.html"
+    },
+    {
+      "src": "/signals/upgrade",
+      "dest": "/signals-upgrade.html"
+    },
+    {
+      "src": "/signals/received",
+      "dest": "/signals-received.html"
+    },
+    {
+      "src": "/signals/recover",
+      "dest": "/signals-recover.html"
+    },
+    {
+      "src": "/signals/reading/[a-f0-9]+",
+      "dest": "/signals-tier2-reading.html"
+    },
+    {
+      "src": "/signals/reading",
+      "dest": "/signals-reading.html"
+    },
+    {
+      "src": "/intake",
+      "dest": "/intake.html"
+    },
+    {
+      "src": "/codex",
+      "dest": "/codex.html"
+    },
+    {
+      "src": "/offerings",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/tapestry",
+      "dest": "/tapestry.html"
+    },
+    {
+      "src": "/inside-the-work",
+      "dest": "/inside-the-work.html"
+    },
+    {
+      "src": "/sovereign-descent",
+      "dest": "/sovereign-descent.html"
+    },
+    {
+      "src": "/worksheet",
+      "dest": "/working-with-your-reading-worksheet.pdf"
+    },
+    {
+      "src": "/masterclass",
+      "dest": "/masterclass.html"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/sitemap.xml"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "/course",
+      "dest": "/course.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
