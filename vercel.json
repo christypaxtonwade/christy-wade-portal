@@ -112,6 +112,10 @@
       "dest": "/course-welcome.html"
     },
     {
+      "src": "/threshold",
+      "dest": "/threshold.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Gate Are You At? · The Threshold</title>
+<meta name="description" content="You are not lost. You are becoming. Fourteen questions, about four minutes, to find which of the seven gates you are standing at.">
+<link rel="canonical" href="https://christypaxtonwade.com/threshold">
+<meta property="og:title" content="Which Gate Are You At?">
+<meta property="og:description" content="You are not lost. You are becoming. A four-minute map for women between who they were and who they are becoming.">
+<meta property="og:url" content="https://christypaxtonwade.com/threshold">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#fbf8f2;
+    --paper-2:#f3eee3;
+    --line:#e2d9c6;
+    --ink:#221c15;
+    --ink-soft:#5b5246;
+    --ink-faint:#8c8272;
+    --gold:#8a6a2f;
+    --gold-soft:#c9ab6c;
+    --plum:#4a2b45;
+    --ff-d:'Cormorant Garamond',Georgia,serif;
+    --ff-b:'Jost',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ff-b);font-weight:300;font-size:1.1rem;line-height:1.65;}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+  a:hover{border-bottom-color:var(--gold)}
+  .wrap{max-width:720px;margin:0 auto;padding:0 1.25rem}
+
+  header.top{padding:1.4rem 0;border-bottom:1px solid var(--line)}
+  header.top .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+  .brand{font-family:var(--ff-d);font-size:1.35rem;font-weight:500;letter-spacing:.02em;color:var(--ink);border:0}
+  .brand small{display:block;font-family:var(--ff-b);font-size:.72rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint)}
+  .top-link{font-size:.9rem;color:var(--ink-soft);border:0}
+
+  .eyebrow{font-size:.74rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin:0 0 .9rem}
+  h1{font-family:var(--ff-d);font-weight:400;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.08;margin:0 0 1.1rem;letter-spacing:-.01em}
+  .lede{font-size:1.2rem;color:var(--ink-soft);max-width:34em;margin:0 0 1.2rem}
+  .meta{font-size:.92rem;color:var(--ink-faint);margin:0 0 2rem}
+
+  section.intro{padding:4rem 0 2.5rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--ff-b);font-weight:400;font-size:1rem;letter-spacing:.04em;padding:.9rem 1.7rem;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;transition:background .2s,color .2s}
+  .btn:hover{background:var(--plum);border-color:var(--plum)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{background:var(--paper-2);color:var(--ink)}
+  .btn[disabled]{opacity:.35;cursor:default}
+  .btn[disabled]:hover{background:var(--ink);border-color:var(--ink)}
+
+  /* quiz */
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:2rem clamp(1.1rem,4vw,2.4rem) 1.8rem;margin:0 0 3rem;box-shadow:0 1px 0 rgba(34,28,21,.03)}
+  .progress{display:flex;justify-content:space-between;font-size:.86rem;color:var(--ink-faint);margin-bottom:.7rem}
+  .bar{height:2px;background:var(--paper-2);border-radius:2px;overflow:hidden;margin-bottom:2rem}
+  .bar > i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+  .prompt{font-size:.74rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 .8rem}
+  h2.q{font-family:var(--ff-d);font-weight:400;font-size:clamp(1.7rem,4.6vw,2.3rem);line-height:1.18;margin:0 0 1.6rem}
+  .opts{display:grid;gap:.7rem;margin:0 0 1.8rem;padding:0;list-style:none}
+  .opt{width:100%;text-align:left;font:inherit;font-size:1.05rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1rem 1.15rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:border-color .15s,background .15s}
+  .opt:hover{border-color:var(--gold-soft);background:#fff}
+  .opt[aria-checked="true"]{border-color:var(--gold);background:#fff;box-shadow:inset 0 0 0 1px var(--gold)}
+  .opt .dot{flex:none;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--ink-faint)}
+  .opt[aria-checked="true"] .dot{border-color:var(--gold);background:radial-gradient(circle,var(--gold) 45%,transparent 50%)}
+  .nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;border-top:1px solid var(--line);padding-top:1.3rem}
+  .back{background:none;border:0;font:inherit;font-size:.95rem;color:var(--ink-soft);cursor:pointer;padding:.5rem 0}
+  .back[disabled]{opacity:.3;cursor:default}
+  .note{font-size:.88rem;color:var(--ink-faint);max-width:38em;margin:0 auto 3rem;display:flex;gap:.6rem;align-items:flex-start}
+  .note b{font-weight:500;color:var(--ink-soft)}
+
+  /* result */
+  .result{padding:3rem 0 2rem}
+  .gate-num{font-family:var(--ff-d);font-size:.95rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:0 0 .6rem}
+  .gate-name{font-family:var(--ff-d);font-weight:400;font-size:clamp(2.6rem,8vw,4rem);line-height:1.05;margin:0 0 .6rem}
+  .gate-q{font-family:var(--ff-d);font-style:italic;font-size:1.5rem;color:var(--ink-soft);margin:0 0 1.6rem}
+  .gate-body{font-size:1.15rem;max-width:36em;margin:0 0 2.2rem}
+  .rule{height:1px;background:var(--line);margin:2.4rem 0}
+  .capture{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.8rem clamp(1.1rem,4vw,2.2rem)}
+  .capture h3{font-family:var(--ff-d);font-weight:500;font-size:1.7rem;margin:0 0 .4rem}
+  .capture p{margin:0 0 1.2rem;color:var(--ink-soft)}
+  .capture form{display:flex;gap:.6rem;flex-wrap:wrap}
+  .capture input[type=email]{flex:1 1 220px;font:inherit;font-size:1rem;padding:.85rem 1rem;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink)}
+  .capture input[type=email]:focus{outline:none;border-color:var(--gold)}
+  .capture .fine{font-size:.82rem;color:var(--ink-faint);margin:.9rem 0 0}
+  .success{display:none}
+  .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+  .all-gates{margin-top:3rem}
+  .all-gates h4{font-size:.74rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 1rem}
+  .all-gates ol{list-style:none;padding:0;margin:0;display:grid;gap:.35rem}
+  .all-gates li{display:flex;gap:.8rem;font-size:.95rem;color:var(--ink-soft)}
+  .all-gates li b{font-weight:500;color:var(--ink);min-width:1.4em;font-family:var(--ff-d);font-size:1.1rem}
+  .all-gates li.you{color:var(--ink)}
+  .all-gates li.you::after{content:"you are here";font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-left:auto;white-space:nowrap}
+
+
+  .mirror{font-family:var(--ff-d);font-weight:500;font-size:1.55rem;line-height:1.3;margin:0 0 1.4rem;max-width:26em}
+  .gate-body p{margin:0 0 1rem}
+  .sub{font-size:.74rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:2rem 0 .7rem}
+  .recog{list-style:none;padding:0;margin:0 0 .5rem;display:grid;gap:.45rem;max-width:36em}
+  .recog li{padding-left:1.3rem;position:relative;color:var(--ink-soft)}
+  .recog li::before{content:"";position:absolute;left:0;top:.72em;width:.5rem;height:1px;background:var(--gold)}
+  .invite{margin:2.2rem 0 0;padding:1.2rem 0 1.2rem 1.4rem;border-left:2px solid var(--gold-soft);font-family:var(--ff-d);font-size:1.45rem;line-height:1.35;color:var(--ink)}
+  .journal{font-family:var(--ff-d);font-style:italic;font-size:1.35rem;color:var(--ink-soft);margin:0}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:.5rem}
+  .pair p{margin:0;color:var(--ink-soft);font-size:1rem}
+  .pair .sub{margin-top:1.6rem}
+  .neighbor{margin:1rem 0 2.4rem}
+  .neighbor p{margin:0;font-size:1.05rem}
+  .neighbor b{font-weight:500;display:block;font-family:var(--ff-d);font-size:1.4rem}
+  .neighbor i{color:var(--ink-soft)}
+  @media (max-width:560px){.pair{grid-template-columns:1fr}}
+  footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.9rem;color:var(--ink-faint)}
+  footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  [hidden]{display:none!important}
+  .sr{position:absolute;left:-9999px}
+  @media (prefers-reduced-motion:reduce){.bar > i{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/threshold">The Threshold<small>Christy Paxton Wade</small></a>
+    <a class="top-link" href="https://christypaxtonwade.com">christypaxtonwade.com</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- INTRO + QUIZ -->
+  <section class="intro" id="view-quiz">
+    <div class="wrap">
+      <p class="eyebrow">The Threshold Map</p>
+      <h1>Which Gate Are You At?</h1>
+      <p class="lede">You are not lost. You are becoming. Seven gates, one cycle. Take a few quiet minutes to find the one that is asking for your attention now.</p>
+      <p class="meta">14 questions · about 4 minutes · no email required</p>
+
+      <div class="card" id="quiz" aria-live="polite">
+        <div class="progress"><span id="p-count">Question 1 of 14</span><span id="p-pct">0% complete</span></div>
+        <div class="bar"><i id="p-bar"></i></div>
+        <p class="prompt">Choose what feels closest</p>
+        <h2 class="q" id="q-text"></h2>
+        <ul class="opts" id="q-opts" role="radiogroup" aria-labelledby="q-text"></ul>
+        <div class="nav">
+          <button class="back" id="btn-back" type="button">← Back</button>
+          <button class="btn" id="btn-next" type="button" disabled>Continue →</button>
+        </div>
+      </div>
+
+      <p class="note"><span>◎</span><span>This is a brief reflective exercise, not therapy, diagnosis, or crisis support. Choose the response that feels most true <b>in this season</b>; there are no right answers.</span></p>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="result" id="view-result" hidden>
+    <div class="wrap">
+      <p class="eyebrow">You are standing at</p>
+      <p class="gate-num" id="r-num"></p>
+      <h1 class="gate-name" id="r-name"></h1>
+      <p class="gate-q" id="r-q"></p>
+      <p class="mirror" id="r-mirror"></p>
+      <div class="gate-body" id="r-body"></div>
+
+      <h4 class="sub">You may recognize yourself here if</h4>
+      <ul class="recog" id="r-recog"></ul>
+
+      <blockquote class="invite" id="r-invite"></blockquote>
+
+      <h4 class="sub">Your next movement</h4>
+      <p class="gate-body" id="r-move"></p>
+
+      <h4 class="sub">A line for your journal</h4>
+      <p class="journal" id="r-journal"></p>
+
+      <div class="pair">
+        <div><h4 class="sub">The gift</h4><p id="r-gift"></p></div>
+        <div><h4 class="sub">The trap</h4><p id="r-trap"></p></div>
+      </div>
+
+      <div class="neighbor">
+        <h4 class="sub">Your neighboring gate</h4>
+        <p><b id="r-nb-name"></b> <i id="r-nb-q"></i></p>
+      </div>
+
+      <div class="capture" id="capture">
+        <h3>Walk this gate for five days</h3>
+        <p>The Threshold Journey is five short letters, one a day, written for the gate you are standing at. Where you are, what it asks, and what comes next.</p>
+        <iframe name="kit-target" id="kit-target" style="display:none;width:0;height:0;border:0" aria-hidden="true"></iframe>
+        <form id="kit-form" method="post" target="kit-target">
+          <input type="email" name="email_address" placeholder="Your email" aria-label="Email address" required>
+          <input type="hidden" name="fields[threshold_gate]" id="kit-gate">
+          <input type="hidden" name="fields[signup_source]" id="kit-source" value="threshold">
+          <button class="btn" type="submit">Begin the Journey</button>
+        </form>
+        <p class="fine">One letter a day for five days, then an occasional note. Leave whenever you like.</p>
+        <div class="success" id="kit-success">
+          <h3>The first letter is on its way.</h3>
+          <p>Check your inbox in the next few minutes. If it isn't there, look in promotions or spam once, then it will know where to go.</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn ghost" id="btn-share" type="button">Share your gate</button>
+        <a class="btn ghost" id="btn-retake" href="/threshold" style="border-bottom:1px solid var(--line)">Take it again</a>
+      </div>
+
+      <div class="all-gates">
+        <h4>The seven gates</h4>
+        <ol id="r-list"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARED-LINK VIEW (someone arrives at /threshold?gate=N) -->
+  <section class="result" id="view-shared" hidden>
+    <div class="wrap">
+      <p class="eyebrow">A friend is standing at</p>
+      <p class="gate-num" id="s-num"></p>
+      <h1 class="gate-name" id="s-name"></h1>
+      <p class="gate-q" id="s-q"></p>
+      <p class="mirror" id="s-mirror"></p>
+      <div class="gate-body" id="s-body"></div>
+      <div class="actions">
+        <a class="btn" href="/threshold" style="border-bottom:1px solid var(--ink)">Find your own gate →</a>
+      </div>
+      <p class="meta" style="margin-top:1.2rem">14 questions · about 4 minutes · no email required</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>The Threshold · Christy Paxton Wade</span>
+    <span><a href="https://christypaxtonwade.com" style="border:0;color:inherit">christypaxtonwade.com</a></span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIG — the only two values that need setting before launch.
+   Create a Kit form named "The Threshold Journey" (inline, any style;
+   the page supplies its own styling). Then paste its numeric form ID here.
+   Create two Kit custom fields: threshold_gate and signup_source.
+   ============================================================ */
+const KIT_FORM_ID = "9908545";    // Kit form "The Threshold Journey" (uid 446a0ed477)
+const SITE = "https://christypaxtonwade.com";
+
+/* ---------- The seven gates · from seven-gates-master.md v2 · VOICE PASS PENDING ---------- */
+const GATES = {
+  1:{name:"The Old Identity", q:"Who have you been?", nb:2,
+     mirror:"You know exactly who you have been. That is where it starts.",
+     body:[
+       "The life you have is one you built well: the roles, the competence, being the one who holds it together. It works. You are not sure who it is working for.",
+       "At the outer gate of the oldest descent story we have, the keeper asks the queen who she is, and she answers with her titles. She can only say who she has been. You are standing where she stood, and the honest answer to <em>who are you</em> is a list of what you do for people.",
+       "That architecture was in place before you chose it. The question at this gate is not what is wrong with it. The question is who drew it."
+     ],
+     recog:["your life works, and you are not sure who it is working for","when someone asks who you are, you answer with what you do for people","you are very good at being the responsible one, and you have started to feel the cost","you catch yourself performing the version of you that everyone expects","you are restless in a life you would have chosen, and did"],
+     invite:"Not <em>what is wrong with this life</em> but <em>who drew it</em>. Look at the structure before you decide anything about it.",
+     move:"Write down the roles you hold and, beside each, whether you chose it, inherited it, or were handed it and never asked. Then tell one person you trust that something is beginning, and what to do if you go quiet. The second act is the one the story insists on.",
+     journal:"The title I answer with, and the one I was given before I could choose it, is…",
+     gift:"Self-awareness: seeing the shape of a life clearly, without blame, and appointing a witness before the shape changes.",
+     trap:"Going down wearing all seven emblems, believing the regalia will hold below."},
+  2:{name:"The Descent", q:"What am I setting down to go?", nb:3,
+     mirror:"You have already turned. That is the whole difference.",
+     body:[
+       "The old form is coming apart and the next one is not visible. You know it is not working and you keep trying to make it work; the effort has doubled and the return has vanished.",
+       "The queen in the story did not fall into the underworld. She set her ear to the Great Below, left her seven temples, and walked. The leaving is an act. What makes this gate a descent and not a collapse is that you turn and face it.",
+       "Nothing here needs to be fixed quickly. What feels like refusal may be preparation. What feels like safety may only be the familiar."
+     ],
+     recog:["the things that gave your life its structure are changing, and you did not choose the timing","you keep trying to return to a version of life that no longer fits","you feel unmoored, and the word <em>fine</em> has stopped being true","you have started, quietly, to listen to what is calling you down instead of arguing with it","you want permission not to have the answer yet"],
+     invite:"The descent is not a collapse when you turn and walk it.",
+     move:"Stop one effort this week. Choose the thing you keep doing to hold the old shape together, do not do it once, and notice what happens.",
+     journal:"The thing I am setting down to go is…",
+     gift:"Honesty about change, and the capacity to hear what is calling before it is understood.",
+     trap:"Making the middle a permanent address; being pushed instead of walking; facing backward at the gate."},
+  3:{name:"The Stripping", q:"What is being taken?", nb:4,
+     mirror:"You are not being punished. You are being undressed.",
+     body:[
+       "Things you were, and were good at, are being removed. Standing. The ability to draw. The right to judge. A title that quietly stopped applying and no one announced it. And every time you ask why, you are told, one way or another, that this is simply how it is now.",
+       "At each of seven gates the keeper took one emblem from the queen: the crown, the beads, the ornament that draws, the ring, the measuring rod, and last the robe. Each time she asked <em>what is this</em>, and each time she was told to be silent. She arrived naked. That is not the end of her story. It is the middle.",
+     ],
+     recog:["your children no longer need the mother you were","your work no longer needs the expert you were","your body no longer draws the way it did, or your judgment is no longer asked for","a title you carried has quietly stopped applying, and no one announced it","you are being asked not to make a scene about any of this, and you are furious, and you are quiet"],
+     invite:"Let it be taken. What is removed at these gates is what you could not have carried below anyway.",
+     move:"Let one thing be taken this week without explaining yourself or arguing for it. Notice what is still there when it is gone.",
+     journal:"What was taken at this gate, and what I did not say about it, is…",
+     gift:"Nakedness as truth: what is left when the offices are gone is the only thing that was ever yours.",
+     trap:"Arguing at the gate: clinging to the emblems, negotiating with the keeper, trying to go below still wearing the crown."},
+  4:{name:"The Underworld", q:"What must I endure without acting?", nb:5,
+     mirror:"Nothing is being asked of you. Stay.",
+     body:[
+       "Nothing you do works, and you have stopped doing. You are not resisting and you are not choosing. Time has gone strange. Grief or rage arrives without a cause you can name, and it may not be only yours. Something older than your own life is looking at you.",
+       "In the story the queen is judged, killed by her sister's look, and hung on a peg for three days and three nights. Nothing happens. The great fathers, asked to help, refuse. That is the point of the peg: it cannot be climbed out of, only waited on.",
+       "This is the one gate where nothing is asked of you."
+     ],
+     recog:["you cannot make a decision, and you have stopped trying to","the people you expected to help have said no, and it did not surprise you","time has gone strange; days pass without shape","grief or rage arrives without a cause you can name, and it is not yours, or not only yours","you feel looked at by something older than your own life"],
+     invite:"Stay dead long enough to be missed.",
+     move:"None. Decide nothing for three days. This gate has no act; it has a duration. If you must do something, mark the days.",
+     journal:"What I am refusing to do for three days is…",
+     gift:"Depth: knowing the Great Below from the inside, because you have been it.",
+     trap:"Making the peg permanent. Or forcing the exit before the witness comes, which the story shows cannot work."},
+  5:{name:"The Witness", q:"Who will come for me?", nb:6,
+     mirror:"Someone is coming for you, and it may be you.",
+     body:[
+       "Someone came. They did not fix anything. They stayed with what was unbearable until it loosened. And things you had set down have started coming back on their own, after, not because you chased them.",
+       "After three days the queen's servant did what she was told: she mourned, and went for help. The powerful refused. Then two creatures too small to be stopped slipped in and did nothing but groan with the pain of the queen of the dead until she gave up the body. That is how the return works. Not effort. Mirroring.",
+       "Sometimes the one who comes is you, sitting beside yourself the way the small ones sat beside the queen. That is a witness too, and it is not a lesser one."
+     ],
+     recog:["someone kept watch for you without your knowing","the help that worked was not the help you asked for","being heard changed something that trying could not","things you used to love have started coming back on their own, after, not before","you have learned to sit with your own pain the way you would sit with a friend's"],
+     invite:"You do not climb out. You are brought out, by whoever is willing to sit in the dark with you and say <em>oh, your insides</em>.",
+     move:"Be witnessed. Tell the person from the first gate where you actually are, or sit in a room where women say it aloud. If no one can come, be the small creature for yourself: name what hurts, out loud, without fixing it, and stay.",
+     journal:"The one who came for me, and what they did not try to fix, was…",
+     gift:"Being received, and what comes back up with you: the loves, the making, the curiosity, the capacities that traveled forward without your knowing.",
+     trap:"Refusing the small helpers because they are not the fathers; waiting for rescue from the ones who already said no; refusing to sit with yourself because it is not enough."},
+  6:{name:"The Price", q:"What must I hand over so I can live?", nb:7,
+     mirror:"The return was not free, and you know what it costs.",
+     body:[
+       "You are back, and something has to be paid. You can tell, now, who kept watch while you were gone and who did not. There is something you loved that did not mourn your absence, and you know it.",
+       "The laws of the underworld are perfect: no one leaves unless another is sent down. When the demons reached for the ones who had mourned her, the queen refused, three times. Then she found her husband on his throne, dressed in splendor, not grieving, and gave him the look she had been given. Later his sister offered to share his term. The cost can be shared. It cannot be skipped.",
+       "This is the only authority the underworld returns to you, and it is enough."
+     ],
+     recog:["you can tell, now, who kept watch and who did not","there is something you loved that did not mourn your absence","you carry a harder gaze than you used to, and you know it","you are being asked, by what you owe, to set down something you would once have defended","you are learning that the cost can be shared, but not skipped"],
+     invite:"Spare what mourned you. Give what did not.",
+     move:"Name the one thing in your life that did not grieve your absence, and set it down. Not the people who held you; the thing that stayed on its throne.",
+     journal:"What did not mourn me, and what I am handing over, is…",
+     gift:"Discernment: the power to end what must end, and the restraint to spare what should be spared.",
+     trap:"Giving up the ones who held you to protect the thing on the throne. Refusing to pay at all. Believing the price makes you someone who needs no one."},
+  7:{name:"The Return", q:"What am I here to create now?", nb:1,
+     mirror:"You came up as the other star.",
+     body:[
+       "You have changed, and it cost something, and now you need to build a life that reflects both. Decisions are coming from your own knowing. The room has noticed. What you have lived through feels meant to be shared.",
+       "The queen rises. The star that set in the evening rises in the morning, the same body at a different altitude. She does not come up as she went down, and she does not come up alone. The debt is real, the term is shared, and the gates will open again.",
+       "The territory you just left is the one other women are standing in now."
+     ],
+     recog:["you can feel a new chapter asking to be made real","you have started the thing you kept talking about","you make decisions from your own knowing now, and the room has noticed","what you have lived through feels meant to be shared","you notice the territory you just left is the one other women are standing in now"],
+     invite:"You have come round to where the walk began, at a different altitude, carrying what the crossing gathered. The work at this gate is transmission, in the form it actually wants to take.",
+     move:"Change one structure this week to match who you are now: a commitment ended, a schedule redrawn, a room repurposed, an offer made.",
+     journal:"What I have lived through is becoming…",
+     gift:"Embodiment and contribution: a life that holds the change and gives from it.",
+     trap:"Rushing to move on before integrating; pretending you came up alone; building so fast the debt is never named, so the next descent arrives early."}
+};
+const NB_Q = {1:"When this new life becomes the life you built, who will you have been?",2:"What will you set down to go?",3:"When you have left, what is the first thing to go?",4:"When there is nothing left to take, what happens?",5:"Who will notice you are gone?",6:"Now that you are alive, what is owed?",7:"How do you live this, now that it is paid for?"};
+
+
+/* ---------- Questions: each option carries the gate it points to ---------- */
+const QUESTIONS = [
+ {q:"When someone asks how you are, the truest answer is…",o:[["Fine, and I am not sure who that is anymore",1],["Somewhere in the middle of something I can't name yet",2],["Quiet. Things are being taken and I have been asked not to make a scene",3],["Back, and different, and it cost something",7]]},
+ {q:"Lately, effort…",o:[["Still works, and I am starting to wonder who it is for",1],["Has doubled while the return has vanished",2],["Has stopped. I am not resisting and I am not choosing",4],["Goes into building something, finally",7]]},
+ {q:"When you needed help…",o:[["The people I expected to come said no, and it did not surprise me",4],["It came, but not from where I asked, and not in the way I asked",5],["I learned who kept watch, and who did not",6],["I had it, and now I am the one who can give it",7]]},
+ {q:"Something you were, and were good at…",o:[["Is still what everyone calls me",1],["I have started setting down on purpose",2],["Is being removed, and every time I ask why I am told this is how it is now",3],["Came back on its own, after, not because I chased it",5]]},
+ {q:"Time, these days…",o:[["Runs on other people's needs",1],["Feels like a middle with no far side in sight",2],["Has gone strange; days pass without shape",4],["Has a term I can feel; this chapter is paid for and it is mine",7]]},
+ {q:"Grief or anger arrives…",o:[["Rarely; I keep the room calm",1],["When I try to go back and cannot",2],["Without a cause I can name, and it may not be only mine",4],["Aimed clearly now, at what did not grieve me",6]]},
+ {q:"If you turned toward what is calling you…",o:[["I would not know what to call it, only that the old shape is loosening",2],["I would have to walk in without the things I am known for",3],["I already did, and someone sat with me in the dark",5],["I would be turning toward something to make",7]]},
+ {q:"Being heard…",o:[["Is something I do for other people",1],["Changed something that trying could not",5],["Showed me who was listening while I was gone, and who was not",6],["Is what I want to give now, to women standing where I stood",7]]},
+ {q:"What is being asked of you right now?",o:[["To keep being the one who holds it",1],["To let something be taken without arguing",3],["Nothing. To wait, and not decide",4],["To hand something over so I can live",6]]},
+ {q:"A title, a role, or a way of being wanted…",o:[["Is how I answer when someone asks who I am",1],["Quietly stopped applying, and no one announced it",3],["Stopped mattering; for now, nothing does",4],["I set down, deliberately, because it did not mourn me",6]]},
+ {q:"Sitting with what hurts, instead of fixing it…",o:[["Is not something I can do yet; I keep trying to make the old way work",2],["Feels like giving in; I am still arguing",3],["Is what someone did with me, and it helped more than any advice",5],["Is something I have learned to do for myself, and stay",5]]},
+ {q:"There is something you loved that…",o:[["You are finally making, in the form it wants to take",7],["Is being taken from you now",3],["Came back up with you, after",5],["Did not grieve your absence, and you know it",6]]},
+ {q:"What are you saying no to right now?",o:[["Explaining myself one more time",3],["Deciding anything, for now",4],["Being pulled out before I am ready",4],["Giving up the people who kept watch, whatever it costs",6]]},
+ {q:"When you think about what comes next…",o:[["I cannot see it yet, and I have turned toward it anyway",2],["I know I will not get there alone, and I have stopped trying to",5],["I know something has to be given up first, and I know what",6],["I am already building it, and I know what it cost",7]]}
+];
+
+/* ---------- State ---------- */
+const answers = new Array(QUESTIONS.length).fill(null); // stores gate number chosen
+let i = 0;
+
+const $ = id => document.getElementById(id);
+const viewQuiz = $("view-quiz"), viewResult = $("view-result"), viewShared = $("view-shared");
+
+function render(){
+  const q = QUESTIONS[i];
+  $("q-text").textContent = q.q;
+  $("p-count").textContent = `Question ${i+1} of ${QUESTIONS.length}`;
+  const pct = Math.round((i/QUESTIONS.length)*100);
+  $("p-pct").textContent = `${pct}% complete`;
+  $("p-bar").style.width = pct + "%";
+  const ul = $("q-opts"); ul.innerHTML = "";
+  q.o.forEach(([label,gate],k)=>{
+    const li = document.createElement("li");
+    const b = document.createElement("button");
+    b.type="button"; b.className="opt"; b.setAttribute("role","radio");
+    b.setAttribute("aria-checked", answers[i]!==null && answers[i].k===k ? "true":"false");
+    b.innerHTML = `<span>${label}</span><span class="dot" aria-hidden="true"></span>`;
+    b.addEventListener("click",()=>{ answers[i]={k,gate}; render(); });
+    li.appendChild(b); ul.appendChild(li);
+  });
+  $("btn-back").disabled = i===0;
+  $("btn-next").disabled = answers[i]===null;
+  $("btn-next").textContent = i===QUESTIONS.length-1 ? "See your gate →" : "Continue →";
+}
+
+$("btn-back").addEventListener("click",()=>{ if(i>0){ i--; render(); scrollToQuiz(); } });
+$("btn-next").addEventListener("click",()=>{
+  if(answers[i]===null) return;
+  if(i<QUESTIONS.length-1){ i++; render(); scrollToQuiz(); }
+  else showResult(score());
+});
+function scrollToQuiz(){ $("quiz").scrollIntoView({behavior:"smooth",block:"start"}); }
+
+/* Score: most-chosen gate; on a tie, the gate chosen most recently (later questions look forward) */
+function score(){
+  const counts = {}, last = {};
+  answers.forEach((a,idx)=>{ if(!a) return; counts[a.gate]=(counts[a.gate]||0)+1; last[a.gate]=idx; });
+  return Object.keys(counts).map(Number).sort((a,b)=> (counts[b]-counts[a]) || (last[b]-last[a]))[0];
+}
+
+function fillGate(prefix, n){
+  const g = GATES[n];
+  $(prefix+"-num").textContent = `Gate ${["One","Two","Three","Four","Five","Six","Seven"][n-1]}`;
+  $(prefix+"-name").textContent = g.name;
+  $(prefix+"-q").textContent = g.q;
+  $(prefix+"-mirror").textContent = g.mirror;
+  $(prefix+"-body").innerHTML = (prefix==="s" ? g.body.slice(0,1) : g.body).map(p=>`<p>${p}</p>`).join("");
+}
+
+function showResult(n){
+  const g = GATES[n];
+  fillGate("r", n);
+  $("r-recog").innerHTML = g.recog.map(r=>`<li>${r}</li>`).join("");
+  $("r-invite").innerHTML = g.invite;
+  $("r-move").innerHTML = g.move;
+  $("r-journal").textContent = g.journal;
+  $("r-gift").textContent = g.gift;
+  $("r-trap").textContent = g.trap;
+  $("r-nb-name").textContent = `Gate ${["One","Two","Three","Four","Five","Six","Seven"][g.nb-1]} · ${GATES[g.nb].name}`;
+  $("r-nb-q").textContent = NB_Q[g.nb];
+  $("kit-gate").value = n;
+  const src = new URLSearchParams(location.search).get("source"); if(src) $("kit-source").value = "threshold-"+src.replace(/[^a-z0-9_-]/gi,"").slice(0,30);
+  const ol = $("r-list"); ol.innerHTML="";
+  for(let k=1;k<=7;k++){ const li=document.createElement("li"); if(k===n) li.className="you"; li.innerHTML=`<b>${k}</b><span>${GATES[k].name} — <i>${GATES[k].q}</i></span>`; ol.appendChild(li); }
+  viewQuiz.hidden = true; viewResult.hidden = false;
+  window.scrollTo({top:0,behavior:"smooth"});
+  history.replaceState(null,"","/threshold");
+  document.title = `${g.name} · The Threshold`;
+}
+
+/* Kit form */
+(function(){
+  const f = $("kit-form");
+  if(KIT_FORM_ID){ f.action = `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`; }
+  f.addEventListener("submit", e=>{
+    if(!KIT_FORM_ID){ e.preventDefault(); alert("Email sign-up is not connected yet."); return; }
+    setTimeout(()=>{ f.hidden = true; document.querySelector("#capture .fine").hidden = true; $("kit-success").style.display="block"; }, 400);
+  });
+})();
+
+/* Share */
+$("btn-share").addEventListener("click", async ()=>{
+  const n = $("kit-gate").value;
+  const url = `${SITE}/threshold?gate=${n}`;
+  const text = `I'm standing at ${GATES[n].name}. Which gate are you at?`;
+  try{
+    if(navigator.share){ await navigator.share({title:"Which Gate Are You At?", text, url}); return; }
+    await navigator.clipboard.writeText(`${text} ${url}`);
+    $("btn-share").textContent = "Link copied";
+    setTimeout(()=> $("btn-share").textContent = "Share your gate", 2200);
+  }catch(_){}
+});
+
+/* Entry: shared link or fresh quiz */
+(function(){
+  const g = parseInt(new URLSearchParams(location.search).get("gate"),10);
+  if(g>=1 && g<=7){ fillGate("s", g); viewQuiz.hidden = true; viewShared.hidden = false; document.title = `${GATES[g].name} · The Threshold`; }
+  else render();
+})();
+</script>
+</body>
+</html>
