@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You have a place · The Seven Gates</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#fbf8f2;--paper-2:#f3eee3;--line:#e2d9c6;--ink:#221c15;--ink-soft:#5b5246;--ink-faint:#8c8272;--gold:#8a6a2f;--gold-soft:#c9ab6c;--plum:#4a2b45;--ff-d:'Cormorant Garamond',Georgia,serif;--ff-b:'Jost',system-ui,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ff-b);font-weight:300;font-size:1.1rem;line-height:1.65}
+  a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+  .wrap{max-width:640px;margin:0 auto;padding:0 1.25rem}
+  header.top{padding:1.4rem 0;border-bottom:1px solid var(--line)}
+  .brand{font-family:var(--ff-d);font-size:1.35rem;font-weight:500;color:var(--ink);border:0}
+  .brand small{display:block;font-family:var(--ff-b);font-size:.72rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint)}
+  .eyebrow{font-size:.74rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin:0 0 .9rem}
+  h1{font-family:var(--ff-d);font-weight:400;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.08;margin:0 0 1rem}
+  main{padding:4rem 0 3rem}
+  p{max-width:34em}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.8rem clamp(1.1rem,4vw,2.2rem);margin:2rem 0}
+  .card h3{font-family:var(--ff-d);font-weight:500;font-size:1.6rem;margin:0 0 .4rem}
+  .card p{margin:0 0 1.1rem;color:var(--ink-soft)}
+  form{display:flex;gap:.6rem;flex-wrap:wrap}
+  input[type=email],input[type=text]{flex:1 1 200px;font:inherit;font-size:1rem;padding:.85rem 1rem;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink)}
+  input:focus{outline:none;border-color:var(--gold)}
+  .btn{font-family:var(--ff-b);font-weight:400;font-size:1rem;letter-spacing:.04em;padding:.9rem 1.7rem;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer}
+  .fine{font-size:.85rem;color:var(--ink-faint);margin:.9rem 0 0}
+  .success{display:none}
+  .dates{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.4rem;color:var(--ink-soft)}
+  .dates b{font-weight:500;color:var(--ink);font-family:var(--ff-d);font-size:1.15rem;margin-right:.5rem}
+  footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.9rem;color:var(--ink-faint)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="/threshold">The Threshold<small>Christy Paxton Wade</small></a></div></header>
+<main>
+  <div class="wrap">
+    <p class="eyebrow">The Seven Gates · the first walk</p>
+    <h1>You have a place.</h1>
+    <p>Thank you. The walk begins Friday, October 2, at noon Central, at Gate One. Between now and then, one thing: give me the email you want the letters and the call links sent to, and your first name, so I can say it.</p>
+
+    <div class="card" id="capture">
+      <h3>Where the letters should go</h3>
+      <p>Friday-morning letters, the call link each week, and the recording the same day.</p>
+      <iframe name="kit-target" id="kit-target" style="display:none;width:0;height:0;border:0" aria-hidden="true"></iframe>
+      <form id="kit-form" method="post" target="kit-target">
+        <input type="text" name="fields[first_name]" placeholder="First name" aria-label="First name">
+        <input type="email" name="email_address" placeholder="Your email" aria-label="Email address" required>
+        <input type="hidden" name="fields[signup_source]" value="seven-gates-walk-1">
+        <button class="btn" type="submit">Send the letters here</button>
+      </form>
+      <p class="fine">If this is the same email you paid with, that is fine; enter it again anyway.</p>
+      <div class="success" id="kit-success">
+        <h3>Done.</h3>
+        <p>A welcome letter is on its way with the dates, the call link, and what to expect on the morning of Gate One.</p>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:2.5rem">The seven weeks</p>
+    <ul class="dates">
+      <li><b>1</b>The Old Identity · Fri Oct 2</li>
+      <li><b>2</b>The Descent · Fri Oct 9</li>
+      <li><b>3</b>The Stripping · Fri Oct 16</li>
+      <li><b>4</b>The Underworld · Fri Oct 23</li>
+      <li><b>5</b>The Witness · Fri Oct 30</li>
+      <li><b>6</b>The Price · Fri Nov 6</li>
+      <li><b>7</b>The Return · Fri Nov 13</li>
+    </ul>
+    <p style="margin-top:2rem">Live circle: Fridays at 12:00 noon Central, on Zoom. The link comes in the welcome letter and again each week.</p>
+    <p>Questions before we begin: reply to any letter, or write to <a href="mailto:christypaxton@gmail.com">christypaxton@gmail.com</a>.</p>
+  </div>
+</main>
+<footer><div class="wrap">The Threshold · Christy Paxton Wade</div></footer>
+<script>
+/* Create a Kit form named "The Seven Gates — walk 1" and paste its numeric ID here.
+   In Kit, the automation for that form: add tag seven-gates-walk-1 → add to sequence "Seven Gates welcome". */
+const KIT_FORM_ID = "9910810";   // Kit form "The Seven Gates - walk 1" (uid 3c7a31e718)
+(function(){
+  const f = document.getElementById("kit-form");
+  if(KIT_FORM_ID) f.action = `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`;
+  f.addEventListener("submit", e=>{
+    if(!KIT_FORM_ID){ e.preventDefault(); alert("Not connected yet."); return; }
+    setTimeout(()=>{ f.hidden = true; document.querySelector("#capture .fine").hidden = true; document.getElementById("kit-success").style.display="block"; }, 400);
+  });
+})();
+</script>
+</body>
+</html>

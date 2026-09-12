@@ -116,6 +116,14 @@
       "dest": "/threshold.html"
     },
     {
+      "src": "/seven-gates/welcome",
+      "dest": "/seven-gates-welcome.html"
+    },
+    {
+      "src": "/seven-gates",
+      "dest": "/seven-gates.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
