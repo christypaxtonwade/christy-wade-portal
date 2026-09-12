@@ -41,23 +41,10 @@
   <div class="wrap">
     <p class="eyebrow">The Seven Gates · the first walk</p>
     <h1>You have a place.</h1>
-    <p>Thank you. The walk begins Friday, October 2, at noon Central, at Gate One. Between now and then, one thing: give me the email you want the letters and the call links sent to, and your first name, so I can say it.</p>
-
-    <div class="card" id="capture">
-      <h3>Where the letters should go</h3>
-      <p>Friday-morning letters, the call link each week, and the recording the same day.</p>
-      <iframe name="kit-target" id="kit-target" style="display:none;width:0;height:0;border:0" aria-hidden="true"></iframe>
-      <form id="kit-form" method="post" target="kit-target">
-        <input type="text" name="fields[first_name]" placeholder="First name" aria-label="First name">
-        <input type="email" name="email_address" placeholder="Your email" aria-label="Email address" required>
-        <input type="hidden" name="fields[signup_source]" value="seven-gates-walk-1">
-        <button class="btn" type="submit">Send the letters here</button>
-      </form>
-      <p class="fine">If this is the same email you paid with, that is fine; enter it again anyway.</p>
-      <div class="success" id="kit-success">
-        <h3>Done.</h3>
-        <p>A welcome letter is on its way with the dates, the call link, and what to expect on the morning of Gate One.</p>
-      </div>
+    <p>Thank you. The walk begins Friday, October 2, at noon Central, at Gate One.</p>
+    <div class="card">
+      <h3>Your welcome letter is on its way</h3>
+      <p>It goes to the email you paid with, within a few minutes: the dates, the Zoom link, and what to expect on the morning of Gate One. If it has not arrived in ten minutes, look in promotions or spam once, then write to me and I will send it by hand.</p>
     </div>
 
     <p class="eyebrow" style="margin-top:2.5rem">The seven weeks</p>
@@ -75,18 +62,5 @@
   </div>
 </main>
 <footer><div class="wrap">The Threshold · Christy Paxton Wade</div></footer>
-<script>
-/* Create a Kit form named "The Seven Gates — walk 1" and paste its numeric ID here.
-   In Kit, the automation for that form: add tag seven-gates-walk-1 → add to sequence "Seven Gates welcome". */
-const KIT_FORM_ID = "9910810";   // Kit form "The Seven Gates - walk 1" (uid 3c7a31e718)
-(function(){
-  const f = document.getElementById("kit-form");
-  if(KIT_FORM_ID) f.action = `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`;
-  f.addEventListener("submit", e=>{
-    if(!KIT_FORM_ID){ e.preventDefault(); alert("Not connected yet."); return; }
-    setTimeout(()=>{ f.hidden = true; document.querySelector("#capture .fine").hidden = true; document.getElementById("kit-success").style.display="block"; }, 400);
-  });
-})();
-</script>
 </body>
 </html>

@@ -189,12 +189,11 @@
       <div class="capture" id="capture">
         <h3>Walk this gate for five days</h3>
         <p>The Threshold Journey is five short letters, one a day, written for the gate you are standing at. Where you are, what it asks, and what comes next.</p>
-        <iframe name="kit-target" id="kit-target" style="display:none;width:0;height:0;border:0" aria-hidden="true"></iframe>
-        <form id="kit-form" method="post" target="kit-target">
-          <input type="email" name="email_address" placeholder="Your email" aria-label="Email address" required>
-          <input type="hidden" name="fields[threshold_gate]" id="kit-gate">
-          <input type="hidden" name="fields[signup_source]" id="kit-source" value="threshold">
-          <button class="btn" type="submit">Begin the Journey</button>
+        <input type="hidden" id="kit-gate">
+        <form id="journey-form">
+          <input type="email" name="email" placeholder="Your email" aria-label="Email address" required>
+          <input type="text" name="hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+          <button class="btn" type="submit" id="journey-btn">Begin the Journey</button>
         </form>
         <p class="fine">One letter a day for five days, then an occasional note. Leave whenever you like.</p>
         <div class="success" id="kit-success">
@@ -241,13 +240,7 @@
 </footer>
 
 <script>
-/* ============================================================
-   CONFIG — the only two values that need setting before launch.
-   Create a Kit form named "The Threshold Journey" (inline, any style;
-   the page supplies its own styling). Then paste its numeric form ID here.
-   Create two Kit custom fields: threshold_gate and signup_source.
-   ============================================================ */
-const KIT_FORM_ID = "9908545";    // Kit form "The Threshold Journey" (uid 446a0ed477)
+/* Sign-up posts to the threshold-journey edge function (Supabase + Resend). No Kit. */
 const SITE = "https://christypaxtonwade.com";
 
 /* ---------- The seven gates · from seven-gates-master.md v2 · VOICE PASS PENDING ---------- */
@@ -369,6 +362,7 @@ const answers = new Array(QUESTIONS.length).fill(null); // stores gate number ch
 let i = 0;
 
 const $ = id => document.getElementById(id);
+const SRC = (new URLSearchParams(location.search).get("source")||"").replace(/[^a-z0-9_-]/gi,"").slice(0,30); // captured at load; the result view rewrites the URL
 const viewQuiz = $("view-quiz"), viewResult = $("view-result"), viewShared = $("view-shared");
 
 function render(){
@@ -429,7 +423,6 @@ function showResult(n){
   $("r-nb-name").textContent = `Gate ${["One","Two","Three","Four","Five","Six","Seven"][g.nb-1]} · ${GATES[g.nb].name}`;
   $("r-nb-q").textContent = NB_Q[g.nb];
   $("kit-gate").value = n;
-  const src = new URLSearchParams(location.search).get("source"); if(src) $("kit-source").value = "threshold-"+src.replace(/[^a-z0-9_-]/gi,"").slice(0,30);
   const ol = $("r-list"); ol.innerHTML="";
   for(let k=1;k<=7;k++){ const li=document.createElement("li"); if(k===n) li.className="you"; li.innerHTML=`<b>${k}</b><span>${GATES[k].name} — <i>${GATES[k].q}</i></span>`; ol.appendChild(li); }
   viewQuiz.hidden = true; viewResult.hidden = false;
@@ -438,13 +431,19 @@ function showResult(n){
   document.title = `${g.name} · The Threshold`;
 }
 
-/* Kit form */
+/* Journey sign-up → Supabase edge function (Resend sends Day 1 immediately) */
+const JOURNEY_URL = "https://egldaiqrwuxqgavjwwim.supabase.co/functions/v1/threshold-journey";
 (function(){
-  const f = $("kit-form");
-  if(KIT_FORM_ID){ f.action = `https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`; }
-  f.addEventListener("submit", e=>{
-    if(!KIT_FORM_ID){ e.preventDefault(); alert("Email sign-up is not connected yet."); return; }
-    setTimeout(()=>{ f.hidden = true; document.querySelector("#capture .fine").hidden = true; $("kit-success").style.display="block"; }, 400);
+  const f = $("journey-form");
+  f.addEventListener("submit", async e=>{
+    e.preventDefault();
+    const btn = $("journey-btn"); btn.disabled = true; btn.textContent = "Sending…";
+    const payload = { action:"subscribe", email: f.email.value.trim(), gate: Number($("kit-gate").value)||null, source: SRC ? "threshold-"+SRC : "threshold", hp: f.hp.value };
+    try{
+      const r = await fetch(JOURNEY_URL, { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(payload) });
+      if(!r.ok) throw new Error("bad status");
+      f.hidden = true; document.querySelector("#capture .fine").hidden = true; $("kit-success").style.display="block";
+    }catch(_){ btn.disabled = false; btn.textContent = "Try again"; }
   });
 })();
 
