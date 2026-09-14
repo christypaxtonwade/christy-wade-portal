@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Which Gate Are You At? · The Threshold</title>
+<title>Where Do You Stand? · The Threshold</title>
 <meta name="description" content="You are not lost. You are becoming. Fourteen questions, about four minutes, to find which of the seven gates you are standing at.">
 <link rel="canonical" href="https://christypaxtonwade.com/threshold">
-<meta property="og:title" content="Which Gate Are You At?">
+<meta property="og:title" content="Where Do You Stand?">
 <meta property="og:description" content="You are not lost. You are becoming. A four-minute map for women between who they were and who they are becoming.">
 <meta property="og:url" content="https://christypaxtonwade.com/threshold">
 <meta property="og:type" content="website">
@@ -135,7 +135,7 @@
   <section class="intro" id="view-quiz">
     <div class="wrap">
       <p class="eyebrow">The Threshold Map</p>
-      <h1>Which Gate Are You At?</h1>
+      <h1>Where Do You Stand?</h1>
       <p class="lede">You are not lost. You are becoming. Seven gates, one cycle. Take a few quiet minutes to find the one that is asking for your attention now.</p>
       <p class="meta">14 questions · about 4 minutes · no email required</p>
 
@@ -451,9 +451,9 @@ const JOURNEY_URL = "https://egldaiqrwuxqgavjwwim.supabase.co/functions/v1/thres
 $("btn-share").addEventListener("click", async ()=>{
   const n = $("kit-gate").value;
   const url = `${SITE}/threshold?gate=${n}`;
-  const text = `I'm standing at ${GATES[n].name}. Which gate are you at?`;
+  const text = `I'm standing at ${GATES[n].name}. Where do you stand?`;
   try{
-    if(navigator.share){ await navigator.share({title:"Which Gate Are You At?", text, url}); return; }
+    if(navigator.share){ await navigator.share({title:"Where Do You Stand?", text, url}); return; }
     await navigator.clipboard.writeText(`${text} ${url}`);
     $("btn-share").textContent = "Link copied";
     setTimeout(()=> $("btn-share").textContent = "Share your gate", 2200);
