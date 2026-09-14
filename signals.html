@@ -34,13 +34,32 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink: #0c0a07;
-    --ink-mid: #111009;
-    --gold: #b8924a;
-    --gold-lt: #d4ae6e;
-    --gold-dim: rgba(184,146,74,0.3);
-    --cream: #f0e8d0;
-    --plum: #251020;
+    /* VELLUM & INK — light theme.
+       Variable NAMES are unchanged so /framing.css and every selector keep working;
+       the VALUES are inverted: --ink / --ink-mid are now the vellum tones,
+       --cream / --parchment are now the ink tones. Gold text uses --gold-text. */
+    --paper:      #e8dcbb;
+    --paper-2:    #dfd1a9;
+    --line:       #c9b58a;
+    --ink:        #e8dcbb;   /* page ground */
+    --ink-mid:    #dfd1a9;   /* alternate surface, cards */
+    --ink-soft:   #4a4033;   /* secondary text  (7.4:1) */
+    --ink-dim:    #615546;   /* meta / labels   (5.3:1) */
+    --gold:       #8a6a2f;   /* ornament only: rules, frames, brackets, SVG strokes (3.7:1) — never text */
+    --gold-lt:    #8a6a2f;   /* corner brackets & frames */
+    --gold-glow:  #c9ab6c;   /* decorative only — never text */
+    --gold-soft:  #c9ab6c;
+    --gold-dim:   rgba(138,106,47,0.45);   /* rules & borders */
+    --gold-text:  #7a5618;   /* ALL gold text: links, headings, eyebrows, small-caps labels (4.9:1) */
+    --cream:      #14110a;   /* primary ink     (13.8:1) */
+    --plum:       #4a2b45;   /* accent          (8.9:1) */
+    --plum-deep:  #3a2036;
+    --plum-wash:  rgba(74,43,69,0.07);
+    --parchment:  #4a4033;   /* secondary ink */
+    --shadow-soft: 0 8px 28px rgba(20,17,10,0.10);
+    --frame-line: rgba(138,106,47,0.45);
+    --frame-line-soft: rgba(138,106,47,0.22);
+    --frame-line-bright: rgba(138,106,47,0.7);
     --ff-d: 'Cormorant Garamond', Georgia, serif;
     --ff-b: 'Jost', system-ui, sans-serif;
     --text-body: 1.15rem;
@@ -53,7 +72,7 @@
     background: var(--ink);
     color: var(--cream);
     font-family: var(--ff-b);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.7;
     overflow-x: hidden;
     font-size: 16px;
@@ -68,7 +87,7 @@
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--gold); opacity: 0.95;
+    color: var(--gold-text); opacity: 1;
     display: block;
   }
 
@@ -94,7 +113,7 @@
     max-width: 460px;
     height: auto;
     margin: 0 auto 2.4rem;
-    border: 1px solid rgba(184, 146, 74, 0.22);
+    border: 1px solid var(--frame-line);
   }
   .intro-eyebrow { display: block; text-align: center; margin-bottom: 1.6rem; }
   .intro-title {
@@ -111,7 +130,7 @@
     font-family: var(--ff-d);
     font-size: clamp(1.15rem, 1.7vw, 1.4rem);
     font-style: italic;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     text-align: center;
     line-height: 1.6;
     max-width: 580px;
@@ -121,7 +140,7 @@
     font-family: var(--ff-d);
     font-size: var(--text-body);
     color: var(--cream);
-    opacity: 0.92;
+    opacity: 1;
     line-height: 1.85;
     max-width: 580px;
     margin: 0 auto 2.6rem;
@@ -133,21 +152,21 @@
     font-size: var(--text-label);
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.88;
+    color: var(--gold-text);
+    opacity: 1;
     text-align: center;
     margin-bottom: 2rem;
   }
   .intro-cta-wrap { text-align: center; }
   .intro-upgrade { text-align: center; margin: 2.6rem auto 0; max-width: 520px; padding-top: 2rem; border-top: 1px solid var(--gold-dim); }
-  .intro-upgrade p { font-family: var(--ff-d); font-style: italic; font-size: 1.12rem; color: var(--cream); opacity: 0.82; line-height: 1.6; margin-bottom: 1.1rem; }
+  .intro-upgrade p { font-family: var(--ff-d); font-style: italic; font-size: 1.12rem; color: var(--cream); opacity: 1; line-height: 1.6; margin-bottom: 1.1rem; }
   .intro-upgrade-cta {
     display: inline-block; font-family: var(--ff-b); font-size: var(--text-label);
     font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--gold-lt); text-decoration: none; border: 1px solid var(--gold);
+    color: var(--gold-text); text-decoration: none; border: 1px solid var(--gold);
     padding: 0.8rem 1.9rem; border-radius: 2px; transition: background 0.3s, color 0.3s;
   }
-  .intro-upgrade-cta:hover { background: var(--gold-lt); color: var(--ink); }
+  .intro-upgrade-cta:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
 
   /* PROGRESS INDICATOR */
   .progress {
@@ -156,24 +175,24 @@
   }
   .progress-text {
     font-family: var(--ff-b);
-    font-size: 0.82rem;
+    font-size: 0.94rem;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.88;
+    color: var(--gold-text);
+    opacity: 1;
     margin-bottom: 0.8rem;
   }
   .progress-bar {
     max-width: 280px;
-    height: 1px;
+    height: 2px;
     margin: 0 auto;
-    background: rgba(184,146,74,0.18);
+    background: rgba(138,106,47,0.30);
     position: relative;
   }
   .progress-bar-fill {
     position: absolute;
-    top: 0; left: 0; height: 1px;
-    background: var(--gold);
+    top: 0; left: 0; height: 2px;
+    background: var(--gold-text);
     transition: width 0.5s ease;
   }
 
@@ -190,11 +209,11 @@
   }
   .question-instruction {
     font-family: var(--ff-b);
-    font-size: 0.86rem;
+    font-size: 0.94rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.88;
+    color: var(--gold-text);
+    opacity: 1;
     text-align: center;
     margin-bottom: 2.6rem;
   }
@@ -205,8 +224,8 @@
   }
   .option {
     margin-bottom: 0.9rem;
-    border: 1px solid rgba(184,146,74,0.18);
-    background: rgba(184,146,74,0.03);
+    border: 1px solid rgba(138,106,47,0.40);
+    background: rgba(20,17,10,0.03);
     padding: 1.2rem 1.4rem;
     cursor: pointer;
     transition: border-color 0.3s, background 0.3s;
@@ -218,21 +237,21 @@
     align-items: flex-start;
     gap: 0.9rem;
   }
-  .option:hover { border-color: rgba(184,146,74,0.4); background: rgba(184,146,74,0.06); }
-  .option.selected { border-color: var(--gold); background: rgba(184,146,74,0.09); }
+  .option:hover { border-color: var(--gold); background: rgba(20,17,10,0.06); }
+  .option.selected { border-color: var(--cream); background: var(--plum-wash); }
   .option-marker {
     flex: 0 0 auto;
     width: 14px; height: 14px;
-    border: 1px solid var(--gold-dim);
+    border: 1px solid var(--gold);
     border-radius: 50%;
     margin-top: 0.4rem;
     transition: border-color 0.3s, background 0.3s;
     position: relative;
   }
   .option.selected .option-marker {
-    border-color: var(--gold);
-    background: var(--gold);
-    box-shadow: 0 0 0 3px rgba(184,146,74,0.18);
+    border-color: var(--cream);
+    background: var(--cream);
+    box-shadow: 0 0 0 3px rgba(74,43,69,0.18);
   }
   .option-text { flex: 1; }
   .multiselect .option-marker { border-radius: 2px; }
@@ -248,46 +267,50 @@
   }
   .btn-back, .btn-next, .btn-primary {
     font-family: var(--ff-b);
-    font-size: 0.9rem;
+    font-size: 0.94rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     cursor: pointer;
     border: 1px solid var(--gold);
     background: transparent;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     padding: 0.95rem 2rem;
     transition: background 0.3s, color 0.3s, opacity 0.3s;
     text-decoration: none;
     display: inline-block;
   }
-  .btn-back { border-color: rgba(184,146,74,0.3); color: var(--cream); opacity: 0.6; }
-  .btn-back:hover { opacity: 0.95; }
+  .btn-back { border-color: rgba(138,106,47,0.45); color: var(--ink-soft); opacity: 1; }
+  .btn-back:hover { opacity: 1; color: var(--cream); border-color: var(--gold); }
   .btn-next:hover, .btn-primary:hover {
-    background: var(--gold);
+    background: var(--cream);
+    border-color: var(--cream);
     color: var(--ink);
   }
   .btn-next:disabled {
-    opacity: 0.3;
+    opacity: 1;
     cursor: not-allowed;
     background: transparent;
-    color: var(--gold-lt);
+    border-color: rgba(138,106,47,0.35);
+    color: var(--ink-dim);
   }
-  .btn-next:disabled:hover { background: transparent; color: var(--gold-lt); }
+  .btn-next:disabled:hover { background: transparent; border-color: rgba(138,106,47,0.35); color: var(--ink-dim); }
   .btn-primary {
     font-size: 1rem;
     padding: 1.1rem 2.6rem;
-    background: var(--gold);
+    background: var(--cream);
+    border-color: var(--cream);
     color: var(--ink);
     animation: signals-cta-pulse 2.6s ease-in-out infinite;
   }
   .btn-primary:hover {
-    background: var(--gold-lt);
+    background: var(--plum);
+    border-color: var(--plum);
     color: var(--ink);
     animation: none;
   }
   @keyframes signals-cta-pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(184,146,74,0.35); }
-    50%      { box-shadow: 0 0 0 12px rgba(184,146,74,0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(20,17,10,0.30); }
+    50%      { box-shadow: 0 0 0 12px rgba(20,17,10,0); }
   }
 
   /* RESULT SCREEN */
@@ -306,13 +329,13 @@
   .result-section:last-of-type { margin-bottom: 3.4rem; }
   .result-section-label {
     font-family: var(--ff-b);
-    font-size: 0.82rem;
+    font-size: 0.94rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.92;
+    color: var(--gold-text);
+    opacity: 1;
     margin-bottom: 0.8rem;
-    border-bottom: 1px solid rgba(184,146,74,0.2);
+    border-bottom: 1px solid rgba(138,106,47,0.40);
     padding-bottom: 0.5rem;
   }
   .result-section-body {
@@ -320,7 +343,7 @@
     font-size: var(--text-body);
     color: var(--cream);
     line-height: 1.85;
-    opacity: 0.95;
+    opacity: 1;
   }
   .result-section-body p { margin-bottom: 0.9rem; }
   .result-section-body p:last-child { margin-bottom: 0; }
@@ -331,27 +354,27 @@
     color: var(--cream);
     line-height: 1.65;
     padding: 0.5rem 0;
-    border-bottom: 1px dotted rgba(184,146,74,0.18);
+    border-bottom: 1px dotted rgba(138,106,47,0.45);
   }
   .result-tags li:last-child { border-bottom: none; }
-  .result-tag-name { color: var(--gold-lt); font-style: italic; font-weight: 400; }
+  .result-tag-name { color: var(--gold-text); font-style: italic; font-weight: 500; }
 
   /* TIER 2 UPSELL */
   .tier2-upsell {
     margin-top: 2.4rem;
     padding: 2.3rem 2.2rem;
-    border: 1.5px solid rgba(184,146,74,0.6);
-    background: rgba(122,86,24,0.12);
+    border: 1.5px solid var(--gold);
+    background: rgba(138,106,47,0.10);
     border-radius: 5px;
   }
-  .tier2-upsell .result-section-label { color: var(--gold-lt); margin-bottom: 1rem; font-size: 1.05rem; }
+  .tier2-upsell .result-section-label { color: var(--gold-text); margin-bottom: 1rem; font-size: 1.05rem; }
   .tier2-upsell p { margin-bottom: 1.2rem; }
   .tier2-cta {
     display: inline-block;
     margin-top: 0.4rem;
     padding: 1.05rem 2.2rem;
-    background: var(--gold);
-    color: var(--cream);
+    background: var(--cream);
+    color: var(--ink);
     text-decoration: none;
     font-family: 'Jost', sans-serif;
     font-size: 0.96rem;
@@ -361,36 +384,36 @@
     border-radius: 3px;
     transition: background 0.2s ease, color 0.2s ease;
   }
-  .tier2-cta:hover { background: var(--gold-lt); color: var(--ink); }
+  .tier2-cta:hover { background: var(--plum); color: var(--ink); }
 
   /* EMAIL CAPTURE */
   .email-capture {
     margin-top: 3rem;
     padding: 2.6rem 2rem;
-    border-top: 1px solid rgba(184,146,74,0.2);
+    border-top: 1px solid rgba(138,106,47,0.40);
     text-align: center;
   }
   .email-prompt {
     font-family: var(--ff-d);
     font-style: italic;
     font-size: 1.2rem;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     margin-bottom: 1.6rem;
     line-height: 1.5;
   }
   .email-sub {
     font-family: var(--ff-b);
-    font-size: 0.9rem;
+    font-size: 0.94rem;
     letter-spacing: 0.04em;
-    color: var(--cream);
-    opacity: 0.78;
+    color: var(--ink-soft);
+    opacity: 1;
     margin-bottom: 2rem;
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  /* KIT FORM STYLING — matches the site's ink/gold/cream */
+  /* KIT FORM STYLING — vellum ground, ink text, ornament-gold borders */
   .kit-form-wrapper { display: flex; justify-content: center; }
   .formkit-form[data-uid] {
     background: transparent !important;
@@ -403,8 +426,8 @@
     padding: 0 !important;
   }
   .formkit-form[data-uid] .formkit-input {
-    background: transparent !important;
-    border: 1px solid var(--gold-dim) !important;
+    background: rgba(232,220,187,0.6) !important;
+    border: 1px solid var(--gold) !important;
     color: var(--cream) !important;
     font-family: var(--ff-b) !important;
     font-size: 1rem !important;
@@ -412,19 +435,19 @@
     border-radius: 0 !important;
   }
   .formkit-form[data-uid] .formkit-input::placeholder {
-    color: var(--cream) !important;
-    opacity: 0.5 !important;
+    color: var(--ink-dim) !important;
+    opacity: 1 !important;
   }
   .formkit-form[data-uid] .formkit-input:focus {
-    border-color: var(--gold) !important;
+    border-color: var(--cream) !important;
     outline: none !important;
   }
   .formkit-form[data-uid] .formkit-submit {
     background: transparent !important;
     border: 1px solid var(--gold) !important;
-    color: var(--gold-lt) !important;
+    color: var(--gold-text) !important;
     font-family: var(--ff-b) !important;
-    font-size: 0.9rem !important;
+    font-size: 0.94rem !important;
     letter-spacing: 0.22em !important;
     text-transform: uppercase !important;
     padding: 0.95rem 2rem !important;
@@ -433,14 +456,15 @@
   }
   .formkit-form[data-uid] .formkit-submit > span {
     background: transparent !important;
-    color: var(--gold-lt) !important;
+    color: var(--gold-text) !important;
   }
   .formkit-form[data-uid] .formkit-submit:hover {
-    background: var(--gold) !important;
+    background: var(--cream) !important;
+    border-color: var(--cream) !important;
     color: var(--ink) !important;
   }
   .formkit-form[data-uid] .formkit-submit:hover > span {
-    background: var(--gold) !important;
+    background: var(--cream) !important;
     color: var(--ink) !important;
   }
   .formkit-form[data-uid] .formkit-alert {
@@ -448,7 +472,7 @@
     background: transparent !important;
     border: none !important;
     font-family: var(--ff-b) !important;
-    font-size: 0.9rem !important;
+    font-size: 0.94rem !important;
   }
 
   /* INLINE SUCCESS STATE (replaces Kit form after submit) */
@@ -462,7 +486,7 @@
     font-family: var(--ff-d);
     font-style: italic;
     font-size: 1.5rem;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     margin-bottom: 1rem;
     line-height: 1.4;
   }
@@ -470,7 +494,7 @@
     font-family: var(--ff-d);
     font-size: 1.05rem;
     color: var(--cream);
-    opacity: 0.92;
+    opacity: 1;
     line-height: 1.7;
     margin-bottom: 1.8rem;
   }
@@ -481,17 +505,17 @@
   }
   .kit-success-hint {
     font-family: var(--ff-b);
-    font-size: 0.84rem;
+    font-size: 0.94rem;
     letter-spacing: 0.04em;
-    color: var(--cream);
-    opacity: 0.6;
+    color: var(--ink-dim);
+    opacity: 1;
     line-height: 1.6;
   }
 
   /* FOOTER */
   footer {
     background: var(--ink);
-    border-top: 1px solid rgba(184,146,74,0.1);
+    border-top: 1px solid rgba(138,106,47,0.40);
     padding: 3rem 3rem 2.4rem;
     text-align: center;
   }
@@ -499,21 +523,21 @@
     font-family: var(--ff-d);
     font-size: 1.1rem;
     font-style: italic;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     text-decoration: none;
     display: block;
     margin-bottom: 1.2rem;
     letter-spacing: 0.06em;
   }
   .footer-links { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
-  .footer-links a { font-family: var(--ff-b); font-size: 0.88rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.85; text-decoration: none; transition: opacity 0.3s; }
-  .footer-links a:hover { opacity: 1; }
-  .footer-copy { font-family: var(--ff-b); font-size: 0.84rem; letter-spacing: 0.06em; color: var(--cream); opacity: 0.55; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-text); opacity: 1; text-decoration: none; transition: opacity 0.3s; }
+  .footer-links a:hover { opacity: 1; color: var(--plum); }
+  .footer-copy { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.06em; color: var(--ink-dim); opacity: 1; }
 
   /* MOBILE */
   @media (max-width: 720px) {
     nav { padding: 1rem 1.4rem; }
-    .nav-links { gap: 1rem; font-size: 0.82rem; }
+    .nav-links { gap: 1rem; font-size: 0.94rem; }
     .quiz-shell { padding: 7rem 1.4rem 3rem; }
     .options { max-width: 100%; }
     .quiz-nav { max-width: 100%; flex-direction: column-reverse; align-items: stretch; gap: 0.8rem; }
@@ -523,7 +547,7 @@
   }
 </style>
 </head>
-<body>
+<body class="theme-light">
 
 <nav>
   <a href="/" class="nav-brand">Christy Paxton Wade</a>
@@ -693,7 +717,7 @@
     <a href="/mirror">Mirror</a>
     <a href="/map">The Map</a>
     <a href="https://christywade.substack.com" target="_blank">Substack</a>
-    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-lt); opacity: 0.85;">Portal ↗</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-text); opacity: 1;">Portal ↗</a>
   </div>
   <p class="footer-copy">&copy; 2026 Christy Paxton Wade &nbsp;&middot;&nbsp; Bentonville, Arkansas</p>
 </footer>

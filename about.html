@@ -22,32 +22,45 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink:        #0c0a07;
-    --ink-mid:    #111009;
-    --gold:       #b8924a;
-    --gold-lt:    #d4ae6e;
-    --gold-glow:  #e6c98a;
-    --cream:      #f0e8d0;
-    --plum:       #251020;
-    --plum-deep:  #1a0a15;
-    --parchment:  #ede8d5;
+    /* VELLUM & INK — light theme.
+       Variable NAMES are unchanged so /framing.css and every selector keep working;
+       the VALUES are inverted: --ink / --ink-mid are now the vellum tones,
+       --cream / --parchment are now the ink tones. Gold running text uses --gold-text. */
+    --paper:      #e8dcbb;
+    --paper-2:    #dfd1a9;
+    --line:       #c9b58a;
+    --ink:        #e8dcbb;   /* page ground */
+    --ink-mid:    #dfd1a9;   /* alternate surface, cards */
+    --ink-soft:   #4a4033;   /* secondary text  (7.4:1) */
+    --ink-dim:    #615546;   /* meta / labels   (5.3:1) */
+    --gold:       #8a6a2f;   /* ornament only: rules, frames, brackets, SVG strokes (3.7:1) — never text */
+    --gold-lt:    #8a6a2f;   /* corner brackets & frames */
+    --gold-glow:  #c9ab6c;   /* decorative only — never text */
+    --gold-soft:  #c9ab6c;
+    --gold-text:  #7a5618;   /* ALL gold text: links, headings, eyebrows, small-caps labels (4.9:1) */
+    --cream:      #14110a;   /* primary ink     (13.8:1) */
+    --plum:       #4a2b45;   /* accent          (8.9:1) */
+    --plum-deep:  #3a2036;
+    --plum-wash:  rgba(74,43,69,0.07);
+    --parchment:  #4a4033;   /* secondary ink */
+    --shadow-soft: 0 8px 28px rgba(20,17,10,0.10);
 
     --ff-d: 'Cormorant Garamond', Georgia, serif;
     --ff-b: 'Jost', system-ui, sans-serif;
 
-    --frame-line: rgba(184, 146, 74, 0.45);
-    --frame-line-soft: rgba(184, 146, 74, 0.22);
-    --frame-line-bright: rgba(212, 174, 110, 0.7);
+    --frame-line: rgba(138, 106, 47, 0.45);
+    --frame-line-soft: rgba(138, 106, 47, 0.22);
+    --frame-line-bright: rgba(138, 106, 47, 0.7);
 
     --text-label: 0.94rem;
   }
 
   html { scroll-behavior: smooth; }
   body {
-    background: var(--ink);
+    background: var(--paper);
     color: var(--cream);
     font-family: var(--ff-b);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.7;
     overflow-x: hidden;
     font-size: 16px;
@@ -59,7 +72,7 @@
     display: flex; flex-direction: column; align-items: center;
     gap: 0.7rem;
     padding: 1rem 2rem;
-    background: rgba(12, 10, 7, 0.95);
+    background: rgba(232,220,187, 0.94);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--frame-line-soft);
   }
@@ -71,11 +84,11 @@
     text-transform: uppercase;
     color: var(--cream);
     text-decoration: none;
-    opacity: 0.95;
+    opacity: 1;
     white-space: nowrap;
     transition: color 0.3s, opacity 0.3s;
   }
-  .nav-brand:hover { color: var(--gold-lt); opacity: 1; }
+  .nav-brand:hover { color: var(--gold-text); opacity: 1; }
   .nav-links { display: flex; gap: 1.7rem; list-style: none; align-items: center; flex-wrap: wrap; justify-content: center; }
   .nav-links a {
     font-family: var(--ff-b);
@@ -83,12 +96,12 @@
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.88;
+    color: var(--cream); opacity: 1;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
   }
-  .nav-links a:hover { opacity: 1; color: var(--gold-lt); }
-  .nav-links a.active { color: var(--gold-lt); opacity: 1; }
+  .nav-links a:hover { opacity: 1; color: var(--gold-text); }
+  .nav-links a.active { color: var(--gold-text); opacity: 1; }
   .nav-divider { width: 1px; height: 14px; background: var(--frame-line); }
 
   /* ── EYEBROW ── */
@@ -98,7 +111,7 @@
     font-weight: 500;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--gold); opacity: 0.95;
+    color: var(--gold-text); opacity: 1;
     display: inline-flex;
     align-items: center;
     gap: 1rem;
@@ -132,8 +145,9 @@
     position: relative;
     aspect-ratio: 4 / 5;
     background:
-      radial-gradient(circle at 30% 30%, rgba(184, 146, 74, 0.14), transparent 60%),
-      var(--plum-deep);
+      radial-gradient(circle at 30% 30%, rgba(138, 106, 47, 0.10), transparent 60%),
+      var(--paper-2);
+    box-shadow: var(--shadow-soft);
     overflow: hidden;
   }
   .about-hero-img img {
@@ -144,7 +158,7 @@
   }
   .about-hero-img .outer-frame {
     position: absolute; inset: 0;
-    border: 1px solid var(--gold-lt);
+    border: 1px solid var(--gold);
     pointer-events: none;
     z-index: 2;
   }
@@ -164,13 +178,13 @@
   }
   .about-hero-img::before {
     top: -1px; left: -1px;
-    border-top: 1px solid var(--gold-glow);
-    border-left: 1px solid var(--gold-glow);
+    border-top: 1px solid var(--gold-lt);
+    border-left: 1px solid var(--gold-lt);
   }
   .about-hero-img::after {
     bottom: -1px; right: -1px;
-    border-bottom: 1px solid var(--gold-glow);
-    border-right: 1px solid var(--gold-glow);
+    border-bottom: 1px solid var(--gold-lt);
+    border-right: 1px solid var(--gold-lt);
   }
   .about-hero-content h1 {
     font-family: var(--ff-d);
@@ -183,7 +197,7 @@
   .about-hero-content h1 em {
     display: block;
     font-style: italic;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     font-size: 0.6em;
     margin-top: 0.4rem;
     letter-spacing: 0.02em;
@@ -192,23 +206,23 @@
     font-family: var(--ff-d);
     font-style: italic;
     font-size: 1.15rem;
-    color: var(--gold-lt); opacity: 0.92;
+    color: var(--gold-text); opacity: 1;
     letter-spacing: 0.08em;
     margin-bottom: 1.6rem;
   }
   .about-hero-content .hero-location {
     font-family: var(--ff-b);
-    font-size: 0.92rem;
+    font-size: 0.94rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.6;
+    color: var(--ink-dim); opacity: 1;
     margin-bottom: 2.2rem;
   }
   .about-hero-content .hero-lede {
     font-family: var(--ff-d);
     font-size: clamp(1.2rem, 2.2vw, 1.55rem);
     line-height: 1.5;
-    color: var(--cream); opacity: 0.92;
+    color: var(--cream); opacity: 1;
     margin-bottom: 0;
   }
 
@@ -219,7 +233,7 @@
     padding: 0 2rem;
   }
   .invitation-inner {
-    background: var(--plum-deep);
+    background: var(--plum-wash);
     border: 1px solid var(--frame-line);
     padding: 4rem;
     position: relative;
@@ -248,13 +262,14 @@
   }
   .invitation-glow {
     position: absolute; inset: 0;
-    background: radial-gradient(circle at 85% 15%, rgba(184, 146, 74, 0.14), transparent 55%);
+    background: radial-gradient(circle at 85% 15%, rgba(138, 106, 47, 0.10), transparent 55%);
     pointer-events: none;
   }
   .invitation-img {
     position: relative;
     aspect-ratio: 3 / 4;
-    background: var(--ink);
+    background: var(--paper-2);
+    box-shadow: var(--shadow-soft);
     overflow: hidden;
     z-index: 1;
   }
@@ -266,7 +281,7 @@
   }
   .invitation-img .outer-frame {
     position: absolute; inset: 0;
-    border: 1px solid var(--gold-lt);
+    border: 1px solid var(--gold);
     pointer-events: none;
     z-index: 2;
   }
@@ -287,7 +302,7 @@
     color: var(--cream);
     margin: 0;
   }
-  .invitation-text h2 em { color: var(--gold-lt); font-style: italic; }
+  .invitation-text h2 em { color: var(--gold-text); font-style: italic; }
 
   /* ── BIO ── */
   .bio {
@@ -323,12 +338,12 @@
     text-align: center;
     margin-bottom: 2.8rem;
   }
-  .bio h2 em { color: var(--gold-lt); font-style: italic; }
+  .bio h2 em { color: var(--gold-text); font-style: italic; }
   .bio p {
     font-family: var(--ff-d);
     font-size: 1.2rem;
     line-height: 1.7;
-    color: var(--cream); opacity: 0.92;
+    color: var(--cream); opacity: 1;
     margin-bottom: 1.6rem;
   }
   .bio .body-with-dropcap::first-letter {
@@ -338,13 +353,13 @@
     line-height: 0.85;
     float: left;
     margin: 0.18em 0.6rem 0 0;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     padding: 0.05em 0.18em 0;
     border: 1px solid var(--frame-line);
   }
   .bio .closing {
     font-style: italic;
-    color: var(--gold-lt); opacity: 0.92;
+    color: var(--gold-text); opacity: 1;
     text-align: center;
     font-size: 1.3rem;
     margin-top: 2rem;
@@ -394,7 +409,7 @@
   }
   .call-quote blockquote::before {
     content: '"';
-    color: var(--gold-lt);
+    color: var(--gold-text);
     font-size: 1.4em;
     line-height: 0;
     vertical-align: -0.4em;
@@ -402,7 +417,7 @@
   }
   .call-quote blockquote::after {
     content: '"';
-    color: var(--gold-lt);
+    color: var(--gold-text);
     font-size: 1.4em;
     line-height: 0;
     vertical-align: -0.55em;
@@ -411,7 +426,8 @@
   .call-quote-img {
     position: relative;
     aspect-ratio: 4 / 5;
-    background: var(--plum-deep);
+    background: var(--paper-2);
+    box-shadow: var(--shadow-soft);
     overflow: hidden;
   }
   .call-quote-img img {
@@ -421,7 +437,7 @@
   }
   .call-quote-img .outer-frame {
     position: absolute; inset: 0;
-    border: 1px solid var(--gold-lt);
+    border: 1px solid var(--gold);
     pointer-events: none;
     z-index: 2;
   }
@@ -460,12 +476,12 @@
     margin-bottom: 1.4rem;
     line-height: 1.3;
   }
-  .cta-bridge h2 em { color: var(--gold-lt); font-style: italic; }
+  .cta-bridge h2 em { color: var(--gold-text); font-style: italic; }
   .cta-bridge p {
     font-family: var(--ff-d);
     font-style: italic;
     font-size: 1.2rem;
-    color: var(--cream); opacity: 0.82;
+    color: var(--ink-soft); opacity: 1;
     margin-bottom: 0;
   }
   .cta-bridge-buttons {
@@ -477,7 +493,7 @@
   .button {
     display: inline-block;
     font-family: var(--ff-b);
-    font-size: 0.9rem;
+    font-size: 0.94rem;
     font-weight: 500;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -489,17 +505,18 @@
     transition: all 0.4s ease;
   }
   .button:hover {
-    background: var(--gold);
-    color: var(--ink);
+    background: var(--cream);
+    color: var(--paper);
+    border-color: var(--cream);
   }
   .button.ghost {
     border-color: var(--frame-line);
-    color: var(--cream); opacity: 0.85;
+    color: var(--ink-soft); opacity: 1;
   }
   .button.ghost:hover {
-    border-color: var(--gold-lt);
-    background: transparent;
-    color: var(--gold-lt);
+    border-color: var(--gold);
+    background: var(--paper-2);
+    color: var(--gold-text);
     opacity: 1;
   }
 
@@ -523,10 +540,10 @@
     display: block;
     font-family: var(--ff-d);
     font-style: italic;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     font-size: 1rem;
     letter-spacing: 0.06em;
-    opacity: 0.85;
+    opacity: 1;
     margin-bottom: 1.8rem;
   }
   .footer-social {
@@ -535,12 +552,12 @@
     margin-bottom: 2rem;
   }
   .footer-social a {
-    color: var(--gold-lt);
-    opacity: 0.75;
+    color: var(--gold-text);
+    opacity: 1;
     transition: opacity 0.3s, color 0.3s;
   }
   .footer-social a:hover {
-    opacity: 1; color: var(--gold-glow);
+    opacity: 1; color: var(--plum);
   }
   .footer-links {
     display: flex; justify-content: center;
@@ -550,18 +567,18 @@
   }
   .footer-links a {
     font-family: var(--ff-b);
-    font-size: 0.78rem;
+    font-size: 0.94rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.65;
+    color: var(--ink-soft); opacity: 1;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
   }
-  .footer-links a:hover { opacity: 1; color: var(--gold-lt); }
+  .footer-links a:hover { opacity: 1; color: var(--gold-text); }
   .footer-copy {
     font-family: var(--ff-b);
-    font-size: 0.82rem;
-    color: var(--cream); opacity: 0.5;
+    font-size: 0.94rem;
+    color: var(--ink-dim); opacity: 1;
     letter-spacing: 0.08em;
   }
 
@@ -581,7 +598,7 @@
   }
 </style>
 </head>
-<body>
+<body class="theme-light">
 
 <nav>
   <a href="/" class="nav-brand">Christy Paxton Wade</a>
@@ -734,7 +751,7 @@
     <a href="/mirror">Mirror</a>
     <a href="/about">About</a>
     <a href="https://christywade.substack.com" target="_blank">Substack</a>
-    <a href="https://portal.christypaxtonwade.com/portal.html" style="color: var(--gold-lt); opacity: 0.85;">Portal ↗</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" style="color: var(--gold-text); opacity: 1;">Portal ↗</a>
   </div>
   <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
 </footer>

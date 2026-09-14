@@ -382,3 +382,114 @@ nav {
   width: 30px; height: 1px;
   background: rgba(212,174,110,0.7);
 }
+
+
+/* ── LIGHT THEME (body.theme-light) ──
+   Vellum-and-ink override for pages that carry class="theme-light" on <body>.
+   Every rule above is untouched; this block only re-expresses the hard-coded
+   dark values of the base rules for a vellum ground (#e8dcbb).
+   Text colours: --cream is ink on these pages; --gold-text (#7a5618, 4.9:1) is
+   used wherever gold carries text of any kind; --gold (#8a6a2f, 3.7:1) is
+   ornament only — rules, frames, brackets, SVG strokes. */
+
+/* nav */
+body.theme-light nav {
+  background: rgba(232,220,187,0.94);
+  border-bottom: 1px solid rgba(138,106,47,0.25);
+}
+body.theme-light .nav-brand { color: var(--cream, #14110a); opacity: 1; }
+body.theme-light .nav-brand:hover { color: var(--gold-text, #7a5618); }
+body.theme-light .nav-links a { color: var(--cream, #14110a); opacity: 1; }
+body.theme-light .nav-links a:hover,
+body.theme-light .nav-links button:hover { color: var(--gold-text, #7a5618); opacity: 1; }
+body.theme-light .nav-links a.active { color: var(--gold-text, #7a5618); }
+body.theme-light .nav-divider { background: rgba(138,106,47,0.45); }
+body.theme-light .nav-portal { color: var(--gold-text, #7a5618); opacity: 1; }
+body.theme-light .nav-portal:hover { color: var(--plum, #4a2b45); }
+
+/* library dropdown */
+body.theme-light .nav-dropdown-trigger { color: var(--cream, #14110a); opacity: 1; }
+body.theme-light .nav-dropdown-trigger::after { opacity: 1; }
+body.theme-light .nav-dropdown-trigger:hover,
+body.theme-light .nav-dropdown-trigger[aria-expanded="true"] { color: var(--gold-text, #7a5618); opacity: 1; }
+body.theme-light .nav-dropdown .nav-dropdown-panel {
+  background: rgba(232,220,187,0.98);
+  border: 1px solid rgba(138,106,47,0.45);
+  box-shadow: 0 12px 36px rgba(20,17,10,0.12);
+}
+body.theme-light .nav-dropdown-panel::before {
+  border-top-color: var(--gold, #8a6a2f);
+  border-left-color: var(--gold, #8a6a2f);
+}
+body.theme-light .nav-dropdown-panel::after {
+  border-bottom-color: var(--gold, #8a6a2f);
+  border-right-color: var(--gold, #8a6a2f);
+}
+body.theme-light .nav-dropdown-group { border-bottom-color: rgba(138,106,47,0.18); }
+body.theme-light .nav-dropdown-group-label { color: var(--gold-text, #7a5618); opacity: 1; font-size: 0.94rem; }
+body.theme-light .nav-dropdown-item { color: var(--cream, #14110a); opacity: 1; }
+body.theme-light .nav-dropdown-item:hover { color: var(--gold-text, #7a5618); }
+
+/* ornamental divider — same tesseract + compass star, drawn in ornament gold on vellum */
+body.theme-light .divider {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 110'><defs><linearGradient id='rf' x1='0%25' y1='0%25' x2='100%25' y2='0%25'><stop offset='0%25' stop-color='%23c9ab6c' stop-opacity='0'/><stop offset='10%25' stop-color='%238a6a2f' stop-opacity='0.7'/><stop offset='50%25' stop-color='%238a6a2f' stop-opacity='0.95'/><stop offset='90%25' stop-color='%238a6a2f' stop-opacity='0.7'/><stop offset='100%25' stop-color='%23c9ab6c' stop-opacity='0'/></linearGradient></defs><line x1='0' y1='55' x2='760' y2='55' stroke='url(%23rf)' stroke-width='1'/><g transform='translate(190 55)' stroke='%238a6a2f' fill='none'><circle r='3.2' stroke-width='0.7'/><circle r='1' fill='%238a6a2f' stroke='none'/></g><g transform='translate(280 55)' stroke='%238a6a2f' fill='none'><line x1='0' y1='-6' x2='0' y2='6' stroke-width='0.8'/><line x1='-6' y1='0' x2='6' y2='0' stroke-width='0.8'/><line x1='-4' y1='-4' x2='4' y2='4' stroke-width='0.55' stroke-opacity='0.7'/><line x1='-4' y1='4' x2='4' y2='-4' stroke-width='0.55' stroke-opacity='0.7'/><circle r='0.8' fill='%238a6a2f' stroke='none'/></g><g transform='translate(480 55)' stroke='%238a6a2f' fill='none'><line x1='0' y1='-6' x2='0' y2='6' stroke-width='0.8'/><line x1='-6' y1='0' x2='6' y2='0' stroke-width='0.8'/><line x1='-4' y1='-4' x2='4' y2='4' stroke-width='0.55' stroke-opacity='0.7'/><line x1='-4' y1='4' x2='4' y2='-4' stroke-width='0.55' stroke-opacity='0.7'/><circle r='0.8' fill='%238a6a2f' stroke='none'/></g><g transform='translate(570 55)' stroke='%238a6a2f' fill='none'><circle r='3.2' stroke-width='0.7'/><circle r='1' fill='%238a6a2f' stroke='none'/></g><g transform='translate(380 55)'><g stroke='%238a6a2f' fill='none' stroke-opacity='0.55'><path d='M 0 -46 L 46 0 L 0 46 L -46 0 Z' stroke-width='0.7'/><path d='M -32 -32 L 32 -32 L 32 32 L -32 32 Z' stroke-width='0.55' stroke-opacity='0.7'/><line x1='-32' y1='-32' x2='0' y2='-46' stroke-width='0.5' stroke-opacity='0.5'/><line x1='32' y1='-32' x2='46' y2='0' stroke-width='0.5' stroke-opacity='0.5'/><line x1='32' y1='32' x2='0' y2='46' stroke-width='0.5' stroke-opacity='0.5'/><line x1='-32' y1='32' x2='-46' y2='0' stroke-width='0.5' stroke-opacity='0.5'/><circle cx='0' cy='-46' r='1.1' fill='%238a6a2f' stroke='none' fill-opacity='0.8'/><circle cx='46' cy='0' r='1.1' fill='%238a6a2f' stroke='none' fill-opacity='0.8'/><circle cx='0' cy='46' r='1.1' fill='%238a6a2f' stroke='none' fill-opacity='0.8'/><circle cx='-46' cy='0' r='1.1' fill='%238a6a2f' stroke='none' fill-opacity='0.8'/></g><g fill='%238a6a2f' stroke='%23c9ab6c' stroke-width='0.5' stroke-opacity='0.9'><path d='M 0 -40 L 7 -11 L 0 0 L -7 -11 Z'/><path d='M 40 0 L 11 7 L 0 0 L 11 -7 Z'/><path d='M 0 40 L 7 11 L 0 0 L -7 11 Z'/><path d='M -40 0 L -11 7 L 0 0 L -11 -7 Z'/></g><g fill='%238a6a2f' stroke='%23c9ab6c' stroke-width='0.4' stroke-opacity='0.85' fill-opacity='0.78'><path d='M 18 -18 L 7 -3 L 0 0 L 3 -7 Z'/><path d='M 18 18 L 3 7 L 0 0 L 7 3 Z'/><path d='M -18 18 L -7 3 L 0 0 L -3 7 Z'/><path d='M -18 -18 L -3 -7 L 0 0 L -7 -3 Z'/></g><circle r='8' fill='%23e8dcbb' stroke='%238a6a2f' stroke-width='0.8'/><circle r='5' fill='none' stroke='%238a6a2f' stroke-width='0.5' stroke-opacity='0.75'/><circle r='2.2' fill='%238a6a2f' stroke='none'/></g></svg>");
+}
+
+/* corner brackets */
+body.theme-light .framed-corners::before,
+body.theme-light .offering-card::before,
+body.theme-light .first-door-card::before,
+body.theme-light .coming-card::before {
+  border-top-color: var(--gold, #8a6a2f);
+  border-left-color: var(--gold, #8a6a2f);
+}
+body.theme-light .framed-corners::after,
+body.theme-light .offering-card::after,
+body.theme-light .first-door-card::after,
+body.theme-light .coming-card::after {
+  border-bottom-color: var(--gold, #8a6a2f);
+  border-right-color: var(--gold, #8a6a2f);
+}
+
+/* vitrine */
+body.theme-light .vitrine {
+  background:
+    radial-gradient(circle at 30% 40%, rgba(138,106,47,0.10), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(74,43,69,0.08), transparent 60%),
+    var(--paper-2, #dfd1a9);
+  border: 1px solid var(--gold, #8a6a2f);
+  box-shadow: 0 2px 12px rgba(20,17,10,0.10);
+}
+body.theme-light .vitrine img { filter: saturate(1.02); }
+body.theme-light .vitrine::after { border-color: rgba(138,106,47,0.45); }
+body.theme-light .has-vitrine:hover { box-shadow: 0 8px 28px rgba(20,17,10,0.10); }
+body.theme-light .has-vitrine:hover .vitrine img { filter: saturate(1.08); }
+body.theme-light .offering-card .vitrine,
+body.theme-light .first-door-card .vitrine,
+body.theme-light .coming-card .vitrine {
+  border-width: 0 0 1px 0;
+  border-bottom-color: rgba(138,106,47,0.45);
+  box-shadow: none;
+}
+
+/* hero vitrine */
+body.theme-light .hero-vitrine img {
+  border: 1px solid var(--gold, #8a6a2f);
+  box-shadow: 0 8px 28px rgba(20,17,10,0.10);
+}
+body.theme-light .hero-vitrine::before {
+  border-top-color: var(--gold, #8a6a2f);
+  border-left-color: var(--gold, #8a6a2f);
+}
+body.theme-light .hero-vitrine::after {
+  border-bottom-color: var(--gold, #8a6a2f);
+  border-right-color: var(--gold, #8a6a2f);
+}
+body.theme-light .hero-vitrine .inner-rule { border-color: rgba(138,106,47,0.30); }
+
+/* footer roles */
+body.theme-light .footer-roles { color: var(--gold-text, #7a5618); opacity: 1; }
+
+/* eyebrow flanking rules */
+body.theme-light .eyebrow-framed::before,
+body.theme-light .eyebrow-framed::after { background: rgba(138,106,47,0.7); }

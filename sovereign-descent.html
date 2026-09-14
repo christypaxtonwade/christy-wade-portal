@@ -22,28 +22,46 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink: #0c0a07;
-    --ink-mid: #111009;
-    --gold: #b8924a;
-    --gold-lt: #d4ae6e;
-    --cream: #f0e8d0;
-    --plum: #251020;
-    --parchment: #ede8d5;
+    /* VELLUM & INK — light theme.
+       Variable NAMES are unchanged so /framing.css and every selector keep working;
+       the VALUES are inverted: --ink / --ink-mid are now the vellum tones,
+       --cream / --parchment are now the ink tones. Gold running text uses --gold-text. */
+    --paper: #e8dcbb;
+    --paper-2: #dfd1a9;
+    --line: #c9b58a;
+    --ink: #e8dcbb;          /* page ground */
+    --ink-mid: #dfd1a9;      /* alternate surface, cards */
+    --ink-soft: #4a4033;     /* secondary text  (7.4:1) */
+    --ink-dim: #615546;      /* meta / labels   (5.3:1) */
+    --gold: #8a6a2f;         /* ornament only: rules, frames, brackets, SVG strokes (3.7:1) — never text */
+    --gold-lt: #8a6a2f;      /* corner brackets & frames */
+    --gold-glow: #c9ab6c;    /* decorative only — never text */
+    --gold-soft: #c9ab6c;
+    --gold-text: #7a5618;    /* ALL gold text: links, headings, eyebrows, small-caps labels (4.9:1) */
+    --cream: #14110a;        /* primary ink     (13.8:1) */
+    --plum: #4a2b45;         /* accent          (8.9:1) */
+    --plum-deep: #3a2036;
+    --plum-wash: rgba(74,43,69,0.07);
+    --parchment: #4a4033;    /* secondary ink */
+    --shadow-soft: 0 8px 28px rgba(20,17,10,0.10);
+    --frame-line: rgba(138, 106, 47, 0.45);
+    --frame-line-soft: rgba(138, 106, 47, 0.22);
+    --frame-line-bright: rgba(138, 106, 47, 0.7);
     --ff-d: 'Cormorant Garamond', Georgia, serif;
     --ff-b: 'Jost', system-ui, sans-serif;
     --text-body: 1.15rem;
     --text-body-sm: 1.05rem;
     --text-label: 0.94rem;
-    --op-body: 0.92;
-    --op-support: 0.88;
+    --op-body: 1;
+    --op-support: 1;
   }
 
   html { scroll-behavior: smooth; }
   body {
-    background: var(--ink);
+    background: var(--paper);
     color: var(--cream);
     font-family: var(--ff-b);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.7;
     overflow-x: hidden;
     font-size: 16px;
@@ -56,7 +74,7 @@
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--gold); opacity: 0.95;
+    color: var(--gold-text); opacity: 1;
   }
 
   /* HERO */
@@ -65,68 +83,68 @@
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center;
     padding: 10rem 3rem 5rem;
-    border-bottom: 1px solid rgba(184,146,74,0.1);
+    border-bottom: 1px solid rgba(138,106,47,0.18);
   }
   .hero-eyebrow { display: block; margin-bottom: 1.4rem; }
   .hero-title { font-family: var(--ff-d); font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 1.3rem; line-height: 1.1; max-width: 14ch; }
-  .hero-sub { font-family: var(--ff-d); font-size: clamp(1.2rem, 1.8vw, 1.5rem); font-style: italic; color: var(--gold-lt); max-width: 680px; line-height: 1.5; }
+  .hero-sub { font-family: var(--ff-d); font-size: clamp(1.2rem, 1.8vw, 1.5rem); font-style: italic; color: var(--gold-text); max-width: 680px; line-height: 1.5; }
 
   /* SECTION PROSE */
   .section-prose { max-width: 720px; margin: 0 auto; padding: 5rem 3rem 3rem; text-align: center; }
   .section-prose p { font-family: var(--ff-d); font-size: var(--text-body); line-height: 1.85; color: var(--cream); opacity: var(--op-body); margin-bottom: 1.2rem; }
-  .section-prose .lead-quote { font-style: italic; color: var(--gold-lt); font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1.55; margin: 0 auto 2rem; max-width: 640px; }
+  .section-prose .lead-quote { font-style: italic; color: var(--gold-text); font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1.55; margin: 0 auto 2rem; max-width: 640px; }
 
   /* SECTION HEADERS */
   .section-header { text-align: center; margin-bottom: 3rem; max-width: 720px; margin-left: auto; margin-right: auto; }
   .section-title { font-family: var(--ff-d); font-size: clamp(1.8rem, 2.8vw, 2.4rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.6rem; line-height: 1.25; }
-  .section-sub { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--gold-lt); opacity: 0.92; max-width: 560px; margin: 0 auto; }
+  .section-sub { font-family: var(--ff-d); font-size: var(--text-body-sm); font-style: italic; color: var(--gold-text); opacity: 1; max-width: 560px; margin: 0 auto; }
 
   /* THE PATH — numbered steps */
-  .path-section { padding: 5rem 3rem; border-top: 1px solid rgba(184,146,74,0.1); }
-  .step-card { max-width: 860px; margin: 0 auto 1.6rem; border: 1px solid rgba(184,146,74,0.22); padding: 2.6rem 3rem; background: rgba(184,146,74,0.04); transition: border-color 0.3s; }
-  .step-card:hover { border-color: rgba(184,146,74,0.4); }
+  .path-section { padding: 5rem 3rem; border-top: 1px solid rgba(138,106,47,0.18); }
+  .step-card { max-width: 860px; margin: 0 auto 1.6rem; border: 1px solid rgba(138,106,47,0.30); padding: 2.6rem 3rem; background: var(--paper-2); box-shadow: 0 1px 0 rgba(20,17,10,0.03); transition: border-color 0.3s, box-shadow 0.3s; }
+  .step-card:hover { border-color: rgba(138,106,47,0.6); box-shadow: var(--shadow-soft); }
   .step-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.4rem; }
-  .step-num { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.95; }
-  .step-price { font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-lt); opacity: 0.95; }
+  .step-num { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-text); opacity: 1; }
+  .step-price { font-family: var(--ff-d); font-size: 1.1rem; font-style: italic; color: var(--gold-text); opacity: 1; }
   .step-name { font-family: var(--ff-d); font-size: clamp(1.7rem, 2.4vw, 2.2rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 0.4rem; }
-  .step-format { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); opacity: 0.88; margin-bottom: 1rem; }
+  .step-format { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-dim); opacity: 1; margin-bottom: 1rem; }
   .step-body { font-family: var(--ff-d); font-size: var(--text-body); font-weight: 300; color: var(--cream); line-height: 1.8; opacity: var(--op-body); margin-bottom: 1.2rem; }
   .step-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 
-  .btn-gold { display: inline-block; font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); background: var(--gold); padding: 0.95rem 2.2rem; text-decoration: none; border: 1px solid var(--gold); border-radius: 2px; transition: background 0.3s, border-color 0.3s; }
-  .btn-gold:hover { background: var(--gold-lt); border-color: var(--gold-lt); }
-  .btn-ghost { display: inline-block; font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-lt); background: transparent; padding: 0.85rem 1.9rem; text-decoration: none; border: 1px solid var(--gold); border-radius: 2px; transition: background 0.3s, color 0.3s; }
-  .btn-ghost:hover { background: var(--gold); color: var(--ink); }
+  .btn-gold { display: inline-block; font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.22em; text-transform: uppercase; color: var(--paper); background: var(--cream); padding: 0.95rem 2.2rem; text-decoration: none; border: 1px solid var(--cream); border-radius: 2px; transition: background 0.3s, border-color 0.3s; }
+  .btn-gold:hover { background: var(--plum); border-color: var(--plum); }
+  .btn-ghost { display: inline-block; font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); background: transparent; padding: 0.85rem 1.9rem; text-decoration: none; border: 1px solid var(--gold); border-radius: 2px; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+  .btn-ghost:hover { background: var(--cream); border-color: var(--cream); color: var(--paper); }
 
   /* SUMMIT BAND */
-  .summit-section { padding: 5rem 3rem; background: var(--ink-mid); border-top: 1px solid rgba(184,146,74,0.1); border-bottom: 1px solid rgba(184,146,74,0.1); text-align: center; }
-  .summit-inner { max-width: 720px; margin: 0 auto; border: 1px solid rgba(184,146,74,0.3); padding: 3rem 3rem; background: rgba(184,146,74,0.05); }
+  .summit-section { padding: 5rem 3rem; background: var(--ink-mid); border-top: 1px solid rgba(138,106,47,0.18); border-bottom: 1px solid rgba(138,106,47,0.18); text-align: center; }
+  .summit-inner { max-width: 720px; margin: 0 auto; border: 1px solid rgba(138,106,47,0.45); padding: 3rem 3rem; background: var(--paper-2); box-shadow: 0 1px 0 rgba(20,17,10,0.03); }
   .summit-title { font-family: var(--ff-d); font-size: clamp(1.7rem, 2.6vw, 2.2rem); font-style: italic; font-weight: 300; color: var(--cream); margin-bottom: 1rem; line-height: 1.2; }
   .summit-body { font-family: var(--ff-d); font-size: var(--text-body); color: var(--cream); opacity: var(--op-body); line-height: 1.8; margin-bottom: 1.8rem; max-width: 560px; margin-left: auto; margin-right: auto; }
-  .summit-dates { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-lt); opacity: 0.95; margin-bottom: 1.6rem; display: block; }
+  .summit-dates { font-family: var(--ff-b); font-size: var(--text-label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-text); opacity: 1; margin-bottom: 1.6rem; display: block; }
 
   /* BOOK SECTION */
-  .book-section { padding: 5rem 3rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
+  .book-section { padding: 5rem 3rem; text-align: center; border-top: 1px solid rgba(138,106,47,0.14); }
   .book-cover-wrap { max-width: 300px; margin: 0 auto 2.2rem; }
-  .book-cover-wrap .vitrine { aspect-ratio: 3 / 4; }
-  .book-quote { font-family: var(--ff-d); font-style: italic; font-size: clamp(1.3rem, 2vw, 1.6rem); color: var(--gold-lt); max-width: 640px; margin: 0 auto 2rem; line-height: 1.55; }
+  .book-cover-wrap .vitrine { aspect-ratio: 3 / 4; border: 1px solid var(--gold); box-shadow: var(--shadow-soft); }
+  .book-quote { font-family: var(--ff-d); font-style: italic; font-size: clamp(1.3rem, 2vw, 1.6rem); color: var(--gold-text); max-width: 640px; margin: 0 auto 2rem; line-height: 1.55; }
   .book-body { font-family: var(--ff-d); font-size: var(--text-body); color: var(--cream); opacity: var(--op-body); line-height: 1.85; max-width: 620px; margin: 0 auto 2rem; }
 
   /* CLOSING */
-  .closing-section { padding: 6rem 3rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.1); }
-  .closing-text { font-family: var(--ff-d); font-size: clamp(1.4rem, 2vw, 1.8rem); font-style: italic; color: var(--cream); opacity: 0.92; max-width: 620px; margin: 0 auto 2.4rem; line-height: 1.5; }
+  .closing-section { padding: 6rem 3rem; text-align: center; border-top: 1px solid rgba(138,106,47,0.18); }
+  .closing-text { font-family: var(--ff-d); font-size: clamp(1.4rem, 2vw, 1.8rem); font-style: italic; color: var(--cream); opacity: 1; max-width: 620px; margin: 0 auto 2.4rem; line-height: 1.5; }
 
   /* FOOTER */
-  footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(184,146,74,0.07); }
-  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 0.88; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: opacity 0.3s; }
-  .footer-name:hover { opacity: 1; }
+  footer { background: var(--ink-mid); padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(138,106,47,0.14); }
+  .footer-name { font-family: var(--ff-d); font-size: 1.3rem; font-style: italic; color: var(--cream); opacity: 1; display: block; margin-bottom: 1.2rem; text-decoration: none; transition: color 0.3s; }
+  .footer-name:hover { color: var(--gold-text); }
   .footer-social { display: flex; gap: 1.4rem; justify-content: center; margin-bottom: 1.4rem; }
-  .footer-social a { color: var(--gold); opacity: 0.88; transition: opacity 0.3s; }
-  .footer-social a:hover { opacity: 1; }
+  .footer-social a { color: var(--gold-text); opacity: 1; transition: color 0.3s; }
+  .footer-social a:hover { color: var(--plum); }
   .footer-links { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
-  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); opacity: 0.88; text-decoration: none; transition: opacity 0.3s; }
-  .footer-links a:hover { opacity: 1; }
-  .footer-copy { font-family: var(--ff-d); font-style: italic; font-size: 0.94rem; color: var(--cream); opacity: 0.88; }
+  .footer-links a { font-family: var(--ff-b); font-size: 0.94rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-text); opacity: 1; text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--plum); }
+  .footer-copy { font-family: var(--ff-d); font-style: italic; font-size: 0.94rem; color: var(--ink-soft); opacity: 1; }
 
   @media (max-width: 760px) {
     nav { padding: 1rem 1.5rem; }
@@ -137,7 +155,7 @@
   }
 </style>
 </head>
-<body>
+<body class="theme-light">
 
 <nav>
   <a href="/" class="nav-brand">Christy Paxton Wade</a>
@@ -290,7 +308,7 @@
 
 <!-- AUTHOR BIO -->
 <section style="padding: 0 3rem 1rem; text-align: center;">
-  <p style="font-family: var(--ff-d); font-style: italic; font-size: var(--text-body-sm); color: var(--gold-lt); opacity: var(--op-support); max-width: 660px; margin: 0 auto; line-height: 1.7;">Christy Paxton Wade is an intuitive astrologer, ancestral oracle, and creator of the Navigation Map of Consciousness, with her chapter <em>Sovereign Descent</em> in <em>Revolutionary Icons</em>.</p>
+  <p style="font-family: var(--ff-d); font-style: italic; font-size: var(--text-body-sm); color: var(--gold-text); opacity: var(--op-support); max-width: 660px; margin: 0 auto; line-height: 1.7;">Christy Paxton Wade is an intuitive astrologer, ancestral oracle, and creator of the Navigation Map of Consciousness, with her chapter <em>Sovereign Descent</em> in <em>Revolutionary Icons</em>.</p>
 </section>
 
 <!-- ============================================================
@@ -316,7 +334,7 @@
     <a href="/mirror">Mirror</a>
     <a href="/signals">Signals</a>
     <a href="https://christywade.substack.com" target="_blank">Substack</a>
-    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-lt); opacity: 0.88;">Portal ↗</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" target="_blank" style="color: var(--gold-text); opacity: 1;">Portal ↗</a>
   </div>
   <p class="footer-copy">&copy; 2026 Christy Paxton Wade &nbsp;&middot;&nbsp; Bentonville, Arkansas</p>
 </footer>

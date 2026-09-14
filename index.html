@@ -23,15 +23,28 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink:        #0c0a07;
-    --ink-mid:    #111009;
-    --gold:       #b8924a;
-    --gold-lt:    #d4ae6e;
-    --gold-glow:  #e6c98a;
-    --cream:      #f0e8d0;
-    --plum:       #251020;
-    --plum-deep:  #1a0a15;
-    --parchment:  #ede8d5;
+    /* VELLUM & INK — light theme.
+       Variable NAMES are unchanged so /framing.css and every selector keep working;
+       the VALUES are inverted: --ink / --ink-mid are now the vellum tones,
+       --cream / --parchment are now the ink tones. Gold running text uses --gold-text. */
+    --paper:      #e8dcbb;
+    --paper-2:    #dfd1a9;
+    --line:       #c9b58a;
+    --ink:        #e8dcbb;   /* page ground */
+    --ink-mid:    #dfd1a9;   /* alternate surface, cards */
+    --ink-soft:   #4a4033;   /* secondary text  (7.4:1) */
+    --ink-dim:    #615546;   /* meta / labels   (5.3:1) */
+    --gold:       #8a6a2f;   /* ornament only: rules, frames, brackets, SVG strokes (3.7:1) — never text */
+    --gold-lt:    #8a6a2f;   /* corner brackets & frames */
+    --gold-glow:  #c9ab6c;   /* decorative only — never text */
+    --gold-soft:  #c9ab6c;
+    --gold-text:  #7a5618;   /* ALL gold text: links, headings, eyebrows, small-caps labels (4.9:1) */
+    --cream:      #14110a;   /* primary ink     (13.8:1) */
+    --plum:       #4a2b45;   /* accent          (8.9:1) */
+    --plum-deep:  #3a2036;
+    --plum-wash:  rgba(74,43,69,0.07);
+    --parchment:  #4a4033;   /* secondary ink */
+    --shadow-soft: 0 8px 28px rgba(20,17,10,0.10);
 
     --ff-d: 'Cormorant Garamond', Georgia, serif;
     --ff-b: 'Jost', system-ui, sans-serif;
@@ -39,17 +52,17 @@
     --text-body: 1.15rem;
     --text-label: 0.94rem;
 
-    --frame-line: rgba(184, 146, 74, 0.45);
-    --frame-line-soft: rgba(184, 146, 74, 0.22);
-    --frame-line-bright: rgba(212, 174, 110, 0.7);
+    --frame-line: rgba(138, 106, 47, 0.45);
+    --frame-line-soft: rgba(138, 106, 47, 0.22);
+    --frame-line-bright: rgba(138, 106, 47, 0.7);
   }
 
   html { scroll-behavior: smooth; }
   body {
-    background: var(--ink);
+    background: var(--paper);
     color: var(--cream);
     font-family: var(--ff-b);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.7;
     overflow-x: hidden;
     font-size: 16px;
@@ -61,7 +74,7 @@
     display: flex; flex-direction: column; align-items: center;
     gap: 0.7rem;
     padding: 1rem 2rem;
-    background: rgba(12, 10, 7, 0.95);
+    background: rgba(232,220,187, 0.94);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--frame-line-soft);
   }
@@ -73,11 +86,11 @@
     text-transform: uppercase;
     color: var(--cream);
     text-decoration: none;
-    opacity: 0.95;
+    opacity: 1;
     white-space: nowrap;
     transition: color 0.3s, opacity 0.3s;
   }
-  .nav-brand:hover { color: var(--gold-lt); opacity: 1; }
+  .nav-brand:hover { color: var(--gold-text); opacity: 1; }
   .nav-links { display: flex; gap: 1.7rem; list-style: none; align-items: center; flex-wrap: wrap; justify-content: center; }
   .nav-links a {
     font-family: var(--ff-b);
@@ -85,12 +98,12 @@
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.88;
+    color: var(--cream); opacity: 1;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
   }
-  .nav-links a:hover { opacity: 1; color: var(--gold-lt); }
-  .nav-links a.active { color: var(--gold-lt); opacity: 1; }
+  .nav-links a:hover { opacity: 1; color: var(--gold-text); }
+  .nav-links a.active { color: var(--gold-text); opacity: 1; }
   .nav-divider { width: 1px; height: 14px; background: var(--frame-line); }
 
   /* ── EYEBROW ── */
@@ -100,7 +113,7 @@
     font-weight: 500;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--gold); opacity: 0.95;
+    color: var(--gold-text); opacity: 1;
     display: inline-flex;
     align-items: center;
     gap: 1rem;
@@ -124,7 +137,7 @@
     text-align: center;
     padding: 8rem 2rem 5rem;
     position: relative;
-    background: radial-gradient(ellipse at center, #2a1f0e 0%, #1a1208 35%, var(--ink) 70%);
+    background: radial-gradient(ellipse at center, #efe5c9 0%, #ebe0c2 35%, var(--paper) 70%);
   }
   .hero-corners {
     position: absolute; inset: 6rem 2.5rem 4rem;
@@ -147,7 +160,7 @@
     font-family: var(--ff-d);
     font-size: 1.1rem;
     font-style: italic;
-    color: var(--gold-lt); opacity: 0.88;
+    color: var(--gold-text); opacity: 1;
     letter-spacing: 0.06em;
     margin-bottom: 1.8rem;
   }
@@ -166,7 +179,7 @@
     display: block;
     font-size: clamp(2.4rem, 6vw, 4.2rem);
     font-style: italic;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     margin-top: 0.3rem;
   }
   .hero-location {
@@ -174,14 +187,14 @@
     font-size: 0.95rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.6;
+    color: var(--ink-dim); opacity: 1;
     margin-bottom: 2.5rem;
   }
   .hero-tagline {
     font-family: var(--ff-d);
     font-style: italic;
     font-size: clamp(1.25rem, 2.4vw, 1.6rem);
-    color: var(--cream); opacity: 0.9;
+    color: var(--cream); opacity: 1;
     line-height: 1.55;
     margin: 0 auto 1.2rem;
     max-width: 600px;
@@ -189,24 +202,24 @@
   .hero-ground { margin: 0 auto 2.6rem; max-width: 660px; }
   .hero-ground .pillars {
     font-family: var(--ff-b);
-    font-size: clamp(0.9rem, 1.4vw, 1rem);
+    font-size: clamp(0.94rem, 1.4vw, 1rem);
     font-weight: 500;
     letter-spacing: 0.05em;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     line-height: 1.7;
   }
   .hero-ground .forms {
     font-family: var(--ff-b);
-    font-size: clamp(0.82rem, 1.2vw, 0.92rem);
+    font-size: clamp(0.94rem, 1.2vw, 0.98rem);
     font-weight: 400;
-    color: var(--cream); opacity: 0.72;
+    color: var(--ink-soft); opacity: 1;
     line-height: 1.7;
     margin-top: 0.55rem;
   }
   .button {
     display: inline-block;
     font-family: var(--ff-b);
-    font-size: 0.92rem;
+    font-size: 0.94rem;
     font-weight: 500;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -219,18 +232,18 @@
     position: relative;
   }
   .button:hover {
-    background: var(--gold);
-    color: var(--ink);
-    border-color: var(--gold);
+    background: var(--cream);
+    color: var(--paper);
+    border-color: var(--cream);
   }
   .button.ghost {
     border-color: var(--frame-line);
-    color: var(--cream); opacity: 0.85;
+    color: var(--ink-soft); opacity: 1;
   }
   .button.ghost:hover {
-    border-color: var(--gold-lt);
-    background: transparent;
-    color: var(--gold-lt);
+    border-color: var(--gold);
+    background: var(--paper-2);
+    color: var(--gold-text);
     opacity: 1;
   }
 
@@ -270,14 +283,14 @@
     margin: 0 auto 1.4rem;
   }
   section.framed h2 em {
-    color: var(--gold-lt);
+    color: var(--gold-text);
     font-style: italic;
   }
   .section-subhead {
     font-family: var(--ff-d);
     font-style: italic;
     font-size: 1.15rem;
-    color: var(--cream); opacity: 0.75;
+    color: var(--ink-soft); opacity: 1;
     text-align: center;
     max-width: 600px;
     margin: 0 auto 3.5rem;
@@ -301,6 +314,7 @@
     position: relative;
     transition: all 0.4s ease;
     overflow: hidden;
+    box-shadow: 0 1px 0 rgba(20,17,10, 0.03);
   }
   .branch-card::before,
   .branch-card::after {
@@ -322,19 +336,20 @@
   }
   .branch-card:hover {
     border-color: var(--gold);
-    background: #14110a;
+    background: var(--paper-2);
     transform: translateY(-3px);
-    box-shadow: 0 8px 28px rgba(184, 146, 74, 0.12);
+    box-shadow: var(--shadow-soft);
   }
   .branch-card .vitrine {
     height: 220px;
     margin: 0;
     position: relative;
     background:
-      radial-gradient(circle at 30% 40%, rgba(184, 146, 74, 0.16), transparent 60%),
-      radial-gradient(circle at 70% 70%, rgba(74, 30, 53, 0.3), transparent 60%),
-      var(--plum-deep);
-    border-bottom: 1px solid var(--frame-line);
+      radial-gradient(circle at 30% 40%, rgba(138, 106, 47, 0.10), transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(74, 43, 69, 0.08), transparent 60%),
+      var(--paper-2);
+    border-bottom: 1px solid var(--gold);
+    box-shadow: 0 2px 12px rgba(20,17,10,0.10);
     overflow: hidden;
   }
   .branch-card .vitrine img {
@@ -343,27 +358,27 @@
     object-position: center;
     display: block;
     transition: transform 0.6s ease, filter 0.4s ease;
-    filter: brightness(0.92) saturate(1.05);
+    filter: saturate(1.02);
   }
   .branch-card:hover .vitrine img {
     transform: scale(1.04);
-    filter: brightness(1) saturate(1.1);
+    filter: saturate(1.08);
   }
   .branch-card .vitrine::after {
     content: '';
     position: absolute; inset: 8px;
-    border: 1px solid rgba(212, 174, 110, 0.35);
+    border: 1px solid rgba(138, 106, 47, 0.45);
     pointer-events: none;
     z-index: 2;
   }
   .branch-card.book-card .vitrine {
     background:
-      radial-gradient(circle at 50% 50%, rgba(74, 30, 53, 0.5), var(--plum-deep) 80%);
+      radial-gradient(circle at 50% 50%, rgba(74, 43, 69, 0.10), var(--paper-2) 80%);
   }
   .branch-card.book-card .vitrine img {
     object-fit: contain;
     padding: 0.4rem;
-    filter: brightness(0.96) saturate(1.05);
+    filter: saturate(1.02);
   }
   .branch-card-body {
     padding: 1.8rem 1.8rem 0;
@@ -378,34 +393,34 @@
   }
   .branch-card p {
     font-size: 0.98rem;
-    color: var(--cream); opacity: 0.78;
+    color: var(--ink-soft); opacity: 1;
     margin-bottom: 1.4rem;
     line-height: 1.6;
   }
   .branch-card .card-tagline {
     font-family: var(--ff-d);
     font-style: italic;
-    color: var(--gold-lt);
-    opacity: 0.92;
+    color: var(--gold-text);
+    opacity: 1;
     margin-top: -0.3rem;
     margin-bottom: 0.8rem;
     font-size: 0.95rem;
   }
   .branch-card a.card-link {
     font-family: var(--ff-b);
-    font-size: 0.78rem;
+    font-size: 0.94rem;
     font-weight: 500;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     text-decoration: none;
     border-bottom: 1px solid var(--frame-line);
     padding-bottom: 3px;
     transition: all 0.3s;
   }
   .branch-card a.card-link:hover {
-    color: var(--gold-glow);
-    border-color: var(--gold-glow);
+    color: var(--plum);
+    border-color: var(--plum);
   }
 
   /* ── FEATURE: REVOLUTIONARY ICONS ── */
@@ -415,7 +430,7 @@
     padding: 0 2rem;
   }
   .feature-inner {
-    background: var(--plum-deep);
+    background: var(--plum-wash);
     border: 1px solid var(--frame-line);
     padding: 5rem 4rem;
     position: relative;
@@ -445,15 +460,16 @@
   }
   .feature-glow {
     position: absolute; inset: 0;
-    background: radial-gradient(circle at 85% 15%, rgba(184, 146, 74, 0.16), transparent 55%);
+    background: radial-gradient(circle at 85% 15%, rgba(138, 106, 47, 0.10), transparent 55%);
     pointer-events: none;
   }
   .feature-img-slot {
     aspect-ratio: 3 / 4;
     position: relative;
     background:
-      linear-gradient(135deg, rgba(184, 146, 74, 0.14), rgba(74, 30, 53, 0.32)),
-      var(--ink);
+      linear-gradient(135deg, rgba(138, 106, 47, 0.10), rgba(74, 43, 69, 0.10)),
+      var(--paper-2);
+    box-shadow: var(--shadow-soft);
     z-index: 1;
   }
   .feature-img-slot .inner-frame {
@@ -464,7 +480,7 @@
   }
   .feature-img-slot .outer-frame {
     position: absolute; inset: 0;
-    border: 1px solid var(--gold-lt);
+    border: 1px solid var(--gold);
     pointer-events: none;
     z-index: 3;
   }
@@ -488,13 +504,13 @@
     margin: 0 0 1.4rem;
     text-align: left;
   }
-  .feature-content h2 em { color: var(--gold-lt); font-style: italic; }
+  .feature-content h2 em { color: var(--gold-text); font-style: italic; }
   .feature-content .feature-tagline {
     font-family: var(--ff-d);
     font-style: italic;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     font-size: 1.1rem;
-    opacity: 0.92;
+    opacity: 1;
     margin-bottom: 1.4rem;
     letter-spacing: 0.02em;
   }
@@ -502,7 +518,7 @@
     font-family: var(--ff-d);
     font-size: 1.2rem;
     line-height: 1.7;
-    color: var(--cream); opacity: 0.92;
+    color: var(--cream); opacity: 1;
     margin-bottom: 1.8rem;
   }
   .feature-content .body-with-dropcap::first-letter {
@@ -512,7 +528,7 @@
     line-height: 0.85;
     float: left;
     margin: 0.18em 0.6rem 0 0;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     padding: 0.05em 0.18em 0;
     border: 1px solid var(--frame-line);
   }
@@ -520,8 +536,8 @@
     font-family: var(--ff-d);
     font-style: italic;
     font-size: 1.15rem;
-    color: var(--gold-lt);
-    opacity: 0.92;
+    color: var(--gold-text);
+    opacity: 1;
     border-left: 2px solid var(--gold);
     padding-left: 1.4rem;
     margin: 1.8rem 0 2rem;
@@ -562,12 +578,12 @@
     color: var(--cream);
     margin-bottom: 1.4rem;
   }
-  .text-section h2 em { color: var(--gold-lt); font-style: italic; }
+  .text-section h2 em { color: var(--gold-text); font-style: italic; }
   .text-section p {
     font-family: var(--ff-d);
     font-style: italic;
     font-size: 1.25rem;
-    color: var(--cream); opacity: 0.85;
+    color: var(--ink-soft); opacity: 1;
     line-height: 1.6;
     margin-bottom: 2.4rem;
     max-width: 600px;
@@ -581,7 +597,7 @@
     padding: 4.5rem 4rem;
     border: 1px solid var(--frame-line);
     background:
-      radial-gradient(circle at 15% 30%, rgba(184, 146, 74, 0.14), transparent 55%),
+      radial-gradient(circle at 15% 30%, rgba(138, 106, 47, 0.10), transparent 55%),
       var(--ink-mid);
     text-align: center;
     position: relative;
@@ -611,11 +627,11 @@
     color: var(--cream);
     margin-bottom: 1.4rem;
   }
-  .architecture-cta h2 em { color: var(--gold-lt); font-style: italic; }
+  .architecture-cta h2 em { color: var(--gold-text); font-style: italic; }
   .architecture-cta p {
     font-family: var(--ff-d);
     font-size: 1.15rem;
-    color: var(--cream); opacity: 0.85;
+    color: var(--ink-soft); opacity: 1;
     line-height: 1.6;
     margin-bottom: 2.2rem;
     max-width: 540px;
@@ -642,10 +658,10 @@
     display: block;
     font-family: var(--ff-d);
     font-style: italic;
-    color: var(--gold-lt);
+    color: var(--gold-text);
     font-size: 1rem;
     letter-spacing: 0.06em;
-    opacity: 0.85;
+    opacity: 1;
     margin-bottom: 1.8rem;
   }
   .footer-social {
@@ -655,13 +671,13 @@
     margin-bottom: 2rem;
   }
   .footer-social a {
-    color: var(--gold-lt);
-    opacity: 0.75;
+    color: var(--gold-text);
+    opacity: 1;
     transition: opacity 0.3s, color 0.3s;
   }
   .footer-social a:hover {
     opacity: 1;
-    color: var(--gold-glow);
+    color: var(--plum);
   }
   .footer-links {
     display: flex;
@@ -672,18 +688,18 @@
   }
   .footer-links a {
     font-family: var(--ff-b);
-    font-size: 0.78rem;
+    font-size: 0.94rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--cream); opacity: 0.65;
+    color: var(--ink-soft); opacity: 1;
     text-decoration: none;
     transition: opacity 0.3s, color 0.3s;
   }
-  .footer-links a:hover { opacity: 1; color: var(--gold-lt); }
+  .footer-links a:hover { opacity: 1; color: var(--gold-text); }
   .footer-copy {
     font-family: var(--ff-b);
-    font-size: 0.82rem;
-    color: var(--cream); opacity: 0.5;
+    font-size: 0.94rem;
+    color: var(--ink-dim); opacity: 1;
     letter-spacing: 0.08em;
   }
 
@@ -722,7 +738,7 @@
 }
 </script>
 </head>
-<body>
+<body class="theme-light">
 
 <nav>
   <a href="/" class="nav-brand">Christy Paxton Wade</a>
@@ -786,13 +802,13 @@
       <div class="forms">personal readings &nbsp;·&nbsp; individual sessions &nbsp;·&nbsp; classes &nbsp;·&nbsp; community &nbsp;·&nbsp; writing</div>
     </div>
     <a href="/begin" class="button">Begin Here</a>
-    <p style="margin-top: 1.8rem;"><a href="/course" style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.15rem; color: #d4ae6e; text-decoration: none; border-bottom: 1px solid rgba(184,146,74,0.45);">New — Traveling the Map, a six-week live course · begins October 6 →</a></p>
+    <p style="margin-top: 1.8rem;"><a href="/course" style="font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.15rem; color: var(--gold-text); text-decoration: none; border-bottom: 1px solid rgba(138,106,47,0.45);">New — Traveling the Map, a six-week live course · begins October 6 →</a></p>
   </div>
 </section>
 
 <!-- ── ANNOUNCEMENT — TRAVELING THE MAP ── -->
-<a href="/course" style="display: block; background: #251020; border-top: 1px solid rgba(184,146,74,0.35); border-bottom: 1px solid rgba(184,146,74,0.35); padding: 1.1rem 1.5rem; text-align: center; text-decoration: none; line-height: 1.9;">
-  <span style="font-family: 'Jost', system-ui, sans-serif; font-size: 0.94rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #f0e8d0;"><span style="color: #d4ae6e;">New</span> &nbsp;·&nbsp; Traveling the Map — a six-week live course &nbsp;·&nbsp; begins October 6 &nbsp;·&nbsp; <span style="color: #d4ae6e;">early price $177 through September 22 →</span></span>
+<a href="/course" style="display: block; background: rgba(74,43,69,0.07); border-top: 1px solid rgba(138,106,47,0.35); border-bottom: 1px solid rgba(138,106,47,0.35); padding: 1.1rem 1.5rem; text-align: center; text-decoration: none; line-height: 1.9;">
+  <span style="font-family: 'Jost', system-ui, sans-serif; font-size: 0.94rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream);"><span style="color: var(--gold-text);">New</span> &nbsp;·&nbsp; Traveling the Map — a six-week live course &nbsp;·&nbsp; begins October 6 &nbsp;·&nbsp; <span style="color: var(--gold-text);">early price $177 through September 22 →</span></span>
 </a>
 
 <!-- ── DIVIDER ── -->
@@ -926,7 +942,7 @@
     <a href="/mirror">Mirror</a>
     <a href="/about">About</a>
     <a href="https://christywade.substack.com" target="_blank">Substack</a>
-    <a href="https://portal.christypaxtonwade.com/portal.html" style="color: var(--gold-lt); opacity: 0.85;">Portal ↗</a>
+    <a href="https://portal.christypaxtonwade.com/portal.html" style="color: var(--gold-text); opacity: 1;">Portal ↗</a>
   </div>
   <p class="footer-copy">© 2026 Christy Paxton Wade &nbsp;·&nbsp; Bentonville, Arkansas</p>
 </footer>
