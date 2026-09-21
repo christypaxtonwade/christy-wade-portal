@@ -10,6 +10,10 @@
 <meta property="og:description" content="Seven weeks. One gate a week. We walk with Venus. Fridays, October 2 to November 13.">
 <meta property="og:url" content="https://christypaxtonwade.com/seven-gates">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://christypaxtonwade.com/public/seven-gates-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -55,6 +59,13 @@
   blockquote{margin:2rem 0;padding:1rem 0 1rem 1.4rem;border-left:2px solid var(--gold-soft);font-family:var(--ff-d);font-size:1.5rem;line-height:1.35}
   footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.9rem;color:var(--ink-faint)}
   footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.4rem,4vw,2.8rem);align-items:start}
+  .story figure{margin:0;position:sticky;top:1.5rem}
+  .story figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);box-shadow:0 18px 40px -24px rgba(34,28,21,.55);background:#cdb98f}
+  .story figcaption{font-size:.82rem;line-height:1.45;color:var(--ink-faint);margin-top:.7rem}
+  .story figcaption b{display:block;font-family:var(--ff-d);font-weight:500;font-size:1.05rem;color:var(--ink-soft)}
+  .story figcaption a{border:0;color:var(--ink-faint)}
+  @media (max-width:640px){.story{grid-template-columns:1fr}.story figure{position:static;max-width:340px}}
   @media (max-width:600px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -85,9 +96,17 @@
 <section>
   <div class="wrap">
     <h2>The story underneath</h2>
+    <div class="story">
+      <figure>
+        <img src="/public/inanna-gate.jpg" alt="Inanna at the first gate: a veiled figure standing in a stone archway, the dark beyond it, on vellum." loading="lazy" width="1200" height="1800">
+        <figcaption><b>Inanna at the outer gate</b>From the Navigation Map Fieldguide.</figcaption>
+      </figure>
+      <div>
     <p>A queen went down into the underworld on purpose. She passed through seven gates. At each one something was taken from her, and each time she asked why, she was told not to argue. She arrived at the bottom with nothing, was killed by her sister's look, and hung on a peg for three days. What happened next is the part almost no one tells: she did not climb out. Something came for her, help too small to be stopped, and she left only by handing over the one thing that had not mourned her. She rose as the other star.</p>
     <p>That story is four thousand years old, and it is the most precise map of a woman's transformation that exists. The Seven Gates walks it, gate by gate, in plain language, with your own life as the text.</p>
     <blockquote>You are not lost. You are at the threshold.</blockquote>
+      </div>
+    </div>
   </div>
 </section>
 
