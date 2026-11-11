@@ -124,6 +124,10 @@
       "dest": "/seven-gates.html"
     },
     {
+      "src": "/fieldguide",
+      "dest": "/fieldguide.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
