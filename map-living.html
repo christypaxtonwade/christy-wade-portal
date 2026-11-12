@@ -1365,7 +1365,11 @@
 
     layout(); drawMap(); drawBar(); drawCaption(); drawSheet();
     var m = /^#field-([ivx]+)$/i.exec(location.hash || '');
-    if (m && idx[m[1].toUpperCase()] != null) enterField(idx[m[1].toUpperCase()]);
+    if (m && idx[m[1].toUpperCase()] != null) {
+      enterField(idx[m[1].toUpperCase()]);
+      // 2026-11-12: a link straight to a Field brings the Map into view, below the site nav.
+      setTimeout(function () { try { window.scrollTo(0, root.getBoundingClientRect().top + window.pageYOffset - Math.max(0, (cfg.offset || 12) - 24)); } catch (e) { } }, 80);
+    }
     return { enterField: enterField, toMap: toMap, state: S };
   }
 
