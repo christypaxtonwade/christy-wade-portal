@@ -112,6 +112,10 @@
       "dest": "/course-welcome.html"
     },
     {
+      "src": "/course/seven-gates",
+      "dest": "/course-seven-gates.html"
+    },
+    {
       "src": "/threshold",
       "dest": "/threshold.html"
     },
